@@ -6,7 +6,7 @@ import {NgRedux} from '@angular-redux/store';
 import {Router} from '@angular/router';
 import {User} from '../../../shared/_models/User';
 import {StoreService} from '../../../shared/_services/store.service';
-// import {GlobalEventsManagerService} from '../../../shared/_services/global-event-manager.service';
+import {GlobalEventsManagerService} from '../../../shared/_services/global-event-manager.service';
 
 export const LOGIN_USER          = 'LOGIN_USER';
 export const LOGIN_USER_SUCCESS  = 'LOGIN_USER_SUCCESS';
@@ -19,8 +19,8 @@ export class LoginActions {
     private ngRedux: NgRedux<IAppState>,
     private router: Router,
     private storeLocal: StoreService,
-    //private eventManager: GlobalEventsManagerService
-    ) {}
+    private eventManager: GlobalEventsManagerService
+  ) {}
 
   loginUser() {
     this.ngRedux.dispatch({ type: LOGIN_USER });
@@ -33,7 +33,7 @@ export class LoginActions {
     this.storeLocal.setUserNames(user.first_name);
     this.storeLocal.setType(user.user_type);
 
-    //this.eventManager.isUserLoggedIn.next(true);
+    this.eventManager.isUserLoggedIn.next(true);
   }
 
   loginUserError() {
@@ -49,7 +49,7 @@ export class LoginActions {
     this.storeLocal.removeType();
     this.storeLocal.clear();
 
-    //this.eventManager.isUserLoggedIn.next(false);
+    this.eventManager.isUserLoggedIn.next(false);
 
     window.location.reload();
     //this.router.navigate(['/authentication/login']);
