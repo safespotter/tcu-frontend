@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FeatureComponent } from './feature.component';
 
-const routes: Routes = [{ path: '', component: FeatureComponent }];
+const routes: Routes = [{ path: '', component: FeatureComponent },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+  { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

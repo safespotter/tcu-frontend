@@ -8,9 +8,19 @@ import { CardComponent } from './card/card.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, BreadcumbComponent, CardComponent],
+  declarations: [HeaderComponent,
+    FooterComponent,
+    BreadcumbComponent,
+    CardComponent
+  ],
   imports: [
     CommonModule
+  ],
+  providers:[
+
+  ],
+  exports: [
+    HeaderComponent,
   ]
 })
 export class CoreModule { }
