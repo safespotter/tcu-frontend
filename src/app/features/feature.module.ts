@@ -7,12 +7,14 @@ import { HomeComponent } from './home/home.component';
 import {CoreModule} from "../core/core.module";
 import {P404Component} from "../errors/404.component";
 import {P500Component} from "../errors/500.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [FeatureComponent,
     P404Component,
-    P500Component
+    P500Component,
+    DashboardComponent
   ],
   imports: [
     FeatureRoutingModule,

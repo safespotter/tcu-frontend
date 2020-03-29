@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './breadcumb.component.html',
   styleUrls: ['./breadcumb.component.scss']
 })
-export class BreadcumbComponent implements OnInit {
+export class BreadcrumbComponent implements OnInit {
 
   constructor() { }
 
