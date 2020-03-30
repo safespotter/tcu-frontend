@@ -11,6 +11,7 @@ import {BsModalService} from 'ngx-bootstrap';
 import {UserService} from '../shared/_services/user.service';
 import {FilterActions} from '../features/dashboard/redux-filter/filter.actions';
 import {AuthenticationService} from "../features/authentication/authentication.service";
+import {SidebarComponent} from "./sidebar/sidebar.component";
 
 
 
@@ -19,7 +20,8 @@ import {AuthenticationService} from "../features/authentication/authentication.s
     HeaderComponent,
     FooterComponent,
     BreadcrumbComponent,
-    CardComponent
+    CardComponent,
+    SidebarComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,7 @@ import {AuthenticationService} from "../features/authentication/authentication.s
   ],
   exports: [
     HeaderComponent,
+    SidebarComponent,
   ]
 })
 export class CoreModule { }
