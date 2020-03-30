@@ -1,0 +1,19 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "../../node_modules/@coreui/coreui/scss/coreui";
+@import '../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+// If you want to add something do it here
+@import "custom";
+
+// Font Mr. Robot
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
+
+// Ngx Toastr
+@import '../../node_modules/ngx-toastr/toastr.css';
+
+@import "../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* You can add global styles to this file, and also import other style files */

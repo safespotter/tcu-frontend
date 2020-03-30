@@ -1,37 +1,36 @@
-<p>sono qui porca bagassa</p>
-<!--<nav class="navbar navbar-expand-md navbar-light fixed-top">-->
-<!--  <div class="container">-->
-<!--    &lt;!&ndash; Menu MD View &ndash;&gt;-->
-<!--    <button class="navbar-toggler bg-white d-inline-block d-lg-none-2 ml-3 ml-md-0 mr-0" *ngIf="isUserLoggedIn" type="button"-->
-<!--            id="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#menu"-->
-<!--            data-toggle="collapse" (click)="showMenu(true)">-->
-<!--      <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--  </div>-->
+<nav class="navbar navbar-expand-md navbar-light fixed-top">
+  <div class="container">
+    <!-- Menu MD View -->
+    <button class="navbar-toggler bg-white d-inline-block d-lg-none-2 ml-3 ml-md-0 mr-0" *ngIf="isUserLoggedIn" type="button"
+            id="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#menu"
+            data-toggle="collapse" (click)="showMenu(true)">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
 
-<!--  <div id="logo-div" class="bg-white rounded ml-lg-3 mx-md-auto py-1 px-2 cursor-pointer" [routerLink]="[drag ? '#' : '/']">-->
-<!--    <img src="assets/img/brand/doutdes-logo-alpha-SMALL.png" width="90"/>-->
-<!--  </div>-->
+  <div id="logo-div" class="bg-white rounded ml-lg-3 mx-md-auto py-1 px-2 cursor-pointer" [routerLink]="[drag ? '#' : '/']">
+    <img src="assets/img/brand/doutdes-logo-alpha-SMALL.png" width="90"/>
+  </div>
 
-<!--  &lt;!&ndash; SM Avatar &ndash;&gt;-->
-<!--  <div class="cursor-pointer d-block d-md-none">-->
-<!--    <a class="nav-link btn-group pl-0" aria-haspopup="true" aria-expanded="false" role="button" data-target="#menu_small" data-toggle="collapse">-->
-<!--      <img class="img-avatar" src="assets/img/avatars/4.jpg" alt="{{username}}" style="max-height: 42px;">-->
-<!--    </a>-->
-<!--  </div>-->
+  <!-- SM Avatar -->
+  <div class="cursor-pointer d-block d-md-none">
+    <a class="nav-link btn-group pl-0" aria-haspopup="true" aria-expanded="false" role="button" data-target="#menu_small" data-toggle="collapse">
+      <img class="img-avatar" src="assets/img/avatars/4.jpg" alt="{{username}}" style="max-height: 42px;">
+    </a>
+  </div>
 
-<!--  &lt;!&ndash; Menu and avatar &ndash;&gt;-->
-<!--  <div id="menu_small" class="dropdown-menu position-menu-small dropdown-menu-right float-right col-2">-->
-<!--    <div class="dropdown-header text-center">-->
-<!--      <strong class="text-capitalize ">{{'MENU.IMPOSTAZIONI' | translate }}</strong>-->
-<!--    </div>-->
-<!--    <a class="dropdown-item">-->
-<!--      <i class="fa fa-user"></i>{{'MENU.PROFILO' | translate }}</a>-->
-<!--    <a class="dropdown-item menu-collapsed text-secondary ">-->
-<!--      <i class="fa fa-wrench"></i>{{'MENU.IMPOSTAZIONI' | translate }}</a>-->
-<!--    <a class="dropdown-item">-->
-<!--      <i class="fa fa-lock"></i>{{'MENU.ESCI' | translate }} </a>-->
-<!--  </div>-->
-<!--  <div class="collapse navbar-collapse" id="navbarNavDropdown" style="flex-grow: 0"></div>-->
+  <!-- Menu and avatar -->
+  <div id="menu_small" class="dropdown-menu position-menu-small dropdown-menu-right float-right col-2">
+    <div class="dropdown-header text-center">
+      <strong class="text-capitalize ">{{'MENU.IMPOSTAZIONI' | translate }}</strong>
+    </div>
+    <a class="dropdown-item">
+      <i class="fa fa-user"></i>{{'MENU.PROFILO' | translate }}</a>
+    <a class="dropdown-item menu-collapsed text-secondary ">
+      <i class="fa fa-wrench"></i>{{'MENU.IMPOSTAZIONI' | translate }}</a>
+    <a class="dropdown-item">
+      <i class="fa fa-lock"></i>{{'MENU.ESCI' | translate }} </a>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" style="flex-grow: 0"></div>
 
-<!--</nav>-->
+</nav>

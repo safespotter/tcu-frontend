@@ -10,6 +10,7 @@ import {LoginActions} from '../features/authentication/login/login.actions';
 import {BsModalService} from 'ngx-bootstrap';
 import {UserService} from '../shared/_services/user.service';
 import {FilterActions} from '../features/dashboard/redux-filter/filter.actions';
+import {AuthenticationService} from "../features/authentication/authentication.service";
 
 
 
@@ -26,6 +27,7 @@ import {FilterActions} from '../features/dashboard/redux-filter/filter.actions';
     TranslateModule
   ],
   providers:[
+    AuthenticationService,
     LoginActions,
     BsModalService,
     UserService,
