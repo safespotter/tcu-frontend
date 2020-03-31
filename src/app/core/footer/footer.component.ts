@@ -26,7 +26,6 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
     this.GEservice.dragAndDrop.subscribe(value => this.drag = value);
-    console.log(this.drag);
 
     this.GEservice.isUserLoggedIn.subscribe(value => {
       this.isUserLoggedIn = value;

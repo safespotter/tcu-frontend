@@ -12,15 +12,12 @@
          style="background-color: #eeeeee;">
       <div class="d-flex w-100 justify-content-start align-items-center">
         <span class="fas fa-tachometer-alt mr-3"></span>
+        <a [routerLink]="[drag ? '#' : '/dashboard/custom']" class="list-group-item list-group-item-action">
         <span class="menu-collapsed text-black">{{'SIDEBAR.MY_DASHBOARD' | translate }}</span>
+        </a>
       </div>
     </div>
     <!-- Submenu content -->
-    <div id="submenu1" class="sidebar-submenu">
-      <a [routerLink]="[drag ? '#' : '/dashboard/custom']" class="list-group-item list-group-item-action">
-        <span class="menu-collapsed">{{'MENU.PERSONALIZZATA' | translate }}</span>
-      </a>
-    </div>
     <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
        class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-start align-items-center">

@@ -6,7 +6,8 @@ import {StoreService} from './_services/store.service';
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private localStorage: StoreService, private httpClient: HttpClient) {
+  constructor(private localStorage: StoreService,
+              private httpClient: HttpClient) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

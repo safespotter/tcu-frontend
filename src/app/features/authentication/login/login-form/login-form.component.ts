@@ -7,7 +7,7 @@ import {first} from 'rxjs/internal/operators';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
-  selector: 'app-feature-authentication-login-form',
+  selector: 'app-authentication-login-form',
   templateUrl: './login-form.component.html'
 })
 export class FeatureAuthenticationLoginFormComponent implements OnInit {

@@ -6,6 +6,7 @@ import {AuthenticationService} from '../../features/authentication/authenticatio
 import {GlobalEventsManagerService} from '../../shared/_services/global-event-manager.service';
 import {UserService} from '../../shared/_services/user.service';
 import {TranslateService} from '@ngx-translate/core';
+import {ApiKeysService} from '../../shared/_services/apikeys.service';
 
 @Component({
   selector: 'app-core-header',
@@ -34,12 +35,13 @@ export class HeaderComponent implements OnInit {
     public translate: TranslateService,
     private globalEventService: GlobalEventsManagerService,
     private userService: UserService,
+    private apiKeyService: ApiKeysService,
   ) {
     this.today = new Date().toLocaleString();
     this.today = this.today.substr(0, this.today.length - 10);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.globalEventService.dragAndDrop.subscribe(value => this.drag = value);
 
     this.globalEventService.isUserLoggedIn.subscribe(value => {
@@ -47,7 +49,11 @@ export class HeaderComponent implements OnInit {
       this.username = this.localStore.getUserNames();
     });
 
-    if (! this.isUserLoggedIn) {
+    if (this.isUserLoggedIn) {
+    //  const pageID = (await this.apiKeyService.getAllKeys().toPromise());
+    }
+
+    if (!this.isUserLoggedIn) {
       this.translate.setDefaultLang('Italiano');
     }
   }

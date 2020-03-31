@@ -20,6 +20,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {_MatMenuDirectivesModule, MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
+import {ApiKeysService} from "../shared/_services/apikeys.service";
 
 
 
@@ -43,7 +44,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatSelectModule,
     _MatMenuDirectivesModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers:[
     AuthenticationService,
@@ -51,6 +52,7 @@ import {MatIconModule} from "@angular/material/icon";
     BsModalService,
     UserService,
     FilterActions,
+    ApiKeysService
   ],
   exports: [
     HeaderComponent,
