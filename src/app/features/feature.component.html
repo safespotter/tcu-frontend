@@ -1,7 +1,16 @@
-<app-core-header></app-core-header>                            <!-- HEADER -->
+<app-core-header> </app-core-header>                            <!-- HEADER -->
 
 <div class="container" id="body-row" >
+
   <div class="col" id="main-content">
     <app-sidebar class="rounded mt-3"> </app-sidebar> <!-- SIDEBAR -->
+    <app-breadcrumb class="my-3"></app-breadcrumb>   <!-- BREADCRUMB -->
+
+    <div id="main-container">                                  <!-- CONTAINER -->
+      <router-outlet></router-outlet>
+    </div>
+
+    <app-footer class="mb-3"></app-footer>
+
   </div>
 </div>

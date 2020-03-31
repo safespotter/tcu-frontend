@@ -12,6 +12,14 @@ import {UserService} from '../shared/_services/user.service';
 import {FilterActions} from '../features/dashboard/redux-filter/filter.actions';
 import {AuthenticationService} from "../features/authentication/authentication.service";
 import {SidebarComponent} from "./sidebar/sidebar.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {FormsModule} from "@angular/forms";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatOptionModule} from "@angular/material/core";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {_MatMenuDirectivesModule, MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -26,7 +34,16 @@ import {SidebarComponent} from "./sidebar/sidebar.component";
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule
+    TranslateModule,
+    MatSidenavModule,
+    FormsModule,
+    MatCheckboxModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    _MatMenuDirectivesModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers:[
     AuthenticationService,
@@ -38,6 +55,8 @@ import {SidebarComponent} from "./sidebar/sidebar.component";
   exports: [
     HeaderComponent,
     SidebarComponent,
+    FooterComponent,
+    BreadcrumbComponent,
   ]
 })
 export class CoreModule { }

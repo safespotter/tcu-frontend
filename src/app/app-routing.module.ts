@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AppComponent} from './app.component';
+import {IsAuthenticatedGuard} from "./shared/_guards/is-authenticated.guard";
 
 
 const routes: Routes = [
@@ -10,7 +11,8 @@ const routes: Routes = [
   ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {useHash: false, enableTracing: false })],
+  exports: [RouterModule],
+  providers: [IsAuthenticatedGuard]
 })
 export class AppRoutingModule { }

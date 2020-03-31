@@ -9,16 +9,21 @@ import {P404Component} from '../errors/404.component';
 import {P500Component} from '../errors/500.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {IsAuthenticatedGuard} from '../shared/_guards/is-authenticated.guard';
+import {SharedModule} from "../shared/shared.module";
+import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
+import {NgxLoadingModule} from "ngx-loading";
 
 @NgModule({
   declarations: [FeatureComponent,
     P404Component,
     P500Component,
-    DashboardComponent
   ],
   imports: [
     FeatureRoutingModule,
-    CoreModule
+    CoreModule,
+    SharedModule,
+    PerfectScrollbarModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [
     IsAuthenticatedGuard

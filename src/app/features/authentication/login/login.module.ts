@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {FeatureAuthenticationLoginFormComponent} from './login-form/login-form.component';
-import {FeatureAuthenticationLoginComponent} from './login.component';
+import {AuthenticationLoginComponent} from './login.component';
 import {UserService} from '../../../shared/_services/user.service';
 import {AuthenticationService} from '../authentication.service';
 import {SharedModule} from '../../../shared/shared.module';
@@ -10,7 +10,7 @@ import {StoreService} from '../../../shared/_services/store.service';
 @NgModule({
   declarations: [
     FeatureAuthenticationLoginFormComponent,
-    FeatureAuthenticationLoginComponent
+    AuthenticationLoginComponent
   ],
   imports: [
     SharedModule,
@@ -18,7 +18,7 @@ import {StoreService} from '../../../shared/_services/store.service';
   ],
   exports: [
     FeatureAuthenticationLoginFormComponent,
-    FeatureAuthenticationLoginComponent
+    AuthenticationLoginComponent
   ],
   providers: [
     UserService,

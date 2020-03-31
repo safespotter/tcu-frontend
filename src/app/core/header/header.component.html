@@ -103,16 +103,6 @@
         <i class="fa fa-lock"></i>{{'MENU.ESCI' | translate }} </a>
     </div>
     <div class="collapse navbar-collapse" id="navbarNavDropdown" style="flex-grow: 0">
-      <!--      <div *ngIf="!isUserLoggedIn">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link text-white" [routerLink]="['/authentication/login']">Accedi</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" [routerLink]="['/authentication/register']">Registrati</a>
-                </li>
-              </ul>
-            </div>-->
 
       <!-- MD Avatar -->
       <div *ngIf="isUserLoggedIn" class="ml-lg-auto d-none d-md-block">
@@ -130,13 +120,6 @@
               </div>
             </a>
             <div *ngIf="!drag" class="dropdown-menu dropdown-menu-right">
-              <!--<div class="dropdown-header text-center">
-                <strong>Impostazioni {{username}}</strong>
-              </div>
-              <a class="dropdown-item" href="#">
-                <i class="fa fa-user"></i> Profilo</a>
-              <a class="dropdown-item" href="#">
-                <i class="fa fa-wrench"></i> Impostazioni</a> -->
               <a class="dropdown-item" (click)="logout()">
                 <i class="fa fa-lock"></i>{{'MENU.DISCONNETTI' | translate }}</a>
             </div>
@@ -147,7 +130,19 @@
   </div>
 </nav>
 
-<ng-template #popTemplate>
-  <p style="font-size: 14px; margin: 0;">{{ 'DASHBOARD.NO_FBM' | translate }}</p>
-</ng-template>
 
+
+<!--<mat-menu #appMenu="matMenu" class="top-fix">-->
+<!--  <ng-template matMenuContent let-name="name">-->
+<!--    <button mat-menu-item>Settings</button>-->
+<!--    <button mat-menu-item>Log off {{name}}</button>-->
+<!--  </ng-template>-->
+<!--</mat-menu>-->
+
+<!--<button mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{name: 'Sally'}">-->
+<!--  <mat-icon>more_vert</mat-icon>-->
+<!--</button>-->
+
+<!--<button mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{name: 'Bob'}">-->
+<!--  <mat-icon>more_vert</mat-icon>-->
+<!--</button>-->

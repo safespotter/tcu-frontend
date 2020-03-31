@@ -36,7 +36,8 @@ export class SidebarComponent implements OnInit {
         this.isUserLoggedIn = value;
         this.userType = parseInt(this.storeService.getType());
       });
-
+      this.isUserLoggedIn=false
+      console.log(this.isUserLoggedIn);
       if (! this.isUserLoggedIn) {
         this.translate.setDefaultLang('Italiano');
       }
