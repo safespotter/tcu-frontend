@@ -8,18 +8,20 @@ import {UserService} from '../../shared/_services/user.service';
 import {NgReduxModule} from '@angular-redux/store';
 import {CoreModule} from '../../core/core.module';
 import { CustomComponent } from './custom/custom.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
   declarations: [DashboardComponent, CustomComponent],
-  imports: [
-    NgReduxModule,
-    CommonModule,
-    CoreModule,
-    DashboardRoutingModule,
-    AppFooterModule,
-    PopoverModule.forRoot(),
-  ],
+    imports: [
+        NgReduxModule,
+        CommonModule,
+        CoreModule,
+        DashboardRoutingModule,
+        AppFooterModule,
+        PopoverModule.forRoot(),
+        TranslateModule,
+    ],
   providers: [
     UserService,
   ],

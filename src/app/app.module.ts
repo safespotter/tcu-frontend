@@ -11,7 +11,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-//import {DragulaModule} from 'ng2-dragula';
+import {DragulaModule} from 'ng2-dragula';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import {GlobalEventsManagerService} from './shared/_services/global-event-manage
 import {JwtInterceptor} from './shared/jwt.interceptor';
 import {StoreModule} from './shared/store/store.module';
 import {CoreModule} from './core/core.module';
+import {ChartsModule} from 'ng2-charts';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -37,7 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-//    ChartsModule,
+    ChartsModule,
     HttpClientModule,
     AlertModule.forRoot(),
     ToastrModule.forRoot({
@@ -47,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     ToastContainerModule,
     StoreModule,
-   // DragulaModule.forRoot(),
+    DragulaModule.forRoot(),
     OverlayModule,
     TranslateModule.forRoot({
       loader: {
