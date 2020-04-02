@@ -21,6 +21,12 @@ import {MatSelectModule} from "@angular/material/select";
 import {_MatMenuDirectivesModule, MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {ApiKeysService} from "../shared/_services/apikeys.service";
+import { GeoChartComponent } from './card/geo-chart/geo-chart.component';
+import {ChartsModule} from "ng2-charts";
+import {Ng2GoogleChartsModule} from "ng2-google-charts";
+import { MapComponent } from './card/map/map.component';
+import {GoogleMapsModule} from "@angular/google-maps";
+import { TableChartComponent } from './card/table-chart/table-chart.component';
 
 
 
@@ -31,6 +37,9 @@ import {ApiKeysService} from "../shared/_services/apikeys.service";
     BreadcrumbComponent,
     CardComponent,
     SidebarComponent,
+    GeoChartComponent,
+    MapComponent,
+    TableChartComponent,
   ],
   imports: [
     CommonModule,
@@ -45,20 +54,25 @@ import {ApiKeysService} from "../shared/_services/apikeys.service";
     _MatMenuDirectivesModule,
     MatMenuModule,
     MatIconModule,
+    ChartsModule,
+    Ng2GoogleChartsModule,
+    GoogleMapsModule,
   ],
-  providers:[
+  providers: [
     AuthenticationService,
     LoginActions,
     BsModalService,
     UserService,
     FilterActions,
-    ApiKeysService
+    ApiKeysService,
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
     BreadcrumbComponent,
+    GeoChartComponent,
+    MapComponent,
   ]
 })
 export class CoreModule { }
