@@ -32,15 +32,15 @@ export class RegisterFormComponent implements OnInit {
   value: string;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private userService: UserService,
-    private storeService: StoreService,
-    private router: Router,
-    private ngRedux: NgRedux<IAppState>,
-    private toastr: ToastrService,
-    public translate: TranslateService,
-    private GEService: GlobalEventsManagerService,
-    private http: HttpClient
+     public formBuilder: FormBuilder,
+     public userService: UserService,
+     public storeService: StoreService,
+     public router: Router,
+     public ngRedux: NgRedux<IAppState>,
+     public toastr: ToastrService,
+     public translate: TranslateService,
+     public GEService: GlobalEventsManagerService,
+     public http: HttpClient
   ) {
   }
 

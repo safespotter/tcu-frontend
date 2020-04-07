@@ -27,6 +27,12 @@ import {Ng2GoogleChartsModule} from "ng2-google-charts";
 import { MapComponent } from './card/map/map.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 import { TableChartComponent } from './card/table-chart/table-chart.component';
+import { VideoComponent } from './card/video/video.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatVideoModule } from 'mat-video';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatListModule} from "@angular/material/list";
+import { NavComponent } from './nav/nav.component';
 
 
 
@@ -40,6 +46,8 @@ import { TableChartComponent } from './card/table-chart/table-chart.component';
     GeoChartComponent,
     MapComponent,
     TableChartComponent,
+    VideoComponent,
+    NavComponent,
   ],
   imports: [
     CommonModule,
@@ -57,6 +65,9 @@ import { TableChartComponent } from './card/table-chart/table-chart.component';
     ChartsModule,
     Ng2GoogleChartsModule,
     GoogleMapsModule,
+    MatVideoModule,
+    MatToolbarModule,
+    MatListModule
   ],
   providers: [
     AuthenticationService,
@@ -69,10 +80,13 @@ import { TableChartComponent } from './card/table-chart/table-chart.component';
   exports: [
     HeaderComponent,
     SidebarComponent,
+    NavComponent,
     FooterComponent,
     BreadcrumbComponent,
     GeoChartComponent,
     MapComponent,
+    VideoComponent,
+    TableChartComponent,
   ]
 })
 export class CoreModule { }

@@ -6,6 +6,10 @@ import {AuthenticationService} from '../authentication.service';
 import {SharedModule} from '../../../shared/shared.module';
 import {RouterLinkActive, RouterModule} from '@angular/router';
 import {StoreService} from '../../../shared/_services/store.service';
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -15,6 +19,10 @@ import {StoreService} from '../../../shared/_services/store.service';
   imports: [
     SharedModule,
     RouterModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   exports: [
     FeatureAuthenticationLoginFormComponent,

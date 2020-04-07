@@ -4,32 +4,17 @@
   </alert>-->
 
   <div class="row h-100 align-items-center">
-    <div class="col-lg-10 col-md-8 mx-auto">
-      <div class="card-group">
-        <div class="card p-4">
-          <div class="card-body">
-            <h1>Login</h1>
+    <div class=" mx-auto">
+      <mat-card>
+
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
 
             <app-authentication-login-form></app-authentication-login-form>
-          </div>
-        </div>
 
-        <div class="card p-4 text-white bg-primary d-md-down-none" style="width:44%">
-          <div class="card-body text-center">
-            <div>
-              <h1>Registrati</h1>
-              <p style="font-size: 14px;">La piattaforma è in fase di testing. Non è quindi possibile registrarsi autonomamente.</p>
-              <p>Se sei interessato a diventare un tester, scrivici a
-                <a class="text-white font-weight-bold cursor-pointer" href="mailto:#">safespotter@mail.it</a>.
-              </p>
-              <!--<a [routerLink]="['../register']">-->
-              <!--<button type="button" class="btn btn-primary active mt-3">Registrati ora</button>-->
-              <!--</a>-->
-            </div>
-          </div>
-        </div>
-
-      </div>
+        <a class="font-weight-bold cursor-pointer" href="mailto:#">safespotter@mail.it</a>.
+      </mat-card>
     </div>
   </div>
 </div>

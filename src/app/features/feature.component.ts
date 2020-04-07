@@ -5,7 +5,7 @@ import {GlobalEventsManagerService} from "../shared/_services/global-event-manag
 @Component({
   selector: 'app-feature',
   templateUrl: './feature.component.html',
-  styleUrls: ['./feature.component.scss']
+  //styleUrls: ['./feature.component.scss']
 })
 export class FeatureComponent implements OnInit {
   public config = {

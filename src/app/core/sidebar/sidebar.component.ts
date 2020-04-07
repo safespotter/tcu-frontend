@@ -12,6 +12,7 @@ import {ApiKeysService} from '../../shared/_services/apikeys.service';
  // styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  appName = 'SafeSpotter'
   isUserLoggedIn: boolean;
   userType: number;
   drag: boolean;

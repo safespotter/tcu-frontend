@@ -6,7 +6,6 @@
 @import '../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 // If you want to add something do it here
-@import "custom";
 
 // Font Mr. Robot
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
@@ -17,6 +16,24 @@
 @import "../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import "custom";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body, html {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  //font-size: mat-font-size($alfresco-typography, body-1);
+  //font-family: mat-font-family($alfresco-typography);
+  //line-height: mat-line-height($alfresco-typography, body-1);
+}
+
+/* Make sure scrollbar is available in overflow scenario */
+body {
+  overflow: auto;
+}
+
+/* The side navigation/menu width */
+mat-sidenav {
+  width: 250px;
+}

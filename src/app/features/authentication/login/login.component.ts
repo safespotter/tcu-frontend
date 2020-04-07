@@ -9,7 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-authentication-login',
   templateUrl: './login.component.html',
-  // styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss'],
   providers: [{provide: AlertConfig, useFactory: getAlertConfig}],
   styles: [`
     :host {
