@@ -32,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatVideoModule } from 'mat-video';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from '../features/nav/nav.component';
 
 
 

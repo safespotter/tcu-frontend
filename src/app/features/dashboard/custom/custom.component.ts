@@ -39,10 +39,7 @@ export class CustomComponent implements OnInit {
     public translate: TranslateService,
     private http: HttpClient
   ) {
-    this.dragulaService.createGroup('REVERT', {
-      revertOnSpill: false,
-    });
-
+    //
     this.userService.get().subscribe(value => {
       this.user = value;
 
