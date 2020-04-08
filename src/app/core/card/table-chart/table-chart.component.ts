@@ -13,7 +13,7 @@ export class TableChartComponent implements OnInit {
   public tableChart: GoogleChartInterface = {
     chartType: 'Table',
     dataTable: [
-      ['Department', 'Revenues', 'Another column', 'ColorFormat'],
+      ['Telecamera', 'IP', 'Another column', 'ColorFormat'],
       ['Shoes', 10700, -100, 100],
       ['Sports', -15400, 25, 500],
       ['Toys', 12500, 40, 800],
