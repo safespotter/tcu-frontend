@@ -33,6 +33,9 @@ import { MatVideoModule } from 'mat-video';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 import { NavComponent } from '../features/nav/nav.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -67,7 +70,10 @@ import { NavComponent } from '../features/nav/nav.component';
     GoogleMapsModule,
     MatVideoModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [
     AuthenticationService,

@@ -7,7 +7,6 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import {AlertModule, BsDropdownModule, TabsModule} from 'ngx-bootstrap';
 import {ToastContainerModule, ToastrModule} from 'ngx-toastr';
 import {ReactiveFormsModule} from '@angular/forms';
-//import {ChartsModule} from 'ng2-charts';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';

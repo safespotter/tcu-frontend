@@ -17,7 +17,7 @@ import {User} from "../../../shared/_models/User";
   styleUrls: ['./custom.component.scss']
 })
 export class CustomComponent implements OnInit {
-  title ='DashBoard'
+  title = 'DashBoard';
   user: User;
   dateChoice: String;
   value: String;
