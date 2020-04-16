@@ -36,6 +36,8 @@ import { NavComponent } from '../features/nav/nav.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
+import { DialogComponent } from './card/dialog/dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -51,6 +53,7 @@ import {MatTableModule} from "@angular/material/table";
     TableChartComponent,
     VideoComponent,
     NavComponent,
+    DialogComponent,
   ],
   imports: [
     CommonModule,
@@ -73,7 +76,8 @@ import {MatTableModule} from "@angular/material/table";
     MatListModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [
     AuthenticationService,

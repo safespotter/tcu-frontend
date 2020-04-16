@@ -8,6 +8,11 @@ import {CoreModule} from "../../core/core.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {UserService} from "../../shared/_services/user.service";
 import {BreadcrumbActions} from "../../core/breadcrumb/breadcrumb.actions";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -16,7 +21,12 @@ import {BreadcrumbActions} from "../../core/breadcrumb/breadcrumb.actions";
     SharedModule,
     CoreModule,
     HomeRoutingModule,
-    TranslateModule
+    TranslateModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     UserService,

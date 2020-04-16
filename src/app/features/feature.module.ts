@@ -12,18 +12,32 @@ import {IsAuthenticatedGuard} from '../shared/_guards/is-authenticated.guard';
 import {SharedModule} from "../shared/shared.module";
 import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
 import {NgxLoadingModule} from "ngx-loading";
+import { HomepageComponent } from './homepage/homepage.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [FeatureComponent,
     P404Component,
     P500Component,
+    HomepageComponent,
   ],
   imports: [
     FeatureRoutingModule,
     CoreModule,
     SharedModule,
     PerfectScrollbarModule,
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [
     IsAuthenticatedGuard

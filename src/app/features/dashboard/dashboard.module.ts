@@ -10,6 +10,7 @@ import {CoreModule} from '../../core/core.module';
 import { CustomComponent } from './custom/custom.component';
 import {TranslateModule} from "@ngx-translate/core";
 import {BreadcrumbActions} from "../../core/breadcrumb/breadcrumb.actions";
+import {DialogComponent} from "../../core/card/dialog/dialog.component";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {BreadcrumbActions} from "../../core/breadcrumb/breadcrumb.actions";
   providers: [
     UserService,
     BreadcrumbActions,
-    BsLocaleService
+    BsLocaleService,
+    DialogComponent
   ],
   exports: [DashboardComponent]
 })
