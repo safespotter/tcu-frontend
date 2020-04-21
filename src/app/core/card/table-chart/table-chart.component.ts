@@ -5,6 +5,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from "../dialog/dialog.component";
 import {MatButtonModule} from '@angular/material/button';
 import {CustomComponent} from "../../../features/dashboard/custom/custom.component";
+import {element} from "protractor";
+import {Info} from "./info.model";
 
 @Component({
   selector: 'app-table-chart',
@@ -16,7 +18,7 @@ export class TableChartComponent implements OnInit {
 
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'button'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Info>(INFO_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(
@@ -27,46 +29,37 @@ export class TableChartComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  openDialog() {
-    // this.dialog.open(DialogComponent, {
-    //   data: {
-    //     animal: 'panda'
-    //   }
-    // });
+  openDialog(info:Info) {
+    this.dialog.open(DialogComponent, {
+      data: {
+        ip: info.ip,
+        critical_issues: info.critical_issues,
+        info: info.street
+      }
+    });
   }
 }
 
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: string;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'H'},
-  {position: 2, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'He'},
-  {position: 3, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'Li'},
-  {position: 4, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'Be'},
-  {position: 5, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'B'},
-  {position: 6, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'C'},
-  {position: 7, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'N'},
-  {position: 8, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'O'},
-  {position: 1, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'H'},
-  {position: 2, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'He'},
-  {position: 3, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'Li'},
-  {position: 4, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'Be'},
-  {position: 5, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'B'},
-  {position: 6, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'C'},
-  {position: 7, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'N'},
-  {position: 8, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'O'},
-  {position: 1, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'H'},
-  {position: 2, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'He'},
-  {position: 3, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'Li'},
-  {position: 4, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'Be'},
-  {position: 5, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'B'},
-  {position: 6, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'C'},
-  {position: 7, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'N'},
-  {position: 8, name: 'via. san giorgio', weight: "127.0.0.1", symbol: 'O'},
+const INFO_DATA: Info[] = [
+  {position: 1, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 2, street: 'via. san giorgio', ip: "192.168.0.1", critical_issues: 'A'},
+  {position: 3, street: 'via. san giorgio', ip: "127.0.0.6", critical_issues: 'C'},
+  {position: 4, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 5, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 6, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 7, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 8, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 9, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 10, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 11, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 12, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 13, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 14, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 15, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 16, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 17, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 18, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 19, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
+  {position: 20, street: 'via. san giorgio', ip: "127.0.0.1", critical_issues: 'H'},
 ];

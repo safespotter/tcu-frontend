@@ -20,6 +20,7 @@ import {JwtInterceptor} from './shared/jwt.interceptor';
 import {StoreModule} from './shared/store/store.module';
 import {CoreModule} from './core/core.module';
 import {ChartsModule} from 'ng2-charts';
+import {SocketioService} from "./shared/_services/socketio.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -62,6 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GlobalEventsManagerService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    SocketioService,
   ],
   bootstrap: [AppComponent]
 })

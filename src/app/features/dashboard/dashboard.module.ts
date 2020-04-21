@@ -11,6 +11,7 @@ import { CustomComponent } from './custom/custom.component';
 import {TranslateModule} from "@ngx-translate/core";
 import {BreadcrumbActions} from "../../core/breadcrumb/breadcrumb.actions";
 import {DialogComponent} from "../../core/card/dialog/dialog.component";
+import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -28,7 +29,11 @@ import {DialogComponent} from "../../core/card/dialog/dialog.component";
     UserService,
     BreadcrumbActions,
     BsLocaleService,
-    DialogComponent
+    DialogComponent,
+    MatDialogModule,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
+
   ],
   exports: [DashboardComponent]
 })

@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
+  SOCKET_ENDPOINT: 'http://localhost:3000',
   host: 'localhost',
   port: '8080',
   protocol: 'http://'
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
