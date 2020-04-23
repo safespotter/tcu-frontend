@@ -1,11 +1,20 @@
+<!--<div style="padding-top: 20px; height: 100%">-->
+<!--<google-map id="map"-->
+<!--  height="100%"-->
+<!--  width="100%"-->
+<!--  [zoom]="zoom"-->
+<!--  [center]="center"-->
+<!--  [options]="options"-->
+<!--&gt;</google-map>-->
+
+<!--&lt;!&ndash; Use custom zoom buttons &ndash;&gt;-->
+<!--<button (click)="zoomIn()">Zoom in</button>-->
+<!--<button (click)="zoomOut()">Zoom out</button>-->
+<!--</div>-->
 <div style="padding-top: 20px; height: 100%">
-<google-map
-  height="100%"
-  width="100%"
-  [zoom]="zoom"
-  [center]="center"
-  [options]="options"
-></google-map>
+<agm-map (mapReady)="onMapReady($event)" [zoom]="17" [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
 
 <!-- Use custom zoom buttons -->
 <button (click)="zoomIn()">Zoom in</button>

@@ -21,6 +21,7 @@ import {StoreModule} from './shared/store/store.module';
 import {CoreModule} from './core/core.module';
 import {ChartsModule} from 'ng2-charts';
 import {SocketioService} from "./shared/_services/socketio.service";
+import {AgmCoreModule} from "@agm/core";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,6 +32,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAILTIuozewL1QOfk9Z9V4FkYSWcEQTVFM'
+    }),
     BrowserAnimationsModule,
     CoreModule,
     ReactiveFormsModule,

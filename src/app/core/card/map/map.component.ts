@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AgmCoreModule } from '@agm/core';
 
 @Component({
   selector: 'app-map',
@@ -9,24 +10,39 @@ export class MapComponent implements OnInit {
 
   constructor() { }
 
-  zoom = 12
+  zoom = 17
   center: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
-    mapTypeId: 'hybrid',
+    mapTypeId: 'roadmap',
     zoomControl: false,
     scrollwheel: false,
     disableDoubleClickZoom: true,
-    maxZoom: 15,
+    maxZoom: 30,
     minZoom: 8,
   }
 
+  // ngOnInit() {
+  //
+  //   navigator.geolocation.getCurrentPosition(position => {
+  //     this.center = {
+  //       lat: 39.252341,
+  //       lng: 9.137819
+  //     }
+  //   })
+  //
+  // }
+  lat : number;
+  lng : number;
+
   ngOnInit() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }
-    })
+    this.prepareMap() ;
+  }
+
+  prepareMap() {
+    this.lat = 39.252341;
+    this.lng = 9.137819;
+
+    console.log("prepareDivMap finished");
   }
 
   zoomIn() {
@@ -35,6 +51,11 @@ export class MapComponent implements OnInit {
 
   zoomOut() {
     if (this.zoom > this.options.minZoom) this.zoom--
+  }
+
+  onMapReady($event) {
+    const trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap($event);
   }
 }
 

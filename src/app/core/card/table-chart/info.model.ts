@@ -1,6 +1,6 @@
 export interface Info {
   street: string;
-  position: number;
+  position: string;
   ip: string;
   critical_issues: string;
 }

@@ -38,6 +38,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import { DialogComponent } from './card/dialog/dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {AgmCoreModule} from "@agm/core";
 
 
 
@@ -77,7 +78,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatButtonModule,
     MatPaginatorModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    AgmCoreModule
   ],
   providers: [
     AuthenticationService,
