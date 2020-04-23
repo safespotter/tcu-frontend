@@ -33,14 +33,21 @@ export class MapComponent implements OnInit {
   // }
   lat : number;
   lng : number;
+  labelOptions = {
+    color: 'black',
+    fontFamily: '',
+    fontSize: '14px',
+    fontWeight: 'bold',
+    text: "SMARTLAMP VIA CABRAS"
+  }
 
   ngOnInit() {
     this.prepareMap() ;
   }
 
   prepareMap() {
-    this.lat = 39.252341;
-    this.lng = 9.137819;
+    this.lat = 39.251896;
+    this.lng = 9.138610;
 
     console.log("prepareDivMap finished");
   }
