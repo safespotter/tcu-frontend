@@ -10,6 +10,9 @@ import {DragulaService} from "ng2-dragula";
 import {TranslateService} from "@ngx-translate/core";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../../shared/_models/User";
+import {SocketioService} from "../../../shared/_services/socketio.service";
+import {MatTableDataSource} from "@angular/material/table";
+import {Info} from "../../../core/card/table-chart/info.model";
 
 @Component({
   selector: 'app-custom',
@@ -37,7 +40,8 @@ export class CustomComponent implements OnInit {
     private localeService: BsLocaleService,
     private dragulaService: DragulaService,
     public translate: TranslateService,
-    private http: HttpClient
+    private http: HttpClient,
+    public srv: SocketioService
   ) {
     //
     this.userService.get().subscribe(value => {
@@ -66,12 +70,17 @@ export class CustomComponent implements OnInit {
   modalRef: BsModalRef;
 
   ngOnInit() {
+  this.srv.listen('dataUpdate').subscribe((res: any) => {
+    const tmp = res[0];
+    for(const el of tmp){
+      if( el.critical_issues > 2 && el.critical_issues < 5)  {
+        console.log('miao')
+        this.toastr.warning(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA GIALLA', {timeOut: 0});
+      }
+    }
+  });
   }
 
-
-  optionModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-md modal-dialog-centered'});
-  }
 
 
   conversionSetDefaultLang () {

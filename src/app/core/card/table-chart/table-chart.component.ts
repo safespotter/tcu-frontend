@@ -32,6 +32,7 @@ export class TableChartComponent implements OnInit {
     ngOnInit(){
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       const tmp = res[0];
+      console.log(tmp)
       this.dataSource = new MatTableDataSource<Info>(tmp);
       this.dataSource.paginator = this.paginator;
     });

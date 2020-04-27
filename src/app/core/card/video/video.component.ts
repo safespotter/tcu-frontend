@@ -19,15 +19,15 @@ export class VideoComponent implements OnInit {
 
     this.title = 'video';
     console.log(this.title);
-    try {
-      this.video = this.matVideo.getVideoTag();
-      // Use Angular renderer or addEventListener to listen for standard HTML5 video events
-
-      this.renderer.listen(this.video, 'ended', () => console.log('video ended'));
-      this.video.addEventListener('ended', () => console.log('video ended'));
-    } catch (e) {
-      console.error(e);
-    }
+    // try {
+    //   this.video = this.matVideo.getVideoTag();
+    //   // Use Angular renderer or addEventListener to listen for standard HTML5 video events
+    //
+    //   this.renderer.listen(this.video, 'ended', () => console.log('video ended'));
+    //   this.video.addEventListener('ended', () => console.log('video ended'));
+    // } catch (e) {
+    //   console.error(e);
+    // }
   }
 
 }

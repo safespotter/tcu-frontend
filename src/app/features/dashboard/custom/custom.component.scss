@@ -1,4 +1,15 @@
 .firstPart{
   height: 50%;
+  padding-top: 5px;
   padding-bottom: 30px;
+}
+/* this will set the toastr icon */
+#toast-container > .toast-custom {
+  content: "\f00C";
+}
+
+/* this will set the toastr style */
+.toast-custom {
+  width: 400px;
+  background-color: yellow;
 }
