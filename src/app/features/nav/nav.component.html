@@ -202,16 +202,16 @@
 
         aria-label="Toggle sidenav"
         mat-icon-button
-        type="button">
+        type="button" *ngIf="isUserLoggedIn">
         <mat-icon *ngIf="drawer.opened" aria-label="Side nav toggle icon">chevron_left</mat-icon>
         <mat-icon *ngIf="!drawer.opened" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>{{title}}</span>
-      <button  mat-icon-button class="more-button rightPosition" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+      <button  mat-icon-button class="more-button rightPosition" [matMenuTriggerFor]="menu" aria-label="Toggle menu" *ngIf="isUserLoggedIn">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item (click)="onLogout($event)">Expand</button>
+        <button mat-menu-item (click)="onLogout($event)" >Log Out</button>
 <!--        <button mat-menu-item>about</button>-->
       </mat-menu>
     </mat-toolbar>

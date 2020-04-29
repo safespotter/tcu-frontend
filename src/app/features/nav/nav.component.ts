@@ -73,7 +73,6 @@ export class NavComponent implements OnInit {
       this.isUserLoggedIn = value;
       this.username = this.localStore.getUserNames();
     });
-    console.log('sono qui', this.isUserLoggedIn)
 
     if (this.isUserLoggedIn) {
       //  const pageID = (await this.apiKeyService.getAllKeys().toPromise());
