@@ -1,43 +1,36 @@
-
 <mat-card-content layout="row" layout-align="center center">
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <p class="text-muted">Accedi al tuo account:</p>
-  <div class="input-group mb-3">
-
-    <mat-form-field>
-    <input  matInput placeholder="Username" name='Useraname' formControlName="username"
-           [ngModel]="{ 'is-invalid': submitted && f.username.errors }" required/>
-    </mat-form-field>
-    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-      <div *ngIf="f.username.errors.required">Lo username è obbligatorio</div>
-    </div>
-  </div>
-  <div class="input-group">
-    <mat-form-field>
-    <input  matInput  placeholder="Password" formControlName="password" type="password"
-           [ngModel]="{ 'is-invalid': submitted && f.password.errors }" required/>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <p class="text-muted">Accedi al tuo account:</p>
+    <div class="input-group mb-3">
+      <mat-form-field>
+        <label>
+          <input matInput placeholder="Username" name='Useraname' formControlName="username" required/>
+        </label>
       </mat-form-field>
-    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors.required">La password è obbligatoria</div>
     </div>
-  </div>
-  <!--<button type="button" class="btn btn-link px-0 d-block mb-4">Password dimenticata?</button>-->
-
-  <div *ngIf="failed"><p class="text-danger">Lo username o la password non sono corretti.</p></div>
-
-  <p class="mt-4"></p> <!-- TODO eliminare con abilitazione password dimenticata -->
-
-  <div class="row">
-    <div class="col-6">
-
-      <mat-card-actions>
-        <button mat-raised-button [disabled]="loading" color="primary">Login</button>
-      </mat-card-actions>
+    <div class="input-group">
+      <mat-form-field>
+        <input matInput placeholder="Password" formControlName="password" type="password" required/>
+      </mat-form-field>
 
     </div>
-    <!--<div class="col-6 text-right">-->
+    <!--<button type="button" class="btn btn-link px-0 d-block mb-4">Password dimenticata?</button>-->
 
-    <!--</div>-->
-  </div>
-</form>
+    <div *ngIf="failed"><p class="text-danger">Lo username o la password non sono corretti.</p></div>
+
+    <p class="mt-4"></p> <!-- TODO eliminare con abilitazione password dimenticata -->
+
+    <div class="row">
+      <div class="col-6">
+
+        <mat-card-actions>
+          <button mat-raised-button [disabled]="loading" color="primary">Login</button>
+        </mat-card-actions>
+
+      </div>
+      <!--<div class="col-6 text-right">-->
+
+      <!--</div>-->
+    </div>
+  </form>
 </mat-card-content>

@@ -12,7 +12,6 @@ import {IsAuthenticatedGuard} from '../shared/_guards/is-authenticated.guard';
 import {SharedModule} from "../shared/shared.module";
 import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
 import {NgxLoadingModule} from "ngx-loading";
-import { HomepageComponent } from './homepage/homepage.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -24,7 +23,6 @@ import { LayoutModule } from '@angular/cdk/layout';
   declarations: [FeatureComponent,
     P404Component,
     P500Component,
-    HomepageComponent,
   ],
   imports: [
     FeatureRoutingModule,
