@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Directive, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
@@ -8,6 +8,8 @@ import {CustomComponent} from '../../../features/dashboard/custom/custom.compone
 import {element} from 'protractor';
 import {Info} from './info.model';
 import {SocketioService} from '../../../shared/_services/socketio.service';
+import {timeout} from "rxjs/operators";
+import set = Reflect.set;
 
 @Component({
   selector: 'app-table-chart',
@@ -21,25 +23,38 @@ export class TableChartComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'button'];
   // dataSource = new MatTableDataSource<Info>(INFO_DATA);
   dataSource;
-  prova;
-
+  grey=0;
+  blink=0;
+  tmp_change;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   constructor(
     public dialog: MatDialog,
     public dialogComponent: DialogComponent,
     public srv: SocketioService
   ) {}
-    ngOnInit(){
+
+    ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
+      this.timerChamge();
       const tmp = res[0];
-      console.log(tmp)
       this.dataSource = new MatTableDataSource<Info>(tmp);
+      // if(tmp && this.tmp_change && tmp != this.tmp_change){
+      //   for(const i in tmp){
+      //
+      //     if(tmp[i].id === this.tmp_change[i].id && tmp[i].critical_issues !== this.tmp_change[i].critical_issues){
+      //       console.log('che succede', tmp[i].id, (tmp[i].id === this.tmp_change[i].id && tmp[i].critical_issues !== this.tmp_change[i].critical_issues))
+      //       this.grey = tmp[i].id;
+      //      // console.log('ciao sono qui', this.grey);
+      //     }
+      //   }
+      // }
+
+      this.grey = res[1];
+      this.tmp_change = tmp;
       this.dataSource.paginator = this.paginator;
+
     });
-
-    console.log(this.dataSource);
-
-
   }
 
   openDialog(info: Info) {
@@ -52,7 +67,12 @@ export class TableChartComponent implements OnInit {
     });
   }
 
+  async timerChamge(){
+    setTimeout(()=>{this.grey=0;
+  }, 1000)
 
+    this.grey=1
+  }
 }
 
 

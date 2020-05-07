@@ -73,9 +73,11 @@ export class CustomComponent implements OnInit {
   this.srv.listen('dataUpdate').subscribe((res: any) => {
     const tmp = res[0];
     for(const el of tmp){
-      if( el.critical_issues > 2 && el.critical_issues < 5)  {
-        console.log('miao')
+      if( el.critical_issues == 4)  {
         this.toastr.warning(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA GIALLA', {timeOut: 0});
+      }
+      if( el.critical_issues == 5)  {
+        this.toastr.error(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});
       }
     }
   });

@@ -39,6 +39,9 @@ import {MatTableModule} from "@angular/material/table";
 import { DialogComponent } from './card/dialog/dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {AgmCoreModule} from "@agm/core";
+import {MatCardModule} from "@angular/material/card";
+import { Video2Component } from './card/video2/video2.component';
+import {GaugeModule} from "angular-gauge";
 
 
 
@@ -55,6 +58,7 @@ import {AgmCoreModule} from "@agm/core";
     VideoComponent,
     NavComponent,
     DialogComponent,
+    Video2Component,
   ],
   imports: [
     CommonModule,
@@ -79,7 +83,9 @@ import {AgmCoreModule} from "@agm/core";
     MatPaginatorModule,
     MatTableModule,
     MatDialogModule,
-    AgmCoreModule
+    AgmCoreModule,
+    MatCardModule,
+    GaugeModule,
   ],
   providers: [
     AuthenticationService,
@@ -99,6 +105,8 @@ import {AgmCoreModule} from "@agm/core";
     MapComponent,
     VideoComponent,
     TableChartComponent,
+    Video2Component,
+
   ]
 })
 export class CoreModule { }

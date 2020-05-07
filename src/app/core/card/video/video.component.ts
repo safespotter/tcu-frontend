@@ -1,24 +1,30 @@
-import {Component, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {MatVideoComponent} from 'mat-video/lib/video.component';
+import JSMpeg from 'jsmpeg-player';
+import { ONVIFService } from 'onvif-rx-angular';
 
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.scss']
 })
-export class VideoComponent implements OnInit {
-  @ViewChild('video') matVideo: MatVideoComponent;
-  video: HTMLVideoElement;
+export class VideoComponent implements OnInit, AfterViewInit {
+  // @ViewChild('video') matVideo: MatVideoComponent;
+  @ViewChild('streaming') streamingcanvas: ElementRef;
+
+  // video: HTMLVideoElement;
 
   title: string;
   constructor(
-    private renderer: Renderer2
+    private renderer: Renderer2,
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    console.log('prima');
 
-    this.title = 'video';
-    console.log(this.title);
+
+
+
     // try {
     //   this.video = this.matVideo.getVideoTag();
     //   // Use Angular renderer or addEventListener to listen for standard HTML5 video events
@@ -29,5 +35,11 @@ export class VideoComponent implements OnInit {
     //   console.error(e);
     // }
   }
+
+  ngAfterViewInit() {
+    let player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true})
+    console.log(this.streamingcanvas);
+  }
+
 
 }

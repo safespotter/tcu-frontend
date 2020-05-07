@@ -20,20 +20,34 @@
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Criticità </th>
-      <td mat-cell *matCellDef="let element"> {{element.critical_issues}} </td>
-    </ng-container>
+<!--    <ng-container matColumnDef="symbol">-->
+<!--      <th mat-header-cell *matHeaderCellDef> Criticità </th>-->
+<!--      <td class="gauge-container" mat-cell [appBlink]="element.critical_issues" *matCellDef="let element"> <mwl-gauge-->
+<!--        class="two"-->
+<!--        [max]="5"-->
+<!--        [dialStartAngle]="180"-->
+<!--        [dialEndAngle]="0"-->
+<!--        [value]=" element.critical_issues "-->
+<!--        [animated]="true"-->
+<!--        [animationDuration]="2">-->
+<!--      </mwl-gauge> </td>-->
+<!--    </ng-container>-->
 
+
+        <ng-container  matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Criticità </th>
+          <td class="gauge-container"  mat-cell *matCellDef="let element"><a class="logo{{element.critical_issues}}">{{grey}}</a></td>
+        </ng-container>
+e
     <ng-container matColumnDef="button" >
       <th mat-header-cell *matHeaderCellDef> Info </th>
-      <td mat-cell *matCellDef="let element"> <button mat-raised-button  (click)="openDialog(element)" >Info</button></td>
+      <td mat-cell *matCellDef="let element"> <button mat-raised-button  (click)="openDialog(element)"  >Info</button></td>
     </ng-container>
 
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row [ngClass]="{'make-red': row.critical_issues == '5', 'make-orange': row.critical_issues == '4', 'highlight': (row.id == grey && row.critical_issues != 4 && row.critical_issues != 5)  }" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
