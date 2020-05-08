@@ -8,7 +8,7 @@ import {CustomComponent} from '../../../features/dashboard/custom/custom.compone
 import {element} from 'protractor';
 import {Info} from './info.model';
 import {SocketioService} from '../../../shared/_services/socketio.service';
-import {timeout} from "rxjs/operators";
+import {timeout} from 'rxjs/operators';
 import set = Reflect.set;
 
 @Component({
@@ -20,12 +20,10 @@ import set = Reflect.set;
 export class TableChartComponent implements OnInit {
 
   table = [];
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'button'];
+  displayedColumns: string[];
   // dataSource = new MatTableDataSource<Info>(INFO_DATA);
   dataSource;
-  grey=0;
-  blink=0;
-  tmp_change;
+  grey = 0;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(
@@ -36,8 +34,12 @@ export class TableChartComponent implements OnInit {
 
     ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
+      res[2] && res[2] == 1 ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'allert'] :
+        this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', ];
       this.timerChamge();
       const tmp = res[0];
+      tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
+
       this.dataSource = new MatTableDataSource<Info>(tmp);
       // if(tmp && this.tmp_change && tmp != this.tmp_change){
       //   for(const i in tmp){
@@ -51,7 +53,8 @@ export class TableChartComponent implements OnInit {
       // }
 
       this.grey = res[1];
-      this.tmp_change = tmp;
+
+      console.log(this.grey)
       this.dataSource.paginator = this.paginator;
 
     });
@@ -67,11 +70,11 @@ export class TableChartComponent implements OnInit {
     });
   }
 
-  async timerChamge(){
-    setTimeout(()=>{this.grey=0;
-  }, 1000)
+  async timerChamge() {
+    setTimeout(() => {this.grey = 0;
+  }, 1000);
 
-    this.grey=1
+    this.grey = 1;
   }
 }
 

@@ -2,16 +2,19 @@ table {
   width: 100%;
 }
 
+.icon-button {
+  display: none;
+}
+.icon-button-background{
+  background-color: #b50000;
+}
+
 .make-red {
   background-color: rgba(252, 0, 0, 0.3);
 }
 
 .make-orange {
   background-color: rgba(252, 146, 0, 0.4);
-}
-
-.make-grey {
-  background-color: #720303;
 }
 
 .highlight {

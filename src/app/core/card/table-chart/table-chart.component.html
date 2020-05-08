@@ -38,10 +38,15 @@
           <th mat-header-cell *matHeaderCellDef> Criticità </th>
           <td class="gauge-container"  mat-cell *matCellDef="let element"><a class="logo{{element.critical_issues}}">{{grey}}</a></td>
         </ng-container>
-e
+
     <ng-container matColumnDef="button" >
       <th mat-header-cell *matHeaderCellDef> Info </th>
       <td mat-cell *matCellDef="let element"> <button mat-raised-button  (click)="openDialog(element)"  >Info</button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="allert" >
+      <th mat-header-cell *matHeaderCellDef> Allerta </th>
+      <td mat-cell *matCellDef="let element" > <button class="icon-button-background" [ngClass]="{'icon-button': element.critical_issues != '5'}" mat-raised-button  (click)="openDialog(element)"  >AZIONE RICHIESTA</button></td>
     </ng-container>
 
 
