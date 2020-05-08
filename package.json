@@ -43,7 +43,7 @@
     "flatpickr": "^4.6.3",
     "hammerjs": "^2.0.8",
     "i": "^0.3.6",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsmpeg-player": "^3.0.3",
     "mat-video": "^2.8.0",
     "moment": "latest",
