@@ -11,6 +11,8 @@
 <!--<button (click)="zoomIn()">Zoom in</button>-->
 <!--<button (click)="zoomOut()">Zoom out</button>-->
 <!--</div>-->
+<mat-card class="card">
+
 <div style="padding-top: 20px; height: 100%">
 <agm-map (mapReady)="onMapReady($event)" [zoom]="zoom" [latitude]="lat" [longitude]="lng">
   <agm-marker [latitude]="lat" [longitude]="lng"  [label]="labelOptions"></agm-marker>
@@ -20,3 +22,4 @@
 <button (click)="zoomIn()">Zoom in</button>
 <button (click)="zoomOut()">Zoom out</button>
 </div>
+</mat-card>

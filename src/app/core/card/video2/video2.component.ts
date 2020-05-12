@@ -36,7 +36,7 @@ export class Video2Component implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    let player2 = new JSMpeg.Player ('ws://localhost:9998', {canvas: document.getElementById('canvas2'), autoplay: true, audio: false, loop: true})
+    let player2 = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas2'), autoplay: true, audio: false, loop: true})
     console.log(this.streamingcanvas);
   }
 
