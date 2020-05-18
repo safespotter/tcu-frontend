@@ -23,6 +23,7 @@ import {ChartsModule} from 'ng2-charts';
 import {SocketioService} from "./shared/_services/socketio.service";
 import {AgmCoreModule} from "@agm/core";
 import { GaugeModule } from 'angular-gauge';
+import {DataService} from "./shared/_services/data.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,6 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GaugeModule.forRoot()
   ],
   providers: [
+    DataService,
     StoreService,
     GlobalEventsManagerService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

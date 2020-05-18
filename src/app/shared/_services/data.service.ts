@@ -13,16 +13,24 @@ export  class DataService {
   ) {
   }
 
-  getData(ip: string) {
+  getData() {
     const headers = this.getAuthorization();
-    const params = {
-      ip: ip,
-    };
-
-    return this.http.get(`${this.urlRequest}/data`, {headers, params});
+    const params = {};
+    const list = this.http.get(`${this.urlRequest}/safePath/getData`, {headers, params});
+    return list;
   }
 
 
+  actionRequest(params) {
+    const headers = this.getAuthorization();
+    try {
+      const list = this.http.post(environment.protocol + environment.host + ':3000/SafeSpotter/create', params);
+      list.toPromise();
+
+    } catch (e) {
+      console.log(e);
+    }
+    }
 
   private getAuthorization = () => new HttpHeaders()
   .set('Content-type', 'application/json')

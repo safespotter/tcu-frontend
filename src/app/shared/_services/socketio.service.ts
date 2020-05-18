@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import * as io from 'socket.io-client';
 import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs"; // change in production
+import {Observable} from "rxjs";
+import {HttpHeaders} from "@angular/common/http"; // change in production
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,5 @@ export class SocketioService {
       });
     });
   }
+
 }

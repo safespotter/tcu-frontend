@@ -10,6 +10,7 @@ import {Info} from './info.model';
 import {SocketioService} from '../../../shared/_services/socketio.service';
 import {timeout} from 'rxjs/operators';
 import set = Reflect.set;
+import {DataService} from "../../../shared/_services/data.service";
 
 @Component({
   selector: 'app-table-chart',
@@ -23,39 +24,36 @@ export class TableChartComponent implements OnInit {
   displayedColumns: string[];
   // dataSource = new MatTableDataSource<Info>(INFO_DATA);
   dataSource;
+  tmp;
   grey = 0;
+  flag = false;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(
     public dialog: MatDialog,
     public dialogComponent: DialogComponent,
-    public srv: SocketioService
-  ) {}
+    public srv: SocketioService,
+    private datasev: DataService,
+
+) {}
 
     ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
-      res[2] && res[2] == 1 ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'allert'] :
+       this.tmp = res[0];
+       for (const el of this.tmp) {
+        if (el.critical_issues == 5) { this.flag = true; }
+      }
+       this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'allert'] :
         this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', ];
-      this.timerChamge();
-      const tmp = res[0];
-      tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
+       // this.timerChamge();
 
-      this.dataSource = new MatTableDataSource<Info>(tmp);
-      // if(tmp && this.tmp_change && tmp != this.tmp_change){
-      //   for(const i in tmp){
-      //
-      //     if(tmp[i].id === this.tmp_change[i].id && tmp[i].critical_issues !== this.tmp_change[i].critical_issues){
-      //       console.log('che succede', tmp[i].id, (tmp[i].id === this.tmp_change[i].id && tmp[i].critical_issues !== this.tmp_change[i].critical_issues))
-      //       this.grey = tmp[i].id;
-      //      // console.log('ciao sono qui', this.grey);
-      //     }
-      //   }
-      // }
+       this.tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
 
-      this.grey = res[1];
+       this.dataSource = new MatTableDataSource<Info>(this.tmp);
 
-      console.log(this.grey)
-      this.dataSource.paginator = this.paginator;
+       this.grey = res[1];
+;
+       this.dataSource.paginator = this.paginator;
 
     });
   }
@@ -68,14 +66,26 @@ export class TableChartComponent implements OnInit {
         info: info.street
       }
     });
+
   }
 
-  async timerChamge() {
-    setTimeout(() => {this.grey = 0;
-  }, 1000);
-
-    this.grey = 1;
+  actionRequest(info: Info) {
+    const param= {
+      "id" : info.id,
+      "street" : info.street,
+      "ip" : info.ip,
+      "critical_issues" : 1
+    }
+    this.datasev.actionRequest(param);
   }
+
+  //
+  // async timerChamge() {
+  //   setTimeout(() => {this.grey = 0;
+  // }, 1000);
+  //
+  //   this.grey = 1;
+  // }
 }
 
 

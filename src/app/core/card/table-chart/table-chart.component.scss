@@ -7,23 +7,24 @@ table {
 }
 .icon-button-background{
   background-color: #b50000;
+  color: white;
 }
 
 .make-red {
-  background-color: rgba(252, 0, 0, 0.3);
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 .make-orange {
-  background-color: rgba(252, 146, 0, 0.4);
+  background-color: rgba(252, 146, 0, 0.2);
 }
 
 .highlight {
-  animation: highlight 1.5s;
+  animation: highlight 1.7s;
 }
 
 @keyframes highlight {
   0% {
-    background: lightgrey;
+    background: #818080;
   }
   100% {
     background: none;

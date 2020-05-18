@@ -2,6 +2,8 @@ import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from
 import {MatVideoComponent} from 'mat-video/lib/video.component';
 import JSMpeg from 'jsmpeg-player';
 import { ONVIFService } from 'onvif-rx-angular';
+import {DataService} from '../../../shared/_services/data.service';
+import {MatSelect} from '@angular/material/select';
 
 @Component({
   selector: 'app-video',
@@ -11,34 +13,29 @@ import { ONVIFService } from 'onvif-rx-angular';
 export class VideoComponent implements OnInit, AfterViewInit {
   // @ViewChild('video') matVideo: MatVideoComponent;
   @ViewChild('streaming') streamingcanvas: ElementRef;
+  @ViewChild('matSelect') matSelect: MatSelect;
 
   // video: HTMLVideoElement;
 
   title: string;
+  selected = '';
+  safeList: any;
   constructor(
     private renderer: Renderer2,
-  ) { }
+    private datasev: DataService,
+  ) {
 
-  ngOnInit(){
-    console.log('prima');
+  }
 
-
-
-
-    // try {
-    //   this.video = this.matVideo.getVideoTag();
-    //   // Use Angular renderer or addEventListener to listen for standard HTML5 video events
-    //
-    //   this.renderer.listen(this.video, 'ended', () => console.log('video ended'));
-    //   this.video.addEventListener('ended', () => console.log('video ended'));
-    // } catch (e) {
-    //   console.error(e);
-    // }
+  async ngOnInit() {
+    this.safeList = await this.datasev.getData().toPromise();
   }
 
   ngAfterViewInit() {
-    let player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true})
-    console.log(this.streamingcanvas);
+    const player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true});
+    this.matSelect.valueChange.subscribe(value => {
+      console.log(value);
+    });
   }
 
 
