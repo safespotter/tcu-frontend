@@ -12,7 +12,7 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "../../../shared/_models/User";
 import {SocketioService} from "../../../shared/_services/socketio.service";
 import {MatTableDataSource} from "@angular/material/table";
-import {Info} from "../../../core/card/table-chart/info.model";
+import {Info} from "../../../shared/_models/info.model";
 
 @Component({
   selector: 'app-custom',
@@ -73,8 +73,11 @@ export class CustomComponent implements OnInit {
   this.srv.listen('dataUpdate').subscribe((res: any) => {
     const tmp = res[0];
     for(const el of tmp){
+      if( el.critical_issues == 3)  {
+        this.toastr.success(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA GIALLA', {timeOut: 0});
+      }
       if( el.critical_issues == 4)  {
-        this.toastr.warning(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA GIALLA', {timeOut: 0});
+        this.toastr.warning(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
       }
       if( el.critical_issues == 5)  {
         this.toastr.error(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});

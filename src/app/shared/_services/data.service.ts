@@ -25,8 +25,7 @@ export  class DataService {
     const headers = this.getAuthorization();
     try {
       const list = this.http.post(environment.protocol + environment.host + ':3000/SafeSpotter/create', params);
-      list.toPromise();
-
+      return list;
     } catch (e) {
       console.log(e);
     }

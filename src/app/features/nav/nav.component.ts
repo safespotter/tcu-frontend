@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {User} from '../../shared/_models/User';
 import {LoginActions} from '../authentication/login/login.actions';
 import {StoreService} from '../../shared/_services/store.service';
@@ -7,30 +7,38 @@ import {GlobalEventsManagerService} from '../../shared/_services/global-event-ma
 import {UserService} from '../../shared/_services/user.service';
 import {TranslateService} from '@ngx-translate/core';
 import {ApiKeysService} from '../../shared/_services/apikeys.service';
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {map, shareReplay} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {map, shareReplay} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatTableDataSource} from '@angular/material/table';
+import {Info} from '../../shared/_models/info.model';
+import {SocketioService} from '../../shared/_services/socketio.service';
+
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, AfterViewInit {
   title = 'SafeSpotter';
   isUserLoggedIn = false;
   showSidebar = false;
   username: string;
   today: string;
-  appName = 'SafeSpotter'
+  appName = 'SafeSpotter';
   lang: string;
   value: string;
   tmp: string;
   user: User;
+  listCritical=[];
 
   drag: boolean;
   hide: boolean;
   userType: number;
+  count: number;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -47,8 +55,13 @@ export class NavComponent implements OnInit {
     private globalEventService: GlobalEventsManagerService,
     private userService: UserService,
     private apiKeyService: ApiKeysService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+    public srv: SocketioService,
   ) {
+    iconRegistry.addSvgIcon('bell', sanitizer.bypassSecurityTrustResourceUrl('assets/img/bell.svg'));
+
     this.today = new Date().toLocaleString();
     this.today = this.today.substr(0, this.today.length - 10);
 
@@ -60,13 +73,28 @@ export class NavComponent implements OnInit {
         this.isUserLoggedIn = value;
         this.userType = parseInt(this.storeService.getType(), 10);
       });
-    }catch (e) {
-      console.log(e)
+    } catch (e) {
+      console.log(e);
 
     }
   }
 
   async ngOnInit() {
+    this.srv.listen('dataUpdate').subscribe((res: any) => {
+      this.count = 0;
+      this.tmp = res[0];
+      for (const el of this.tmp) {
+        // @ts-ignore
+        if (el.critical_issues === 4 || el.critical_issues === 5) {
+          this.listCritical.push(el);
+          this.count++;
+        }
+      }
+    });
+    // this.srv.notification('notificationEmit').subscribe((res: any) => {
+    //       console.log(res)
+    // })
+
     this.globalEventService.dragAndDrop.subscribe(value => this.drag = value);
 
     this.globalEventService.isUserLoggedIn.subscribe(value => {
@@ -84,6 +112,10 @@ export class NavComponent implements OnInit {
 
   }
 
+  ngAfterViewInit() {
+
+  }
+
   logout() {
     this.actions.logoutUser();
     this.authService.logout();
@@ -93,8 +125,8 @@ export class NavComponent implements OnInit {
     this.showSidebar = show;
   }
 
-  onLogout(event){
-     this.logout()
+  onLogout(event) {
+    this.logout();
   }
 
   public checkDrag() {

@@ -3,6 +3,11 @@
   right: 0;
   left: auto;
 }
+.rightPositionIcon{
+  position: absolute;
+  right: 55px;
+  left: auto;
+}
 
 .sidenav-container {
   height: 100%;
@@ -21,3 +26,4 @@
   top: 0;
   z-index: 1;
 }
+

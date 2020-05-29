@@ -29,7 +29,7 @@
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
 /**
- * By default, zone.js will patch all possible macroTask and DomEvents
+ * By custom, zone.js will patch all possible macroTask and DomEvents
  * user can disable parts of macroTask/DomEvents patch by setting following flags
  * because those flags need to be set before `zone.js` being loaded, and webpack
  * will put import in the top of bundle, so user need to create a separate file
@@ -57,7 +57,7 @@
 (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
 (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
 /***************************************************************************************************
- * Zone JS is required by default for Angular itself.
+ * Zone JS is required by custom for Angular itself.
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 

@@ -34,9 +34,10 @@ export class Video2Component implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const player2 = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas2'), autoplay: true, audio: false, loop: true});
+
     this.matSelect.valueChange.subscribe(value => {
-      console.log(value);
+      this.selected = value;
+      const player2 = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas2'), autoplay: true, audio: false, loop: true});
     });}
 
 

@@ -1,4 +1,4 @@
-import {Component, Directive, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Directive, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
@@ -6,11 +6,12 @@ import {DialogComponent} from '../dialog/dialog.component';
 import {MatButtonModule} from '@angular/material/button';
 import {CustomComponent} from '../../../features/dashboard/custom/custom.component';
 import {element} from 'protractor';
-import {Info} from './info.model';
+import {Info} from '../../../shared/_models/info.model';
 import {SocketioService} from '../../../shared/_services/socketio.service';
 import {timeout} from 'rxjs/operators';
 import set = Reflect.set;
 import {DataService} from "../../../shared/_services/data.service";
+import {ActionRequestComponent} from "../action-request/action-request.component";
 
 @Component({
   selector: 'app-table-chart',
@@ -34,26 +35,28 @@ export class TableChartComponent implements OnInit {
     public dialogComponent: DialogComponent,
     public srv: SocketioService,
     private datasev: DataService,
+  ) {
+  }
 
-) {}
-
-    ngOnInit() {
+  ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
-       this.tmp = res[0];
-       for (const el of this.tmp) {
-        if (el.critical_issues == 5) { this.flag = true; }
+      this.tmp = res[0];
+      console.log(res)
+      for (const el of this.tmp) {
+        if (el.critical_issues == 5) {
+          this.flag = true;
+        }
       }
-       this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'allert'] :
-        this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', ];
-       // this.timerChamge();
+      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'allert'] :
+        this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button',];
+      // this.timerChamge();
 
-       this.tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
+      this.tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
 
-       this.dataSource = new MatTableDataSource<Info>(this.tmp);
+      this.dataSource = new MatTableDataSource<Info>(this.tmp);
 
-       this.grey = res[1];
-;
-       this.dataSource.paginator = this.paginator;
+      this.grey = res[1];
+      this.dataSource.paginator = this.paginator;
 
     });
   }
@@ -63,21 +66,29 @@ export class TableChartComponent implements OnInit {
       data: {
         ip: info.ip,
         critical_issues: info.critical_issues,
-        info: info.street
+        info: info.street,
+        id: info.id,
+        street: info.street,
+        position: info.position,
       }
     });
 
   }
 
-  actionRequest(info: Info) {
-    const param= {
-      "id" : info.id,
-      "street" : info.street,
-      "ip" : info.ip,
-      "critical_issues" : 1
-    }
-    this.datasev.actionRequest(param);
+  openDialogrequest(info: Info) {
+    this.dialog.open(ActionRequestComponent, {
+      data: {
+        ip: info.ip,
+        critical_issues: info.critical_issues,
+        info: info.street,
+        id: info.id,
+        street: info.street,
+        position: info.position,
+      }
+    });
+
   }
+
 
   //
   // async timerChamge() {

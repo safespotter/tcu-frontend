@@ -46,13 +46,13 @@
 
     <ng-container matColumnDef="allert" >
       <th mat-header-cell *matHeaderCellDef> Allerta </th>
-      <td mat-cell *matCellDef="let element" > <button class="icon-button-background" [ngClass]="{'icon-button': element.critical_issues != '5'}" mat-raised-button  (click)="actionRequest(element)"  >AZIONE RICHIESTA</button></td>
+      <td mat-cell *matCellDef="let element" > <button class="icon-button-background" [ngClass]="{'icon-button': element.critical_issues != '5'}" mat-raised-button  (click)="openDialogrequest(element)"  >AZIONE RICHIESTA</button></td>
     </ng-container>
 
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row [ngClass]="{'make-red': row.critical_issues == '5', 'make-orange': row.critical_issues == '4', 'highlight': (row.id == grey && row.critical_issues != 4 && row.critical_issues != 5)  }" *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row [ngClass]="{'make-red': row.critical_issues == '5', 'make-orange': row.critical_issues == '4', 'make-yellow': row.critical_issues == '3', 'highlight': (row.id == grey && row.critical_issues != 4 && row.critical_issues != 5 && row.critical_issues != 3 )  }" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

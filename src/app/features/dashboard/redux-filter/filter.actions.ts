@@ -197,7 +197,7 @@ export class FilterActions {
   //                   el => (moment(el.end_time).toDate()) >= filterInterval.first && (moment(el.end_time).toDate()) <= filterInterval.last);
   //               }
   //               break;
-  //             default:
+  //             custom:
   //               chart.chartData = chart.chartData.filter(el => (moment(el.end_time).toDate()) >= filterInterval.first && (moment(el.end_time).toDate()) <= filterInterval.last);
   //               break;
   //           }
