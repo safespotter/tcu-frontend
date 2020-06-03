@@ -12,10 +12,11 @@ import {TranslateModule} from "@ngx-translate/core";
 import {BreadcrumbActions} from "../../core/breadcrumb/breadcrumb.actions";
 import {DialogComponent} from "../../core/card/dialog/dialog.component";
 import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { LampComponent } from './lamp/lamp.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, CustomComponent],
+  declarations: [DashboardComponent, CustomComponent, LampComponent],
     imports: [
         NgReduxModule,
         CommonModule,

@@ -81,19 +81,10 @@ export class NavComponent implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
-      this.count = 0;
-      this.tmp = res[0];
-      for (const el of this.tmp) {
-        // @ts-ignore
-        if (el.critical_issues === 4 || el.critical_issues === 5) {
-          this.listCritical.push(el);
-          this.count++;
-        }
-      }
+      this.count = res[4]
+      this.listCritical = res[3];
+
     });
-    // this.srv.notification('notificationEmit').subscribe((res: any) => {
-    //       console.log(res)
-    // })
 
     this.globalEventService.dragAndDrop.subscribe(value => this.drag = value);
 

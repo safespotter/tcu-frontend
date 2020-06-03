@@ -15,26 +15,19 @@ export class SocketioService {
   }
 
   listen(Eventname: string) {
-    console.log('ci sono ed entro qui dentro')
     return new Observable((subscriber) => {
-      console.log('miao');
       this.socket.on(Eventname, (data) => {
         subscriber.next(data);
       });
-      console.log(this.socket.on(Eventname, (data) => {
-        subscriber.next(data);
-      }))
     });
   }
 
   notification(Eventname: string) {
-    console.log('notification', Eventname)
+    console.log('ci sono');
     return new Observable((subscriber) => {
       this.socket.on(Eventname, (data) => {
         subscriber.next(data);
       });
     });
   }
-
-
 }

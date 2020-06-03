@@ -41,7 +41,6 @@ export class TableChartComponent implements OnInit {
   ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.tmp = res[0];
-      console.log(res)
       for (const el of this.tmp) {
         if (el.critical_issues == 5) {
           this.flag = true;
