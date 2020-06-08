@@ -1,12 +1,25 @@
+<!--<mat-card class="card2">-->
+<!--  <mat-card class="card">-->
+
+<!--  <canvas  class="video" id="canvas2"  ></canvas>-->
+<!--</mat-card>-->
+<!--<mat-form-field >-->
+<!--  <mat-select  #matSelect required>-->
+<!--    <mat-option *ngFor="let element of safeList" value="{{element.ip}}">{{element.street}}</mat-option>-->
+<!--  </mat-select>-->
+<!--</mat-form-field>-->
+<!--</mat-card>-->
+
 <mat-card class="card2">
   <mat-card class="card">
 
-  <canvas  class="video" id="canvas2"  ></canvas>
-</mat-card>
-<mat-form-field >
-  <mat-select  #matSelect required>
-    <mat-option *ngFor="let element of safeList" value="{{element.ip}}">{{element.street}}</mat-option>
-  </mat-select>
-</mat-form-field>
-</mat-card>
+    <!--    <canvas  class="video" id="canvas"  ></canvas>-->
+    <img  id="canvas2" style="height: 380px" src="assets/img/IMG_20200607_123223.jpg" >
 
+  </mat-card>
+  <mat-form-field>
+    <mat-select  #matSelect required>
+      <mat-option *ngFor="let element of safeList" value="{{element.ip}}">{{element.street}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>

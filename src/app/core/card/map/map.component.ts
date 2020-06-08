@@ -38,7 +38,7 @@ export class MapComponent implements OnInit {
     fontFamily: '',
     fontSize: '14px',
     fontWeight: 'bold',
-    text: "SMARTLAMP VIA CABRAS"
+    // text: "SMARTLAMP VIA CABRAS"
   }
 
   ngOnInit() {
@@ -46,8 +46,10 @@ export class MapComponent implements OnInit {
   }
 
   prepareMap() {
-    this.lat = 39.251896;
-    this.lng = 9.138610;;
+    // this.lat = 39.251896;
+    // this.lng = 9.138610;
+    this.lat = 39.487516;
+    this.lng = 9.064641;
   }
 
   zoomIn() {

@@ -96,3 +96,34 @@ table {
   background: url(../../../../assets/img/gauge/SVG/gauge5.svg) no-repeat;
 }
 
+.box{
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+
+}
+.item{
+  flex: 0.15 0.5;
+  align-items: baseline;
+  font-size: 35px;
+}
+
+mat-paginator{
+  background-color: #efeeee;
+}
+
+table{
+  background-color: #efeeee;
+}
+
+th{
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+td{
+  font-size: 18px;
+}
+
