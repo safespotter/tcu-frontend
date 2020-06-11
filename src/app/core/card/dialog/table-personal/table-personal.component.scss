@@ -1,0 +1,98 @@
+table {
+  width: 100%;
+}
+
+.icon-button {
+  display: none;
+}
+.icon-button-background{
+  background-color: #b50000;
+  color: white;
+}
+
+.make-red {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.make-orange {
+  background-color: rgba(252, 146, 0, 0.2);
+}
+.make-green {
+  background-color: rgba(0, 128, 0, 0.2);
+}
+
+.make-yellow {
+  background-color: rgba(255, 255, 0, 0.2);
+}
+
+.highlight {
+  animation: highlight 1.7s;
+}
+
+@keyframes highlight {
+  0% {
+    background: #818080;
+  }
+  100% {
+    background: none;
+  }
+}
+
+
+.logo0 {
+  display: block;
+  text-indent: -9999px;
+  width: 50px;
+  height: 32px;
+  background-size: 50px 32px;
+  background: url(../../../../../assets/img/gauge/SVG/gauge0.svg) no-repeat;
+
+}
+
+.logo1 {
+  display: block;
+  text-indent: -9999px;
+  width: 50px;
+  height: 32px;
+  background-size: 50px 32px;
+  background: url(../../../../../assets/img/gauge/SVG/gauge1.svg) no-repeat;
+}
+
+.logo2 {
+  display: block;
+  text-indent: -9999px;
+  width: 50px;
+  height: 32px;
+  background-size: 50px 32px;
+  background: url(../../../../../assets/img/gauge/SVG/gauge2.svg) no-repeat;
+}
+
+.logo3 {
+  display: block;
+  text-indent: -9999px;
+  width: 50px;
+  height: 32px;
+  background-size: 50px 32px;
+  background: url(../../../../../assets/img/gauge/SVG/gauge3.svg) no-repeat;
+}
+
+.logo4 {
+  display: block;
+  text-indent: -9999px;
+  width: 50px;
+  height: 32px;
+  background-size: 50px 32px;
+  background: url(../../../../../assets/img/gauge/SVG/gauge4.svg) no-repeat;
+
+}
+
+
+.logo5 {
+  display: block;
+  text-indent: -9999px;
+  width: 50px;
+  height: 32px;
+  background-size: 50px 32px ;
+  background: url(../../../../../assets/img/gauge/SVG/gauge5.svg) no-repeat;
+}
+
