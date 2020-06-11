@@ -9,7 +9,13 @@ table {
   background-color: #b50000;
   color: white;
 }
+.w-75{
+  width: 5px;
+}
 
+.w-100{
+  width: 100px;
+}
 .make-red {
   background-color: rgba(255, 0, 0, 0.2);
 }
@@ -106,7 +112,7 @@ table {
 .item{
   flex: 0.15 0.5;
   align-items: baseline;
-  font-size: 35px;
+  font-size: 15px;
 }
 
 mat-paginator{
@@ -126,4 +132,3 @@ th{
 td{
   font-size: 18px;
 }
-

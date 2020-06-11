@@ -20,12 +20,13 @@ export class ActionRequestComponent implements OnInit {
 
 
   actionRequest(info: Info) {
-    const param= {
-      "id" : info.id,
-      "street" : info.street,
-      "ip" : info.ip,
-      "critical_issues" : 1
-    }
+    const param = {
+      id : info.id,
+      street : info.street,
+      condition : info.condition,
+      critical_issues : 1
+    };
+
     this.datasev.actionRequest(param).subscribe();
   }
 

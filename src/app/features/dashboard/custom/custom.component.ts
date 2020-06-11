@@ -27,15 +27,15 @@ export class CustomComponent implements OnInit {
 
   constructor(
     private breadcrumbActions: BreadcrumbActions,
-  //  private DService: DashboardService,
- //   private CCService: ChartsCallsService,
+    //  private DService: DashboardService,
+    //   private CCService: ChartsCallsService,
     private GEService: GlobalEventsManagerService,
     private filterActions: FilterActions,
     private userService: UserService,
     private toastr: ToastrService,
     // private ADService: AggregatedDataService,
     private modalService: BsModalService,
- // private apiKeyService: ApiKeysService,
+    // private apiKeyService: ApiKeysService,
     private formBuilder: FormBuilder,
     private localeService: BsLocaleService,
     private dragulaService: DragulaService,
@@ -70,25 +70,24 @@ export class CustomComponent implements OnInit {
   modalRef: BsModalRef;
 
   ngOnInit() {
-  this.srv.listen('dataUpdate').subscribe((res: any) => {
-    const tmp = res[0];
-    for(const el of tmp){
-      if( el.critical_issues == 3)  {
-        this.toastr.success(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA GIALLA', {timeOut: 0});
+    this.srv.listen('dataUpdate').subscribe((res: any) => {
+      const tmp = res[0];
+      for (const el of tmp) {
+        if (el.critical_issues == 3) {
+          this.toastr.success(el.street + ': rilevato traffico anomalo, aumento criticità', 'ALLERTA GIALLA', {timeOut: 1000});
+        }
+        if (el.critical_issues == 4) {
+          this.toastr.warning(el.street + ': rilevato traffico anomalo, aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
+        }
+        if (el.critical_issues == 5) {
+          this.toastr.error(el.street + ': rilevato traffico anomalo, aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});
+        }
       }
-      if( el.critical_issues == 4)  {
-        this.toastr.warning(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
-      }
-      if( el.critical_issues == 5)  {
-        this.toastr.error(el.street+': rilevato traffico anomalo, aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});
-      }
-    }
-  });
+    });
   }
 
 
-
-  conversionSetDefaultLang () {
+  conversionSetDefaultLang() {
 
     switch (this.user.lang) {
       case "it" :

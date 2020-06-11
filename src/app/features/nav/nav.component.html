@@ -207,6 +207,7 @@
         <mat-icon *ngIf="!drawer.opened" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>{{title}}</span>
+      <span style=" position: absolute; left: 50%; transform: translateX(-50%);">Framework for AI-based traffic monitoring and anomaly detection</span>
       <button mat-icon-button class="more-button rightPositionIcon" [matMenuTriggerFor]="listSafe" aria-label="Toggle menu"
               *ngIf="isUserLoggedIn">
         <mat-icon class='mat-icon-custom' svgIcon="bell"  matBadge="{{count}}" matBadgeColor="warn" *ngIf="count>0"></mat-icon>

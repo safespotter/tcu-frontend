@@ -1,7 +1,8 @@
 export interface Info {
-  id:  number;
+  id: number;
   street: string;
   position: string;
-  ip: string;
+  condition: string;
   critical_issues: number;
+  condition_convert: string;
 }

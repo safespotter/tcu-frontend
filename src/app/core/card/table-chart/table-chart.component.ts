@@ -42,12 +42,12 @@ export class TableChartComponent implements OnInit {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.tmp = res[0];
       for (const el of this.tmp) {
-        if (el.critical_issues == 5) {
+        if (el.critical_issues === 5) {
           this.flag = true;
         }
       }
-      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'allert'] :
-        this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button',];
+      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition',  'allert'] :
+        this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition'];
       // this.timerChamge();
 
       this.tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
@@ -63,7 +63,7 @@ export class TableChartComponent implements OnInit {
   openDialog(info: Info) {
     this.dialog.open(DialogComponent, {
       data: {
-        ip: info.ip,
+        ip: info.condition,
         critical_issues: info.critical_issues,
         info: info.street,
         id: info.id,
@@ -74,19 +74,41 @@ export class TableChartComponent implements OnInit {
 
   }
 
-  openDialogrequest(info: Info) {
+  convertCondition(info){
+    // tslint:disable-next-line:radix
+    switch ( parseInt(info.condition)) {
+      case 0:
+        info.condition_convert = 'NESSUNA';
+      case 1:
+        info.condition_convert = 'BASSA';
+      case 2:
+        info.condition_convert = 'DISCRETA';
+      case 3:
+        info.condition_convert = 'MODERATA';
+      case 4:
+        info.condition_convert = 'ALTA';
+      case 5:
+        info.condition_convert = 'MASSIMA';
+    }
+  }
+
+
+    openDialogrequest(info: Info) {
     this.dialog.open(ActionRequestComponent, {
       data: {
-        ip: info.ip,
+        condition: info.condition,
         critical_issues: info.critical_issues,
         info: info.street,
         id: info.id,
         street: info.street,
         position: info.position,
+        condition_convert: info.condition_convert
+
       }
     });
 
   }
+
 
 
   //
