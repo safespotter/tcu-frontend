@@ -46,18 +46,18 @@ export class MapComponent implements OnInit {
   }
 
   prepareMap() {
-    // this.lat = 39.251896;
-    // this.lng = 9.138610;
-    this.lat = 39.487516;
-    this.lng = 9.064641;
+    this.lat = 39.251896;
+    this.lng = 9.138610;
+    // this.lat = 39.487516;
+    // this.lng = 9.064641;
   }
 
   zoomIn() {
-    if (this.zoom < this.options.maxZoom) this.zoom++
+    if (this.zoom < this.options.maxZoom) this.zoom++;
   }
 
   zoomOut() {
-    if (this.zoom > this.options.minZoom) this.zoom--
+    if (this.zoom > this.options.minZoom) this.zoom--;
   }
 
   onMapReady($event) {

@@ -15,6 +15,9 @@ export class SocketioService {
   }
 
   listen(Eventname: string) {
+    console.log(Eventname)
+    console.log('sono nel listen sul service')
+
     return new Observable((subscriber) => {
       this.socket.on(Eventname, (data) => {
         subscriber.next(data);

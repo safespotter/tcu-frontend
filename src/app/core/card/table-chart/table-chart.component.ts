@@ -19,7 +19,7 @@ import {ActionRequestComponent} from "../action-request/action-request.component
   styleUrls: ['./table-chart.component.scss']
 })
 
-export class TableChartComponent implements OnInit {
+export class TableChartComponent implements OnInit, AfterViewInit {
 
   table = [];
   displayedColumns: string[];
@@ -39,7 +39,11 @@ export class TableChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.srv.listen('dataUpdate').subscribe((res: any) => {
+
+  }
+  async ngAfterViewInit() {
+
+    await this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.tmp = res[0];
       for (const el of this.tmp) {
         if (el.critical_issues === 5) {
