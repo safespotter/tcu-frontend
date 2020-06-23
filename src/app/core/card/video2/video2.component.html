@@ -20,7 +20,10 @@
   </mat-card>
   <mat-form-field style="text-align: center">
     <mat-select  #matSelect required>
-      <mat-option *ngFor="let element of safeList" value="{{element.ip}}">{{element.street}}</mat-option>
+      <mat-option *ngFor="let element of safeList" value="{{element.condition}}">
+        {{element.street}}
+        <span class="dot" [ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </mat-card>

@@ -56,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreModule,
     DragulaModule.forRoot(),
     OverlayModule,
+    ToastrModule.forRoot({preventDuplicates: true }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
