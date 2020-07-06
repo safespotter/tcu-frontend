@@ -23,8 +23,8 @@ import {SocketioService} from '../../shared/_services/socketio.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, AfterViewInit {
-  // title = 'SafeSpotter';
-  title = 'Heimdall';
+  title = 'SafeSpotter';
+  //title = 'Heimdall';
   isUserLoggedIn = false;
   showSidebar = false;
   username: string;

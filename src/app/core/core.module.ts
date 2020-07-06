@@ -116,6 +116,8 @@ import {MatInputModule} from "@angular/material/input";
     VideoComponent,
     TableChartComponent,
     Video2Component,
+    VideoPersonalComponent,
+    TablePersonalComponent,
 
   ]
 })

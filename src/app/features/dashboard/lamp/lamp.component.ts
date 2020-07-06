@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lamp.component.scss']
 })
 export class LampComponent implements OnInit {
+  lamp:any;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  init(){
+
   }
 
 }

@@ -13,19 +13,24 @@ import {BreadcrumbActions} from "../../core/breadcrumb/breadcrumb.actions";
 import {DialogComponent} from "../../core/card/dialog/dialog.component";
 import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import { LampComponent } from './lamp/lamp.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
   declarations: [DashboardComponent, CustomComponent, LampComponent],
-    imports: [
-        NgReduxModule,
-        CommonModule,
-        CoreModule,
-        DashboardRoutingModule,
-        AppFooterModule,
-        PopoverModule.forRoot(),
-        TranslateModule,
-    ],
+  imports: [
+    NgReduxModule,
+    CommonModule,
+    CoreModule,
+    DashboardRoutingModule,
+    AppFooterModule,
+    PopoverModule.forRoot(),
+    TranslateModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   providers: [
     UserService,
     BreadcrumbActions,

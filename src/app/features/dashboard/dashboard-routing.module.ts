@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import {CustomComponent} from './custom/custom.component';
+import {LampComponent} from './lamp/lamp.component';
 
 const routes: Routes = [{ path: '', redirectTo: 'custom', pathMatch: 'full'},
-  {path: 'custom', component: CustomComponent}];
+  {path: 'custom', component: CustomComponent}, {path: 'lamp', component: LampComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
