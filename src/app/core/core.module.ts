@@ -44,8 +44,8 @@ import { Video2Component } from './card/video2/video2.component';
 import {GaugeModule} from "angular-gauge";
 import {MatBadgeModule} from "@angular/material/badge";
 import { ActionRequestComponent } from './card/action-request/action-request.component';
-import { VideoPersonalComponent } from './card/dialog/video-personal/video-personal.component';
-import { TablePersonalComponent } from './card/dialog/table-personal/table-personal.component';
+import { VideoPersonalComponent } from './card/video-personal/video-personal.component';
+import { TablePersonalComponent } from './card/table-personal/table-personal.component';
 import {MatInputModule} from "@angular/material/input";
 
 

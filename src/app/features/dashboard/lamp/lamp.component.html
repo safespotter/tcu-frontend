@@ -1,7 +1,6 @@
 <!--<h2 mat-dialog-title>{{data.info}}</h2>-->
-<h2 mat-dialog-title>miao</h2>
-<mat-dialog-content class="mat-typography" style="padding: 10px 10px 10px 10px">
-  <div class="row">
+<div class="container">
+<div class="row">
 
     <div class="col-sm" style="width: 400px; ">
       <app-map></app-map>
@@ -13,7 +12,6 @@
   <!--  <h3>{{data.ip}}</h3>-->
   <!--  <p>{{data.critical_issues}}</p>-->
   <mat-form-field>
-
     <label>
       <select matNativeControl required>
         <option value="table">Elenco delle criticità recenti</option>
@@ -21,6 +19,4 @@
     </label>
   </mat-form-field>
   <app-table-personal></app-table-personal>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-</mat-dialog-actions>
+</div>

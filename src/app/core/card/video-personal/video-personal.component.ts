@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import JSMpeg from 'jsmpeg-player';
-import {DataService} from '../../../../shared/_services/data.service';
+import {DataService} from '../../../shared/_services/data.service';
 import {forkJoin} from "rxjs";
 import {MatSelect} from "@angular/material/select";
 
