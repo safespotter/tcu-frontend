@@ -24,6 +24,9 @@ import {SocketioService} from "./shared/_services/socketio.service";
 import {AgmCoreModule} from "@agm/core";
 import { GaugeModule } from 'angular-gauge';
 import {DataService} from "./shared/_services/data.service";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import {PushNotificationService} from "./shared/_services/push-notification.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,7 +67,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    GaugeModule.forRoot()
+    GaugeModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     DataService,
@@ -73,6 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     SocketioService,
+    PushNotificationService
   ],
   bootstrap: [AppComponent]
 })
