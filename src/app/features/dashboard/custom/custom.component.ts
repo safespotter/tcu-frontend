@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {BsLocaleService, BsModalRef, BsModalService} from 'ngx-bootstrap';
+//import {BsLocaleService, BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {BreadcrumbActions} from "../../../core/breadcrumb/breadcrumb.actions";
 import {GlobalEventsManagerService} from "../../../shared/_services/global-event-manager.service";
 import {FilterActions} from "../redux-filter/filter.actions";
@@ -13,6 +13,8 @@ import {User} from "../../../shared/_models/User";
 import {SocketioService} from "../../../shared/_services/socketio.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {Info} from "../../../shared/_models/info.model";
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {BsLocaleService} from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-custom',

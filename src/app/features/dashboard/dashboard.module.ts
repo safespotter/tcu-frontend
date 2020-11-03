@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {AppFooterModule} from '@coreui/angular';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import {BsLocaleService, PopoverModule} from 'ngx-bootstrap';
+//import {BsLocaleService, PopoverModule} from 'ngx-bootstrap';
 import {UserService} from '../../shared/_services/user.service';
 import {NgReduxModule} from '@angular-redux/store';
 import {CoreModule} from '../../core/core.module';
@@ -15,6 +15,8 @@ import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/
 import { LampComponent } from './lamp/lamp.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {PopoverModule} from 'ngx-bootstrap/popover';
+import {BsLocaleService} from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({

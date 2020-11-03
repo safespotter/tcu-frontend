@@ -3,7 +3,7 @@ import {NgRedux, select} from '@angular-redux/store';
 import {IAppState} from '../../../shared/store/model';
 import {DashboardData, IntervalDate} from './filter.model';
 import {Observable} from 'rxjs';
-import {parseDate} from 'ngx-bootstrap';
+//import {parseDate} from 'ngx-bootstrap';
 import {until} from 'selenium-webdriver';
 import * as moment from 'moment';
 

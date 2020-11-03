@@ -9,7 +9,8 @@ import {UserService} from '../../shared/_services/user.service';
 import {LoginModule} from './login/login.module';
 import {RegisterModule} from './register/register.module';
 import {SharedModule} from '../../shared/shared.module';
-import {BsDropdownModule} from 'ngx-bootstrap';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+//import {BsDropdownModule} from 'ngx-bootstrap';
 
 
 @NgModule({

@@ -4,7 +4,7 @@ import {CommonModule, HashLocationStrategy, LocationStrategy} from '@angular/com
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {AlertModule, BsDropdownModule, TabsModule} from 'ngx-bootstrap';
+// import {AlertModule, BsDropdownModule, TabsModule} from 'ngx-bootstrap';
 import {ToastContainerModule, ToastrModule} from 'ngx-toastr';
 import {ReactiveFormsModule} from '@angular/forms';
 import {OverlayModule} from '@angular/cdk/overlay';
@@ -27,6 +27,9 @@ import {DataService} from "./shared/_services/data.service";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {PushNotificationService} from "./shared/_services/push-notification.service";
+import {AlertModule} from 'ngx-bootstrap/alert';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {TabsModule} from 'ngx-bootstrap/tabs';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

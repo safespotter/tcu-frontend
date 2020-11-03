@@ -7,7 +7,7 @@ import { CardComponent } from './card/card.component';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {LoginActions} from '../features/authentication/login/login.actions';
-import {BsModalService} from 'ngx-bootstrap';
+//import {BsModalService} from 'ngx-bootstrap';
 import {UserService} from '../shared/_services/user.service';
 import {FilterActions} from '../features/dashboard/redux-filter/filter.actions';
 import {AuthenticationService} from "../features/authentication/authentication.service";
@@ -47,6 +47,7 @@ import { ActionRequestComponent } from './card/action-request/action-request.com
 import { VideoPersonalComponent } from './card/video-personal/video-personal.component';
 import { TablePersonalComponent } from './card/table-personal/table-personal.component';
 import {MatInputModule} from "@angular/material/input";
+import {BsModalService} from 'ngx-bootstrap/modal';
 
 
 
