@@ -30,6 +30,7 @@ import {PushNotificationService} from "./shared/_services/push-notification.serv
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TabsModule} from 'ngx-bootstrap/tabs';
+import {SafespotterService} from './shared/_services/safespotter.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -80,7 +81,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     SocketioService,
-    PushNotificationService
+    PushNotificationService,
+    SafespotterService
   ],
   bootstrap: [AppComponent]
 })

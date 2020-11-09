@@ -33,10 +33,10 @@ export class VideoPersonalComponent implements  OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.matSelect.valueChange.subscribe(value => {
-      this.selected = value;
-      const player2 = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas3'), autoplay: true, audio: false, loop: true});
-    });
+    // this.matSelect.valueChange.subscribe(value => {
+    //   this.selected = value;
+    //   const player2 = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas3'), autoplay: true, audio: false, loop: true});
+    // });
   }
 
 

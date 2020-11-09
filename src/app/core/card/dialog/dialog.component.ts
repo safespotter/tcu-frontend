@@ -11,5 +11,4 @@ import {DialogModel} from '../../../shared/_models/dialog.model';
 export class DialogComponent {
   title: string;
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel) {}
-
 }
