@@ -6,6 +6,7 @@ import {LampStatus} from '../../../shared/_models/LampStatus';
 import {environment} from '../../../../environments/environment';
 import {DialogModel} from '../../../shared/_models/dialog.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-table-personal',
@@ -29,6 +30,13 @@ export class TablePersonalComponent implements OnInit {
     this.dataSource = new MatTableDataSource<LampStatus>([]);
   }
 
+  formatDate(date): string {
+    date = moment(date, null, 'it', true);
+    date = date.local().format('DD MMMM YYYY, H:mm');
+    return date.toString();
+  }
+
+  /*metodo che inizializza la tabella nella dialog*/
   getStatus(): void {
 
     this.safespotter.getLampStatus(this.data.id).subscribe(

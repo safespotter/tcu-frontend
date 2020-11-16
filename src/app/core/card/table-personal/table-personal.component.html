@@ -4,7 +4,7 @@
     <!-- Position Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef> Data</th>
-      <td mat-cell *matCellDef="let element"> {{element.date}}</td>
+      <td mat-cell *matCellDef="let element"> {{this.formatDate(element.date)}}</td>
     </ng-container>
 
     <!-- Name Column -->
@@ -16,7 +16,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="videoURL">
       <th mat-header-cell *matHeaderCellDef> Link al video</th>
-      <td mat-cell *matCellDef="let element"><a *ngIf="element.videoURL.length > 0" href="{{formatUrl + element.videoURL}}">Link</a></td>
+      <td mat-cell *matCellDef="let element"><a *ngIf="element.videoURL.length > 0" href="{{formatUrl + element.videoURL}}" target="_blank">Link</a></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
