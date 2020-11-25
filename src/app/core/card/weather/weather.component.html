@@ -1,0 +1,66 @@
+<mat-card class="weather-card">
+
+  <mat-card-header>
+    <mat-card-title>
+      {{currentWeather.time.toDateString()}}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="weather-content">
+      <div class="weather-main">
+
+        <div class="weather-conditions" tooltip="{{currentWeather.conditions}}">
+          <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="{{currentWeather.conditions}}"/>
+
+        </div>
+
+        <div class="weather-temp" tooltip="Temperatura">
+          {{currentWeather.temp.toFixed(0)}}<span>°C</span>
+        </div>
+
+      </div>
+
+      <div class="weather-details">
+
+        <div class="weather-detail" tooltip="Umidità dell'aria">
+          <span class="weather-label">
+            Umidità:
+          </span>
+          <span class="weather-value">
+            {{currentWeather.humidity}}%
+          </span>
+        </div>
+
+        <div class="weather-detail" tooltip="Precipitazione in un ora">
+          <span class="weather-label">
+            Precipitazione:
+          </span>
+          <span class="weather-value">
+            {{currentWeather.precipitation.value}} mm
+          </span>
+        </div>
+
+        <div class="weather-detail" tooltip="Velocità del vento">
+          <span class="weather-label">
+            Vento:
+          </span>
+          <span class="weather-value">
+            {{currentWeather.wind.speed}} m/s
+          </span>
+        </div>
+
+        <div class="weather-detail" tooltip="Pressione atmosferica">
+          <span class="weather-label">
+            Pressione:
+          </span>
+          <span class="weather-value">
+            {{currentWeather.pressure.toFixed(0)}} mb
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </mat-card-content>
+
+</mat-card>
