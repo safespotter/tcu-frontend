@@ -17,7 +17,6 @@ export class WeatherService {
   private static formatUrl = call => `${environment.protocol}${environment.host}:${environment.port}/weather/${call}`;
 
   private static parseData(res: any) {
-    res = res.data;
     // console.log('weather.service - parse');
     const imgCode = (str => {
       switch (str) {
@@ -56,20 +55,20 @@ export class WeatherService {
     const headers = this.getAuthorization();
     // console.log('weather.service - getLive');
     return this.http.get( WeatherService.formatUrl('getLive/'), {headers})
-      .pipe(map(WeatherService.parseData));
+      .pipe(map((res: any) => WeatherService.parseData(res)));
   }
 
   getForecast() {
     // console.log('weather.service - getForecast');
     const headers = this.getAuthorization();
-    return this.http.get( WeatherService.formatUrl('getForecast/'), {headers}).toPromise()
-      .then( (res: any) => {
+    return this.http.get( WeatherService.formatUrl('getForecast/'), {headers})
+      .pipe( map((res: any) => {
         const data: {time: Date, data: WeatherModel[]} = {time: res.time, data: []};
         for (const item of res.data) {
           data.data.push(WeatherService.parseData(item));
         }
         return data;
-      });
+      }));
   }
 
   private getAuthorization() {
