@@ -50,6 +50,7 @@ import {MatInputModule} from '@angular/material/input';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {WeatherComponent} from './card/weather/weather.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import {WeatherService} from '../shared/_services/weather.service';
 
 
 
@@ -109,6 +110,7 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
     UserService,
     FilterActions,
     ApiKeysService,
+    WeatherService,
   ],
   exports: [
     HeaderComponent,

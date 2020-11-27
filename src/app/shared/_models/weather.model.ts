@@ -1,4 +1,4 @@
-export class WeatherSnapshot {
+export interface WeatherModel {
   time: Date;
   coordinates: {
     lat: number;
@@ -16,6 +16,6 @@ export class WeatherSnapshot {
     direction: number;
     speed: number;
   };
-
-  constructor() {}
+  precipProbability?: number;
+  imgUrl?: string;
 }
