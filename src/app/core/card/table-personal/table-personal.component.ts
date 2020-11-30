@@ -36,6 +36,23 @@ export class TablePersonalComponent implements OnInit {
     return date.toString();
   }
 
+  convertStatus(status){
+    switch ( parseInt(status)) {
+      case 0:
+        return 'NESSUNA';
+      case 1:
+        return 'BASSA';
+      case 2:
+        return 'DISCRETA';
+      case 3:
+        return 'MODERATA';
+      case 4:
+        return 'ALTA';
+      case 5:
+        return 'MASSIMA';
+    }
+  }
+
   /*metodo che inizializza la tabella nella dialog*/
   getStatus(): void {
 
