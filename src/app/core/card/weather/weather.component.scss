@@ -1,0 +1,69 @@
+div {
+  //border: 1pt #6600cc55 solid;
+}
+
+$accent: #20a8da66;
+
+mat-card-header {
+  justify-content: center;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.weather-card {
+  margin: auto;
+}
+
+.weather-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-main, .weather-details {
+  display: flex;
+  //border: 2pt #cc000055 solid;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  padding: 2pt;
+}
+
+.weather-main {
+  background: $accent;
+  border-radius: 5pt;
+  width: 100%;
+}
+
+.weather-details {
+  flex-direction: column;
+  width: 100%;
+  padding-left: .5em;
+}
+
+.weather-conditions{
+  display: flex;
+  justify-content: center;
+}
+
+.weather-temp {
+  font-size: 32pt;
+  font-weight: bold;
+  margin: auto 6pt auto 0;
+
+  span {
+    font-size: 18pt;
+    vertical-align: text-top;
+  }
+}
+
+.weather-detail {
+  border-bottom: 1pt #00000033 solid;
+  line-height: 2em;
+}
+
+.weather-label {}
+
+.weather-value {
+  float: right;
+}
+
+
