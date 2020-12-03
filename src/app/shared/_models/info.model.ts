@@ -5,4 +5,5 @@ export interface Info {
   condition: string;
   critical_issues: number;
   condition_convert: string;
+  alert_type: string;
 }

@@ -6,4 +6,5 @@ export interface DialogModel {
   critical_issues: number;
   info: string;
   condition_convert: string;
+  alert_type: string;
 }
