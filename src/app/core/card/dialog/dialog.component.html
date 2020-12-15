@@ -1,9 +1,9 @@
-<h2 mat-dialog-title>{{data.info}}</h2>
+<h2 mat-dialog-title>{{"Lampione di " + data.info}}</h2>
 <mat-dialog-content class="mat-typography" style="padding: 10px 10px 10px 10px">
   <div class="row">
 
     <!--<div class="col-sm" style="width: 400px; ">-->
-      <!--<app-map></app-map>-->
+    <!--<app-map></app-map>-->
     <!--</div>-->
     <div class="col-sm">
       <app-video-personal></app-video-personal>
@@ -12,15 +12,19 @@
   <!--<h3>{{data.ip}}</h3>-->
   <!--<p>{{data.critical_issues}}</p>-->
   <!--<mat-form-field>-->
-
-    <!--<label>-->
-      <!--<select matNativeControl required>-->
-        <!--<option value="table">Status del lampione</option>-->
-      <!--</select>-->
-    <!--</label>-->
+  <!--<label>-->
+  <!--<select matNativeControl required>-->
+  <!--<option value="table">Status del lampione</option>-->
+  <!--</select>-->
+  <!--</label>-->
   <!--</mat-form-field>-->
-  <app-table-personal></app-table-personal>
+  <div class="col-sm">
+    <mat-card class="card" style="  height:200px; background: url(../../../../assets/img/im1.jpg);
+  background-repeat: no-repeat; background-size: cover;"></mat-card>
+  </div>
 </mat-dialog-content>
+<h2 mat-dialog-title>Storico </h2>
+<app-table-personal></app-table-personal>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close cdkFocusInitial>Chiudi</button>
 </mat-dialog-actions>

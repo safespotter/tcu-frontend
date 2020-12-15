@@ -24,7 +24,7 @@ export class ActionRequestComponent implements OnInit {
       id : info.id,
       street : info.street,
       condition : info.condition,
-      critical_issues : 1
+      critical_issues : 0
     };
 
     this.datasev.actionRequest(param).subscribe();

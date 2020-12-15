@@ -59,7 +59,7 @@ export class TablePersonalComponent implements OnInit {
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         for (const el of Object.entries(data['data'])) {
-          this.statusList.push({'date': el[1]['date'], 'status': el[1]['status'], 'videoURL': el[1]['videoURL'] || ''});
+          this.statusList.push({'date': el[1]['date'], 'status': el[1]['status'], 'videoURL': el[1]['videoURL'] || '', 'alert_type': el[1]['alert_type'] || ''});
         }
         this.dataSource = new MatTableDataSource<LampStatus>(this.statusList);
         this.dataSource.paginator = this.paginator;
