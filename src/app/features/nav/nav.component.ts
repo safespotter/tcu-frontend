@@ -15,6 +15,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {MatTableDataSource} from '@angular/material/table';
 import {Info} from '../../shared/_models/info.model';
 import {SocketioService} from '../../shared/_services/socketio.service';
+import {DataService} from '../../shared/_services/data.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ import {SocketioService} from '../../shared/_services/socketio.service';
 })
 export class NavComponent implements OnInit, AfterViewInit {
   title = 'SafeSpotter';
-  //title = 'Heimdall';
+  // title = 'Heimdall';
   isUserLoggedIn = false;
   showSidebar = false;
   username: string;
@@ -34,7 +35,7 @@ export class NavComponent implements OnInit, AfterViewInit {
   value: string;
   tmp: string;
   user: User;
-  listCritical=[];
+  listCritical = [];
 
   drag: boolean;
   hide: boolean;
@@ -60,6 +61,7 @@ export class NavComponent implements OnInit, AfterViewInit {
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     public srv: SocketioService,
+    public dataService: DataService,
   ) {
     iconRegistry.addSvgIcon('bell', sanitizer.bypassSecurityTrustResourceUrl('assets/img/bell.svg'));
 
@@ -82,7 +84,7 @@ export class NavComponent implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
-      this.count = res[4]
+      this.count = res[4];
       this.listCritical = res[3];
 
     });
@@ -127,5 +129,16 @@ export class NavComponent implements OnInit, AfterViewInit {
     } else {
       return false;
     }
+  }
+
+  checkNotification(event, element) {
+    // the dialog shouldn't close when clicking on a notification
+    event.stopPropagation();
+
+    this.dataService.checkNotification(element);
+
+    // clear the notification from the UI without waiting for the backend to provide a smoother UX
+    this.count--;
+    this.listCritical = this.listCritical.filter( e => e !== element );
   }
 }

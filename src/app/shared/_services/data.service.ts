@@ -35,4 +35,11 @@ export  class DataService {
   .set('Content-type', 'application/json')
   .set('Authorization', `Bearer ${this.storeService.getToken()}`)
 
+  checkNotification(notification) {
+    const headers = this.getAuthorization();
+    const params = {};
+    const res = this.http.post(`${this.urlRequest}/safePath/checkNotification`, notification, {headers, params});
+    res.subscribe(o => console.log(o)); // if nothing is subscribed the request is ignored, so might as well log it
+  }
+
 }
