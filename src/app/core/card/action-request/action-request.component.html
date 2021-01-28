@@ -2,6 +2,11 @@
 <mat-dialog-content class="mat-typography">
   <h3>{{data.condition}}</h3>
   <p>{{data.critical_issues}}</p>
+  <mat-card style="width: 500px; height: 500px">
+  <mat-video *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" ></mat-video>
+  </mat-card>
+
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close cdkFocusInitial (click)="actionRequest(data)" >Chiudi</button>
