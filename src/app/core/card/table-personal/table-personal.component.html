@@ -3,13 +3,13 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef > Data</th>
+      <th mat-header-cell *matHeaderCellDef style="width: 185px"> Data</th>
       <td mat-cell *matCellDef="let element"> <p>{{this.formatDate(element.date)}} </p></td>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="status" style="margin: 0px 0px 0px 15px;">
-      <th mat-header-cell *matHeaderCellDef> Tipo di allerta</th>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef style="margin: 0px 0px 10px 10px;"> Tipo di allerta</th>
       <td mat-cell *matCellDef="let element" style="text-transform:uppercase;">
         <!--{{element.alert_type}}-->
         <p *ngIf="element.status === 0">NESSUNA</p>
@@ -20,12 +20,12 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="videoURL">
-      <th mat-header-cell *matHeaderCellDef> Link al video</th>
+      <th mat-header-cell *matHeaderCellDef style="width: 40px"> Video</th>
       <td mat-cell *matCellDef="let element"><a *ngIf="element.videoURL.length > 0" href="{{formatUrl + element.videoURL}}" target="_blank"><p>Link</p></a></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row [ngClass]="{ }" *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
 </div>
