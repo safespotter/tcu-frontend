@@ -5,3 +5,11 @@
 :host::ng-deep mat-seek-progress-control{
   width: 100%;
 }
+
+.close-button{
+  float: right;
+  top:-24px;
+  right:-24px;
+  font-size:48px !important;
+}
+
