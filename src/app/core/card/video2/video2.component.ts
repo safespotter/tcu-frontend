@@ -20,7 +20,7 @@ export class Video2Component implements OnInit, AfterViewInit {
 
   title: string;
   selected = '';
-  selected2: string;
+  defaultSelected: string;
   safeList: any;
 
   constructor(
@@ -32,7 +32,7 @@ export class Video2Component implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     this.safeList = await this.datasev.getData().toPromise();
-    this.selected2 = this.safeList[1].id.toString();
+    this.defaultSelected = this.safeList[1].id.toString();
   }
 
   ngAfterViewInit() {

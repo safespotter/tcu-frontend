@@ -21,7 +21,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
   modalRef: BsModalRef;
   title: string;
   selected = '';
-  selected2: string;
+  defaultSelected: string;
   safeList: any;
   constructor(
     private renderer: Renderer2,
@@ -33,7 +33,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     this.safeList = await this.datasev.getData().toPromise();
-    this.selected2 = this.safeList[0].id.toString();
+    this.defaultSelected = this.safeList[0].id.toString();
   }
 
   ngAfterViewInit() {
@@ -52,6 +52,8 @@ export class VideoComponent implements OnInit, AfterViewInit {
       });
   }
 
-
+  decline = (): void => {
+    this.modalRef.hide();
+  };
 
 }

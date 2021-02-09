@@ -19,7 +19,7 @@
 
   </mat-card>
   <mat-form-field style="text-align: center">
-    <mat-select  #matSelect required [(value)] = selected2>
+    <mat-select  #matSelect required [(value)] = "defaultSelected">
       <mat-option *ngFor="let element of safeList" value="{{element.id}}">
         {{element.street}}
         <span class="dot" [ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>
