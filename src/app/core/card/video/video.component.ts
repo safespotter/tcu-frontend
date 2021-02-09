@@ -4,6 +4,7 @@ import JSMpeg from 'jsmpeg-player';
 import { ONVIFService } from 'onvif-rx-angular';
 import {DataService} from '../../../shared/_services/data.service';
 import {MatSelect} from '@angular/material/select';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-video',
@@ -14,15 +15,17 @@ export class VideoComponent implements OnInit, AfterViewInit {
   // @ViewChild('video') matVideo: MatVideoComponent;
   @ViewChild('streaming') streamingcanvas: ElementRef;
   @ViewChild('matSelect') matSelect: MatSelect;
+  @ViewChild('mymodal') mymodal: string;
 
   // video: HTMLVideoElement;
-
+  modalRef: BsModalRef;
   title: string;
   selected = '';
   safeList: any;
   constructor(
     private renderer: Renderer2,
     private datasev: DataService,
+    private modalService: BsModalService,
   ) {
 
   }
@@ -36,9 +39,14 @@ export class VideoComponent implements OnInit, AfterViewInit {
       this.selected = value;
       const player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true});
     });
-
-
   }
 
+  openModal(modal) {
+    this.modalRef = this.modalService.show(modal,
+      {
+        class: 'modal-md modal-dialog-centered',
+        keyboard: false
+      });
+  }
 
 }
