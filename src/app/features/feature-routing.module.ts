@@ -6,9 +6,9 @@ import {IsAuthenticatedGuard} from '../shared/_guards/is-authenticated.guard';
 import {AuthenticationService} from './authentication/authentication.service';
 
 const routes: Routes = [{ path: '', component: FeatureComponent, children:[
-  { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [IsAuthenticatedGuard] },
+  { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [IsAuthenticatedGuard] },
   { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
-  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [IsAuthenticatedGuard] }]}];
+  { path: 'oldHome', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [IsAuthenticatedGuard] }]}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

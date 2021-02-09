@@ -6,7 +6,7 @@ import {CustomComponent} from './custom/custom.component';
 import {LampComponent} from './lamp/lamp.component';
 
 const routes: Routes = [{ path: '', redirectTo: 'custom', pathMatch: 'full'},
-  {path: 'custom', component: CustomComponent}, {path: 'lamp', component: LampComponent}];
+  {path: '', component: CustomComponent}, {path: 'lamp', component: LampComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

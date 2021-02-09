@@ -111,101 +111,100 @@
 
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-               [mode]="(isHandset$ | async) ? 'over' : 'side'"
-  >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <ul class="list-group sticky-top sticky-offset" style="margin-top:13px">
-        <!-- Separator with title -->
-        <li class="list-group-item sidebar-separator-title d-flex align-items-center menu-collapsed">
-          <small class="font-weight-bold text-uppercase">{{'SIDEBAR.CONTENUTI' | translate }}</small>
-        </li>
-        <!-- /END Separator -->
-        <!-- Menu with submenu -->
-        <div data-toggle="collapse" aria-expanded="false"
-             class="list-group-item list-group-item-action flex-column align-items-start"
-             style="background-color: #eeeeee;">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fas fa-tachometer-alt mr-3"></span>
-            <a [routerLink]="[drag ? '#' : '/dashboard/custom']" class="list-group-item list-group-item-action">
-              <span class="menu-collapsed text-black">{{'SIDEBAR.MY_DASHBOARD' | translate }}</span>
-            </a>
-          </div>
-        </div>
-        <!-- Submenu content -->
-        <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
-           class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fa fa-user fa-fw mr-3"></span>
-            <span class="menu-collapsed">{{'MENU.PREFERENZE' | translate }}</span>
-            <span class="fas fa-plus ml-auto"></span>
-          </div>
-        </a>
-        <!-- Submenu content -->
-        <div id="submenu2" class="collapse sidebar-submenu">
-          <!--<a [routerLink]="['/preferences/profile']" class="list-group-item list-group-item-action">-->
-          <!--<span class="menu-collapsed">Profilo</span>-->
-          <!--</a>-->
-          <a [routerLink]="[drag ? '#' : '/preferences/api-keys']" class="list-group-item list-group-item-action">
-            <span class="menu-collapsed ml-4">{{'SIDEBAR.CONFIGURA_SORGENTI_DATI' | translate }}</span>
-          </a>
-
-          <a [routerLink]="[drag ? '#' : '/preferences/language']" class="list-group-item list-group-item-action">
-            <span class="menu-collapsed ml-4">{{'SIDEBAR.CONFIGURA_LINGUA' | translate }}</span>
-          </a>
-        </div>
-
-        <a *ngIf="userType === 0" href="#submenu4" data-toggle="collapse" aria-expanded="false"
-           class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fas fa-star fa-fw mr-3"></span>
-            <span class="menu-collapsed">{{'SIDEBAR.ADMIN' | translate }}</span>
-            <span class="fas fa-plus ml-auto"></span>
-          </div>
-        </a>
-
-        <!-- Submenu content -->
-        <div *ngIf="userType === 0" id="submenu4" class="collapse sidebar-submenu">
-          <a [routerLink]="[drag ? '#' : '/authentication/register']" class="list-group-item list-group-item-action">
-            <span class="menu-collapsed ml-4">{{'SIDEBAR.CREA_ACCOUNT' | translate }}</span>
-          </a>
-        </div>
-
-        <!--<a class="list-group-item list-group-item-action"> &lt;!&ndash; [routerLink]="['/report']" &ndash;&gt;-->
-        <!--<div class="d-flex w-100 justify-content-start align-items-center" style="color: #777">-->
-        <!--<span class="fa fa-tasks fa-fs mr-3"></span>-->
-        <!--<span class="menu-collapsed">Report</span>-->
-        <!--&lt;!&ndash; [routerLink]="[drag ? '#' : '/authentication/register']" &ndash;&gt;-->
+  <!--<mat-sidenav #drawer class="sidenav" fixedInViewport-->
+               <!--[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"-->
+               <!--[mode]="(isHandset$ | async) ? 'over' : 'side'">-->
+    <!--<mat-toolbar>Menu</mat-toolbar>-->
+    <!--<mat-nav-list>-->
+      <!--<ul class="list-group sticky-top sticky-offset" style="margin-top:13px">-->
+        <!--&lt;!&ndash; Separator with title &ndash;&gt;-->
+        <!--<li class="list-group-item sidebar-separator-title d-flex align-items-center menu-collapsed">-->
+          <!--<small class="font-weight-bold text-uppercase">{{'SIDEBAR.CONTENUTI' | translate }}</small>-->
+        <!--</li>-->
+        <!--&lt;!&ndash; /END Separator &ndash;&gt;-->
+        <!--&lt;!&ndash; Menu with submenu &ndash;&gt;-->
+        <!--<div data-toggle="collapse" aria-expanded="false"-->
+             <!--class="list-group-item list-group-item-action flex-column align-items-start"-->
+             <!--style="background-color: #eeeeee;">-->
+          <!--<div class="d-flex w-100 justify-content-start align-items-center">-->
+            <!--<span class="fas fa-tachometer-alt mr-3"></span>-->
+            <!--<a [routerLink]="[drag ? '#' : '/dashboard/custom']" class="list-group-item list-group-item-action">-->
+              <!--<span class="menu-collapsed text-black">{{'SIDEBAR.MY_DASHBOARD' | translate }}</span>-->
+            <!--</a>-->
+          <!--</div>-->
         <!--</div>-->
+        <!--&lt;!&ndash; Submenu content &ndash;&gt;-->
+        <!--<a href="#submenu2" data-toggle="collapse" aria-expanded="false"-->
+           <!--class="list-group-item list-group-item-action flex-column align-items-start">-->
+          <!--<div class="d-flex w-100 justify-content-start align-items-center">-->
+            <!--<span class="fa fa-user fa-fw mr-3"></span>-->
+            <!--<span class="menu-collapsed">{{'MENU.PREFERENZE' | translate }}</span>-->
+            <!--<span class="fas fa-plus ml-auto"></span>-->
+          <!--</div>-->
         <!--</a>-->
-        <!-- Separator with title -->
-        <li class="list-group-item sidebar-separator-title text-white d-flex align-items-center menu-collapsed">
-          <small class="font-weight-bold text-uppercase">{{'SIDEBAR.STRUMENTI' | translate }}</small>
-        </li>
-        <!-- /END Separator -->
+        <!--&lt;!&ndash; Submenu content &ndash;&gt;-->
+        <!--<div id="submenu2" class="collapse sidebar-submenu">-->
+          <!--&lt;!&ndash;<a [routerLink]="['/preferences/profile']" class="list-group-item list-group-item-action">&ndash;&gt;-->
+          <!--&lt;!&ndash;<span class="menu-collapsed">Profilo</span>&ndash;&gt;-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--<a [routerLink]="[drag ? '#' : '/preferences/api-keys']" class="list-group-item list-group-item-action">-->
+            <!--<span class="menu-collapsed ml-4">{{'SIDEBAR.CONFIGURA_SORGENTI_DATI' | translate }}</span>-->
+          <!--</a>-->
 
-        <a class="list-group-item list-group-item-action" [routerLink]="[drag ? '#' : '/messages']">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fas fa-envelope fa-fw mr-3"></span>
-            <span class="menu-collapsed">{{'MENU.MESSAGGI' | translate }}</span>
-          </div>
-        </a>
-      </ul>
-    </mat-nav-list>
-  </mat-sidenav>
+          <!--<a [routerLink]="[drag ? '#' : '/preferences/language']" class="list-group-item list-group-item-action">-->
+            <!--<span class="menu-collapsed ml-4">{{'SIDEBAR.CONFIGURA_LINGUA' | translate }}</span>-->
+          <!--</a>-->
+        <!--</div>-->
+
+        <!--<a *ngIf="userType === 0" href="#submenu4" data-toggle="collapse" aria-expanded="false"-->
+           <!--class="list-group-item list-group-item-action flex-column align-items-start">-->
+          <!--<div class="d-flex w-100 justify-content-start align-items-center">-->
+            <!--<span class="fas fa-star fa-fw mr-3"></span>-->
+            <!--<span class="menu-collapsed">{{'SIDEBAR.ADMIN' | translate }}</span>-->
+            <!--<span class="fas fa-plus ml-auto"></span>-->
+          <!--</div>-->
+        <!--</a>-->
+
+        <!--&lt;!&ndash; Submenu content &ndash;&gt;-->
+        <!--<div *ngIf="userType === 0" id="submenu4" class="collapse sidebar-submenu">-->
+          <!--<a [routerLink]="[drag ? '#' : '/authentication/register']" class="list-group-item list-group-item-action">-->
+            <!--<span class="menu-collapsed ml-4">{{'SIDEBAR.CREA_ACCOUNT' | translate }}</span>-->
+          <!--</a>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash;<a class="list-group-item list-group-item-action"> &lt;!&ndash; [routerLink]="['/report']" &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="d-flex w-100 justify-content-start align-items-center" style="color: #777">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="fa fa-tasks fa-fs mr-3"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="menu-collapsed">Report</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; [routerLink]="[drag ? '#' : '/authentication/register']" &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--&lt;!&ndash; Separator with title &ndash;&gt;-->
+        <!--<li class="list-group-item sidebar-separator-title text-white d-flex align-items-center menu-collapsed">-->
+          <!--<small class="font-weight-bold text-uppercase">{{'SIDEBAR.STRUMENTI' | translate }}</small>-->
+        <!--</li>-->
+        <!--&lt;!&ndash; /END Separator &ndash;&gt;-->
+
+        <!--<a class="list-group-item list-group-item-action" [routerLink]="[drag ? '#' : '/messages']">-->
+          <!--<div class="d-flex w-100 justify-content-start align-items-center">-->
+            <!--<span class="fas fa-envelope fa-fw mr-3"></span>-->
+            <!--<span class="menu-collapsed">{{'MENU.MESSAGGI' | translate }}</span>-->
+          <!--</div>-->
+        <!--</a>-->
+      <!--</ul>-->
+    <!--</mat-nav-list>-->
+  <!--</mat-sidenav>-->
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        (click)="drawer.toggle()"
+      <!--<button-->
+        <!--(click)="drawer.toggle()"-->
 
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        type="button" *ngIf="isUserLoggedIn">
-        <mat-icon *ngIf="drawer.opened" aria-label="Side nav toggle icon">chevron_left</mat-icon>
-        <mat-icon *ngIf="!drawer.opened" aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+        <!--aria-label="Toggle sidenav"-->
+        <!--mat-icon-button-->
+        <!--type="button" *ngIf="isUserLoggedIn">-->
+        <!--<mat-icon *ngIf="drawer.opened" aria-label="Side nav toggle icon">chevron_left</mat-icon>-->
+        <!--<mat-icon *ngIf="!drawer.opened" aria-label="Side nav toggle icon">menu</mat-icon>-->
+      <!--</button>-->
       <span>{{title}}</span>
       <span style=" position: absolute; left: 50%; transform: translateX(-50%);">Framework for AI-based traffic monitoring and anomaly detection</span>
       <button mat-icon-button class="more-button rightPositionIcon" [matMenuTriggerFor]="listSafe" aria-label="Toggle menu"
