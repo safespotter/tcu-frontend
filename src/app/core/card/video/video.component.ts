@@ -21,6 +21,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
   modalRef: BsModalRef;
   title: string;
   selected = '';
+  selected2: string;
   safeList: any;
   constructor(
     private renderer: Renderer2,
@@ -32,12 +33,14 @@ export class VideoComponent implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     this.safeList = await this.datasev.getData().toPromise();
+    this.selected2 = this.safeList[0].id.toString();
   }
 
   ngAfterViewInit() {
     this.matSelect.valueChange.subscribe(value => {
       this.selected = value;
-      const player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true});
+      console.log("value selected ", value);
+    //   const player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true});
     });
   }
 
@@ -48,5 +51,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
         keyboard: false
       });
   }
+
+
 
 }

@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import JSMpeg from 'jsmpeg-player';
 import {DataService} from '../../../shared/_services/data.service';
-import {forkJoin} from "rxjs";
-import {MatSelect} from "@angular/material/select";
+import {forkJoin} from 'rxjs';
+import {MatSelect} from '@angular/material/select';
 
 @Component({
   selector: 'app-video2',
@@ -20,7 +20,9 @@ export class Video2Component implements OnInit, AfterViewInit {
 
   title: string;
   selected = '';
+  selected2: string;
   safeList: any;
+
   constructor(
     private renderer: Renderer2,
     private datasev: DataService,
@@ -30,15 +32,16 @@ export class Video2Component implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     this.safeList = await this.datasev.getData().toPromise();
-
+    this.selected2 = this.safeList[1].id.toString();
   }
 
   ngAfterViewInit() {
 
     this.matSelect.valueChange.subscribe(value => {
       this.selected = value;
-      const player2 = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas2'), autoplay: true, audio: false, loop: true});
-    });}
+      // const player2 = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas2'), autoplay: true, audio: false, loop: true});
+    });
+  }
 
 
 }
