@@ -7,7 +7,7 @@
 
   </mat-card>
   <mat-form-field style="text-align: center">
-    <mat-select  #matSelect required [(value)] = "defaultSelected" >
+    <mat-select  #matSelect required [(value)] = "selected" >
       <mat-option *ngFor="let element of safeList" value="{{element.id}}">
         {{element.street}}
         <span class="dot" [ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>
@@ -18,15 +18,18 @@
 
 <ng-template #mymodal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <h4 class="modal-title" id="modal-basic-title">Lampione di {{safeList[getIndexFromId(selected)].street}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="decline()">
       <span aria-hidden="true">×</span>
     </button>
   </div>
   <div class="modal-body">
-    Esempio modal
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="decline()">Ok</button>
+    <mat-card class="card" style="height:500px; background: url(../../../../assets/img/im1.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;">
+
+      <!--    <canvas  class="video" id="canvas"  ></canvas>-->
+
+    </mat-card>
   </div>
 </ng-template>
