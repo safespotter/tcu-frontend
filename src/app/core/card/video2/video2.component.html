@@ -11,7 +11,7 @@
 <!--</mat-card>-->
 
 <mat-card class="card2">
-  <mat-card class="card" style="  height:270px; background: url(../../../../assets/img/im2.jpg);
+  <mat-card (click)="openModal(mymodal)" class="card" style="  height:270px; background: url(../../../../assets/img/im2.jpg);
   background-repeat: no-repeat;
   background-size: cover;">
 
@@ -19,7 +19,7 @@
 
   </mat-card>
   <mat-form-field style="text-align: center">
-    <mat-select  #matSelect required [(value)] = "defaultSelected">
+    <mat-select  #matSelect required [(value)] = "selected">
       <mat-option *ngFor="let element of safeList" value="{{element.id}}">
         {{element.street}}
         <span class="dot" [ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>
@@ -27,3 +27,21 @@
     </mat-select>
   </mat-form-field>
 </mat-card>
+
+<ng-template #mymodal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Lampione di {{safeList[getIndexFromId(selected)].street}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="decline()">
+      <span aria-hidden="true">x</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <mat-card class="card" style="height:500px; background: url(../../../../assets/img/im2.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;">
+
+      <!--    <canvas  class="video" id="canvas"  ></canvas>-->
+
+    </mat-card>
+  </div>
+</ng-template>

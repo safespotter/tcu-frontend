@@ -3,6 +3,7 @@ import JSMpeg from 'jsmpeg-player';
 import {DataService} from '../../../shared/_services/data.service';
 import {forkJoin} from 'rxjs';
 import {MatSelect} from '@angular/material/select';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-video2',
@@ -14,25 +15,26 @@ export class Video2Component implements OnInit, AfterViewInit {
   // @ViewChild('video') matVideo: MatVideoComponent;
   @ViewChild('streaming') streamingcanvas: ElementRef;
   @ViewChild('matSelect') matSelect: MatSelect;
-
+  @ViewChild('mymodal') mymodal: string;
 
   // video: HTMLVideoElement;
 
   title: string;
-  selected = '';
-  defaultSelected: string;
+  selected: string;
   safeList: any;
+  modalRef: BsModalRef;
 
   constructor(
     private renderer: Renderer2,
     private datasev: DataService,
+    private modalService: BsModalService,
   ) {
 
   }
 
   async ngOnInit() {
     this.safeList = await this.datasev.getData().toPromise();
-    this.defaultSelected = this.safeList[1].id.toString();
+    this.selected = this.safeList[1].id.toString(); // il secondo della lista
   }
 
   ngAfterViewInit() {
@@ -43,6 +45,21 @@ export class Video2Component implements OnInit, AfterViewInit {
     });
   }
 
+  openModal(modal) {
+    this.modalRef = this.modalService.show(modal,
+      {
+        class: 'modal-lg modal-dialog-centered',
+        keyboard: false
+      });
+  }
+
+  decline = (): void => {
+    this.modalRef.hide();
+  }
+
+  getIndexFromId(id) {
+    return this.safeList.findIndex(obj => obj.id === parseInt(id, 10));
+  }
 
 }
 

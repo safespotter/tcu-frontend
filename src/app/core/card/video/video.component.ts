@@ -5,6 +5,7 @@ import {ONVIFService} from 'onvif-rx-angular';
 import {DataService} from '../../../shared/_services/data.service';
 import {MatSelect} from '@angular/material/select';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {environment} from '../../../../environments/environment';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
   title: string;
   selected: string;
   safeList: any;
+  formatUrl = environment.protocol + environment.host + ':' + environment.port;
 
   constructor(
     private renderer: Renderer2,
@@ -58,6 +60,35 @@ export class VideoComponent implements OnInit, AfterViewInit {
   }
 
   getIndexFromId(id) {
-    return this.safeList.findIndex(obj => obj.id === parseInt(id,10));
+    return this.safeList.findIndex(obj => obj.id === parseInt(id, 10));
+  }
+
+  //Da eliminare quando si avrà il flusso video
+  getImgSrc = (): string => {
+
+    switch (this.selected) {
+      case '1':
+        return '/assets/img/im1.jpg';
+      case '2':
+        return '../../../../assets/img/im2.jpg';
+      case '3':
+        return '../../../../assets/img/im1.jpg';
+      case '4':
+        return '../../../../assets/img/im2.jpg';
+      case '5':
+        return '../../../../assets/img/im1.jpg';
+      case '6':
+        return '../../../../assets/img/im2.jpg';
+      case '7':
+        return '../../../../assets/img/im1.jpg';
+      case '8':
+        return '../../../../assets/img/im2.jpg';
+      case '9':
+        return '../../../../assets/img/im1.jpg';
+      case '10':
+        return '../../../../assets/img/im2.jpg';
+      default:
+        return '../../../../assets/img/im1.jpg';
+    }
   }
 }
