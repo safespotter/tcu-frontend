@@ -2,13 +2,13 @@
   <mat-icon class="close-icon" color="#333333">close</mat-icon>
 </button>
 <h2 mat-dialog-title>Configurazione lampione {{data.info}}</h2>
-<mat-dialog-content class="mat-typography">
+<div class="mat-elevation-z8">
 
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="Anomalia">
       <th mat-header-cell *matHeaderCellDef> Anomalia</th>
-      <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+      <td mat-cell *matCellDef="let element" style="text-align: left"> {{element.name}}</td>
     </ng-container>
 
     <ng-container matColumnDef="Allerta verde">
@@ -50,6 +50,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</mat-dialog-content>
+</div>
 
 
