@@ -10,8 +10,9 @@ import {Info} from '../../../shared/_models/info.model';
 import {SocketioService} from '../../../shared/_services/socketio.service';
 import {timeout} from 'rxjs/operators';
 import set = Reflect.set;
-import {DataService} from "../../../shared/_services/data.service";
-import {ActionRequestComponent} from "../action-request/action-request.component";
+import {DataService} from '../../../shared/_services/data.service';
+import {ActionRequestComponent} from '../action-request/action-request.component';
+import {LamppostConfigurationComponent} from '../lamppost-configuration/lamppost-configuration.component';
 
 @Component({
   selector: 'app-table-chart',
@@ -41,6 +42,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   ngOnInit() {
 
   }
+
   async ngAfterViewInit() {
 
     await this.srv.listen('dataUpdate').subscribe((res: any) => {
@@ -50,7 +52,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
           this.flag = true;
         }
       }
-      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition',  'allert'] :
+      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition', 'allert'] :
         this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition'];
       // this.timerChamge();
 
@@ -78,9 +80,9 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   }
 
-  convertCondition(info){
+  convertCondition(info) {
     // tslint:disable-next-line:radix
-    switch ( parseInt(info.condition)) {
+    switch (parseInt(info.condition)) {
       case 0:
         info.condition_convert = 'NESSUNA';
       case 1:
@@ -97,7 +99,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
 
-    openDialogrequest(info: Info) {
+  openDialogrequest(info: Info) {
     this.dialog.open(ActionRequestComponent, {
       data: {
         condition: info.condition,
@@ -110,9 +112,22 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
       }
     });
-
   }
 
+  openConfiguration(info: Info) {
+    this.dialog.open(LamppostConfigurationComponent, {
+      data: {
+        condition: info.condition,
+        critical_issues: info.critical_issues,
+        info: info.street,
+        id: info.id,
+        street: info.street,
+        position: info.position,
+        condition_convert: info.condition_convert
+
+      }
+    });
+  }
 
 
   //

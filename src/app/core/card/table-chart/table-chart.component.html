@@ -43,8 +43,7 @@
     <ng-container matColumnDef='gear'>
       <th mat-header-cell *matHeaderCellDef></th>
       <td style="width: 40px;" mat-cell *matCellDef="let element">
-          <mat-icon style=" font-size: 1.73em; color: #666666">settings</mat-icon>
-
+          <mat-icon (click)="openConfiguration(element)" style=" font-size: 1.73em; color: #666666; cursor: pointer;">settings</mat-icon>
       </td>
     </ng-container>
 

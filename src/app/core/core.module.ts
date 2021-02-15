@@ -51,6 +51,7 @@ import {BsModalService} from 'ngx-bootstrap/modal';
 import {WeatherComponent} from './card/weather/weather.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {WeatherService} from '../shared/_services/weather.service';
+import {LamppostConfigurationComponent} from './card/lamppost-configuration/lamppost-configuration.component';
 
 
 
@@ -72,6 +73,7 @@ import {WeatherService} from '../shared/_services/weather.service';
     VideoPersonalComponent,
     TablePersonalComponent,
     WeatherComponent,
+    LamppostConfigurationComponent
   ],
   imports: [
     CommonModule,
@@ -126,7 +128,7 @@ import {WeatherService} from '../shared/_services/weather.service';
     VideoPersonalComponent,
     TablePersonalComponent,
     WeatherComponent,
-
+    LamppostConfigurationComponent
   ]
 })
 export class CoreModule { }
