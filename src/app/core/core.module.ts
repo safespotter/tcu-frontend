@@ -52,6 +52,7 @@ import {WeatherComponent} from './card/weather/weather.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {WeatherService} from '../shared/_services/weather.service';
 import {LamppostConfigurationComponent} from './card/lamppost-configuration/lamppost-configuration.component';
+import {MatSlideToggleModule} from '@angular/material';
 
 
 
@@ -104,6 +105,7 @@ import {LamppostConfigurationComponent} from './card/lamppost-configuration/lamp
     MatBadgeModule,
     MatInputModule,
     TooltipModule,
+    MatSlideToggleModule
   ],
   providers: [
     AuthenticationService,
