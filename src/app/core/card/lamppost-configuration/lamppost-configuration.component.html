@@ -7,12 +7,17 @@
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="Anomalia">
-      <th mat-header-cell *matHeaderCellDef> Anomalia</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="header-title" style="text-align: left; vertical-align:center">Anomalia</p>
+      </th>
       <td mat-cell *matCellDef="let element" style="text-align: left"> {{element.name}}</td>
     </ng-container>
 
     <ng-container matColumnDef="Allerta verde">
-      <th mat-header-cell *matHeaderCellDef><span> Allerta verde</span></th>
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="header-title"> Allerta verde</p>
+        <p class="header-description">Notifica sulla dashboard</p>
+      </th>
       <td mat-cell *matCellDef="let element">
         <mat-slide-toggle color="green">
 
@@ -21,7 +26,10 @@
     </ng-container>
 
     <ng-container matColumnDef="Allerta gialla">
-      <th mat-header-cell *matHeaderCellDef><span> Allerta gialla</span></th>
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="header-title"> Allerta gialla</p>
+        <p class="header-description">Notifica sulla dashboard e sul dispositivo</p>
+      </th>
       <td mat-cell *matCellDef="let element">
         <mat-slide-toggle color="yellow">
 
@@ -30,7 +38,10 @@
     </ng-container>
 
     <ng-container matColumnDef="Allerta arancione">
-      <th mat-header-cell *matHeaderCellDef><span> Allerta arancione</span></th>
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="header-title"> Allerta arancione</p>
+        <p class="header-description">Notifica sulla dashboard e dispositivo, azione richiesta</p>
+      </th>
       <td mat-cell *matCellDef="let element">
         <mat-slide-toggle color="orange">
 
@@ -39,7 +50,10 @@
     </ng-container>
 
     <ng-container matColumnDef="Allerta rossa">
-      <th mat-header-cell *matHeaderCellDef><span> Allerta rossa</span></th>
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="header-title"> Allerta rossa</p>
+        <p class="header-description">Notifica sulla dashboard, dispositivo e Tetralert; azione richiesta; attivazione pannello luminoso</p>
+      </th>
       <td mat-cell *matCellDef="let element">
         <mat-slide-toggle color="red">
 

@@ -10,11 +10,23 @@ table{
 }
 
 th{
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 180px;
+  height: 80px;
+  vertical-align: text-top;
+}
+
+.header-title{
   font-size: 15px;
   font-weight: bold;
   text-transform: uppercase;
+  //vertical-align: text-top;
   color: #333333;
-  padding-left: 10px;
+}
+
+.header-description{
+  //padding-left: 10px;
 }
 
 td{
