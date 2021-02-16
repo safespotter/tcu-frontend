@@ -11,7 +11,6 @@ table{
 
 th{
   padding-top: 10px;
-  padding-left: 10px;
   width: 180px;
   height: 80px;
   vertical-align: text-top;
@@ -37,11 +36,14 @@ th{
   font-weight: bold;
   text-transform: uppercase;
   //vertical-align: text-top;
+  text-align: center;
   color: #333333;
 }
 
 .header-description{
-  //padding-left: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: justify;
 }
 
 td{
@@ -79,4 +81,12 @@ td{
 
 ::ng-deep .mat-slide-toggle.mat-red.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
   background-color: #ff5252;
+}
+
+th.mat-header-cell:last-of-type{
+  padding-right: 0px;
+}
+
+td.mat-cell:last-of-type{
+  padding-right: 0px;
 }
