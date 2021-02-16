@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {DialogModel} from '../../../shared/_models/dialog.model';
-import {MatTableDataSource} from '@angular/material';
+import {MatSlideToggleChange, MatTableDataSource} from '@angular/material';
 import {LampStatus} from '../../../shared/_models/LampStatus';
 
 @Component({
@@ -24,6 +24,10 @@ export class LamppostConfigurationComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.criticalIssues);
   }
 
+  public onToggle(event: MatSlideToggleChange, element) {
+    console.log('toggle', event.checked);
+    console.log('element', element);
+  }
 }
 
 

@@ -55,7 +55,7 @@
         <p class="header-description">Notifica sulla dashboard, dispositivo e Tetralert; azione richiesta; attivazione pannello luminoso</p>
       </th>
       <td mat-cell *matCellDef="let element" class="column-red">
-        <mat-slide-toggle color="red">
+        <mat-slide-toggle color="red" (change)="onToggle($event, element)">
 
         </mat-slide-toggle>
       </td>
