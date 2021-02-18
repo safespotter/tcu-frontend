@@ -13,19 +13,11 @@ export class LamppostConfigurationComponent implements OnInit {
   title: string;
   displayedColumns = ['Anomalia', 'Allerta verde', 'Allerta gialla', 'Allerta arancione', 'Allerta rossa'];
   dataSource = new MatTableDataSource();
-  criticalIssues = [{
-    name: 'Marcia contromano',
-    c_v: false,
-    c_g: false,
-    c_o: false,
-    c_r: false,
-    d_v: false,
-    d_g: false,
-    d_o: false,
-    d_r: false
-  },
+  criticalIssues = [
+    {name: 'Marcia contromano', c_v: false, c_g: false, c_o: false, c_r: false, d_v: false, d_g: false, d_o: false, d_r: false},
     {name: 'Pedone sulla carreggiata', c_v: false, c_g: false, c_o: false, c_r: false, d_v: false, d_g: false, d_o: false, d_r: false},
-    {name: 'Traffico congestionato', c_v: false, c_g: false, c_o: false, c_r: false, d_v: false, d_g: false, d_o: false, d_r: false}];
+    {name: 'Traffico congestionato', c_v: false, c_g: false, c_o: false, c_r: false, d_v: false, d_g: false, d_o: false, d_r: false}
+    ];
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel
@@ -36,11 +28,11 @@ export class LamppostConfigurationComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.criticalIssues);
   }
 
-  public onToggle(event: MatSlideToggleChange, element, alert_color) {
+  public onToggle(event: MatSlideToggleChange, element, alertColor) {
     console.log('toggle', event.checked);
     console.log('element', element);
 
-    if (alert_color === 'red' && event.checked) {
+    if (alertColor === 'red' && event.checked) {
       element.c_v = true;
       element.c_g = true;
       element.c_o = true;
@@ -51,7 +43,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_r = false;
     }
 
-    if (alert_color === 'red' && !event.checked) {
+    if (alertColor === 'red' && !event.checked) {
       element.c_v = true;
       element.c_g = true;
       element.c_o = true;
@@ -62,7 +54,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_r = false;
     }
 
-    if (alert_color === 'orange' && event.checked) {
+    if (alertColor === 'orange' && event.checked) {
       element.c_v = true;
       element.c_g = true;
       element.c_o = true;
@@ -73,7 +65,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_r = false;
     }
 
-    if (alert_color === 'orange' && !event.checked) {
+    if (alertColor === 'orange' && !event.checked) {
       element.c_v = true;
       element.c_g = true;
       element.c_o = false;
@@ -84,7 +76,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_r = false;
     }
 
-    if (alert_color === 'yellow' && event.checked) {
+    if (alertColor === 'yellow' && event.checked) {
       element.c_v = true;
       element.c_g = true;
       element.c_o = false;
@@ -95,7 +87,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_r = false;
     }
 
-    if (alert_color === 'yellow' && !event.checked) {
+    if (alertColor === 'yellow' && !event.checked) {
       element.c_v = true;
       element.c_g = false;
       element.c_o = false;
@@ -106,7 +98,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_r = false;
     }
 
-    if (alert_color === 'green' && event.checked) {
+    if (alertColor === 'green' && event.checked) {
       element.c_v = true;
       element.c_g = false;
       element.c_o = false;
@@ -117,7 +109,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_r = false;
     }
 
-    if (alert_color === 'green' && !event.checked) {
+    if (alertColor === 'green' && !event.checked) {
       element.c_v = false;
       element.c_g = false;
       element.c_o = false;
