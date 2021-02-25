@@ -18,6 +18,15 @@ export class SafespotterService {
     return this.http.get(this.formatUrl('getStreetLampStatus/') + id, {headers});
   }
 
+  updateLamppostConfiguration(lamp_id, alert_id, configuration_type) {
+    const headers = this.getAuthorization();
+    const body = {
+      alert_id: alert_id,
+      configuration_type: configuration_type
+    };
+    return this.http.put(this.formatUrl('updateLamppostConfiguration/') + lamp_id, body, {headers});
+  }
+
   private formatUrl(call): string {
     return environment.protocol + environment.host + ':' + environment.port + '/safePath/' + call;
   }

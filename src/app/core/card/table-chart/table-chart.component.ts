@@ -13,6 +13,7 @@ import set = Reflect.set;
 import {DataService} from '../../../shared/_services/data.service';
 import {ActionRequestComponent} from '../action-request/action-request.component';
 import {LamppostConfigurationComponent} from '../lamppost-configuration/lamppost-configuration.component';
+import {LamppostConfiguration} from '../../../shared/_models/LamppostConfiguration';
 
 @Component({
   selector: 'app-table-chart',
@@ -114,7 +115,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openConfiguration(info: Info) {
+  openConfiguration(info: LamppostConfiguration) {
     this.dialog.open(LamppostConfigurationComponent, {
       data: {
         condition: info.condition,
@@ -123,8 +124,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         id: info.id,
         street: info.street,
         position: info.position,
-        condition_convert: info.condition_convert
-
+        condition_convert: info.condition_convert,
+        configuration: info.configuration
       }
     });
   }
