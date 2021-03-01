@@ -14,6 +14,7 @@ import {DataService} from '../../../shared/_services/data.service';
 import {ActionRequestComponent} from '../action-request/action-request.component';
 import {LamppostConfigurationComponent} from '../lamppost-configuration/lamppost-configuration.component';
 import {LamppostConfiguration} from '../../../shared/_models/LamppostConfiguration';
+import {SafespotterService} from '../../../shared/_services/safespotter.service';
 
 @Component({
   selector: 'app-table-chart',
@@ -37,6 +38,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     public dialogComponent: DialogComponent,
     public srv: SocketioService,
     private datasev: DataService,
+    private safeSpotter: SafespotterService
   ) {
   }
 
@@ -116,17 +118,21 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
   openConfiguration(info: LamppostConfiguration) {
-    this.dialog.open(LamppostConfigurationComponent, {
-      data: {
-        condition: info.condition,
-        critical_issues: info.critical_issues,
-        info: info.street,
-        id: info.id,
-        street: info.street,
-        position: info.position,
-        condition_convert: info.condition_convert,
-        configuration: info.configuration
-      }
+
+    this.safeSpotter.getLamppostConfiguration(info.id).subscribe(result => {
+      const configuration = Object.values(result)[1];
+      this.dialog.open(LamppostConfigurationComponent, {
+        data: {
+          condition: info.condition,
+          critical_issues: info.critical_issues,
+          info: info.street,
+          id: info.id,
+          street: info.street,
+          position: info.position,
+          condition_convert: info.condition_convert,
+          configuration: configuration
+        }
+      });
     });
   }
 
