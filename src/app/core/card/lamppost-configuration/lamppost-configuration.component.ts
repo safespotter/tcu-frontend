@@ -28,8 +28,72 @@ export class LamppostConfigurationComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.initializeSlider(this.data);
     this.dataSource = new MatTableDataSource(this.criticalIssues);
-    console.log('Lamppost configuration data received ', this.data);
+  }
+
+  initializeSlider(data) {
+
+    const config = data.configuration;
+
+    for(let ci of this.criticalIssues){
+      for(let el of config){
+        if (ci.id == el.alert_id){
+          switch (el.configuration_type){
+            case '4':
+              ci.c_v = true;
+              ci.c_g = true;
+              ci.c_o = true;
+              ci.c_r = true;
+              ci.d_v = true;
+              ci.d_g = true;
+              ci.d_o = true;
+              ci.d_r = false;
+              break;
+            case '3':
+              ci.c_v = true;
+              ci.c_g = true;
+              ci.c_o = true;
+              ci.c_r = false;
+              ci.d_v = true;
+              ci.d_g = true;
+              ci.d_o = false;
+              ci.d_r = false;
+              break;
+            case '2':
+              ci.c_v = true;
+              ci.c_g = true;
+              ci.c_o = false;
+              ci.c_r = false;
+              ci.d_v = true;
+              ci.d_g = false;
+              ci.d_o = false;
+              ci.d_r = false;
+              break;
+            case '1':
+              ci.c_v = true;
+              ci.c_g = false;
+              ci.c_o = false;
+              ci.c_r = false;
+              ci.d_v = false;
+              ci.d_g = false;
+              ci.d_o = false;
+              ci.d_r = false;
+              break;
+            default:
+              ci.c_v = false;
+              ci.c_g = false;
+              ci.c_o = false;
+              ci.c_r = false;
+              ci.d_v = false;
+              ci.d_g = false;
+              ci.d_o = false;
+              ci.d_r = false;
+              break;
+          }
+        }
+      }
+    }
   }
 
   public onToggle(event: MatSlideToggleChange, lampId, element, alertColor) {
