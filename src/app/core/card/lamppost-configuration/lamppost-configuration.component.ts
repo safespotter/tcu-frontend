@@ -15,9 +15,9 @@ export class LamppostConfigurationComponent implements OnInit {
   displayedColumns = ['Anomalia', 'Allerta verde', 'Allerta gialla', 'Allerta arancione', 'Allerta rossa'];
   dataSource = new MatTableDataSource();
   criticalIssues = [
-    {id: '1', name: 'Marcia contromano', c_v: false, c_g: false, c_o: false, c_r: false, d_v: false, d_g: false, d_o: false, d_r: false},
-    {id: '2', name: 'Pedone sulla carreggiata', c_v: false, c_g: false, c_o: false, c_r: false, d_v: false, d_g: false, d_o: false, d_r: false},
-    {id: '3', name: 'Traffico congestionato', c_v: false, c_g: false, c_o: false, c_r: false, d_v: false, d_g: false, d_o: false, d_r: false}
+    {id: '1', name: 'Marcia contromano', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '2', name: 'Pedone sulla carreggiata', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '3', name: 'Traffico congestionato', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false}
   ];
 
 
@@ -40,55 +40,55 @@ export class LamppostConfigurationComponent implements OnInit {
       for(let el of config){
         if (ci.id == el.alert_id){
           switch (el.configuration_type){
-            case '4':
-              ci.c_v = true;
-              ci.c_g = true;
-              ci.c_o = true;
-              ci.c_r = true;
-              ci.d_v = true;
-              ci.d_g = true;
-              ci.d_o = true;
-              ci.d_r = false;
+            case '4': //notifica rossa
+              ci.c_green = true;
+              ci.c_yellow = true;
+              ci.c_orange = true;
+              ci.c_red = true;
+              ci.d_green = true;
+              ci.d_yellow = true;
+              ci.d_orange = true;
+              ci.d_red = false;
               break;
-            case '3':
-              ci.c_v = true;
-              ci.c_g = true;
-              ci.c_o = true;
-              ci.c_r = false;
-              ci.d_v = true;
-              ci.d_g = true;
-              ci.d_o = false;
-              ci.d_r = false;
+            case '3': //notifica arancione
+              ci.c_green = true;
+              ci.c_yellow = true;
+              ci.c_orange = true;
+              ci.c_red = false;
+              ci.d_green = true;
+              ci.d_yellow = true;
+              ci.d_orange = false;
+              ci.d_red = false;
               break;
-            case '2':
-              ci.c_v = true;
-              ci.c_g = true;
-              ci.c_o = false;
-              ci.c_r = false;
-              ci.d_v = true;
-              ci.d_g = false;
-              ci.d_o = false;
-              ci.d_r = false;
+            case '2': //notifica gialla
+              ci.c_green = true;
+              ci.c_yellow = true;
+              ci.c_orange = false;
+              ci.c_red = false;
+              ci.d_green = true;
+              ci.d_yellow = false;
+              ci.d_orange = false;
+              ci.d_red = false;
               break;
-            case '1':
-              ci.c_v = true;
-              ci.c_g = false;
-              ci.c_o = false;
-              ci.c_r = false;
-              ci.d_v = false;
-              ci.d_g = false;
-              ci.d_o = false;
-              ci.d_r = false;
+            case '1': //notifica verde
+              ci.c_green = true;
+              ci.c_yellow = false;
+              ci.c_orange = false;
+              ci.c_red = false;
+              ci.d_green = false;
+              ci.d_yellow = false;
+              ci.d_orange = false;
+              ci.d_red = false;
               break;
-            default:
-              ci.c_v = false;
-              ci.c_g = false;
-              ci.c_o = false;
-              ci.c_r = false;
-              ci.d_v = false;
-              ci.d_g = false;
-              ci.d_o = false;
-              ci.d_r = false;
+            default: //nessuna notifica
+              ci.c_green = false;
+              ci.c_yellow = false;
+              ci.c_orange = false;
+              ci.c_red = false;
+              ci.d_green = false;
+              ci.d_yellow = false;
+              ci.d_orange = false;
+              ci.d_red = false;
               break;
           }
         }
@@ -108,98 +108,98 @@ export class LamppostConfigurationComponent implements OnInit {
     const alertId = element.id;
 
     if (alertColor === 'red' && event.checked) {
-      element.c_v = true;
-      element.c_g = true;
-      element.c_o = true;
-      element.c_r = true;
-      element.d_v = true;
-      element.d_g = true;
-      element.d_o = true;
-      element.d_r = false;
+      element.c_green = true;
+      element.c_yellow = true;
+      element.c_orange = true;
+      element.c_red = true;
+      element.d_green = true;
+      element.d_yellow = true;
+      element.d_orange = true;
+      element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.red).toPromise();
     }
 
     if (alertColor === 'red' && !event.checked) {
-      element.c_v = true;
-      element.c_g = true;
-      element.c_o = true;
-      element.c_r = false;
-      element.d_v = true;
-      element.d_g = true;
-      element.d_o = false;
-      element.d_r = false;
+      element.c_green = true;
+      element.c_yellow = true;
+      element.c_orange = true;
+      element.c_red = false;
+      element.d_green = true;
+      element.d_yellow = true;
+      element.d_orange = false;
+      element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.orange).toPromise();
     }
 
     if (alertColor === 'orange' && event.checked) {
-      element.c_v = true;
-      element.c_g = true;
-      element.c_o = true;
-      element.c_r = false;
-      element.d_v = true;
-      element.d_g = true;
-      element.d_o = false;
-      element.d_r = false;
+      element.c_green = true;
+      element.c_yellow = true;
+      element.c_orange = true;
+      element.c_red = false;
+      element.d_green = true;
+      element.d_yellow = true;
+      element.d_orange = false;
+      element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.orange).toPromise();
     }
 
     if (alertColor === 'orange' && !event.checked) {
-      element.c_v = true;
-      element.c_g = true;
-      element.c_o = false;
-      element.c_r = false;
-      element.d_v = true;
-      element.d_g = false;
-      element.d_o = false;
-      element.d_r = false;
+      element.c_green = true;
+      element.c_yellow = true;
+      element.c_orange = false;
+      element.c_red = false;
+      element.d_green = true;
+      element.d_yellow = false;
+      element.d_orange = false;
+      element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.yellow).toPromise();
     }
 
     if (alertColor === 'yellow' && event.checked) {
-      element.c_v = true;
-      element.c_g = true;
-      element.c_o = false;
-      element.c_r = false;
-      element.d_v = true;
-      element.d_g = false;
-      element.d_o = false;
-      element.d_r = false;
+      element.c_green = true;
+      element.c_yellow = true;
+      element.c_orange = false;
+      element.c_red = false;
+      element.d_green = true;
+      element.d_yellow = false;
+      element.d_orange = false;
+      element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.yellow).toPromise();
     }
 
     if (alertColor === 'yellow' && !event.checked) {
-      element.c_v = true;
-      element.c_g = false;
-      element.c_o = false;
-      element.c_r = false;
-      element.d_v = false;
-      element.d_g = false;
-      element.d_o = false;
-      element.d_r = false;
+      element.c_green = true;
+      element.c_yellow = false;
+      element.c_orange = false;
+      element.c_red = false;
+      element.d_green = false;
+      element.d_yellow = false;
+      element.d_orange = false;
+      element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.green).toPromise();
     }
 
     if (alertColor === 'green' && event.checked) {
-      element.c_v = true;
-      element.c_g = false;
-      element.c_o = false;
-      element.c_r = false;
-      element.d_v = false;
-      element.d_g = false;
-      element.d_o = false;
-      element.d_r = false;
+      element.c_green = true;
+      element.c_yellow = false;
+      element.c_orange = false;
+      element.c_red = false;
+      element.d_green = false;
+      element.d_yellow = false;
+      element.d_orange = false;
+      element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.green).toPromise();
     }
 
     if (alertColor === 'green' && !event.checked) {
-      element.c_v = false;
-      element.c_g = false;
-      element.c_o = false;
-      element.c_r = false;
-      element.d_v = false;
-      element.d_g = false;
-      element.d_o = false;
-      element.d_r = false;
+      element.c_green = false;
+      element.c_yellow = false;
+      element.c_orange = false;
+      element.c_red = false;
+      element.d_green = false;
+      element.d_yellow = false;
+      element.d_orange = false;
+      element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.no_type).toPromise();
     }
 

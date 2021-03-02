@@ -19,7 +19,7 @@
         <p class="header-description">Notifica sulla dashboard</p>
       </th>
       <td mat-cell *matCellDef="let element" class="column-green">
-        <mat-slide-toggle color ="green" (change)="onToggle($event, data.id, element, 'green')" [checked]="element.c_v" [disabled]="element.d_v">
+        <mat-slide-toggle color ="green" (change)="onToggle($event, data.id, element, 'green')" [checked]="element.c_green" [disabled]="element.d_green">
 
         </mat-slide-toggle>
       </td>
@@ -31,7 +31,7 @@
         <p class="header-description">Notifica sulla dashboard e sul dispositivo</p>
       </th>
       <td mat-cell *matCellDef="let element" class="column-yellow">
-        <mat-slide-toggle color="yellow" (change)="onToggle($event, data.id, element, 'yellow')" [checked]="element.c_g" [disabled]="element.d_g">
+        <mat-slide-toggle color="yellow" (change)="onToggle($event, data.id, element, 'yellow')" [checked]="element.c_yellow" [disabled]="element.d_yellow">
 
         </mat-slide-toggle>
       </td>
@@ -43,7 +43,7 @@
         <p class="header-description">Notifica sulla dashboard e dispositivo, azione richiesta</p>
       </th>
       <td mat-cell *matCellDef="let element" class="column-orange">
-        <mat-slide-toggle color="orange" (change)="onToggle($event, data.id, element, 'orange')" [checked]="element.c_o" [disabled]="element.d_o">
+        <mat-slide-toggle color="orange" (change)="onToggle($event, data.id, element, 'orange')" [checked]="element.c_orange" [disabled]="element.d_orange">
 
         </mat-slide-toggle>
       </td>
@@ -55,7 +55,7 @@
         <p class="header-description">Notifica sulla dashboard, dispositivo e Tetralert; azione richiesta; attivazione pannello luminoso</p>
       </th>
       <td mat-cell *matCellDef="let element" class="column-red">
-        <mat-slide-toggle color="red" (change)="onToggle($event, data.id, element, 'red')" [checked]="element.c_r" [disabled]="element.d_r">
+        <mat-slide-toggle color="red" (change)="onToggle($event, data.id, element, 'red')" [checked]="element.c_red" [disabled]="element.d_red">
 
         </mat-slide-toggle>
       </td>
