@@ -78,9 +78,9 @@ export class CustomComponent implements OnInit {
       for (const el of tmp) {
         if (el.critical_issues == 3) {
           if (el.alert_type !== undefined)
-            this.toastr.success(el.street + ': rilevato ' + el.alert_type + ', aumento criticità', 'ALLERTA GIALLA', {timeOut: 1000});
+            this.toastr.success(el.street + ': rilevato ' + el.alert_type + ', aumento criticità', 'ALLERTA GIALLA', {timeOut: 10000});
           else
-            this.toastr.success(el.street + ': tipo di allerta non disponibile, aumento criticità', 'ALLERTA GIALLA', {timeOut: 1000});
+            this.toastr.success(el.street + ': tipo di allerta non disponibile, aumento criticità', 'ALLERTA GIALLA', {timeOut: 10000});
         }
         if (el.critical_issues == 4) {
           if (el.alert_type !== undefined)

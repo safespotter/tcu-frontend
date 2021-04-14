@@ -24,7 +24,7 @@ import {DataService} from '../../shared/_services/data.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, AfterViewInit {
-  title = 'SafeSpotter';
+  title = 'SAFESPOTTER';
   // title = 'Heimdall';
   isUserLoggedIn = false;
   showSidebar = false;
