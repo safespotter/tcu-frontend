@@ -53,13 +53,37 @@ export class TablePersonalComponent implements OnInit {
     }
   }
 
+  convertAnomalies(alert_id) {
+    switch (parseInt(alert_id)) {
+      case 1:
+        return "Illegal way crossing";
+      case 2:
+        return "Traffic congestion";
+      case 3:
+        return "Object on the road";
+      case 4:
+        return "Screeching halt";
+      case 5:
+        return "Too high/slow car speed";
+      case 6:
+        return "Pedestrian Area Invasion";
+      case 7:
+        return "Failure to give way";
+      case 8:
+        return "Possible Accident";
+      default:
+        return "Anomaly error";
+    }
+  }
+
   /*metodo che inizializza la tabella nella dialog*/
   getStatus(): void {
 
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
+        console.log("dati ricevuti ", data);
         for (const el of Object.entries(data['data'])) {
-          this.statusList.push({'date': el[1]['date'], 'status': el[1]['status'], 'videoURL': el[1]['videoURL'] || '', 'alert_type': el[1]['alert_type'] || ''});
+          this.statusList.push({'date': el[1]['date'], 'videoURL': el[1]['videoURL'] || '', 'alert_id': el[1]['alert_id'] || ''});
         }
         this.dataSource = new MatTableDataSource<LampStatus>(this.statusList);
         this.dataSource.paginator = this.paginator;

@@ -50,16 +50,16 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     await this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.tmp = res[0];
-      for (const el of this.tmp) {
-        if (el.critical_issues === 5) {
-          this.flag = true;
-        }
-      }
+      // for (const el of this.tmp) {
+      //   if (el.critical_issues === 5) {
+      //     this.flag = true;
+      //   }
+      // }
       this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition', 'allert'] :
         this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition'];
       // this.timerChamge();
 
-      this.tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
+      //this.tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
 
       this.dataSource = new MatTableDataSource<Info>(this.tmp);
 
@@ -101,6 +101,28 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     }
   }
 
+  convertAnomalies(alert_id) {
+    switch (parseInt(alert_id)) {
+      case 1:
+        return "Illegal way crossing";
+      case 2:
+        return "Traffic congestion";
+      case 3:
+        return "Object on the road";
+      case 4:
+        return "Screeching halt";
+      case 5:
+        return "Too high/slow car speed";
+      case 6:
+        return "Pedestrian Area Invasion";
+      case 7:
+        return "Failure to give way";
+      case 8:
+        return "Possible Accident";
+      default:
+        return "Anomaly error";
+    }
+  }
 
   openDialogrequest(info: Info) {
     this.dialog.open(ActionRequestComponent, {
