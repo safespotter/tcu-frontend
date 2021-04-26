@@ -15,14 +15,14 @@ export class LamppostConfigurationComponent implements OnInit {
   displayedColumns = ['Anomalia', 'Allerta verde', 'Allerta gialla', 'Allerta arancione', 'Allerta rossa'];
   dataSource = new MatTableDataSource();
   criticalIssues = [
-    {id: '1', name: 'Possibile incidente', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '2', name: 'Traffico congestionato', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '3', name: 'Marcia contromano', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '4', name: 'Attraversamento linea continua', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '5', name: 'Veicolo fuoristrada', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '6', name: 'Veicolo in sosta vietata', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '7', name: 'Invasione area pedonale', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '8', name: 'Ostacolo sulla carreggiata', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '1', name: 'Illegal way crossing', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '2', name: 'Traffic congestion', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '3', name: 'Object on the road', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '4', name: 'Screeching halt', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '5', name: 'Too high/slow car speed', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '6', name: 'Pedestrian Area Invasion', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '7', name: 'Failure to give way', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {id: '8', name: 'Possible Accident', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
   ];
 
 

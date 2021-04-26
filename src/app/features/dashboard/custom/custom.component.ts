@@ -74,28 +74,72 @@ export class CustomComponent implements OnInit {
   ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       let tmp = res[0];
-      tmp = tmp.filter( el => !el.checked );
+      console.log('tmp ', tmp);
+      tmp = tmp.filter(el => !el.checked);
       for (const el of tmp) {
-        if (el.critical_issues == 3) {
-          if (el.alert_type !== undefined)
-            this.toastr.success(el.street + ': rilevato ' + el.alert_type + ', aumento criticità', 'ALLERTA GIALLA', {timeOut: 10000});
-          else
-            this.toastr.success(el.street + ': tipo di allerta non disponibile, aumento criticità', 'ALLERTA GIALLA', {timeOut: 10000});
-        }
-        if (el.critical_issues == 4) {
-          if (el.alert_type !== undefined)
-            this.toastr.warning(el.street + ': rilevato ' + el.alert_type + ', aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
-          else
-            this.toastr.warning(el.street + ': tipo di allerta non disponibile, aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
-        }
-        if (el.critical_issues == 5) {
-          if (el.alert_type !== undefined)
-            this.toastr.error(el.street + ': rilevato ' + el.alert_type + ', aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});
-          else
-            this.toastr.error(el.street + ': tipo di allerta non disponibile, aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});
+        // if (el.critical_issues == 3) {
+        //   if (el.alert_type !== undefined)
+        //     this.toastr.success(el.street + ': rilevato ' + el.alert_type + ', aumento criticità', 'ALLERTA GIALLA', {timeOut: 10000});
+        //   else
+        //     this.toastr.success(el.street + ': tipo di allerta non disponibile, aumento criticità', 'ALLERTA GIALLA', {timeOut: 10000});
+        // }
+        // if (el.critical_issues == 4) {
+        //   if (el.alert_type !== undefined)
+        //     this.toastr.warning(el.street + ': rilevato ' + el.alert_type + ', aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
+        //   else
+        //     this.toastr.warning(el.street + ': tipo di allerta non disponibile, aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
+        // }
+        // if (el.critical_issues == 5) {
+        //   if (el.alert_type !== undefined)
+        //     this.toastr.error(el.street + ': rilevato ' + el.alert_type + ', aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});
+        //   else
+        //     this.toastr.error(el.street + ': tipo di allerta non disponibile, aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});
+        // }
+        for (const el_config of el.configuration) {
+          if (el.alert_id == el_config.alert_id) {
+            switch (el_config.configuration_type) {
+              case '0':
+                break;
+              case '1':
+                //completare
+                break;
+              case '2':
+                this.toastr.success(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id) + ', aumento criticità', 'ALLERTA GIALLA', {timeOut: 10000});
+                break;
+              case '3':
+                this.toastr.warning(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id) + ', aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
+                break;
+              case '4':
+                this.toastr.error(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id) + ', aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});
+                break;
+            }
+          }
         }
       }
     });
+  }
+
+  convertAnomalies(alert_id) {
+    switch (parseInt(alert_id, 10)) {
+      case 1:
+        return 'Illegal way crossing';
+      case 2:
+        return 'Traffic congestion';
+      case 3:
+        return 'Object on the road';
+      case 4:
+        return 'Screeching halt';
+      case 5:
+        return 'Too high/slow car speed';
+      case 6:
+        return 'Pedestrian Area Invasion';
+      case 7:
+        return 'Failure to give way';
+      case 8:
+        return 'Possible Accident';
+      default:
+        return 'Anomaly error';
+    }
   }
 
 

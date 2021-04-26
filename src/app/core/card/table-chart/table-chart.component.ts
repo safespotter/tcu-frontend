@@ -62,7 +62,6 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       //this.tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
 
       this.dataSource = new MatTableDataSource<Info>(this.tmp);
-
       this.grey = res[1];
       this.dataSource.paginator = this.paginator;
 
@@ -102,25 +101,25 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
   convertAnomalies(alert_id) {
-    switch (parseInt(alert_id)) {
+    switch (parseInt(alert_id, 10)) {
       case 1:
-        return "Illegal way crossing";
+        return 'Illegal way crossing';
       case 2:
-        return "Traffic congestion";
+        return 'Traffic congestion';
       case 3:
-        return "Object on the road";
+        return 'Object on the road';
       case 4:
-        return "Screeching halt";
+        return 'Screeching halt';
       case 5:
-        return "Too high/slow car speed";
+        return 'Too high/slow car speed';
       case 6:
-        return "Pedestrian Area Invasion";
+        return 'Pedestrian Area Invasion';
       case 7:
-        return "Failure to give way";
+        return 'Failure to give way';
       case 8:
-        return "Possible Accident";
+        return 'Possible Accident';
       default:
-        return "Anomaly error";
+        return 'Anomaly error';
     }
   }
 
@@ -159,6 +158,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
 
+
   //
   // async timerChamge() {
   //   setTimeout(() => {this.grey = 0;
@@ -169,25 +169,3 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 }
 
 
-// const INFO_DATA: Info[] = [
-//   {position: "1", street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: "2", street: 'via. san giorgio', ip: '192.168.0.1', critical_issues: 'A'},
-//   {position: "3", street: 'via. san giorgio', ip: '127.0.0.6', critical_issues: 'C'},
-//   {position: 4, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 5, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 6, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 7, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 8, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 9, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 10, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 11, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 12, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 13, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 14, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 15, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 16, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 17, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 18, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 19, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-//   {position: 20, street: 'via. san giorgio', ip: '127.0.0.1', critical_issues: 'H'},
-// ];

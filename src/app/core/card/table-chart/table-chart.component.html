@@ -59,11 +59,6 @@
       <td  mat-cell *matCellDef="let element">
         <p class="item" style=" font-size: 0.73em; color: #333333 " *ngIf="element.alert_id == 0"> NESSUNA ANOMALIA RECENTE</p>
         <p class="item" style=" font-size: 0.73em; color: #333333 " *ngIf="element.alert_id === undefined"> TIPO DI ALLERTA NON DISPONIBILE</p>
-        <!--<p class="item" style="filter: invert(50%); font-size: 0.73em" *ngIf="element.critical_issues == 1"> TRAFFICO MODERATO</p>-->
-        <!--<p class="item" style="filter: invert(50%); font-size: 0.73em" *ngIf="element.critical_issues == 2"> TRAFFICO MODERATO</p>-->
-        <!--<p class="item" style="filter: invert(50%); font-size: 0.73em" *ngIf="element.critical_issues == 3"> TRAFFICO CONGESTIONATO</p>-->
-        <!--<p class="item" style="filter: invert(50%); font-size: 0.73em" *ngIf="element.critical_issues == 4"> TRAFFICO CONGESTIONATO</p>-->
-        <!--<p class="item" style="filter: invert(50%); font-size: 0.73em" *ngIf="element.critical_issues == 5"> INCIDENTE</p>-->
         <p class="item" style=" font-size: 0.73em; text-transform:uppercase; color: #333333" *ngIf="element.alert_id > 0"> {{convertAnomalies(element.alert_id)}}</p>
       </td>
     </ng-container>
