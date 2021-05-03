@@ -3,8 +3,8 @@ export interface DialogModel {
   street: string;
   position: string;
   condition: string;
-  critical_issues: number;
+  anomaly_level: number;
   info: string;
   condition_convert: string;
-  alert_type: string;
+  alert_type: number;
 }

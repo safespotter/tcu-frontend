@@ -107,7 +107,7 @@ export class CustomComponent implements OnInit {
                 this.toastr.success(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id) + ', aumento criticità', 'ALLERTA GIALLA', {timeOut: 10000});
                 break;
               case '3':
-                this.toastr.warning(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id) + ', aumento criticità', 'ALLERTA ARANCIO', {timeOut: 1000});
+                this.toastr.warning(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id) + ', aumento criticità', 'ALLERTA ARANCIO', {timeOut: 10000});
                 break;
               case '4':
                 this.toastr.error(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id) + ', aumento criticità', 'ALLERTA ROSSA', {timeOut: 0});

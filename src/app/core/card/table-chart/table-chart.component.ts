@@ -50,18 +50,22 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     await this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.tmp = res[0];
-      // for (const el of this.tmp) {
-      //   if (el.critical_issues === 5) {
-      //     this.flag = true;
-      //   }
-      // }
+      for (const el of this.tmp) {
+        if (el.anomaly_level >= 3) {
+          this.flag = true;
+        }
+      }
+
       this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition', 'allert'] :
         this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition'];
       // this.timerChamge();
 
-      //this.tmp.sort((a, b) => (a.critical_issues > b.critical_issues ? -1 : 1));
+      this.tmp.sort((a, b) => (a.anomaly_level > b.anomaly_level ? -1 : 1));
+
+      console.log("dati ", this.tmp);
 
       this.dataSource = new MatTableDataSource<Info>(this.tmp);
+      console.log("dataSource ", this.dataSource);
       this.grey = res[1];
       this.dataSource.paginator = this.paginator;
 
@@ -72,8 +76,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     this.dialog.open(DialogComponent, {
       data: {
         ip: info.condition,
-        critical_issues: info.critical_issues,
-        info: info.street,
+        anomaly_level: info.anomaly_level,
+        alert_id: info.alert_type,
         id: info.id,
         street: info.street,
         position: info.position,
@@ -81,6 +85,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
 
   }
+
 
   convertCondition(info) {
     // tslint:disable-next-line:radix
@@ -127,13 +132,10 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     this.dialog.open(ActionRequestComponent, {
       data: {
         condition: info.condition,
-        critical_issues: info.critical_issues,
-        info: info.street,
+        anomaly_level: info.anomaly_level,
         id: info.id,
         street: info.street,
         position: info.position,
-        condition_convert: info.condition_convert
-
       }
     });
   }
@@ -156,7 +158,6 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       });
     });
   }
-
 
 
   //

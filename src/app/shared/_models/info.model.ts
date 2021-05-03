@@ -3,7 +3,6 @@ export interface Info {
   street: string;
   position: string;
   condition: string;
-  critical_issues: number;
-  condition_convert: string;
-  alert_type: string;
+  anomaly_level: number;
+  alert_type: number;
 }
