@@ -103,23 +103,17 @@ export class CustomComponent implements OnInit {
   convertAnomalies(alert_id) {
     switch (parseInt(alert_id, 10)) {
       case 1:
-        return 'Illegal way crossing';
+        return 'Cambio di corsia illegale';
       case 2:
-        return 'Traffic congestion';
+        return 'Traffico congestionato';
       case 3:
-        return 'Object on the road';
+        return 'Oggetto o persona in strada';
       case 4:
-        return 'Screeching halt';
+        return 'Invasione di area pedonale';
       case 5:
-        return 'Too high/slow car speed';
-      case 6:
-        return 'Pedestrian Area Invasion';
-      case 7:
-        return 'Failure to give way';
-      case 8:
-        return 'Possible Accident';
+        return 'Possible incidente';
       default:
-        return 'Anomaly error';
+        return 'Errore anomalia';
     }
   }
 

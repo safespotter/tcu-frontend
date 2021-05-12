@@ -178,7 +178,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = true;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.red).toPromise();
-      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
+      this.toastr.info('Configurazione aggiornata con successo', 'SALVATO!', {timeOut: 2000});
     }
 
     if (alertColor === 'red' && !event.checked) {
@@ -191,7 +191,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.orange).toPromise();
-      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
+      this.toastr.info('Configurazione aggiornata con successo', 'SALVATO!', {timeOut: 2000});
     }
 
     if (alertColor === 'orange' && event.checked) {
@@ -204,7 +204,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.orange).toPromise();
-      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
+      this.toastr.info('Configurazione aggiornata con successo', 'SALVATO!', {timeOut: 2000});
     }
 
     if (alertColor === 'orange' && !event.checked) {
@@ -217,7 +217,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.yellow).toPromise();
-      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
+      this.toastr.info('Configurazione aggiornata con successo', 'SALVATO!', {timeOut: 2000});
     }
 
     if (alertColor === 'yellow' && event.checked) {
@@ -230,7 +230,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.yellow).toPromise();
-      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
+      this.toastr.info('Configurazione aggiornata con successo', 'SALVATO!', {timeOut: 2000});
     }
 
     if (alertColor === 'yellow' && !event.checked) {
@@ -243,7 +243,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.green).toPromise();
-      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
+      this.toastr.info('Configurazione aggiornata con successo', 'SALVATO!', {timeOut: 2000});
     }
 
     if (alertColor === 'green' && event.checked) {
@@ -256,7 +256,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.green).toPromise();
-      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
+      this.toastr.info('Configurazione aggiornata con successo', 'SALVATO!', {timeOut: 2000});
     }
 
     if (alertColor === 'green' && !event.checked) {
@@ -269,7 +269,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.no_type).toPromise();
-      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
+      this.toastr.info('Configurazione aggiornata con successo', 'SALVATO!', {timeOut: 2000});
     }
 
   }
