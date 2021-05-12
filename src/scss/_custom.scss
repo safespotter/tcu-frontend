@@ -417,6 +417,29 @@ popover-container {
   top: 71px!important;
 }
 
+.toast-info{
+  background-color: #00af91!important ;
+  background-image: none !important;
+}
+
+.toast-success{
+  background-color: #FFFF9F!important ;
+  color: #515151 !important;
+  background-image: none !important;
+  //background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><path fill='rgb(51,51,51)' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'/></svg>");
+}
+
+.toast-warning{
+  background-image: none !important;
+  }
+
+.toast-error{
+  background-image: none !important;
+  }
+
+
+
+
 @media only screen and (max-width: 767px) {
   app-core-header > nav {
     padding-top: 0 !important;
