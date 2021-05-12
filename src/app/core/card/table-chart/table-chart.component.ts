@@ -56,8 +56,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         }
       }
 
-      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition', 'alert'] :
-        this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition'];
+      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'info', 'condition',  'alert', 'button', 'gear'] :
+        this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'info', 'condition', 'button', 'gear'];
       // this.timerChamge();
 
       this.tmp.sort((a, b) => (a.anomaly_level > b.anomaly_level ? -1 : 1));
@@ -84,21 +84,19 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
 
-  convertCondition(info) {
-    // tslint:disable-next-line:radix
-    switch (parseInt(info.condition)) {
+  convertAnomalyLevel(anomaly_level) {
+
+    switch (anomaly_level) {
       case 0:
-        info.condition_convert = 'NESSUNA';
+        return 'NESSUNA';
       case 1:
-        info.condition_convert = 'BASSA';
+        return 'VERDE';
       case 2:
-        info.condition_convert = 'DISCRETA';
+        return 'GIALLA';
       case 3:
-        info.condition_convert = 'MODERATA';
+        return 'ARANCIONE';
       case 4:
-        info.condition_convert = 'ALTA';
-      case 5:
-        info.condition_convert = 'MASSIMA';
+        return 'ROSSA';
     }
   }
 

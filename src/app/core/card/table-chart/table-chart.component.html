@@ -4,13 +4,13 @@
     <!-- Position Column -->
     <ng-container style="margin-left: 35px" matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef style="margin-left: 5px; color: #333333 "> No.</th>
-      <td style="width: 130px; height: 65px" mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td style="width: 130px; height: 65px" mat-cell *matCellDef="let element"> {{element.id}}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef><span style="margin-left: 35px; color: #333333"> Via</span></th>
-      <td style="width: 260px;" mat-cell *matCellDef="let element"> {{element.street}} </td>
+      <td style="width: 260px;" mat-cell *matCellDef="let element"> {{element.street}}</td>
     </ng-container>
 
     <!-- Weight Column -->
@@ -24,11 +24,16 @@
 
 
     <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef><span style="margin-left: 30px; color: #333333">Criticità</span></th>
-      <td style="width: 220px;" class="gauge-container" mat-cell  *matCellDef="let element" >
-        <span class="box" >
+      <th mat-header-cell *matHeaderCellDef><span style="margin-left: 30px; color: #333333">Allerta</span></th>
+      <td style="width: 220px;" class="gauge-container" mat-cell *matCellDef="let element">
+        <span class="box">
           <!--<object class="logo{{0}} item"></object>-->
+          <i class="fas fa-circle" [ngClass]="{'circle0': element.anomaly_level == 0 , 'circle1': element.anomaly_level == 1 ,
+          'circle2': element.anomaly_level == 2 , 'circle3': element.anomaly_level == 3, 'circle4': element.anomaly_level == 4}"> </i>
+          <p class="item"
+             style="margin: 0px 0px 0px 15px;"><strong> {{convertAnomalyLevel(element.anomaly_level)}} </strong></p>
           <!--<p class="item" style="margin: 0px 0px 0px 15px;"><strong>{{element.condition_convert}}</strong></p>-->
+
         </span>
       </td>
     </ng-container>
@@ -43,7 +48,9 @@
     <ng-container matColumnDef='gear'>
       <th mat-header-cell *matHeaderCellDef></th>
       <td style="width: 40px;" mat-cell *matCellDef="let element">
-          <mat-icon (click)="openConfiguration(element)" style=" font-size: 1.73em; color: #666666; cursor: pointer;">settings</mat-icon>
+        <mat-icon (click)="openConfiguration(element)" style=" font-size: 1.73em; color: #666666; cursor: pointer;">
+          settings
+        </mat-icon>
       </td>
     </ng-container>
 
@@ -55,16 +62,19 @@
     </ng-container>
 
     <ng-container matColumnDef='condition'>
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td  mat-cell *matCellDef="let element">
-        <p class="item" style=" font-size: 0.73em; color: #333333 " *ngIf="element.alert_id == 0"> NESSUNA ANOMALIA RECENTE</p>
-        <p class="item" style=" font-size: 0.73em; color: #333333 " *ngIf="element.alert_id === undefined"> TIPO DI ALLERTA NON DISPONIBILE</p>
-        <p class="item" style=" font-size: 0.73em; text-transform:uppercase; color: #333333" *ngIf="element.alert_id > 0"> {{convertAnomalies(element.alert_id)}}</p>
+      <th mat-header-cell *matHeaderCellDef><span style="margin-left: 25px; color: #333333">Anomalia</span></th>
+      <td mat-cell *matCellDef="let element">
+        <p class="item" style=" font-size: 0.73em; color: #333333 " *ngIf="element.alert_id == 0"> NESSUNA ANOMALIA
+          RECENTE</p>
+        <p class="item" style=" font-size: 0.73em; color: #333333 " *ngIf="element.alert_id === undefined"> TIPO DI
+          ALLERTA NON DISPONIBILE</p>
+        <p class="item" style=" font-size: 0.73em; text-transform:uppercase; color: #333333"
+           *ngIf="element.alert_id > 0"> {{convertAnomalies(element.alert_id)}}</p>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="alert">
-      <th mat-header-cell *matHeaderCellDef style="color: #333333"> </th>
+      <th mat-header-cell *matHeaderCellDef style="color: #333333"></th>
       <td mat-cell *matCellDef="let element">
         <button class="icon-button-background" [ngClass]="{'icon-button': element.anomaly_level < 3}"
                 mat-raised-button (click)="openDialogrequest(element)">AZIONE RICHIESTA
@@ -74,7 +84,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row
-        [ngClass]="{'make-red': row.anomaly_level == 4, 'make-orange': row.anomaly_level == 3, 'make-yellow': row.anomaly_level == 2, 'highlight': (row.id == grey && row.anomaly_level != 4 && row.anomaly_level != 3 && row.anomaly_level != 2 )  }"
+        [ngClass]="{'make-red': row.anomaly_level == 4, 'make-orange': row.anomaly_level == 3, 'make-yellow': row.anomaly_level == 2, 'make-green': row.anomaly_level == 1 ,'highlight': (row.id == grey && row.anomaly_level != 4 && row.anomaly_level != 3 && row.anomaly_level != 2 && row.anomaly_level != 1)  }"
         *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
