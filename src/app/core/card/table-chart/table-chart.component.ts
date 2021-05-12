@@ -56,16 +56,13 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         }
       }
 
-      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition', 'allert'] :
+      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition', 'alert'] :
         this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'button', 'gear', 'info', 'condition'];
       // this.timerChamge();
 
       this.tmp.sort((a, b) => (a.anomaly_level > b.anomaly_level ? -1 : 1));
 
-      console.log("dati ", this.tmp);
-
       this.dataSource = new MatTableDataSource<Info>(this.tmp);
-      console.log("dataSource ", this.dataSource);
       this.grey = res[1];
       this.dataSource.paginator = this.paginator;
 

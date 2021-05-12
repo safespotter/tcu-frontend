@@ -4,6 +4,7 @@ import {DialogModel} from '../../../shared/_models/dialog.model';
 import {MatSlideToggleChange, MatTableDataSource} from '@angular/material';
 import {LampStatus} from '../../../shared/_models/LampStatus';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
+import {SocketioService} from '../../../shared/_services/socketio.service';
 
 @Component({
   selector: 'app-lamppost-configuration',
@@ -15,14 +16,102 @@ export class LamppostConfigurationComponent implements OnInit {
   displayedColumns = ['Anomalia', 'Allerta verde', 'Allerta gialla', 'Allerta arancione', 'Allerta rossa'];
   dataSource = new MatTableDataSource();
   criticalIssues = [
-    {id: '1', name: 'Illegal way crossing', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '2', name: 'Traffic congestion', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '3', name: 'Object on the road', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '4', name: 'Screeching halt', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '5', name: 'Too high/slow car speed', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '6', name: 'Pedestrian Area Invasion', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '7', name: 'Failure to give way', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
-    {id: '8', name: 'Possible Accident', c_green: false, c_yellow: false, c_orange: false, c_red: false, d_green: false, d_yellow: false, d_orange: false, d_red: false},
+    {
+      id: '1',
+      name: 'Illegal way crossing',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    },
+    {
+      id: '2',
+      name: 'Traffic congestion',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    },
+    {
+      id: '3',
+      name: 'Object on the road',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    },
+    {
+      id: '4',
+      name: 'Screeching halt',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    },
+    {
+      id: '5',
+      name: 'Too high/slow car speed',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    },
+    {
+      id: '6',
+      name: 'Pedestrian Area Invasion',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    },
+    {
+      id: '7',
+      name: 'Failure to give way',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    },
+    {
+      id: '8',
+      name: 'Possible Accident',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    },
   ];
 
 
@@ -41,10 +130,10 @@ export class LamppostConfigurationComponent implements OnInit {
 
     const config = data.configuration;
 
-    for(let ci of this.criticalIssues){
-      for(let el of config){
-        if (ci.id == el.alert_id){
-          switch (el.configuration_type){
+    for (let ci of this.criticalIssues) {
+      for (let el of config) {
+        if (ci.id == el.alert_id) {
+          switch (el.configuration_type) {
             case '4': //notifica rossa
               ci.c_green = true;
               ci.c_yellow = true;
@@ -101,7 +190,7 @@ export class LamppostConfigurationComponent implements OnInit {
     }
   }
 
-  public onToggle(event: MatSlideToggleChange, lampId, element, alertColor) {
+  public async onToggle(event: MatSlideToggleChange, lampId, element, alertColor) {
 
     //nessuna notifica -> 0
     //notifica verde   -> 1

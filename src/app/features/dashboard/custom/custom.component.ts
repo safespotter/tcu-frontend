@@ -74,7 +74,6 @@ export class CustomComponent implements OnInit {
   ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       let tmp = res[0];
-      console.log('tmp ', tmp);
       tmp = tmp.filter(el => !el.checked);
       for (const el of tmp) {
         // if (el.critical_issues == 3) {
