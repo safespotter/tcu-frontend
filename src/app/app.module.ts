@@ -32,6 +32,7 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {SafespotterService} from './shared/_services/safespotter.service';
 
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -42,7 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAILTIuozewL1QOfk9Z9V4FkYSWcEQTVFM'
+      apiKey: 'AIzaSyAjKzYOB3pXeI79ONHTp066mDb3xzTtUKc'
     }),
     BrowserAnimationsModule,
     CoreModule,

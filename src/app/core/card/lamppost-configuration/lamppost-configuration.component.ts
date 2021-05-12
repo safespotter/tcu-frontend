@@ -5,6 +5,7 @@ import {MatSlideToggleChange, MatTableDataSource} from '@angular/material';
 import {LampStatus} from '../../../shared/_models/LampStatus';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
 import {SocketioService} from '../../../shared/_services/socketio.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-lamppost-configuration',
@@ -18,7 +19,7 @@ export class LamppostConfigurationComponent implements OnInit {
   criticalIssues = [
     {
       id: '1',
-      name: 'Illegal way crossing',
+      name: 'Cambio di corsia illegale',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -30,7 +31,7 @@ export class LamppostConfigurationComponent implements OnInit {
     },
     {
       id: '2',
-      name: 'Traffic congestion',
+      name: 'Traffico congestionato',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -42,7 +43,7 @@ export class LamppostConfigurationComponent implements OnInit {
     },
     {
       id: '3',
-      name: 'Object on the road',
+      name: 'Oggetto o persona in strada',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -54,7 +55,7 @@ export class LamppostConfigurationComponent implements OnInit {
     },
     {
       id: '4',
-      name: 'Screeching halt',
+      name: 'Invasione di area pedonale',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -66,7 +67,7 @@ export class LamppostConfigurationComponent implements OnInit {
     },
     {
       id: '5',
-      name: 'Too high/slow car speed',
+      name: 'Possible incidente',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -75,55 +76,21 @@ export class LamppostConfigurationComponent implements OnInit {
       d_yellow: false,
       d_orange: false,
       d_red: false
-    },
-    {
-      id: '6',
-      name: 'Pedestrian Area Invasion',
-      c_green: false,
-      c_yellow: false,
-      c_orange: false,
-      c_red: false,
-      d_green: false,
-      d_yellow: false,
-      d_orange: false,
-      d_red: false
-    },
-    {
-      id: '7',
-      name: 'Failure to give way',
-      c_green: false,
-      c_yellow: false,
-      c_orange: false,
-      c_red: false,
-      d_green: false,
-      d_yellow: false,
-      d_orange: false,
-      d_red: false
-    },
-    {
-      id: '8',
-      name: 'Possible Accident',
-      c_green: false,
-      c_yellow: false,
-      c_orange: false,
-      c_red: false,
-      d_green: false,
-      d_yellow: false,
-      d_orange: false,
-      d_red: false
-    },
+    }
   ];
 
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogModel,
-    private safeSpotter: SafespotterService
+    private safeSpotter: SafespotterService,
+    private toastr: ToastrService
   ) {
   }
 
   async ngOnInit() {
     this.initializeSlider(this.data);
     this.dataSource = new MatTableDataSource(this.criticalIssues);
+    this.dataSource.data.unshift({id: '0'});
   }
 
   initializeSlider(data) {
@@ -211,6 +178,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = true;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.red).toPromise();
+      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
     }
 
     if (alertColor === 'red' && !event.checked) {
@@ -223,6 +191,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.orange).toPromise();
+      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
     }
 
     if (alertColor === 'orange' && event.checked) {
@@ -235,6 +204,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.orange).toPromise();
+      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
     }
 
     if (alertColor === 'orange' && !event.checked) {
@@ -247,6 +217,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.yellow).toPromise();
+      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
     }
 
     if (alertColor === 'yellow' && event.checked) {
@@ -259,6 +230,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.yellow).toPromise();
+      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
     }
 
     if (alertColor === 'yellow' && !event.checked) {
@@ -271,6 +243,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.green).toPromise();
+      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
     }
 
     if (alertColor === 'green' && event.checked) {
@@ -283,6 +256,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.green).toPromise();
+      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
     }
 
     if (alertColor === 'green' && !event.checked) {
@@ -295,6 +269,7 @@ export class LamppostConfigurationComponent implements OnInit {
       element.d_orange = false;
       element.d_red = false;
       this.safeSpotter.updateLamppostConfiguration(lampId, alertId, confType.no_type).toPromise();
+      this.toastr.info('Configurazione aggiornata con successo', 'Configurazione lampione', {timeOut: 2000});
     }
 
   }
