@@ -76,6 +76,18 @@ export class LamppostConfigurationComponent implements OnInit {
       d_yellow: false,
       d_orange: false,
       d_red: false
+    },
+    {
+      id: '6',
+      name: 'Veicolo in sosta vietata',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
     }
   ];
 

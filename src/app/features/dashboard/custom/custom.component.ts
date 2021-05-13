@@ -112,6 +112,8 @@ export class CustomComponent implements OnInit {
         return 'Invasione di area pedonale';
       case 5:
         return 'Possible incidente';
+      case 6:
+        return 'Veicolo in sosta vietata';
       default:
         return 'Errore anomalia';
     }
