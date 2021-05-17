@@ -27,9 +27,23 @@ export class SafespotterService {
     return this.http.put(this.formatUrl('updateLamppostConfiguration/') + lamp_id, body, {headers});
   }
 
-  getLamppostConfiguration(id) {
+  getLamppostConfiguration(lamp_id) {
     const headers = this.getAuthorization();
-    return this.http.get(this.formatUrl('getLamppostConfiguration/') + id, {headers});
+    return this.http.get(this.formatUrl('getLamppostConfiguration/') + lamp_id, {headers});
+  }
+
+  updateLamppostTimer(lamp_id, alert_level, timer) {
+    const headers = this.getAuthorization();
+    const body = {
+      alert_level: alert_level,
+      timer: timer
+    };
+    return this.http.put(this.formatUrl('updateLamppostTimer/') + lamp_id, body, {headers});
+  }
+
+  getLamppostTimers(lamp_id) {
+    const headers = this.getAuthorization();
+    return this.http.get(this.formatUrl('getLamppostTimers/') + lamp_id, {headers});
   }
 
   private formatUrl(call): string {
