@@ -105,6 +105,12 @@ export class LamppostConfigurationComponent implements OnInit {
     this.dataSource.data.unshift({id: '0'});
   }
 
+  initializeTimers(data) {
+
+    const timers = data.timers;
+
+  }
+
   initializeSlider(data) {
 
     const config = data.configuration;

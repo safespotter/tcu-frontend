@@ -135,6 +135,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     this.safeSpotter.getLamppostConfiguration(info.id).subscribe(result => {
       const configuration = Object.values(result)[1];
+      const timers = Object.values(result)[2];
       this.dialog.open(LamppostConfigurationComponent, {
         data: {
           condition: info.condition,
@@ -144,7 +145,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
           street: info.street,
           position: info.position,
           condition_convert: info.condition_convert,
-          configuration: configuration
+          configuration: configuration,
+          timers: timers
         }
       });
     });

@@ -7,4 +7,5 @@ export interface LamppostConfiguration {
   condition_convert: string;
   alert_type: string;
   configuration: any;
+  timers: any;
 }

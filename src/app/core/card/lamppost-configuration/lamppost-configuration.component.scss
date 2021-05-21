@@ -1,37 +1,38 @@
-.close-button{
+.close-button {
   float: right;
-  top:-24px;
-  right:-24px;
-  font-size:48px !important;
+  top: -24px;
+  right: -24px;
+  font-size: 48px !important;
 }
 
-table{
+table {
   background-color: #efeeee;
 }
 
-th{
+th {
   padding-top: 10px;
   width: 180px;
   height: 80px;
   vertical-align: text-top;
 }
-.column-green{
+
+.column-green {
   background-color: #a6f0c6;
 }
 
-.column-yellow{
+.column-yellow {
   background-color: #fdffbc;
 }
 
-.column-orange{
+.column-orange {
   background-color: #ffcb91;
 }
 
-.column-red{
+.column-red {
   background-color: #ff8585;
 }
 
-.header-title{
+.header-title {
   font-size: 15px;
   font-weight: bold;
   text-transform: uppercase;
@@ -40,7 +41,7 @@ th{
   color: #333333;
 }
 
-.header-description{
+.header-description {
   padding-left: 15px;
   padding-right: 15px;
   text-align: justify;
@@ -53,7 +54,29 @@ th{
   text-align: center;
 }
 
-td{
+.div1 {
+  margin-left: 30px;
+  margin-top: 5px;
+  float: left
+}
+
+.div2 {
+  float: left;
+  margin-top: 3px;
+  margin-right: 3px
+}
+
+.div3 {
+  float: right;
+  margin-top: 3px
+}
+
+.textarea1 {
+  margin-right: 3px;
+  resize: none;
+}
+
+td {
   font-size: 12px;
   text-align: center;
 }
@@ -90,18 +113,18 @@ td{
   background-color: #ff5252;
 }
 
-::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
   background-color: #bbbbbb;
 }
 
-::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
-  background-color: 	#9a9a9a;
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #9a9a9a;
 }
 
-th.mat-header-cell:last-of-type{
+th.mat-header-cell:last-of-type {
   padding-right: 0px;
 }
 
-td.mat-cell:last-of-type{
+td.mat-cell:last-of-type {
   padding-right: 0px;
 }
