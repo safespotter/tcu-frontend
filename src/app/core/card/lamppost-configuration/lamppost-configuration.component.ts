@@ -6,6 +6,7 @@ import {LampStatus} from '../../../shared/_models/LampStatus';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
 import {SocketioService} from '../../../shared/_services/socketio.service';
 import {ToastrService} from 'ngx-toastr';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-lamppost-configuration',
@@ -90,25 +91,34 @@ export class LamppostConfigurationComponent implements OnInit {
       d_red: false
     }
   ];
-
+  timerForm: FormGroup;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogModel,
     private safeSpotter: SafespotterService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public formBuilder: FormBuilder
   ) {
   }
 
   async ngOnInit() {
     this.initializeSlider(this.data);
     this.dataSource = new MatTableDataSource(this.criticalIssues);
+    this.initializeTimers(this.data);
     this.dataSource.data.unshift({id: '0'});
+
   }
 
   initializeTimers(data) {
 
     const timers = data.timers;
 
+    this.timerForm = this.formBuilder.group({
+      timer_green: [this.convertMStoMin(timers[1].timer), Validators.compose([Validators.maxLength(3), Validators.required])],
+      timer_yellow: [this.convertMStoMin(timers[2].timer), Validators.compose([Validators.maxLength(3), Validators.required])],
+      timer_orange: [this.convertMStoMin(timers[3].timer), Validators.compose([Validators.maxLength(3), Validators.required])],
+      timer_red: [this.convertMStoMin(timers[4].timer), Validators.compose([Validators.maxLength(3), Validators.required])]
+    });
   }
 
   initializeSlider(data) {
@@ -173,6 +183,18 @@ export class LamppostConfigurationComponent implements OnInit {
         }
       }
     }
+  }
+
+  convertMStoMin(time) {
+    return time / 60000;
+  }
+
+  convertMintoMS(time) {
+    return time * 60000;
+  }
+
+  onSubmit() {
+
   }
 
   public async onToggle(event: MatSlideToggleChange, lampId, element, alertColor) {

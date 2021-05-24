@@ -13,7 +13,7 @@ import {FilterActions} from '../features/dashboard/redux-filter/filter.actions';
 import {AuthenticationService} from '../features/authentication/authentication.service';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatOptionModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -105,7 +105,9 @@ import {MatSlideToggleModule} from '@angular/material';
     MatBadgeModule,
     MatInputModule,
     TooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     AuthenticationService,
@@ -115,6 +117,7 @@ import {MatSlideToggleModule} from '@angular/material';
     FilterActions,
     ApiKeysService,
     WeatherService,
+    FormBuilder
   ],
   exports: [
     HeaderComponent,

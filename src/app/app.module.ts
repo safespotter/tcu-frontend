@@ -1,32 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {CommonModule, HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 // import {AlertModule, BsDropdownModule, TabsModule} from 'ngx-bootstrap';
 import {ToastContainerModule, ToastrModule} from 'ngx-toastr';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {DragulaModule} from 'ng2-dragula';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {StoreService} from './shared/_services/store.service';
 import {GlobalEventsManagerService} from './shared/_services/global-event-manager.service';
 import {JwtInterceptor} from './shared/jwt.interceptor';
 import {StoreModule} from './shared/store/store.module';
 import {CoreModule} from './core/core.module';
 import {ChartsModule} from 'ng2-charts';
-import {SocketioService} from "./shared/_services/socketio.service";
-import {AgmCoreModule} from "@agm/core";
-import { GaugeModule } from 'angular-gauge';
-import {DataService} from "./shared/_services/data.service";
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import {PushNotificationService} from "./shared/_services/push-notification.service";
+import {SocketioService} from './shared/_services/socketio.service';
+import {AgmCoreModule} from '@agm/core';
+import {GaugeModule} from 'angular-gauge';
+import {DataService} from './shared/_services/data.service';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+import {PushNotificationService} from './shared/_services/push-notification.service';
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TabsModule} from 'ngx-bootstrap/tabs';
@@ -64,7 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreModule,
     DragulaModule.forRoot(),
     OverlayModule,
-    ToastrModule.forRoot({preventDuplicates: true }),
+    ToastrModule.forRoot({preventDuplicates: true}),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -73,17 +73,19 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     GaugeModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    FormsModule
   ],
   providers: [
     DataService,
     StoreService,
     GlobalEventsManagerService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     SocketioService,
     PushNotificationService,
-    SafespotterService
+    SafespotterService,
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })
