@@ -20,8 +20,12 @@
         <td mat-cell *matCellDef="let element" class="column-green">
           <div *ngIf="element.id == 0" class="div1">
             <div class="div2"> Durata:</div>
-            <textarea class="textarea1" rows="1" cols="2" type="text" formControlName="timer_green"> </textarea>
+            <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_green"> </textarea>
             <div class="div3"> min</div>
+            <div *ngIf="timerForm.controls['timer_green'].invalid">
+              <div *ngIf="f.timer_green.errors.required" class="patternError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_green.errors.pattern" class="patternError">Inserire un numero valido</div>
+            </div>
           </div>
           <mat-slide-toggle *ngIf="element.id != 0" color="green" (change)="onToggle($event, data.id, element, 'green')"
                             [checked]="element.c_green" [disabled]="element.d_green">
@@ -37,8 +41,12 @@
         <td mat-cell *matCellDef="let element" class="column-yellow">
           <div *ngIf="element.id == 0" class="div1">
             <div class="div2"> Durata:</div>
-            <textarea class="textarea1" rows="1" cols="2" type="text" formControlName="timer_yellow">  </textarea>
+            <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_yellow">  </textarea>
             <div class="div3"> min</div>
+            <div *ngIf="timerForm.controls['timer_yellow'].invalid">
+              <div *ngIf="f.timer_yellow.errors.required" class="patternError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_yellow.errors.pattern" class="patternError">Inserire un numero valido</div>
+            </div>
           </div>
           <mat-slide-toggle *ngIf="element.id != 0" color="yellow"
                             (change)="onToggle($event, data.id, element, 'yellow')" [checked]="element.c_yellow"
@@ -55,8 +63,12 @@
         <td mat-cell *matCellDef="let element" class="column-orange">
           <div *ngIf="element.id == 0" class="div1">
             <div class="div2"> Durata:</div>
-            <textarea class="textarea1" rows="1" cols="2" type="text" formControlName="timer_orange"> 15 </textarea>
+            <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_orange"> </textarea>
             <div class="div3"> min</div>
+            <div *ngIf="timerForm.controls['timer_orange'].invalid">
+              <div *ngIf="f.timer_orange.errors.required" class="patternError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_orange.errors.pattern" class="patternError">Inserire un numero valido</div>
+            </div>
           </div>
           <mat-slide-toggle *ngIf="element.id != 0" color="orange"
                             (change)="onToggle($event, data.id, element, 'orange')" [checked]="element.c_orange"
@@ -74,8 +86,12 @@
         <td mat-cell *matCellDef="let element" class="column-red">
           <div *ngIf="element.id == 0" class="div1">
             <div class="div2"> Durata:</div>
-            <textarea class="textarea1" rows="1" cols="2" type="text" formControlName="timer_red"> 15 </textarea>
+            <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_red"> </textarea>
             <div class="div3"> min</div>
+            <div *ngIf="timerForm.controls['timer_red'].invalid">
+              <div *ngIf="f.timer_red.errors.required" class="patternError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_red.errors.pattern" class="patternError">Inserire un numero valido</div>
+            </div>
           </div>
           <mat-slide-toggle *ngIf="element.id != 0" color="red" (change)="onToggle($event, data.id, element, 'red')"
                             [checked]="element.c_red" [disabled]="element.d_red">

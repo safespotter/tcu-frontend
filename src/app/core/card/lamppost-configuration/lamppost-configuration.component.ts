@@ -114,10 +114,10 @@ export class LamppostConfigurationComponent implements OnInit {
     const timers = data.timers;
 
     this.timerForm = this.formBuilder.group({
-      timer_green: [this.convertMStoMin(timers[1].timer), Validators.compose([Validators.maxLength(3), Validators.required])],
-      timer_yellow: [this.convertMStoMin(timers[2].timer), Validators.compose([Validators.maxLength(3), Validators.required])],
-      timer_orange: [this.convertMStoMin(timers[3].timer), Validators.compose([Validators.maxLength(3), Validators.required])],
-      timer_red: [this.convertMStoMin(timers[4].timer), Validators.compose([Validators.maxLength(3), Validators.required])]
+      timer_green: [this.convertMStoMin(timers[1].timer), Validators.compose([Validators.maxLength(3), Validators.pattern('^[0-9]*$'), Validators.required])],
+      timer_yellow: [this.convertMStoMin(timers[2].timer), Validators.compose([Validators.maxLength(3), Validators.pattern('^[0-9]*$'), Validators.required])],
+      timer_orange: [this.convertMStoMin(timers[3].timer), Validators.compose([Validators.maxLength(3), Validators.pattern('^[0-9]*$'), Validators.required])],
+      timer_red: [this.convertMStoMin(timers[4].timer), Validators.compose([Validators.maxLength(3), Validators.pattern('^[0-9]*$'), Validators.required])]
     });
   }
 
@@ -193,8 +193,16 @@ export class LamppostConfigurationComponent implements OnInit {
     return time * 60000;
   }
 
-  onSubmit() {
+  get f() {
+    return this.timerForm.controls;
+  }
 
+  onSubmit() {
+    const timers = this.timerForm.value;
+
+    console.log('timers ', timers);
+
+    console.log('controls', this.timerForm.controls);
   }
 
   public async onToggle(event: MatSlideToggleChange, lampId, element, alertColor) {
