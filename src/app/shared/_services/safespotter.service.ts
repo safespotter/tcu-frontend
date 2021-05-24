@@ -38,6 +38,7 @@ export class SafespotterService {
       alert_level: alert_level,
       timer: timer
     };
+    console.log("body ", body);
     return this.http.put(this.formatUrl('updateLamppostTimer/') + lamp_id, body, {headers});
   }
 

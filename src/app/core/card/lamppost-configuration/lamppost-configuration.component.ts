@@ -193,16 +193,38 @@ export class LamppostConfigurationComponent implements OnInit {
     return time * 60000;
   }
 
+  convertKey(key) {
+
+    switch (key) {
+      case 'timer_green':
+        return 1;
+      case 'timer_yellow':
+        return 2;
+      case 'timer_orange':
+        return 3;
+      case 'timer_red':
+        return 4;
+    }
+  }
+
   get f() {
     return this.timerForm.controls;
   }
 
   onSubmit() {
-    const timers = this.timerForm.value;
+    const controls = this.timerForm.controls;
+    Object.keys(controls).forEach(key => {
 
-    console.log('timers ', timers);
+      if (this.timerForm.controls[key].touched) {
 
-    console.log('controls', this.timerForm.controls);
+        this.safeSpotter.updateLamppostTimer(this.data.id, this.convertKey(key), this.convertMintoMS(this.timerForm.controls[key].value)).subscribe(
+          result => {
+            return this.toastr.info('Timers aggiornati con successo', 'SALVATO!', {timeOut: 2000});
+          }
+        );
+
+      }
+    });
   }
 
   public async onToggle(event: MatSlideToggleChange, lampId, element, alertColor) {

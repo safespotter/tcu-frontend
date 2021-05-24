@@ -108,7 +108,10 @@
     </table>
   </form>
 </div>
-<button *ngIf="!f.timer_red.errors && !f.timer_orange.errors && !f.timer_yellow.errors && !f.timer_green.errors; else submit" mat-raised-button class="save-button" (click)="onSubmit()">Salva</button>
+<button
+  *ngIf="!f.timer_red.errors && !f.timer_orange.errors && !f.timer_yellow.errors && !f.timer_green.errors && (f.timer_green.touched || f.timer_yellow.touched || f.timer_orange.touched || f.timer_red.touched ); else submit"
+  mat-raised-button class="save-button" (click)="onSubmit()">Salva
+</button>
 <ng-template #submit>
   <button mat-raised-button class="save-button" disabled>Salva</button>
 </ng-template>
