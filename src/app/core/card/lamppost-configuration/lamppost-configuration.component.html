@@ -23,8 +23,9 @@
             <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_green"> </textarea>
             <div class="div3"> min</div>
             <div *ngIf="timerForm.controls['timer_green'].invalid">
-              <div *ngIf="f.timer_green.errors.required" class="patternError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_green.errors.pattern" class="patternError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_green.errors.required" class="validationError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_green.errors.pattern" class="validationError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_green.errors.maxlength" class="validationError">Num max consentito 999</div>
             </div>
           </div>
           <mat-slide-toggle *ngIf="element.id != 0" color="green" (change)="onToggle($event, data.id, element, 'green')"
@@ -44,8 +45,9 @@
             <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_yellow">  </textarea>
             <div class="div3"> min</div>
             <div *ngIf="timerForm.controls['timer_yellow'].invalid">
-              <div *ngIf="f.timer_yellow.errors.required" class="patternError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_yellow.errors.pattern" class="patternError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_yellow.errors.required" class="validationError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_yellow.errors.pattern" class="validationError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_yellow.errors.maxlength" class="validationError">Num max consentito 999</div>
             </div>
           </div>
           <mat-slide-toggle *ngIf="element.id != 0" color="yellow"
@@ -66,8 +68,9 @@
             <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_orange"> </textarea>
             <div class="div3"> min</div>
             <div *ngIf="timerForm.controls['timer_orange'].invalid">
-              <div *ngIf="f.timer_orange.errors.required" class="patternError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_orange.errors.pattern" class="patternError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_orange.errors.required" class="validationError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_orange.errors.pattern" class="validationError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_orange.errors.maxlength" class="validationError">Num max consentito 999</div>
             </div>
           </div>
           <mat-slide-toggle *ngIf="element.id != 0" color="orange"
@@ -89,8 +92,9 @@
             <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_red"> </textarea>
             <div class="div3"> min</div>
             <div *ngIf="timerForm.controls['timer_red'].invalid">
-              <div *ngIf="f.timer_red.errors.required" class="patternError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_red.errors.pattern" class="patternError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_red.errors.required" class="validationError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_red.errors.pattern" class="validationError">Inserire un numero valido</div>
+              <div *ngIf="f.timer_red.errors.maxlength" class="validationError">Num max consentito 999</div>
             </div>
           </div>
           <mat-slide-toggle *ngIf="element.id != 0" color="red" (change)="onToggle($event, data.id, element, 'red')"
@@ -104,5 +108,7 @@
     </table>
   </form>
 </div>
-<button mat-raised-button class="save-button" (click)="onSubmit()">Salva</button>
-
+<button *ngIf="!f.timer_red.errors && !f.timer_orange.errors && !f.timer_yellow.errors && !f.timer_green.errors; else submit" mat-raised-button class="save-button" (click)="onSubmit()">Salva</button>
+<ng-template #submit>
+  <button mat-raised-button class="save-button" disabled>Salva</button>
+</ng-template>
