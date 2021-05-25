@@ -86,7 +86,7 @@ export class NavComponent implements OnInit, AfterViewInit {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.count = res[4];
       this.listCritical = res[3];
-
+      console.log("res ", res);
     });
 
     this.globalEventService.dragAndDrop.subscribe(value => this.drag = value);
@@ -128,6 +128,25 @@ export class NavComponent implements OnInit, AfterViewInit {
       return true;
     } else {
       return false;
+    }
+  }
+
+  convertAnomalies(alert_id) {
+    switch (parseInt(alert_id, 10)) {
+      case 1:
+        return 'Cambio di corsia illegale';
+      case 2:
+        return 'Traff. congestionato';
+      case 3:
+        return 'Ogg. o persona in strada';
+      case 4:
+        return 'Inv. di area pedonale';
+      case 5:
+        return 'Poss. incidente';
+      case 6:
+        return 'Sosta vietata';
+      default:
+        return 'Errore anomalia';
     }
   }
 

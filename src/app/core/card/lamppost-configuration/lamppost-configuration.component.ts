@@ -219,7 +219,7 @@ export class LamppostConfigurationComponent implements OnInit {
 
         this.safeSpotter.updateLamppostTimer(this.data.id, this.convertKey(key), this.convertMintoMS(this.timerForm.controls[key].value)).subscribe(
           result => {
-            return this.toastr.info('Timers aggiornati con successo', 'SALVATO!', {timeOut: 2000});
+            return this.toastr.info('Timer aggiornati con successo', 'SALVATO!', {timeOut: 2000});
           }
         );
 
