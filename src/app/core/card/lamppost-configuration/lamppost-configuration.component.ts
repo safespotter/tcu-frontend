@@ -219,12 +219,14 @@ export class LamppostConfigurationComponent implements OnInit {
 
         this.safeSpotter.updateLamppostTimer(this.data.id, this.convertKey(key), this.convertMintoMS(this.timerForm.controls[key].value)).subscribe(
           result => {
+            this.timerForm.controls[key].markAsUntouched();
             return this.toastr.info('Timer aggiornati con successo', 'SALVATO!', {timeOut: 2000});
           }
         );
 
       }
     });
+
   }
 
   public async onToggle(event: MatSlideToggleChange, lampId, element, alertColor) {
