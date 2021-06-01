@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "server": "http-server -c-1 dist/tcu-frontend --proxy http://localhost:8080",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -42,6 +43,7 @@
     "flag-icon-css": "^3.5.0",
     "flatpickr": "^4.6.6",
     "hammerjs": "^2.0.8",
+    "http-server": "^0.12.3",
     "i": "^0.3.6",
     "jquery": "^3.5.1",
     "jsmpeg-player": "^3.0.3",

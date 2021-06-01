@@ -14,11 +14,17 @@ if (environment.production) {
 //   .catch(err => console.error(err));
 
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .then(moduleRef => {
-    const applicationRef = moduleRef.injector.get(ApplicationRef);
-    const componentRef = applicationRef.components[0];
-    // allows to run `ng.profiler.timeChangeDetection();`
-    enableDebugTools(componentRef);
-  })
-  .catch(err => console.log(err));
+// platformBrowserDynamic().bootstrapModule(AppModule)
+//   .then(moduleRef => {
+//     const applicationRef = moduleRef.injector.get(ApplicationRef);
+//     const componentRef = applicationRef.components[0];
+//     // allows to run `ng.profiler.timeChangeDetection();`
+//     enableDebugTools(componentRef);
+//   })
+//   .catch(err => console.log(err));
+
+platformBrowserDynamic().bootstrapModule(AppModule).then(() => {
+  if ('serviceWorker' in navigator && environment.production) {
+    navigator.serviceWorker.register('/ngsw-worker.js');
+  }
+}).catch(err => console.log(err));
