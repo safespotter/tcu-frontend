@@ -86,7 +86,9 @@ export class NavComponent implements OnInit, AfterViewInit {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.count = res[4];
       this.listCritical = res[3];
-      console.log("res ", res);
+      for (const el of this.listCritical){
+        el.alert_name = this.dataService.convertAnomalies(el.alert_id);
+      }
     });
 
     this.globalEventService.dragAndDrop.subscribe(value => this.drag = value);

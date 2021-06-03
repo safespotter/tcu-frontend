@@ -13,6 +13,25 @@ export  class DataService {
   ) {
   }
 
+  convertAnomalies(alert_id) {
+    switch (parseInt(alert_id, 10)) {
+      case 1:
+        return 'Cambio di corsia illegale';
+      case 2:
+        return 'Traffico congestionato';
+      case 3:
+        return 'Oggetto o persona in strada';
+      case 4:
+        return 'Invasione di area pedonale';
+      case 5:
+        return 'Possible incidente';
+      case 6:
+        return 'Veicolo in sosta vietata';
+      default:
+        return 'Errore anomalia';
+    }
+  }
+
   getData() {
     const headers = this.getAuthorization();
     const params = {};

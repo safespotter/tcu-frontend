@@ -70,7 +70,7 @@
         <p class="item" style=" font-size: 0.73em; color: #333333 " *ngIf="element.alert_id === undefined"> TIPO DI
           ALLERTA NON DISPONIBILE</p>
         <p class="item" style=" font-size: 0.73em; text-transform:uppercase; color: #333333"
-           *ngIf="element.alert_id > 0"> {{convertAnomalies(element.alert_id)}}</p>
+           *ngIf="element.alert_id > 0"> {{element.alert_name}}</p>
       </td>
     </ng-container>
 

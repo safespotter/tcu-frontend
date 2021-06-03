@@ -15,6 +15,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Info} from '../../../shared/_models/info.model';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {BsLocaleService} from 'ngx-bootstrap/datepicker';
+import {DataService} from '../../../shared/_services/data.service';
 
 @Component({
   selector: 'app-custom',
@@ -43,7 +44,8 @@ export class CustomComponent implements OnInit {
     private dragulaService: DragulaService,
     public translate: TranslateService,
     private http: HttpClient,
-    public srv: SocketioService
+    public srv: SocketioService,
+    private datasev: DataService,
   ) {
     //
     this.userService.get().subscribe(value => {
@@ -82,16 +84,16 @@ export class CustomComponent implements OnInit {
               case '0':
                 break;
               case '1':
-                this.toastr.info(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id), 'ALLERTA VERDE', {timeOut: 10000});
+                this.toastr.info(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA VERDE', {timeOut: 10000});
                 break;
               case '2':
-                this.toastr.success(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id), 'ALLERTA GIALLA', {timeOut: 10000});
+                this.toastr.success(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA GIALLA', {timeOut: 10000});
                 break;
               case '3':
-                this.toastr.warning(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id), 'ALLERTA ARANCIONE', {timeOut: 10000});
+                this.toastr.warning(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA ARANCIONE', {timeOut: 10000});
                 break;
               case '4':
-                this.toastr.error(el.street + ': rilevato ' + this.convertAnomalies(el.alert_id), 'ALLERTA ROSSA', {timeOut: 10000});
+                this.toastr.error(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA ROSSA', {timeOut: 10000});
                 break;
             }
           }
@@ -100,24 +102,24 @@ export class CustomComponent implements OnInit {
     });
   }
 
-  convertAnomalies(alert_id) {
-    switch (parseInt(alert_id, 10)) {
-      case 1:
-        return 'Cambio di corsia illegale';
-      case 2:
-        return 'Traffico congestionato';
-      case 3:
-        return 'Oggetto o persona in strada';
-      case 4:
-        return 'Invasione di area pedonale';
-      case 5:
-        return 'Possible incidente';
-      case 6:
-        return 'Veicolo in sosta vietata';
-      default:
-        return 'Errore anomalia';
-    }
-  }
+  // convertAnomalies(alert_id) {
+  //   switch (parseInt(alert_id, 10)) {
+  //     case 1:
+  //       return 'Cambio di corsia illegale';
+  //     case 2:
+  //       return 'Traffico congestionato';
+  //     case 3:
+  //       return 'Oggetto o persona in strada';
+  //     case 4:
+  //       return 'Invasione di area pedonale';
+  //     case 5:
+  //       return 'Possible incidente';
+  //     case 6:
+  //       return 'Veicolo in sosta vietata';
+  //     default:
+  //       return 'Errore anomalia';
+  //   }
+  // }
 
 
   conversionSetDefaultLang() {

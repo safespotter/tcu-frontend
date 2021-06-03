@@ -7,6 +7,7 @@ import {environment} from '../../../../environments/environment';
 import {DialogModel} from '../../../shared/_models/dialog.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import * as moment from 'moment';
+import {DataService} from '../../../shared/_services/data.service';
 
 @Component({
   selector: 'app-table-personal',
@@ -22,7 +23,8 @@ export class TablePersonalComponent implements OnInit {
   statusList = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel,
-              private safespotter: SafespotterService) {
+              private safespotter: SafespotterService,
+              private datasev: DataService) {
   }
 
   ngOnInit(): void {
@@ -34,23 +36,6 @@ export class TablePersonalComponent implements OnInit {
     date = moment(date, null, 'it', true);
     date = date.local().format('DD MMMM YYYY, H:mm');
     return date.toString();
-  }
-
-  convertStatus(status){
-    switch ( parseInt(status)) {
-      case 0:
-        return 'NESSUNA';
-      case 1:
-        return 'BASSA';
-      case 2:
-        return 'DISCRETA';
-      case 3:
-        return 'MODERATA';
-      case 4:
-        return 'ALTA';
-      case 5:
-        return 'MASSIMA';
-    }
   }
 
   convertAnomalies(alert_id) {
@@ -83,7 +68,7 @@ export class TablePersonalComponent implements OnInit {
       data => {
         console.log("dati ricevuti ", data);
         for (const el of Object.entries(data['data'])) {
-          this.statusList.push({'date': el[1]['date'], 'videoURL': el[1]['videoURL'] || '', 'alert_id': el[1]['alert_id'] || ''});
+          this.statusList.push({'date': el[1]['date'], 'videoURL': el[1]['videoURL'] || '', 'alert_id': el[1]['alert_id'] || '', 'alert_name': this.datasev.convertAnomalies(el[1]['alert_id'])});
         }
         this.dataSource = new MatTableDataSource<LampStatus>(this.statusList);
         this.dataSource.paginator = this.paginator;

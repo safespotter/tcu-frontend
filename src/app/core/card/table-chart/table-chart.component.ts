@@ -51,6 +51,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     await this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.tmp = res[0];
       for (const el of this.tmp) {
+        el.alert_name = this.datasev.convertAnomalies(el.alert_id);
         if (el.anomaly_level >= 3) {
           this.flag = true;
         }
@@ -97,25 +98,6 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         return 'ARANCIONE';
       case 4:
         return 'ROSSA';
-    }
-  }
-
-  convertAnomalies(alert_id) {
-    switch (parseInt(alert_id, 10)) {
-      case 1:
-        return 'Cambio di corsia illegale';
-      case 2:
-        return 'Traffico congestionato';
-      case 3:
-        return 'Oggetto o persona in strada';
-      case 4:
-        return 'Invasione di area pedonale';
-      case 5:
-        return 'Possible incidente';
-      case 6:
-        return 'Veicolo in sosta vietata';
-      default:
-        return 'Errore anomalia';
     }
   }
 
