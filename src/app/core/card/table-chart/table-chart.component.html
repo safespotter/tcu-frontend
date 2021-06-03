@@ -15,13 +15,14 @@
 
     <!-- Weight Column -->
     <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef><span style="margin-left: 0px; color: #333333">Condizione</span></th>
-      <td style="width: 210px;" mat-cell *matCellDef="let element"> {{element.condition}}
+      <th mat-header-cell *matHeaderCellDef><span
+        style="margin-left: 0px; color: #333333">Condizione</span></th>
+      <td style="width: 210px;" mat-cell *matCellDef="let element">
+        {{element.condition}}
         <span class="dot"
               [ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>
       </td>
     </ng-container>
-
 
     <ng-container matColumnDef="symbol">
       <th mat-header-cell *matHeaderCellDef><span style="margin-left: 30px; color: #333333">Allerta</span></th>
@@ -30,7 +31,7 @@
           <!--<object class="logo{{0}} item"></object>-->
           <i class="fas fa-circle" [ngClass]="{'circle0': element.anomaly_level == 0 , 'circle1': element.anomaly_level == 1 ,
           'circle2': element.anomaly_level == 2 , 'circle3': element.anomaly_level == 3, 'circle4': element.anomaly_level == 4}"> </i>
-          <p class="item"
+          <p class="item d-none d-md-block"
              style="margin: 0px 0px 0px 15px;"><strong> {{convertAnomalyLevel(element.anomaly_level)}} </strong></p>
           <!--<p class="item" style="margin: 0px 0px 0px 15px;"><strong>{{element.condition_convert}}</strong></p>-->
 

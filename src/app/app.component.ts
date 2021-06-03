@@ -28,19 +28,6 @@ export class AppComponent implements OnInit {
   lang: string;
   value: string;
 
-  payload = JSON.stringify({
-    'notification': {
-      'title': 'Web Mail Notification',
-      'body': 'New Mail Received!',
-      'icon': 'images/bell.jpg',
-      'vibrate': [100, 50, 100], //will cause the device to vibrate for 100 ms, be still for 50 ms, and then vibrate for 100 ms
-      'requireInteraction': true,
-      'data': {'dateOfArrival': Date.now(),},
-      'actions': [{'action': 'inbox', 'title': 'Go to Web Mail',}]
-    }
-  })
-
-
   constructor(
     private router: Router,
     private GEservice: GlobalEventsManagerService,
@@ -50,29 +37,9 @@ export class AppComponent implements OnInit {
     public swPush: SwPush,
     public pushService: PushNotificationService
   ) {
-    // console.log('swPush', swPush);
-    // if (swPush.isEnabled) {
-    //   this.swPush.notificationClicks.subscribe(x => console.log(x));
-    //   swPush.requestSubscription({
-    //     serverPublicKey: VAPID_PUBLIC,
-    //   })
-    //     .then(subscription => {
-    //       pushService.sendSubscriptionToTheServer(subscription).subscribe()
-    //     })
-    //     .catch(console.error);
-    // }
-    //
-    // this.userService.get().subscribe(data => {
-    //   this.user = data;
-    //   this.translate.setDefaultLang(this.conversionSetDefaultLang());
-    // });
-
   }
 
   ngOnInit(): void {
-    // this.pushSubscription();
-    // this.swPush.messages.subscribe(message => console.log(message));
-    // this.swPush.notificationClicks.subscribe(({action, notification}) => {window.open(notification.data.url); } );
     this.subscribeToNotifications();
     try {
       this.router.events.subscribe((evt) => {
@@ -91,24 +58,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  // conversionSetDefaultLang() {
-  //   switch (this.user.lang) {
-  //     case 'it' :
-  //       this.value = 'Italiano';
-  //       break;
-  //     case 'en' :
-  //       this.value = 'English';
-  //       break;
-  //     default:
-  //       this.value = 'Italiano';
-  //   }
-  //
-  //   return this.value;
-  // }
-
   subscribeToNotifications() {
     if (this.swPush.isEnabled) {
-      this.swPush.notificationClicks.subscribe(x => console.log("x", x));
+      this.swPush.notificationClicks.subscribe(x => console.log('x', x));
       this.swPush.requestSubscription({
         serverPublicKey: VAPID_PUBLIC
       })
@@ -120,23 +72,4 @@ export class AppComponent implements OnInit {
   }
 }
 
-// pushSubscription()
-// {
-//   if (!this.swPush.isEnabled) {
-//     'sw is not enabled'
-//     return;
-//   }
-//   // this.swPush.requestSubscription({serverPublicKey: VAPID_PUBLIC, }).then(sub => console.log(JSON.stringify(sub))).catch(err => console.error("Could not subscribe to notifications", err));
-//
-//   // console.log('sono su app')
-//   // console.log(swPush)
-//   // if (swPush.isEnabled) {
-//   //   console.log('dentro if')
-//   console.log('entro qui dentro?')
-//   this.swPush.requestSubscription({serverPublicKey: VAPID_PUBLIC,}).then(subscription => {
-//     this.pushService.sendSubscriptionToTheServer(subscription).subscribe();
-//   }).catch(err => console.error('Could not subscribe to notifications', err));
-//
-// }
-//
-// }
+
