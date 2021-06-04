@@ -5,17 +5,20 @@ table {
 .icon-button {
   display: none;
 }
-.icon-button-background{
+
+.icon-button-background {
   background-color: #b50000;
   color: white;
 }
-.w-75{
+
+.w-75 {
   width: 5px;
 }
 
-.w-100{
+.w-100 {
   width: 100px;
 }
+
 .make-red {
   background-color: rgba(255, 0, 0, 0.2);
 }
@@ -23,6 +26,7 @@ table {
 .make-orange {
   background-color: rgba(252, 146, 0, 0.2);
 }
+
 .make-green {
   background-color: rgba(0, 128, 0, 0.2);
 }
@@ -43,7 +47,6 @@ table {
     background: none;
   }
 }
-
 
 .logo0 {
   display: block;
@@ -92,24 +95,24 @@ table {
 
 }
 
-
 .logo5 {
   display: block;
   text-indent: -9999px;
   width: 50px;
   height: 32px;
-  background-size: 50px 32px ;
+  background-size: 50px 32px;
   background: url(../../../../assets/img/gauge/SVG/gauge5.svg) no-repeat;
 }
 
-.box{
+.box {
   display: flex;
   flex-flow: row nowrap;
   align-content: center;
   align-items: center;
 
 }
-.item{
+
+.item {
   flex: 0.15 0.5;
   align-items: baseline;
   font-size: 15px;
@@ -135,20 +138,40 @@ table {
   color: #ff0000;
 }
 
-mat-paginator{
+mat-paginator {
   background-color: #efeeee;
 }
 
-table{
+table {
   background-color: #efeeee;
 }
 
-th{
+th {
   font-size: 15px;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-td{
+td {
   font-size: 18px;
+}
+
+//@media screen and (max-width: 1920px) {
+//  .desk {
+//    visibility: visible;
+//  }
+//  .div-only-mobile {
+//    display: none;
+//    visibility: hidden;
+//  }
+//}
+
+@media screen and (max-width: 721px) {
+  .desktop-only {
+    display: none;
+    visibility: hidden;
+  }
+  //.div-only-mobile {
+  //  visibility: visible;
+  //}
 }

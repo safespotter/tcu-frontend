@@ -14,10 +14,10 @@
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef><span
+    <ng-container matColumnDef="weight" >
+      <th mat-header-cell *matHeaderCellDef class="desktop-only"><span
         style="margin-left: 0px; color: #333333">Condizione</span></th>
-      <td style="width: 210px;" mat-cell *matCellDef="let element">
+      <td style="width: 210px;" mat-cell *matCellDef="let element" class="desktop-only">
         {{element.condition}}
         <span class="dot"
               [ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>
