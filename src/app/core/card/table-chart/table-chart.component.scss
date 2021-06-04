@@ -155,23 +155,33 @@ th {
 td {
   font-size: 18px;
 }
+//
+@media screen and (min-width: 721px){
+  .desktop-only {
+    visibility: visible;
+  }
 
-//@media screen and (max-width: 1920px) {
-//  .desk {
-//    visibility: visible;
-//  }
-//  .div-only-mobile {
-//    display: none;
-//    visibility: hidden;
-//  }
-//}
+  .mobile-only{
+    display: none;
+    visibility: hidden;
+  }
 
-@media screen and (max-width: 721px) {
+  .prova-colore{
+    background-color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 720px) {
   .desktop-only {
     display: none;
     visibility: hidden;
   }
-  //.div-only-mobile {
-  //  visibility: visible;
-  //}
+
+  .mobile-only{
+    visibility: visible;
+  }
+
+  .prova-colore{
+    background-color: #000000;
+  }
 }
