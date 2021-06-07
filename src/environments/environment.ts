@@ -1,13 +1,15 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+const host = 'localhost';
+const port = '8080';
+const protocol = 'http://';
 export const environment = {
   production: false,
-  SOCKET_ENDPOINT: 'http://localhost:3000',
-  host: 'localhost',
-  port: '8080',
-  protocol: 'http://'
+  host: host,
+  port: port,
+  protocol: protocol,
+  SOCKET_ENDPOINT: protocol + host + ':3000',
 };
 /*
  * For easier debugging in development mode, you can import the following file

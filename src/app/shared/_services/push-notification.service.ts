@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
-const SERVER_URL = 'http://localhost:3000/subscription';
-const SERVER_URL1 = 'http://localhost:3000/sendNotification';
+const SERVER_URL = 'http://' + environment.host + ':8080/subscription';
 
 @Injectable()
 export class PushNotificationService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   public sendSubscriptionToTheServer(subscription: PushSubscription) {
-    console.log('ci arrivo sono nel service')
-    console.log(this.http.post(SERVER_URL, subscription))
+
     return this.http.post(SERVER_URL, subscription);
   }
 }
