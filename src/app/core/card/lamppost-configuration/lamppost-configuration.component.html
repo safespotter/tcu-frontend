@@ -7,15 +7,25 @@
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="Anomalia">
         <th mat-header-cell *matHeaderCellDef>
-          <p class="header-title" style="text-align: left;">Anomalia</p>
+          <div class="desktop-only">
+            <p class="header-title" style="text-align: left;">Anomalia</p>
+          </div>
+          <div class="mobile-only">
+          </div>
         </th>
         <td mat-cell *matCellDef="let element" style="text-align: left"> {{element.name}}</td>
       </ng-container>
 
       <ng-container matColumnDef="Allerta verde">
         <th mat-header-cell *matHeaderCellDef class="column-green">
-          <p class="header-title"> Allerta verde</p>
-          <p class="header-description">Notifica sulla dashboard</p>
+          <div class="desktop-only">
+            <p class="header-title"> Allerta verde</p>
+            <p class="header-description">Notifica sulla dashboard</p>
+          </div>
+          <div class="mobile-only">
+            <p class="header-title">verde</p>
+            <div data-tooltip="Notifica sulla dashboard" style="text-align: center"><i class="fas fa-info"></i></div>
+          </div>
         </th>
         <td mat-cell *matCellDef="let element" class="column-green">
           <div *ngIf="element.id == 0" class="div1">
@@ -36,8 +46,14 @@
 
       <ng-container matColumnDef="Allerta gialla">
         <th mat-header-cell *matHeaderCellDef class="column-yellow">
-          <p class="header-title"> Allerta gialla</p>
-          <p class="header-description">Notifica sulla dashboard e sul dispositivo</p>
+          <div class="desktop-only">
+            <p class="header-title"> Allerta gialla</p>
+            <p class="header-description">Notifica sulla dashboard e sul dispositivo</p>
+          </div>
+          <div class="mobile-only">
+            <p class="header-title">gialla</p>
+            <div data-tooltip="Notifica sulla dashboard e sul dispositivo" style="text-align: center"><i class="fas fa-info"></i></div>
+          </div>
         </th>
         <td mat-cell *matCellDef="let element" class="column-yellow">
           <div *ngIf="element.id == 0" class="div1">
@@ -59,8 +75,14 @@
 
       <ng-container matColumnDef="Allerta arancione">
         <th mat-header-cell *matHeaderCellDef class="column-orange">
-          <p class="header-title"> Allerta arancione</p>
-          <p class="header-description">Notifica sulla dashboard e dispositivo, azione richiesta</p>
+          <div class="desktop-only">
+            <p class="header-title"> Allerta arancione</p>
+            <p class="header-description">Notifica sulla dashboard e dispositivo, azione richiesta</p>
+          </div>
+          <div class="mobile-only">
+            <p class="header-title">arancio</p>
+            <div data-tooltip="Notifica sulla dashboard e dispositivo, azione richiesta" style="text-align: center"><i class="fas fa-info"></i></div>
+          </div>
         </th>
         <td mat-cell *matCellDef="let element" class="column-orange">
           <div *ngIf="element.id == 0" class="div1">
@@ -82,9 +104,17 @@
 
       <ng-container matColumnDef="Allerta rossa">
         <th mat-header-cell *matHeaderCellDef class="column-red">
-          <p class="header-title"> Allerta rossa</p>
-          <p class="header-description">Notifica sulla dashboard, dispositivo e Tetralert; azione richiesta; attivazione
-            pannello luminoso</p>
+          <div class="desktop-only">
+            <p class="header-title"> Allerta rossa</p>
+            <p class="header-description">Notifica sulla dashboard, dispositivo e Tetralert; azione richiesta;
+              attivazione
+              pannello luminoso</p>
+          </div>
+          <div class="mobile-only">
+            <p class="header-title">rossa</p>
+            <div data-tooltip="Notifica sulla dashboard, dispositivo e Tetralert; azione richiesta;
+              attivazione pannello luminoso" style="text-align: center"><i class="fas fa-info"></i></div>
+          </div>
         </th>
         <td mat-cell *matCellDef="let element" class="column-red">
           <div *ngIf="element.id == 0" class="div1">
