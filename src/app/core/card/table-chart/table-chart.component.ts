@@ -73,6 +73,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   openDialog(info: Info) {
     this.dialog.open(DialogComponent, {
       height: '90%',
+      maxWidth: '100vw',
+      maxHeight: '100vh',
       data: {
         ip: info.condition,
         anomaly_level: info.anomaly_level,
@@ -120,6 +122,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       const configuration = Object.values(result)[1];
       const timers = Object.values(result)[2];
       this.dialog.open(LamppostConfigurationComponent, {
+        maxWidth: '100vw',
+        maxHeight: '100vh',
         data: {
           condition: info.condition,
           critical_issues: info.critical_issues,
