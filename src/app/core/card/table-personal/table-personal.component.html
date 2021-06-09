@@ -29,3 +29,9 @@
   </table>
   <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
 </div>
+
+<div *ngIf="dataSource.data.length === 0" class="mat-elevation-z8">
+  <h6>
+    Nessun dato disponibile
+  </h6>
+</div>
