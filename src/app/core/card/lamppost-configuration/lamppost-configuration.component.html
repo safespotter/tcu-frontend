@@ -28,16 +28,33 @@
           </div>
         </th>
         <td mat-cell *matCellDef="let element" class="column-green">
-          <div *ngIf="element.id == 0" class="div1">
-            <div class="div2"> Durata:</div>
-            <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_green"> </textarea>
-            <div class="div3 d-none d-lg-block"> min</div>
-            <div *ngIf="timerForm.controls['timer_green'].invalid">
-              <div *ngIf="f.timer_green.errors.required" class="validationError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_green.errors.pattern" class="validationError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_green.errors.maxlength" class="validationError">Num max consentito 999</div>
+
+          <div class="desktop-only">
+            <div *ngIf="element.id == 0" class="div1">
+              <div class="div2"> Durata:</div>
+              <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_green"> </textarea>
+              <div class="div3 d-none d-lg-block"> min</div>
+              <div *ngIf="timerForm.controls['timer_green'].invalid">
+                <div *ngIf="f.timer_green.errors.required" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_green.errors.pattern" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_green.errors.maxlength" class="validationError">Num max consentito 999</div>
+              </div>
             </div>
           </div>
+
+          <div class="mobile-only">
+            <div *ngIf="element.id == 0">
+              <div> Durata:</div>
+              <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_green"> </textarea>
+              <div *ngIf="timerForm.controls['timer_green'].invalid">
+                <div *ngIf="f.timer_green.errors.required" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_green.errors.pattern" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_green.errors.maxlength" class="validationError">Num max consentito 999</div>
+              </div>
+            </div>
+          </div>
+
+
           <mat-slide-toggle *ngIf="element.id != 0" color="green" (change)="onToggle($event, data.id, element, 'green')"
                             [checked]="element.c_green" [disabled]="element.d_green">
           </mat-slide-toggle>
@@ -52,20 +69,37 @@
           </div>
           <div class="mobile-only">
             <p class="header-title">gialla</p>
-            <div data-tooltip="Notifica sulla dashboard e sul dispositivo" style="text-align: center"><i class="fas fa-info"></i></div>
+            <div data-tooltip="Notifica sulla dashboard e sul dispositivo" style="text-align: center"><i
+              class="fas fa-info"></i></div>
           </div>
         </th>
         <td mat-cell *matCellDef="let element" class="column-yellow">
-          <div *ngIf="element.id == 0" class="div1">
-            <div class="div2"> Durata:</div>
-            <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_yellow">  </textarea>
-            <div class="div3 d-none d-lg-block"> min</div>
-            <div *ngIf="timerForm.controls['timer_yellow'].invalid">
-              <div *ngIf="f.timer_yellow.errors.required" class="validationError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_yellow.errors.pattern" class="validationError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_yellow.errors.maxlength" class="validationError">Num max consentito 999</div>
+
+          <div class="desktop-only">
+            <div *ngIf="element.id == 0" class="div1">
+              <div class="div2"> Durata:</div>
+              <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_yellow">  </textarea>
+              <div class="div3 d-none d-lg-block"> min</div>
+              <div *ngIf="timerForm.controls['timer_yellow'].invalid">
+                <div *ngIf="f.timer_yellow.errors.required" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_yellow.errors.pattern" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_yellow.errors.maxlength" class="validationError">Num max consentito 999</div>
+              </div>
             </div>
           </div>
+
+          <div class="mobile-only">
+            <div *ngIf="element.id == 0">
+              <div> Durata:</div>
+              <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_yellow">  </textarea>
+              <div *ngIf="timerForm.controls['timer_yellow'].invalid">
+                <div *ngIf="f.timer_yellow.errors.required" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_yellow.errors.pattern" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_yellow.errors.maxlength" class="validationError">Num max consentito 999</div>
+              </div>
+            </div>
+          </div>
+
           <mat-slide-toggle *ngIf="element.id != 0" color="yellow"
                             (change)="onToggle($event, data.id, element, 'yellow')" [checked]="element.c_yellow"
                             [disabled]="element.d_yellow">
@@ -81,20 +115,37 @@
           </div>
           <div class="mobile-only">
             <p class="header-title">arancio</p>
-            <div data-tooltip="Notifica sulla dashboard e dispositivo, azione richiesta" style="text-align: center"><i class="fas fa-info"></i></div>
+            <div data-tooltip="Notifica sulla dashboard e dispositivo, azione richiesta" style="text-align: center"><i
+              class="fas fa-info"></i></div>
           </div>
         </th>
         <td mat-cell *matCellDef="let element" class="column-orange">
-          <div *ngIf="element.id == 0" class="div1">
-            <div class="div2"> Durata:</div>
-            <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_orange"> </textarea>
-            <div class="div3 d-none d-lg-block"> min</div>
-            <div *ngIf="timerForm.controls['timer_orange'].invalid">
-              <div *ngIf="f.timer_orange.errors.required" class="validationError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_orange.errors.pattern" class="validationError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_orange.errors.maxlength" class="validationError">Num max consentito 999</div>
+
+          <div class="desktop-only">
+            <div *ngIf="element.id == 0" class="div1">
+              <div class="div2"> Durata:</div>
+              <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_orange"> </textarea>
+              <div class="div3 d-none d-lg-block"> min</div>
+              <div *ngIf="timerForm.controls['timer_orange'].invalid">
+                <div *ngIf="f.timer_orange.errors.required" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_orange.errors.pattern" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_orange.errors.maxlength" class="validationError">Num max consentito 999</div>
+              </div>
             </div>
           </div>
+
+          <div class="mobile-only">
+            <div *ngIf="element.id == 0">
+              <div> Durata:</div>
+              <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_orange"> </textarea>
+              <div *ngIf="timerForm.controls['timer_orange'].invalid">
+                <div *ngIf="f.timer_orange.errors.required" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_orange.errors.pattern" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_orange.errors.maxlength" class="validationError">Num max consentito 999</div>
+              </div>
+            </div>
+          </div>
+
           <mat-slide-toggle *ngIf="element.id != 0" color="orange"
                             (change)="onToggle($event, data.id, element, 'orange')" [checked]="element.c_orange"
                             [disabled]="element.d_orange">
@@ -117,16 +168,32 @@
           </div>
         </th>
         <td mat-cell *matCellDef="let element" class="column-red">
-          <div *ngIf="element.id == 0" class="div1">
-            <div class="div2"> Durata:</div>
-            <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_red"> </textarea>
-            <div class="div3 d-none d-lg-block"> min</div>
-            <div *ngIf="timerForm.controls['timer_red'].invalid">
-              <div *ngIf="f.timer_red.errors.required" class="validationError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_red.errors.pattern" class="validationError">Inserire un numero valido</div>
-              <div *ngIf="f.timer_red.errors.maxlength" class="validationError">Num max consentito 999</div>
+
+          <div class="desktop-only">
+            <div *ngIf="element.id == 0" class="div1">
+              <div class="div2"> Durata:</div>
+              <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_red"> </textarea>
+              <div class="div3 d-none d-lg-block"> min</div>
+              <div *ngIf="timerForm.controls['timer_red'].invalid">
+                <div *ngIf="f.timer_red.errors.required" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_red.errors.pattern" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_red.errors.maxlength" class="validationError">Num max consentito 999</div>
+              </div>
             </div>
           </div>
+
+          <div class="mobile-only">
+            <div *ngIf="element.id == 0">
+              <div> Durata:</div>
+              <textarea class="textarea1" rows="1" cols="2" type="number" formControlName="timer_red"> </textarea>
+              <div *ngIf="timerForm.controls['timer_red'].invalid">
+                <div *ngIf="f.timer_red.errors.required" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_red.errors.pattern" class="validationError">Inserire un numero valido</div>
+                <div *ngIf="f.timer_red.errors.maxlength" class="validationError">Num max consentito 999</div>
+              </div>
+            </div>
+          </div>
+
           <mat-slide-toggle *ngIf="element.id != 0" color="red" (change)="onToggle($event, data.id, element, 'red')"
                             [checked]="element.c_red" [disabled]="element.d_red">
           </mat-slide-toggle>
