@@ -6,5 +6,6 @@ export interface DialogModel {
   anomaly_level: number;
   info: string;
   condition_convert: string;
-  alert_type: number;
+  alert_id: number;
+  alert_name: string;
 }

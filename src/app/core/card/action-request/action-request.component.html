@@ -3,12 +3,17 @@
 </button>
 <h2 mat-dialog-title>{{data.street}}</h2>
 <mat-dialog-content class="mat-typography">
-  <h3>{{data.condition}}</h3>
-  <p>{{data.anomaly_level}}</p>
-  <mat-card style="width: 500px; height: 500px">
-  <mat-video *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" [muted]="true" ></mat-video>
-  </mat-card>
-
+  <h3>{{data.alert_name}}</h3>
+  <div class="desktop-only">
+    <mat-card style="width: 500px; height: 500px">
+      <mat-video *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" [muted]="true" ></mat-video>
+    </mat-card>
+  </div>
+  <div class="mobile-only">
+    <mat-card style="width: auto; height: auto">
+      <mat-video *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" [muted]="true" ></mat-video>
+    </mat-card>
+  </div>
 
 </mat-dialog-content>
 <!--<mat-dialog-actions align="end">-->

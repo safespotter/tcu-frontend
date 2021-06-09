@@ -21,6 +21,7 @@ export class ActionRequestComponent implements OnInit {
               private safespotter: SafespotterService
   ) {
   }
+
   formatUrl = environment.protocol + environment.host + ':' + environment.port;
   @Input() isVideoURLReady;
   videoURL;
@@ -33,8 +34,6 @@ export class ActionRequestComponent implements OnInit {
     let videoURL = '';
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
-        //console.log("videoURL ", data['data'][0]["videoURL"]);
-        //videoURL = String(Object.entries((data['data'])[1])[5][1]);
         videoURL = data['data'][0]['videoURL'];
         this.videoURL = this.formatUrl + videoURL;
         this.isVideoURLReady = true;

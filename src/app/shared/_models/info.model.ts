@@ -4,5 +4,5 @@ export interface Info {
   position: string;
   condition: string;
   anomaly_level: number;
-  alert_type: number;
+  alert_id: number;
 }

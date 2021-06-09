@@ -78,7 +78,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       data: {
         ip: info.condition,
         anomaly_level: info.anomaly_level,
-        alert_id: info.alert_type,
+        alert_id: info.alert_id,
         id: info.id,
         street: info.street,
         position: info.position,
@@ -110,11 +110,12 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       maxWidth: '100vw',
       maxHeight: '100vh',
       data: {
-        condition: info.condition,
         anomaly_level: info.anomaly_level,
+        alert_id: info.alert_id,
         id: info.id,
         street: info.street,
         position: info.position,
+        alert_name: this.datasev.convertAnomalies(info.alert_id)
       }
     });
   }
