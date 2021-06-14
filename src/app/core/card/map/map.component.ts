@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {AgmCoreModule} from '@agm/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {DataService} from '../../../shared/_services/data.service';
 
 @Component({
   selector: 'app-map',
@@ -8,8 +8,11 @@ import {AgmCoreModule} from '@agm/core';
 })
 export class MapComponent implements OnInit {
 
-  constructor() {
+  constructor(private datasev: DataService) {
   }
+
+  @Input() isMarkersReady;
+  markers = [];
 
   zoom = 17;
 
@@ -38,20 +41,21 @@ export class MapComponent implements OnInit {
     minZoom: 8,
   };
 
-  markers = [
-    {
-      lat: 39.25202,
-      lng: 9.13802,
-      label: 'Via Cesare Cabras'
-    },
-    {
-      lat: 39.25791,
-      lng: 9.144299,
-      label: 'Via Seneca'
-    }
-  ];
-
   ngOnInit() {
+    this.getMarkers();
+  }
+
+  getMarkers() {
+    this.datasev.getData().subscribe(result => {
+      for (const el of Object.values(result)) {
+        this.markers.push({
+          lat: el.lat,
+          lng: el.long,
+          label: el.street
+        });
+      }
+      this.isMarkersReady = true;
+    });
   }
 
   onMapReady($event) {
