@@ -24,7 +24,7 @@ export class MapComponent implements OnInit {
   };
 
   icon = {
-    // url: '../../assets/icons/icon-72x72.png',
+    url: '../../assets/icons/map-icon.png',
     scaledSize: {
       width: 30,
       height: 30
