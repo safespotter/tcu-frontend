@@ -11,9 +11,6 @@ export class MapComponent implements OnInit {
   constructor() {
   }
 
-
-  // lat = 39.25202;
-  // long = 9.13802;
   zoom = 17;
 
   labelOptions: {
@@ -21,6 +18,14 @@ export class MapComponent implements OnInit {
     fontFamily: '',
     fontSize: '14px',
     fontWeight: 'bold',
+  };
+
+  icon = {
+    // url: '../../assets/icons/icon-72x72.png',
+    scaledSize: {
+      width: 30,
+      height: 30
+    }
   };
 
   center: google.maps.LatLngLiteral;
@@ -32,6 +37,7 @@ export class MapComponent implements OnInit {
     maxZoom: 30,
     minZoom: 8,
   };
+
   markers = [
     {
       lat: 39.25202,
@@ -44,53 +50,10 @@ export class MapComponent implements OnInit {
       label: 'Via Seneca'
     }
   ];
-  // zoom = 17
 
-
-  //
-  // ngOnInit() {
-  //
-  //   navigator.geolocation.getCurrentPosition(position => {
-  //     this.center = {
-  //       lat: 39.252341,
-  //       lng: 9.137819
-  //     };
-  //   });
-  //
-  // }
-
-  // lat : number;
-  // lng : number;
-  // labelOptions = {
-  //   color: 'black',
-  //   fontFamily: '',
-  //   fontSize: '14px',
-  //   fontWeight: 'bold',
-  //   // text: "SMARTLAMP VIA CABRAS"
-  // }
-  //
   ngOnInit() {
-    // this.prepareMap() ;
   }
 
-  // prepareMap() {
-  //   this.lat = 39.251896;
-  //   this.long = 9.138610;
-  //   // this.lat = 39.487516;
-  //   // this.lng = 9.064641;
-  //   // this.markers;
-  // }
-
-  zoomIn() {
-    if (this.zoom < this.options.maxZoom) this.zoom++;
-  }
-
-  //
-  zoomOut() {
-    if (this.zoom > this.options.minZoom) this.zoom--;
-  }
-
-  //
   onMapReady($event) {
     const trafficLayer = new google.maps.TrafficLayer();
     trafficLayer.setMap($event);
