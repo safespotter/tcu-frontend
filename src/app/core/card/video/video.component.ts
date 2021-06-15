@@ -6,6 +6,7 @@ import {DataService} from '../../../shared/_services/data.service';
 import {MatSelect} from '@angular/material/select';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {environment} from '../../../../environments/environment';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     private datasev: DataService,
     private modalService: BsModalService,
+    private router: Router
   ) {
 
   }
@@ -53,6 +55,16 @@ export class VideoComponent implements OnInit, AfterViewInit {
         class: 'modal-lg modal-dialog-centered',
         keyboard: false
       });
+  }
+
+  openCamStream(){
+    // this.router.navigate(['cam']);
+
+
+    const host: string =  location.origin;
+    const url: string = host + '/#/' + String(this.router.createUrlTree(['/cam']));
+    window.open(url, '_blank');
+
   }
 
   decline = (): void => {

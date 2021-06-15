@@ -53,6 +53,7 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {WeatherService} from '../shared/_services/weather.service';
 import {LamppostConfigurationComponent} from './card/lamppost-configuration/lamppost-configuration.component';
 import {MatSlideToggleModule} from '@angular/material';
+import { CamComponent } from './card/cam/cam.component';
 
 
 
@@ -74,7 +75,8 @@ import {MatSlideToggleModule} from '@angular/material';
     VideoPersonalComponent,
     TablePersonalComponent,
     WeatherComponent,
-    LamppostConfigurationComponent
+    LamppostConfigurationComponent,
+    CamComponent
   ],
   imports: [
     CommonModule,
