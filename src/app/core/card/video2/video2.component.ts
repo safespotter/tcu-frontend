@@ -4,6 +4,7 @@ import {DataService} from '../../../shared/_services/data.service';
 import {forkJoin} from 'rxjs';
 import {MatSelect} from '@angular/material/select';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-video2',
@@ -28,6 +29,7 @@ export class Video2Component implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     private datasev: DataService,
     private modalService: BsModalService,
+    private router: Router
   ) {
 
   }
@@ -51,6 +53,13 @@ export class Video2Component implements OnInit, AfterViewInit {
         class: 'modal-lg modal-dialog-centered',
         keyboard: false
       });
+  }
+
+  openCamStream(){
+    const host: string =  location.origin;
+    const url: string = host + '/#/' + String(this.router.createUrlTree(['cam'], { queryParams: { cam: this.selected }}));
+    window.open(url, '_blank');
+
   }
 
   decline = (): void => {

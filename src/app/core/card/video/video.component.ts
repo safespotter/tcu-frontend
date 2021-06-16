@@ -58,13 +58,9 @@ export class VideoComponent implements OnInit, AfterViewInit {
   }
 
   openCamStream(){
-    // this.router.navigate(['cam']);
-
-
     const host: string =  location.origin;
-    const url: string = host + '/#/' + String(this.router.createUrlTree(['cam']));
+    const url: string = host + '/#/' + String(this.router.createUrlTree(['cam'], { queryParams: { cam: this.selected }}));
     window.open(url, '_blank');
-
   }
 
   decline = (): void => {
