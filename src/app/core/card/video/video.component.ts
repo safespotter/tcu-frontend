@@ -62,7 +62,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
 
 
     const host: string =  location.origin;
-    const url: string = host + '/#/' + String(this.router.createUrlTree(['/cam']));
+    const url: string = host + '/#/' + String(this.router.createUrlTree(['cam']));
     window.open(url, '_blank');
 
   }
