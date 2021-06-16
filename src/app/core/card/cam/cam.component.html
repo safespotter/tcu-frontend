@@ -1,1 +1,16 @@
-<p>cam works!</p>
+<div *ngIf="isLampDataReady">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Lampione di {{lamp_data.street}}</h4>
+  </div>
+  <div class="modal-body">
+    <!--inserire il player-->
+
+      <!--<<canvas #streaming id="canvas"  width="1920" height="1080" style="display: block; width: 40%;"></canvas>-->
+    <mat-card class="card" style="width: auto; height: 1000px; background: url(../../../../assets/img/via_seneca.png);
+      background-repeat: no-repeat;
+      background-size: cover;">
+    </mat-card>
+
+  </div>
+</div>
+
