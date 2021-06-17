@@ -20,14 +20,13 @@ export class CamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getLampData(this.lamp_id);
-
+    this.getLampData();
     // const player = new JSMpeg.Player('rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov', {
     //   canvas: this.streamingcanvas, autoplay: true, audio: false, loop: true
     // });
   }
 
-  getLampData(id) {
+  getLampData() {
     const data = this.datasev.getData().subscribe(
       result => {
         for(const el of Object.values(result)){

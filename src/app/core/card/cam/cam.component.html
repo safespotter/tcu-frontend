@@ -6,10 +6,17 @@
     <!--inserire il player-->
 
       <!--<<canvas #streaming id="canvas"  width="1920" height="1080" style="display: block; width: 40%;"></canvas>-->
-    <mat-card class="card" style="width: auto; height: 1000px; background: url(../../../../assets/img/via_seneca.png);
-      background-repeat: no-repeat;
-      background-size: cover;">
-    </mat-card>
+    <!--<mat-card class="card" style="width: auto; height: 1000px; background: url(../../../../assets/img/via_seneca.png);-->
+      <!--background-repeat: no-repeat;-->
+      <!--background-size: cover;">-->
+    <!--</mat-card>-->
+    <div *ngIf="lamp_data.ip" style="height: auto; width: auto">
+      <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 25%);" src={{lamp_data.ip}}>
+    </div>
+    <div *ngIf="lamp_data.ip == undefined">
+      <h5> Streaming non disponibile</h5>
+    </div>
+
 
   </div>
 </div>
