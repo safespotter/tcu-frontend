@@ -17,7 +17,7 @@ import {DataService} from '../../../shared/_services/data.service';
 export class TablePersonalComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  formatUrl = environment.protocol + environment.host + '/';
+  formatUrl = environment.protocol + environment.ftp + '/';
   displayedColumns = ['date', 'status', 'videoURL'];
   dataSource = new MatTableDataSource();
   statusList = [];

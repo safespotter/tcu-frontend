@@ -22,7 +22,7 @@ export class ActionRequestComponent implements OnInit {
   ) {
   }
 
-  formatUrl = environment.protocol + environment.host + '/';
+  formatUrl = environment.protocol + environment.ftp + '/';
   @Input() isVideoURLReady;
   videoURL;
 

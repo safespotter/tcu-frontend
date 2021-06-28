@@ -1,5 +1,6 @@
 const host = '192.168.1.9';
 const port = '8080';
+const ftp = 'localhost';
 const protocol = 'http://';
 export const environment = {
   production: true,
@@ -7,4 +8,5 @@ export const environment = {
   port: port,
   protocol: protocol,
   SOCKET_ENDPOINT: protocol + host + ':3000',
+  ftp: ftp
 };
