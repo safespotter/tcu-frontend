@@ -12,10 +12,10 @@
     <!--</mat-card>-->
     <div *ngIf="lamp_data.ip">
       <!--<img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 25%); height: 100%" src={{lamp_data.ip}}>-->
-        <img id="browser_video" class="video-image" alt="video" src="{{lamp_data.ip}}" style="margin: auto; border: 1px solid black;">
+        <img id="browser_video" class="video-image" alt="video" src="{{lamp_data.ip}}" style="margin: auto; border: 1px solid black;" onError="this.src = '../../../../assets/img/no-cam.png'">
     </div>
     <div *ngIf="lamp_data.ip == undefined || lamp_data.ip == '' ">
-      <h5> Streaming non disponibile</h5>
+      <h5> Indirizzo camera non disponibile</h5>
     </div>
 
 
