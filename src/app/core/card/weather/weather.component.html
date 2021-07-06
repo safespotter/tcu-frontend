@@ -2,7 +2,7 @@
 
   <mat-card-header>
     <mat-card-title>
-      {{currentWeather.conditions}}
+      {{conditionConverter(currentWeather.conditions)}}
     </mat-card-title>
     <mat-card-subtitle>
       {{currentWeather.time.toLocaleString('it-IT', dateOptions)}}
