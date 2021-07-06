@@ -44,7 +44,7 @@ export class WeatherComponent implements OnInit {
       case 'fog':
         return 'Nebbia';
       case 'light clouds':
-        return 'Parzialmente nuvoloso';
+        return 'Velature';
       case 'clouds':
         return 'Nuvoloso';
       default:

@@ -13,8 +13,8 @@
     <div class="weather-content">
       <div class="weather-main">
 
-        <div class="weather-conditions" tooltip="{{currentWeather.conditions}}">
-          <img src="{{currentWeather.imgUrl}}" alt="{{currentWeather.conditions}}"/>
+        <div class="weather-conditions" tooltip="{{conditionConverter(currentWeather.conditions)}}">
+          <img src="{{currentWeather.imgUrl}}" alt="{{conditionConverter(currentWeather.conditions)}}"/>
 
         </div>
 
