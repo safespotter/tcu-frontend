@@ -1,21 +1,21 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+<div class="mat-elevation-z0">
+  <table mat-table [dataSource]="dataSource" style=" border: 1px solid #cccccc; ">
 
     <!-- Position Column -->
     <ng-container style="margin-left: 35px" matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef style="margin-left: 5px; color: #333333 "> No.</th>
+      <th mat-header-cell *matHeaderCellDef style="margin-left: 5px; color: #333333; border-bottom: 5px solid #75d5e3"> No.</th>
       <td style="height: 65px" mat-cell *matCellDef="let element"> {{element.id}}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef><span style="margin-left: 35px; color: #333333"> Via</span></th>
+      <th mat-header-cell *matHeaderCellDef style="border-bottom: 5px solid #75d5e3"><span style="margin-left: 35px; color: #333333"> Via</span></th>
       <td mat-cell *matCellDef="let element"> {{element.street}}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef class="desktop-only"><span
+      <th mat-header-cell *matHeaderCellDef class="desktop-only" style="border-bottom: 5px solid #75d5e3"><span
         style="margin-left: 0px; color: #333333">Condizione</span></th>
       <td mat-cell *matCellDef="let element" class="desktop-only">
         {{element.condition}}
@@ -25,7 +25,7 @@
     </ng-container>
 
     <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef><span style="margin-left: 30px; color: #333333"
+      <th mat-header-cell *matHeaderCellDef style="border-bottom: 5px solid #75d5e3"><span style="margin-left: 30px; color: #333333"
                                                   class="desktop-only">Allerta</span></th>
       <td class="gauge-container" mat-cell *matCellDef="let element">
         <span class="box">
@@ -41,7 +41,7 @@
     </ng-container>
 
     <ng-container matColumnDef="button">
-      <th mat-header-cell *matHeaderCellDef><span
+      <th mat-header-cell *matHeaderCellDef style="border-bottom: 5px solid #75d5e3"><span
         style="margin-left: 25px; color: #333333" class="desktop-only"> Info</span></th>
       <td mat-cell *matCellDef="let element">
         <div class="desktop-only">
@@ -56,7 +56,7 @@
     </ng-container>
 
     <ng-container matColumnDef='gear'>
-      <th mat-header-cell *matHeaderCellDef></th>
+      <th mat-header-cell *matHeaderCellDef style="border-bottom: 5px solid #75d5e3"></th>
       <td style="margin-right: 50px;" mat-cell *matCellDef="let element">
         <mat-icon (click)="openConfiguration(element)" style=" font-size: 1.73em; color: #666666; cursor: pointer;">
           settings
@@ -65,7 +65,7 @@
     </ng-container>
 
     <ng-container matColumnDef='info'>
-      <th mat-header-cell *matHeaderCellDef class="desktop-only"></th>
+      <th mat-header-cell *matHeaderCellDef class="desktop-only" style="border-bottom: 5px solid #75d5e3"></th>
       <td mat-cell *matCellDef="let element" class="desktop-only">
         <mat-icon style="font-size: 1.73em; color: #666666">info</mat-icon>
 
@@ -73,7 +73,7 @@
     </ng-container>
 
     <ng-container matColumnDef='condition'>
-      <th mat-header-cell *matHeaderCellDef><span style="margin-left: 25px; color: #333333">Anomalia</span>
+      <th mat-header-cell *matHeaderCellDef style="border-bottom: 5px solid #75d5e3"><span style="margin-left: 25px; color: #333333">Anomalia</span>
       </th>
       <td mat-cell *matCellDef="let element">
         <p class="item" style=" font-size: 0.73em; color: #333333; margin: 0px 0px 0px 15px; " *ngIf="element.alert_id == 0"> NESSUNA ANOMALIA
@@ -86,7 +86,7 @@
     </ng-container>
 
     <ng-container matColumnDef="alert">
-      <th mat-header-cell *matHeaderCellDef style="color: #333333"></th>
+      <th mat-header-cell *matHeaderCellDef style="color: #333333; border-bottom: 5px solid #75d5e3"></th>
       <td mat-cell *matCellDef="let element">
         <div class="desktop-only">
         <button class="icon-button-background" [ngClass]="{'icon-button': element.anomaly_level < 3}"
@@ -108,5 +108,5 @@
         *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons style=" border: 1px solid #cccccc; "></mat-paginator>
 </div>
