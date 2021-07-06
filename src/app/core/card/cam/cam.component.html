@@ -3,16 +3,9 @@
     <h4 class="modal-title" id="modal-basic-title">Lampione di {{lamp_data.street}}</h4>
   </div>
   <div class="modal-body">
-    <!--inserire il player-->
-
-      <!--<<canvas #streaming id="canvas"  width="1920" height="1080" style="display: block; width: 40%;"></canvas>-->
-    <!--<mat-card class="card" style="width: auto; height: 1000px; background: url(../../../../assets/img/via_seneca.png);-->
-      <!--background-repeat: no-repeat;-->
-      <!--background-size: cover;">-->
-    <!--</mat-card>-->
     <div *ngIf="lamp_data.ip">
-      <!--<img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 25%); height: 100%" src={{lamp_data.ip}}>-->
-        <img id="browser_video" class="video-image" alt="video" src="{{lamp_data.ip}}" style="margin: auto; border: 1px solid black;" onError="this.src = '../../../../assets/img/no-cam.png'">
+      <img id="browser_video" class="video-image" alt="video" src={{lamp_data.ip}}
+           style="margin: auto; border: 1px solid black;" onError="this.src = '../../../../assets/img/no-cam.png'">
     </div>
     <div *ngIf="lamp_data.ip == undefined || lamp_data.ip == '' ">
       <h5> Indirizzo camera non disponibile</h5>

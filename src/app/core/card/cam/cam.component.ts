@@ -33,6 +33,7 @@ export class CamComponent implements OnInit {
           if (el.id == this.lamp_id){
             this.isLampDataReady = true;
             this.lamp_data = el;
+            this.lamp_data.ip = this.lamp_data.ip + '/axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
           }
         }
       }

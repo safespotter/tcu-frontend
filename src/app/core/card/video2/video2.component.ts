@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import JSMpeg from 'jsmpeg-player';
 import {DataService} from '../../../shared/_services/data.service';
 import {forkJoin} from 'rxjs';
@@ -25,6 +25,9 @@ export class Video2Component implements OnInit, AfterViewInit {
   safeList: any;
   modalRef: BsModalRef;
 
+  @Input() isLampDataReady;
+  lamp_data;
+
   constructor(
     private renderer: Renderer2,
     private datasev: DataService,
@@ -37,12 +40,14 @@ export class Video2Component implements OnInit, AfterViewInit {
   async ngOnInit() {
     this.safeList = await this.datasev.getData().toPromise();
     this.selected = this.safeList[1].id.toString(); // il secondo della lista
+    this.getLampData();
   }
 
   ngAfterViewInit() {
 
     this.matSelect.valueChange.subscribe(value => {
       this.selected = value;
+      this.getLampData();
       // const player2 = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas2'), autoplay: true, audio: false, loop: true});
     });
   }
@@ -70,5 +75,19 @@ export class Video2Component implements OnInit, AfterViewInit {
     return this.safeList.findIndex(obj => obj.id === parseInt(id, 10));
   }
 
+  getLampData() {
+    const data = this.datasev.getData().subscribe(
+      result => {
+        for(const el of Object.values(result)){
+          if (el.id == this.selected){
+            this.isLampDataReady = true;
+            this.lamp_data = el;
+            this.lamp_data.ip = this.lamp_data.ip + '/axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
+            console.log("this.lamp data_2", this.lamp_data);
+          }
+        }
+      }
+    );
+  }
 }
 

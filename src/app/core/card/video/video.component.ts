@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {MatVideoComponent} from 'mat-video/lib/video.component';
 import JSMpeg from 'jsmpeg-player';
 import {ONVIFService} from 'onvif-rx-angular';
@@ -25,6 +25,10 @@ export class VideoComponent implements OnInit, AfterViewInit {
   title: string;
   selected: string;
   safeList: any;
+
+  @Input() isLampDataReady;
+  lamp_data;
+
   formatUrl = environment.protocol + environment.host + ':' + environment.port;
 
   constructor(
@@ -39,11 +43,13 @@ export class VideoComponent implements OnInit, AfterViewInit {
   async ngOnInit() {
     this.safeList = await this.datasev.getData().toPromise();
     this.selected = this.safeList[0].id.toString(); // il primo nella lista
+    this.getLampData();
   }
 
   ngAfterViewInit() {
     this.matSelect.valueChange.subscribe(value => {
       this.selected = value;
+      this.getLampData();
       //console.log('value selected ', value);
       //   const player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true});
     });
@@ -71,32 +77,18 @@ export class VideoComponent implements OnInit, AfterViewInit {
     return this.safeList.findIndex(obj => obj.id === parseInt(id, 10));
   }
 
-  //Da eliminare quando si avrà il flusso video
-  getImgSrc = (): string => {
-
-    switch (this.selected) {
-      case '1':
-        return '/assets/img/im1.jpg';
-      case '2':
-        return '../../../../assets/img/im2.jpg';
-      case '3':
-        return '../../../../assets/img/im1.jpg';
-      case '4':
-        return '../../../../assets/img/im2.jpg';
-      case '5':
-        return '../../../../assets/img/im1.jpg';
-      case '6':
-        return '../../../../assets/img/im2.jpg';
-      case '7':
-        return '../../../../assets/img/im1.jpg';
-      case '8':
-        return '../../../../assets/img/im2.jpg';
-      case '9':
-        return '../../../../assets/img/im1.jpg';
-      case '10':
-        return '../../../../assets/img/im2.jpg';
-      default:
-        return '../../../../assets/img/im1.jpg';
-    }
+  getLampData() {
+    const data = this.datasev.getData().subscribe(
+      result => {
+        for(const el of Object.values(result)){
+          if (el.id == this.selected){
+            this.isLampDataReady = true;
+            this.lamp_data = el;
+            this.lamp_data.ip = this.lamp_data.ip + '/axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
+            console.log("this.lamp data_1", this.lamp_data);
+          }
+        }
+      }
+    );
   }
 }
