@@ -1,38 +1,40 @@
-<mat-card>
-    <mat-card-content *ngIf="isLampDataReady" (click)="openCamStream()" style="cursor: pointer">
-      <img id="browser_video" class="video-image" alt="video"
-           src={{lamp_data.ip}}
-           style="margin: auto; border: 1px solid black;" onError="this.src = '../../../../assets/img/no-cam.png'">
-    </mat-card-content>
+<mat-card style="border:0px;
+  border-radius: 0px;
+  box-shadow: none;">
+  <mat-card-content *ngIf="isLampDataReady" (click)="openCamStream()" style="cursor: pointer;">
+    <img id="browser_video" class="video-image" alt="video"
+         src={{lamp_data.ip}}
+         style="margin: auto; border: 1px solid black;" onError="this.src = '../../../../assets/img/no-cam.png'">
+  </mat-card-content>
 
-      <mat-form-field style="text-align: center">
-        <mat-select #matSelect required [(value)]="selected">
-          <mat-option *ngFor="let element of safeList" value="{{element.id}}">
-            {{element.street}}
-            <span class="dot"
-                  [ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-  </mat-card>
+  <mat-form-field style="text-align: center">
+    <mat-select #matSelect required [(value)]="selected">
+      <mat-option *ngFor="let element of safeList" value="{{element.id}}">
+        {{element.street}}
+        <span class="dot"
+              [ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
 
-  <ng-template #mymodal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Lampione di {{safeList[getIndexFromId(selected)].street}}</h4>
-      <button type="button" class="close" aria-label="Close" (click)="decline()">
-        <span aria-hidden="true">x</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <mat-card class="card" style="height:500px; background: url(../../../../assets/img/via_cabras.png);
+<ng-template #mymodal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Lampione di {{safeList[getIndexFromId(selected)].street}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="decline()">
+      <span aria-hidden="true">x</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <mat-card class="card" style="height:500px; background: url(../../../../assets/img/via_cabras.png);
       background-repeat: no-repeat;
       background-size: cover;">
-        <!--    <canvas  class="video" id="canvas"  ></canvas>-->
-      </mat-card>
-      <div>
-        <button mat-raised-button class="cam-button" onclick="window.open('','_blank')">
-          Apri camera brandeggiabile
-        </button>
-      </div>
+      <!--    <canvas  class="video" id="canvas"  ></canvas>-->
+    </mat-card>
+    <div>
+      <button mat-raised-button class="cam-button" onclick="window.open('','_blank')">
+        Apri camera brandeggiabile
+      </button>
     </div>
-  </ng-template>
+  </div>
+</ng-template>

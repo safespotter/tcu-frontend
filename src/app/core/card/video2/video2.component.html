@@ -1,16 +1,6 @@
-<!--<mat-card class="card2">-->
-<!--  <mat-card class="card">-->
-
-<!--  <canvas  class="video" id="canvas2"  ></canvas>-->
-<!--</mat-card>-->
-<!--<mat-form-field >-->
-<!--  <mat-select  #matSelect required>-->
-<!--    <mat-option *ngFor="let element of safeList" value="{{element.ip}}">{{element.street}}</mat-option>-->
-<!--  </mat-select>-->
-<!--</mat-form-field>-->
-<!--</mat-card>-->
-
-<mat-card>
+<mat-card style="border:0px;
+  border-radius: 0px;
+  box-shadow: none;">
   <mat-card-content *ngIf="isLampDataReady" (click)="openCamStream()" style="cursor: pointer">
     <img id="browser_video" class="video-image" alt="video"
          src={{lamp_data.ip}}

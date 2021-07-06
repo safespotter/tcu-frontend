@@ -12,6 +12,9 @@ mat-card-header {
 
 .weather-card {
   margin: auto;
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
 }
 
 .weather-content {
@@ -28,8 +31,8 @@ mat-card-header {
 }
 
 .weather-main {
+  border-top: 10px solid #75d5e3;
   background: $accent;
-  border-radius: 5pt;
   width: 100%;
 }
 
@@ -39,7 +42,7 @@ mat-card-header {
   padding-left: .5em;
 }
 
-.weather-conditions{
+.weather-conditions {
   display: flex;
   justify-content: center;
 }
@@ -60,7 +63,8 @@ mat-card-header {
   line-height: 2em;
 }
 
-.weather-label {}
+.weather-label {
+}
 
 .weather-value {
   float: right;
