@@ -12,7 +12,10 @@ export class MapComponent implements OnInit {
   }
 
   @Input() isMarkersReady;
+  @Input() receivedFromTable;
+
   @Output() mapSelected = new EventEmitter<string>();
+
   markers = [];
   selectedLat;
   selectedLong;
@@ -63,7 +66,7 @@ export class MapComponent implements OnInit {
       for (const el of Object.values(result)) {
         this.markers.push({
           lat: el.lat,
-          lng: el.long,
+          long: el.long,
           label: el.street,
           id: el.id,
           ip: el.ip
@@ -80,6 +83,11 @@ export class MapComponent implements OnInit {
 
   markerClicked($event: MouseEvent) {
     this.mapSelected.emit(Object($event));
+  }
+
+  updateCoordinates (lat, long){
+    this.selectedLat = lat;
+    this.selectedLong = long;
   }
 
 }
