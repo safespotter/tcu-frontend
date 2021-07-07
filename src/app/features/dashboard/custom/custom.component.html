@@ -10,8 +10,8 @@
   </div>
   <div class="row secondRow">
     <div class="col-sm d-none d-md-block">
-      <app-video></app-video>
-      <app-map>
+      <app-video [receivedFromMap]="mapToVideo"></app-video>
+      <app-map (mapSelected)="receiveFromMapSendToVideo($event)">
       </app-map>
 
     </div>

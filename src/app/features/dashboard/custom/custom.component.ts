@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, TemplateRef} from '@angular/core';
 //import {BsLocaleService, BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {BreadcrumbActions} from '../../../core/breadcrumb/breadcrumb.actions';
 import {GlobalEventsManagerService} from '../../../shared/_services/global-event-manager.service';
@@ -69,6 +69,14 @@ export class CustomComponent implements OnInit {
         this.dateChoice = this.GEService.getStringFilterDate('FILTER_DATE', 'LAST_30');
       }
     });
+  }
+
+  received: string;
+  mapToVideo: string;
+
+  receiveFromMapSendToVideo($event) {
+    this.received = $event;
+    this.mapToVideo = this.received;
   }
 
   modalRef: BsModalRef;

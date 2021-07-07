@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DataService} from '../../../shared/_services/data.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class MapComponent implements OnInit {
   }
 
   @Input() isMarkersReady;
+  @Output() mapSelected = new EventEmitter<string>();
   markers = [];
 
   zoom = 17;
@@ -60,7 +61,8 @@ export class MapComponent implements OnInit {
           lat: el.lat,
           lng: el.long,
           label: el.street,
-          id: el.id
+          id: el.id,
+          ip: el.ip
         });
       }
       this.isMarkersReady = true;
@@ -73,8 +75,7 @@ export class MapComponent implements OnInit {
   }
 
   markerClicked($event: MouseEvent) {
-    console.log('clicked');
-    console.log($event);
+    this.mapSelected.emit(Object($event));
   }
 
 }

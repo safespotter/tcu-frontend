@@ -29,6 +29,8 @@ export class VideoComponent implements OnInit, AfterViewInit {
   @Input() isLampDataReady;
   lamp_data;
 
+  @Input() receivedFromMap;
+
   formatUrl = environment.protocol + environment.host + ':' + environment.port;
 
   constructor(
@@ -47,12 +49,12 @@ export class VideoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.matSelect.valueChange.subscribe(value => {
-      this.selected = value;
-      this.getLampData();
-      //console.log('value selected ', value);
-      //   const player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true});
-    });
+    // this.matSelect.valueChange.subscribe(value => {
+    //   this.selected = value;
+    //   this.getLampData();
+    //   //console.log('value selected ', value);
+    //   //   const player = new JSMpeg.Player ('ws://localhost:9999', {canvas: document.getElementById('canvas'), autoplay: true, audio: false, loop: true});
+    // });
   }
 
   openModal(modal) {
@@ -63,9 +65,9 @@ export class VideoComponent implements OnInit, AfterViewInit {
       });
   }
 
-  openCamStream(){
-    const host: string =  location.origin;
-    const url: string = host + '/#/' + String(this.router.createUrlTree(['cam'], { queryParams: { cam: this.selected }}));
+  openCamStream(received) {
+    const host: string = location.origin;
+    const url: string = host + '/#/' + String(this.router.createUrlTree(['cam'], {queryParams: {cam: received}}));
     window.open(url, '_blank');
   }
 
@@ -77,11 +79,15 @@ export class VideoComponent implements OnInit, AfterViewInit {
     return this.safeList.findIndex(obj => obj.id === parseInt(id, 10));
   }
 
+  combineUrl(str1) {
+    return str1 + 'axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
+  }
+
   getLampData() {
     const data = this.datasev.getData().subscribe(
       result => {
-        for(const el of Object.values(result)){
-          if (el.id == this.selected){
+        for (const el of Object.values(result)) {
+          if (el.id == this.selected) {
             this.isLampDataReady = true;
             this.lamp_data = el;
             this.lamp_data.ip = this.lamp_data.ip + '/axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
