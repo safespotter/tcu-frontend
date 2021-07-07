@@ -31,14 +31,22 @@ export class MapComponent implements OnInit {
     }
   };
 
+  styles = [{
+    featureType: "poi",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  }];
+
   center: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
-    mapTypeId: 'roadmap',
+    mapTypeId: 'satellite',
     zoomControl: false,
     scrollwheel: false,
     disableDoubleClickZoom: true,
     maxZoom: 30,
-    minZoom: 8,
+    minZoom: 8
   };
 
   ngOnInit() {
