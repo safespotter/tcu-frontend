@@ -10,7 +10,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef style="border-bottom: 5px solid #75d5e3"><span style="margin-left: 35px; color: #333333"> Via</span></th>
-      <td mat-cell *matCellDef="let element"> {{element.street}}</td>
+      <td mat-cell *matCellDef="let element" (click)="getValueFromClick(element)" style="cursor: pointer"> {{element.street}}</td>
     </ng-container>
 
     <!-- Weight Column -->

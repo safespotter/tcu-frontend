@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Directive, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Directive, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
@@ -32,6 +32,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   grey = 0;
   flag = false;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @Output() elementSelected = new EventEmitter<string>();
 
   constructor(
     public dialog: MatDialog,
@@ -57,7 +58,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         }
       }
 
-      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'info', 'condition',  'alert', 'button', 'gear'] :
+      this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'info', 'condition', 'alert', 'button', 'gear'] :
         this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'info', 'condition', 'button', 'gear'];
       // this.timerChamge();
 
@@ -143,6 +144,11 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
+  getValueFromClick($event) {
+
+    this.elementSelected.emit(Object(Object($event)));
+
+  }
 
   //
   // async timerChamge() {
