@@ -59,7 +59,8 @@ export class MapComponent implements OnInit {
         this.markers.push({
           lat: el.lat,
           lng: el.long,
-          label: el.street
+          label: el.street,
+          id: el.id
         });
       }
       this.isMarkersReady = true;
@@ -69,6 +70,11 @@ export class MapComponent implements OnInit {
   onMapReady($event) {
     const trafficLayer = new google.maps.TrafficLayer();
     trafficLayer.setMap($event);
+  }
+
+  markerClicked($event: MouseEvent) {
+    console.log('clicked');
+    console.log($event);
   }
 
 }
