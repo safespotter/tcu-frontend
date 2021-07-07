@@ -18,7 +18,7 @@
     <!--<agm-marker [latitude]="lat" [longitude]="lng" [label]="labelOptions"></agm-marker>-->
   <!--</agm-map>-->
 
-  <agm-map *ngIf="isMarkersReady" (mapReady)="onMapReady($event)" [latitude]='markers[0].lat' [longitude]='markers[0].lng' [zoom]='zoom' [disableDefaultUI] = true [clickableIcons] = false [styles]="styles" >
+  <agm-map *ngIf="isMarkersReady" (mapReady)="onMapReady($event)" [latitude]='selectedLat' [longitude]='selectedLong' [zoom]='zoom' [disableDefaultUI] = true [clickableIcons] = false [styles]="styles" >
     <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [label]="labelOptions" [iconUrl]="$any(icon)" (markerClick)="markerClicked(marker)">
       <agm-info-window #infoWindow>{{ marker.label }}</agm-info-window>
     </agm-marker>

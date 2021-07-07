@@ -14,6 +14,8 @@ export class MapComponent implements OnInit {
   @Input() isMarkersReady;
   @Output() mapSelected = new EventEmitter<string>();
   markers = [];
+  selectedLat;
+  selectedLong;
 
   zoom = 17;
 
@@ -56,6 +58,8 @@ export class MapComponent implements OnInit {
 
   getMarkers() {
     this.datasev.getData().subscribe(result => {
+      this.selectedLat = Object.values(result)[0].lat;
+      this.selectedLong = Object.values(result)[0].long;
       for (const el of Object.values(result)) {
         this.markers.push({
           lat: el.lat,
