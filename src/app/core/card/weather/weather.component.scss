@@ -2,7 +2,7 @@ div {
   //border: 1pt #6600cc55 solid;
 }
 
-$accent: #acf5fb;
+$accent: #D9EEF1;
 
 mat-card-header {
   justify-content: center;
@@ -15,11 +15,14 @@ mat-card-header {
   border: 0px;
   border-radius: 0px;
   box-shadow: none;
+  padding: 0px;
+  //height: 20px;
 }
 
 .weather-content {
   display: flex;
   flex-direction: column;
+  //align-items: baseline;
 }
 
 .weather-main, .weather-details {
@@ -27,11 +30,12 @@ mat-card-header {
   //border: 2pt #cc000055 solid;
   justify-content: space-evenly;
   box-sizing: border-box;
-  padding: 2pt;
+  padding-top: 10pt;
+  align-items: flex-start;
 }
 
 .weather-main {
-  border-top: 10px solid #75d5e3;
+  border-bottom: 5px solid #75d5e3;
   background: $accent;
   width: 100%;
 }
@@ -70,4 +74,9 @@ mat-card-header {
   float: right;
 }
 
+.weather-style {
+  border-right: 1px solid black ;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
