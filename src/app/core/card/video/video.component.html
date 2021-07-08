@@ -12,7 +12,7 @@ margin-top:40px">
 <!--position: fixed;-->
   <mat-card-content *ngIf="receivedFromMap" (click)="openCamStream(receivedFromMap.id)" style="cursor: pointer;">
     <img id="browser_video" class="video-image" alt="video"
-         src={{combineUrl(receivedFromMap.ip)}}
+         src={{combineUrl(receivedFromMap.ip_cam_fix)}}
          style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'">
   </mat-card-content>
 

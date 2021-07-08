@@ -69,7 +69,7 @@ export class MapComponent implements OnInit {
           long: el.long,
           label: el.street,
           id: el.id,
-          ip: el.ip
+          ip_cam_fix: el.ip_cam_fix
         });
       }
       this.isMarkersReady = true;

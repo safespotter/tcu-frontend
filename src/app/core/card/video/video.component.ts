@@ -90,7 +90,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
           if (el.id == this.selected) {
             this.isLampDataReady = true;
             this.lamp_data = el;
-            this.lamp_data.ip = this.lamp_data.ip + '/axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
+            this.lamp_data.ip_cam_fix = this.lamp_data.ip_cam_fix + '/axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
             // console.log("this.lamp data_1", this.lamp_data);
           }
         }

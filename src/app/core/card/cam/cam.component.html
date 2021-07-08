@@ -3,11 +3,11 @@
     <h4 class="modal-title" id="modal-basic-title">Lampione di {{lamp_data.street}}</h4>
   </div>
   <div class="modal-body">
-    <div *ngIf="lamp_data.ip">
-      <img id="browser_video" class="video-image" alt="video" src={{lamp_data.ip}}
+    <div *ngIf="lamp_data.ip_cam_fix">
+      <img id="browser_video" class="video-image" alt="video" src={{lamp_data.ip_cam_fix}}
            style="margin: auto; border: 1px solid black;" onError="this.src = '../../../../assets/img/no-cam.png'">
     </div>
-    <div *ngIf="lamp_data.ip == undefined || lamp_data.ip == '' ">
+    <div *ngIf="lamp_data.ip_cam_fix == undefined || lamp_data.ip_cam_fix == '' ">
       <h5> Indirizzo camera non disponibile</h5>
     </div>
 
