@@ -13,6 +13,13 @@
   font-size:48px !important;
 }
 
+.cam-button{
+  float: right;
+  margin-top: 20px;
+  background-color: #4267B2;
+  color: white;
+}
+
 @media screen and (min-width: 721px){
   .desktop-only {
     visibility: visible;
