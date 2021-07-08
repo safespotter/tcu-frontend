@@ -25,5 +25,6 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #112b41;
+  background-color: #0073e6; /* For browsers that do not support gradients */
+  background-image: linear-gradient(#0073e6, #0059b3);
 }

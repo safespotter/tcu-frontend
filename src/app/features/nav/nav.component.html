@@ -205,7 +205,7 @@
         <!--<mat-icon *ngIf="drawer.opened" aria-label="Side nav toggle icon">chevron_left</mat-icon>-->
         <!--<mat-icon *ngIf="!drawer.opened" aria-label="Side nav toggle icon">menu</mat-icon>-->
       <!--</button>-->
-      <span>{{title}}</span>
+      <span style="font-size: 18pt"><img src="./../../../assets/icons/logo.png" style="padding-right: 10px"> {{title}}</span>
       <span style=" position: absolute; left: 50%; transform: translateX(-50%);" class="d-none d-lg-block">Framework basato su IA per monitoraggio anomalie di traffico</span>
       <button mat-icon-button class="more-button rightPositionIcon" [matMenuTriggerFor]="listSafe" aria-label="Toggle menu"
               *ngIf="isUserLoggedIn">
