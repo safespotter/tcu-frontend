@@ -57,11 +57,13 @@
 
     <ng-container matColumnDef='gear'>
       <th mat-header-cell *matHeaderCellDef style="border-bottom: 5px solid #75d5e3"></th>
-      <td style="margin-right: 50px;" mat-cell *matCellDef="let element">
+      <td style="padding-right: 0px;" mat-cell *matCellDef="let element">
         <!--<mat-icon (click)="openConfiguration(element)" style=" font-size: 1.73em; color: #666666; cursor: pointer;">-->
           <!--settings-->
         <!--</mat-icon>-->
-        <img src="./../../../../assets/icons/gear.png" (click)="openConfiguration(element)" style="cursor: pointer;" tooltip="Configura lampione">
+        <img src="./../../../../assets/icons/cam_brand.png" style="cursor: pointer; margin-right: 20px; float: right;" tooltip="Camera brandeggiabile">
+        <img src="./../../../../assets/icons/cam_fix.png" style="cursor: pointer; margin-right: 10px; float: right;" tooltip="Camera fissa">
+        <img src="./../../../../assets/icons/gear.png" (click)="openConfiguration(element)" style="cursor: pointer; margin-right: 10px; float: right;" tooltip="Configura lampione">
       </td>
     </ng-container>
 
