@@ -1,30 +1,9 @@
-<mat-card style="border:0px;
-padding: 0px;
-border-radius: 0px;
-/*box-shadow: none;*/
-box-shadow:2px 2px 10px #2f353a;
-/*background-color: transparent;*/
-position: fixed;
-z-index: 1000;
-right: 50px;
-margin-top:40px">
-<!--z-index: 1000;-->
-<!--position: fixed;-->
+<mat-card style="border:0px;padding: 0px;border-radius: 0px;box-shadow:2px 2px 10px #2f353a;position: fixed;z-index: 1000;right: 50px;margin-top:40px">
   <mat-card-content *ngIf="receivedFromMap" (click)="openCamStream(receivedFromMap.id)" style="cursor: pointer;">
-    <img id="browser_video" class="video-image" alt="video"
+    <img id="browser_video" class="video-image" alt="video" tooltip="Clicca per ingrandire"
          src={{combineUrl(receivedFromMap.ip_cam_fix)}}
          style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'">
   </mat-card-content>
-
-  <!--<mat-form-field style="text-align: center">-->
-    <!--<mat-select #matSelect required [(value)]="selected">-->
-      <!--<mat-option *ngFor="let element of safeList" value="{{element.id}}">-->
-        <!--{{element.street}}-->
-        <!--<span class="dot"-->
-              <!--[ngClass]="{'dot-red' : element.condition == 'Non Connesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Trasmissione dati'}"></span>-->
-      <!--</mat-option>-->
-    <!--</mat-select>-->
-  <!--</mat-form-field>-->
 </mat-card>
 
 <!--<ng-template #mymodal>-->

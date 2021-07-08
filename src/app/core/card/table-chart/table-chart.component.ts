@@ -105,7 +105,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     }
   }
 
-  openDialogrequest(info: Info) {
+  openDialogrequest(info) {
     this.dialog.open(ActionRequestComponent, {
       height: '90%',
       maxWidth: '100vw',
@@ -116,7 +116,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         id: info.id,
         street: info.street,
         position: info.position,
-        alert_name: this.datasev.convertAnomalies(info.alert_id)
+        alert_name: this.datasev.convertAnomalies(info.alert_id),
+        ip_cam_brand: info.ip_cam_brand
       }
     });
   }

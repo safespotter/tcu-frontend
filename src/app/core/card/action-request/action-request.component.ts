@@ -52,6 +52,10 @@ export class ActionRequestComponent implements OnInit {
     this.datasev.actionRequest(param).subscribe();
   }
 
+  openCam(){
+    window.open(this.data.ip_cam_brand, '_blank');
+  }
+
 }
 
 

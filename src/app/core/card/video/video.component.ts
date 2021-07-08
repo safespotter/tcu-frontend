@@ -71,10 +71,6 @@ export class VideoComponent implements OnInit, AfterViewInit {
     window.open(url, '_blank');
   }
 
-  decline = (): void => {
-    this.modalRef.hide();
-  }
-
   getIndexFromId(id) {
     return this.safeList.findIndex(obj => obj.id === parseInt(id, 10));
   }
@@ -82,6 +78,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
   combineUrl(str1) {
     return str1 + 'axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
   }
+
 
   getLampData() {
     const data = this.datasev.getData().subscribe(
@@ -91,7 +88,6 @@ export class VideoComponent implements OnInit, AfterViewInit {
             this.isLampDataReady = true;
             this.lamp_data = el;
             this.lamp_data.ip_cam_fix = this.lamp_data.ip_cam_fix + '/axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
-            // console.log("this.lamp data_1", this.lamp_data);
           }
         }
       }
