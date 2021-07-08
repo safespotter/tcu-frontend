@@ -79,6 +79,10 @@ export class VideoComponent implements OnInit, AfterViewInit {
     return str1 + 'axis-cgi/mjpg/video.cgi?date=1&clock=1&resolution=1920x1080';
   }
 
+  closeVideo(){
+    this.receivedFromMap = null;
+  }
+
 
   getLampData() {
     const data = this.datasev.getData().subscribe(
