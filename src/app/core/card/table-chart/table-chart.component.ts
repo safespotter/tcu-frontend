@@ -122,6 +122,10 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
+  openCam(link){
+    window.open(link, '_blank');
+  }
+
   openConfiguration(info: LamppostConfiguration) {
 
     this.safeSpotter.getLamppostConfiguration(info.id).subscribe(result => {
