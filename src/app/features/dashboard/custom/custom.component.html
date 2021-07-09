@@ -9,7 +9,7 @@
     <!--</div>-->
   </div>
   <div class="row secondRow">
-    <div class="col-sm d-none d-md-block">
+    <div class="col-sm">
       <app-video [receivedFromMap]="mapToVideo"></app-video>
       <app-map (mapSelected)="receiveFromMapSendToVideo($event)" [receivedFromTable]="mapToVideo">
       </app-map>
