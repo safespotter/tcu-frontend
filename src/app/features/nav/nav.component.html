@@ -209,22 +209,22 @@
       <span style=" position: absolute; left: 50%; transform: translateX(-50%);" class="d-none d-lg-block">Framework basato su IA per monitoraggio anomalie di traffico</span>
       <button mat-icon-button class="more-button rightPositionIcon" [matMenuTriggerFor]="listSafe" aria-label="Toggle menu"
               *ngIf="isUserLoggedIn">
-        <mat-icon class='mat-icon-custom' svgIcon="bell"  matBadge="{{count}}" matBadgeColor="warn" *ngIf="count>0"></mat-icon>
-        <mat-icon class='mat-icon-custom' svgIcon="bell" matBadgeColor="warn" *ngIf="count==0"></mat-icon>
+        <mat-icon class='mat-icon-custom' svgIcon="bell"   matBadge="{{count}}" matBadgeColor="warn" *ngIf="count>0"></mat-icon>
+        <mat-icon class='mat-icon-custom' svgIcon="bell" matBadgeColor="warn" *ngIf="count==0" tooltip="Nessuna notifica"></mat-icon>
         <!-- Include text description of the icon's meaning for screen-readers -->
 
       </button>
       <button mat-icon-button class="more-button rightPosition" [matMenuTriggerFor]="menu" aria-label="Toggle menu"
-              *ngIf="isUserLoggedIn">
+              *ngIf="isUserLoggedIn" style="margin-right: 10px" tooltip="Opzioni account">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item (click)="onLogout($event)">Log Out</button>
+        <button mat-menu-item (click)="onLogout($event)">Esci</button>
         <!--        <button mat-menu-item>about</button>-->
       </mat-menu>
       <mat-menu #listSafe="matMenu" xPosition="before">
-        <button mat-menu-item  *ngFor="let element of listCritical" (click)="checkNotification($event, element)"> {{element.alert_name}} in {{element.street}}</button>
-        <!--        <button mat-menu-item>about</button>-->
+        <button mat-menu-item *ngFor="let element of listCritical" (click)="checkNotification($event, element)"> {{element.alert_name}} in {{element.street}}</button>
+                <!--<button mat-menu-item>about</button>-->
       </mat-menu>
     </mat-toolbar>
     <!-- Add Content Here -->
