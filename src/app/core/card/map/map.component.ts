@@ -25,7 +25,7 @@ export class MapComponent implements OnInit {
   selectedLat;
   selectedLong;
 
-  zoom = 17;
+  zoom = 18;
 
   labelOptions: {
     color: 'black',
@@ -65,9 +65,10 @@ export class MapComponent implements OnInit {
       this.markers = [];
       this.circles = [];
       const tmp = res[0];
-      this.selectedLat = tmp[0].lat;
-      this.selectedLong = tmp[0].long;
       for (const el of tmp) {
+        if (el.id == 1) {
+          this.updateCoordinates(el.lat, el.long);
+        }
         this.markers.push({
           lat: el.lat,
           long: el.long,
@@ -77,6 +78,7 @@ export class MapComponent implements OnInit {
         });
         this.isMarkersReady = true;
         if (el.anomaly_level == 4) {
+          // this.updateCoordinates(el.lat, el.long);
           this.circles.push({lat: el.lat, long: el.long});
         }
       }
@@ -116,6 +118,7 @@ export class MapComponent implements OnInit {
   }
 
   updateCoordinates(lat, long) {
+    console.log('entro');
     this.selectedLat = lat;
     this.selectedLong = long;
   }
