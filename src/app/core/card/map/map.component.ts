@@ -79,9 +79,11 @@ export class MapComponent implements OnInit {
         this.isMarkersReady = true;
         if (el.anomaly_level == 4) {
           // this.updateCoordinates(el.lat, el.long);
-          this.circles.push({lat: el.lat, long: el.long});
+          this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003});
         }
       }
+
+      console.log ("circles ", this.circles);
     });
     //this.getMarkers();
   }
@@ -118,7 +120,6 @@ export class MapComponent implements OnInit {
   }
 
   updateCoordinates(lat, long) {
-    console.log('entro');
     this.selectedLat = lat;
     this.selectedLong = long;
   }
