@@ -3,7 +3,9 @@
 </button>
 <h2 mat-dialog-title>Video anomalia</h2>
 <mat-dialog-content class="mat-typography">
-  <h3>Clip video acquisita durante l'anomalia <b>{{data.alert_name}}</b>, rilevata dal lampione situato in {{data.street}}, in data {{this.formatDate(data.date)}} </h3>
+  <h4>Clip video acquisita durante l'anomalia <b>{{data.alert_name}}</b>,</h4>
+  <h4>rilevata dal lampione situato in <b>{{data.street}}</b>,</h4>
+  <h4>in data <b>{{this.formatDate(data.date)}}</b></h4>
   <div class="desktop-only">
     <mat-card style="width: 500px; height: 500px">
       <mat-video *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" [muted]="true" ></mat-video>
