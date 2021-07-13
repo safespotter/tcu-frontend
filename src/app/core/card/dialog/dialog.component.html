@@ -3,15 +3,15 @@
 </button>
 <h2 mat-dialog-title>{{"Lampione di " + data.street}}</h2>
 <mat-dialog-content class="mat-typography" style="padding: 10px 10px 10px 10px">
-  <div class="row">
+  <!--<div class="row">-->
 
     <!--<div class="col-sm" style="width: 400px; ">-->
     <!--<app-map></app-map>-->
     <!--</div>-->
-    <div class="col-sm">
-      <app-video-personal></app-video-personal>
-    </div>
-  </div>
+    <!--<div class="col-sm">-->
+      <!--<app-video-personal></app-video-personal>-->
+    <!--</div>-->
+  <!--</div>-->
   <!--<h3>{{data.ip}}</h3>-->
   <!--<p>{{data.critical_issues}}</p>-->
   <!--<mat-form-field>-->
@@ -21,9 +21,15 @@
   <!--</select>-->
   <!--</label>-->
   <!--</mat-form-field>-->
-  <div class="col-sm">
-    <mat-card class="card" style="  height:200px; background: url(../../../../assets/img/im1.jpg);
-  background-repeat: no-repeat; background-size: cover;"></mat-card>
+  <div class="col">
+    <p>Latitudine: {{data.lat}}</p>
+    <p>Longitudine: {{data.long}}</p>
+    <p>Data ultima modifica: {{this.formatDate(data.date)}}</p>
+    <p>Ip camera fissa: {{data.ip_cam_fix}}</p>
+    <p>Ip camera brandeggiabile: {{data.ip_cam_brand}}</p>
+
+    <!--<mat-card class="card" style="  height:200px; background: url(../../../../assets/img/im1.jpg);-->
+  <!--background-repeat: no-repeat; background-size: cover;"></mat-card>-->
   </div>
 </mat-dialog-content>
 <h2 mat-dialog-title>Storico </h2>

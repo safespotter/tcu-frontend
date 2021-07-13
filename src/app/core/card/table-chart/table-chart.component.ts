@@ -71,18 +71,21 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openDialog(info: Info) {
+  openDialog(info) {
     this.dialog.open(DialogComponent, {
       height: '90%',
       maxWidth: '100vw',
       maxHeight: '100vh',
       data: {
-        ip: info.condition,
         anomaly_level: info.anomaly_level,
         alert_id: info.alert_id,
         id: info.id,
         street: info.street,
-        position: info.position,
+        lat: info.lat,
+        long: info.long,
+        date: info.date,
+        ip_cam_fix: info.ip_cam_fix,
+        ip_cam_brand: info.ip_cam_brand
       }
     });
 
