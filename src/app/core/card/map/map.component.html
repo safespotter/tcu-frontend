@@ -6,13 +6,13 @@
            [zoom]='zoom' [disableDefaultUI]=true [clickableIcons]=false>
     <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.long" [label]="labelOptions"
                 [iconUrl]="$any(icon)" (markerClick)="markerClicked(marker)">
-      <agm-circle [latitude]="marker.lat" [longitude]="marker.long"
-                  [radius]="40"
-                  fillColor="red"
-                  fillOpacity="0.40">
-      </agm-circle>
       <agm-info-window #infoWindow>{{ marker.label }}</agm-info-window>
     </agm-marker>
+    <agm-circle *ngFor="let circle of circles" [latitude]="circle.lat" [longitude]="circle.long"
+                [radius]="40"
+                fillColor="red"
+                fillOpacity="0.40">
+    </agm-circle>
   </agm-map>
 
 </mat-card>

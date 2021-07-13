@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DataService} from '../../../shared/_services/data.service';
+import {SocketioService} from '../../../shared/_services/socketio.service';
 
 @Component({
   selector: 'app-map',
@@ -8,7 +9,8 @@ import {DataService} from '../../../shared/_services/data.service';
 })
 export class MapComponent implements OnInit {
 
-  constructor(private datasev: DataService) {
+  constructor(private datasev: DataService,
+              public srv: SocketioService) {
   }
 
   @Input() isMarkersReady;
@@ -19,6 +21,7 @@ export class MapComponent implements OnInit {
   userLocationMarkerAnimation: string;
 
   markers = [];
+  circles = [];
   selectedLat;
   selectedLong;
 
@@ -40,10 +43,10 @@ export class MapComponent implements OnInit {
   };
 
   styles = [{
-    featureType: "poi",
-    elementType: "labels",
+    featureType: 'poi',
+    elementType: 'labels',
     stylers: [
-      { visibility: "off" }
+      {visibility: 'off'}
     ]
   }];
 
@@ -58,7 +61,27 @@ export class MapComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.getMarkers();
+    this.srv.listen('dataUpdate').subscribe((res: any) => {
+      this.markers = [];
+      this.circles = [];
+      const tmp = res[0];
+      this.selectedLat = tmp[0].lat;
+      this.selectedLong = tmp[0].long;
+      for (const el of tmp) {
+        this.markers.push({
+          lat: el.lat,
+          long: el.long,
+          label: el.street,
+          id: el.id,
+          ip_cam_fix: el.ip_cam_fix
+        });
+        this.isMarkersReady = true;
+        if (el.anomaly_level == 4) {
+          this.circles.push({lat: el.lat, long: el.long});
+        }
+      }
+    });
+    //this.getMarkers();
   }
 
   getMarkers() {
@@ -92,7 +115,7 @@ export class MapComponent implements OnInit {
     this.mapSelected.emit(Object($event));
   }
 
-  updateCoordinates (lat, long){
+  updateCoordinates(lat, long) {
     this.selectedLat = lat;
     this.selectedLong = long;
   }
