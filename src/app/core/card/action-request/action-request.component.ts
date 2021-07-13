@@ -6,6 +6,7 @@ import {DataService} from '../../../shared/_services/data.service';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {LampStatus} from '../../../shared/_models/LampStatus';
+import * as moment from 'moment';
 import {environment} from '../../../../environments/environment';
 
 @Component({
@@ -27,7 +28,14 @@ export class ActionRequestComponent implements OnInit {
   videoURL;
 
   async ngOnInit() {
+    console.log("data ", this.data);
     this.getVideoURL();
+  }
+
+  formatDate(date): string {
+    date = moment(date, null, 'it', true);
+    date = date.local().format('DD MMMM YYYY, H:mm');
+    return date.toString();
   }
 
   getVideoURL() {

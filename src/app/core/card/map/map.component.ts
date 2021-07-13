@@ -16,6 +16,8 @@ export class MapComponent implements OnInit {
 
   @Output() mapSelected = new EventEmitter<string>();
 
+  userLocationMarkerAnimation: string;
+
   markers = [];
   selectedLat;
   selectedLong;
@@ -74,6 +76,11 @@ export class MapComponent implements OnInit {
       }
       this.isMarkersReady = true;
     });
+  }
+
+  mapReading() {
+    this.userLocationMarkerAnimation = 'BOUNCE';
+
   }
 
   onMapReady($event) {

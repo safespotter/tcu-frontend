@@ -9,4 +9,5 @@ export interface DialogModel {
   alert_id: number;
   alert_name: string;
   ip_cam_brand: string;
+  date: Date;
 }

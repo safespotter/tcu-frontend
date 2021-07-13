@@ -115,7 +115,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         alert_id: info.alert_id,
         id: info.id,
         street: info.street,
-        position: info.position,
+        date: info.date,
         alert_name: this.datasev.convertAnomalies(info.alert_id),
         ip_cam_brand: info.ip_cam_brand
       }
