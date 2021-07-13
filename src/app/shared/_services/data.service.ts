@@ -24,7 +24,7 @@ export  class DataService {
       case 4:
         return 'Invasione di area pedonale';
       case 5:
-        return 'Possible incidente';
+        return 'Possibile incidente';
       case 6:
         return 'Veicolo in sosta vietata';
       default:

@@ -68,7 +68,7 @@ export class LamppostConfigurationComponent implements OnInit {
     },
     {
       id: '5',
-      name: 'Possible incidente',
+      name: 'Possibile incidente',
       c_green: false,
       c_yellow: false,
       c_orange: false,
