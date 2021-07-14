@@ -73,9 +73,9 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   openDialog(info) {
     this.dialog.open(DialogComponent, {
-      height: '90%',
+      // height: '90%',
       maxWidth: '100vw',
-      maxHeight: '100vh',
+      // maxHeight: '100vh',
       data: {
         anomaly_level: info.anomaly_level,
         alert_id: info.alert_id,
@@ -110,9 +110,9 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   openDialogrequest(info) {
     this.dialog.open(ActionRequestComponent, {
-      height: '90%',
+      // height: '90%',
       maxWidth: '100vw',
-      maxHeight: '100vh',
+      // maxHeight: '100vh',
       data: {
         anomaly_level: info.anomaly_level,
         alert_id: info.alert_id,
