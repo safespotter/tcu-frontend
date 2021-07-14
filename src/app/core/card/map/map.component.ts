@@ -82,8 +82,6 @@ export class MapComponent implements OnInit {
           this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003});
         }
       }
-
-      console.log ("circles ", this.circles);
     });
     //this.getMarkers();
   }

@@ -28,7 +28,6 @@ export class ActionRequestComponent implements OnInit {
   videoURL;
 
   async ngOnInit() {
-    console.log("data ", this.data);
     this.getVideoURL();
   }
 
