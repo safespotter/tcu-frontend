@@ -1,4 +1,4 @@
-const host = '192.168.1.9';
+const host = '15.161.210.238';
 const port = '8080';
 const ftp = 'localhost';
 const protocol = 'http://';
