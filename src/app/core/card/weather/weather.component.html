@@ -1,98 +1,63 @@
 <mat-card class="weather-card" *ngIf="currentWeather">
 
-  <!--<mat-card-header>-->
-  <!--<mat-card-title>-->
-  <!--{{conditionConverter(currentWeather.conditions)}}-->
-  <!--</mat-card-title>-->
-  <!--<mat-card-subtitle>-->
-  <!--{{currentWeather.time.toLocaleString('it-IT', dateOptions)}}-->
-  <!--</mat-card-subtitle>-->
-  <!--</mat-card-header>-->
-
   <mat-card-content>
-    <!--<div class="weather-content">-->
     <div class="weather-main">
 
       <p style="text-transform: capitalize">{{currentWeather.time.toLocaleString('it-IT', dateOptions)}}.</p>
 
-      <b>Condizioni meteo:</b>
-      <!--<mat-card-title>-->
-      {{conditionConverter(currentWeather.conditions)}}
-      <!--</mat-card-title>-->
-
-      <!--<mat-card-subtitle>-->
-
-      <!--</mat-card-subtitle>-->
-
-      <!--<div class="weather-conditions" tooltip="{{conditionConverter(currentWeather.conditions)}}">-->
-      <div class="weather-style">
-        <img style="height: 2vh" src="{{currentWeather.imgUrl}}"
+      <p>
+        <b>Condizioni meteo:</b>
+        {{conditionConverter(currentWeather.conditions)}}
+        <img style="height: 5vh" src="{{currentWeather.imgUrl}}"
              alt="{{conditionConverter(currentWeather.conditions)}}"/>
+      </p>
 
-      </div>
+      <!--<div class="weather-style">-->
+        <!--<p>-->
 
-      <!--<div class="weather-temp" tooltip="Temperatura">-->
+        <!--</p>-->
+
+      <!--</div>-->
+
       <div class="weather-style">
-      <b>Temp. :</b>
-      {{currentWeather.temp.toFixed(0)}}<span>°C</span>
+        <p>
+          <b>Temp. :</b>
+          {{currentWeather.temp.toFixed(0)}}°C
+        </p>
+
       </div>
       <!--</div>-->
 
-      <!--<div class="weather-detail" tooltip="Umidità dell'aria">-->
-      <!--<span class="weather-label">-->
       <div class="weather-style">
-      <b>Umidità:</b>
-      <!--</span>-->
-      <!--<span class="weather-value">-->
-      {{currentWeather.humidity}}%
+        <p>
+          <b>Umidità:</b>
+          {{currentWeather.humidity}}%
+        </p>
       </div>
-      <!--</span>-->
-      <!--</div>-->
 
-      <!--<div class="weather-detail" tooltip="Precipitazione in un ora">-->
-      <!--<span class="weather-label">-->
       <div class="weather-style">
-      <b>Prec. :</b>
-      <!--</span>-->
-      <!--<span class="weather-value">-->
-      {{currentWeather.precipitation.value}} mm
+        <p>
+          <b>Prec. :</b>
+          {{currentWeather.precipitation.value}} mm
+        </p>
       </div>
-      <!--</span>-->
-      <!--</div>-->
 
-      <!--<div class="weather-detail" tooltip="Velocità del vento">-->
-      <!--<span class="weather-label">-->
       <div class="weather-style">
-      <b>Vento:</b>
-      <!--</span>-->
-      <!--<span class="weather-value">-->
-      {{currentWeather.wind.speed}} m/s
+        <p>
+          <b>Vento:</b>
+          {{currentWeather.wind.speed}} m/s
+        </p>
       </div>
-      <!--</span>-->
-      <!--</div>-->
 
-      <!--<div class="weather-detail" tooltip="Pressione atmosferica">-->
-      <!--<span class="weather-label">-->
-      <b>Press. :</b>
-      <!--</span>-->
-      <!--<span class="weather-value">-->
-      {{currentWeather.pressure.toFixed(0)}} mb
 
-      <!--</span-->
-      <!--</div>-->
+      <p>
+        <b>Press. :</b>
+        {{currentWeather.pressure.toFixed(0)}} mb
+      </p>
+
 
     </div>
 
-    <!--<div class="weather-details">-->
-
-    <!---->
-
-    <!---->
-    <!---->
-
-
-    <!--</div>-->
-    <!--</div>-->
   </mat-card-content>
 
 </mat-card>
