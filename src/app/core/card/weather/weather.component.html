@@ -3,19 +3,21 @@
   <mat-card-content>
     <div class="weather-main">
 
-      <p style="text-transform: capitalize">{{currentWeather.time.toLocaleString('it-IT', dateOptions)}}.</p>
-
-      <p>
-        <b>Condizioni meteo:</b>
-        {{conditionConverter(currentWeather.conditions)}}
-        <img style="height: 5vh" src="{{currentWeather.imgUrl}}"
-             alt="{{conditionConverter(currentWeather.conditions)}}"/>
-      </p>
-
+      <div class="weather-style">
+        <p style="text-transform: capitalize">{{currentWeather.time.toLocaleString('it-IT', dateOptions)}}.</p>
+      </div>
+      <div class="weather-style">
+        <p>
+          <b>Condizioni meteo:</b>
+          {{conditionConverter(currentWeather.conditions)}}
+          <img style="height: 30px" src="{{currentWeather.imgUrl}}"
+               alt="{{conditionConverter(currentWeather.conditions)}}"/>
+        </p>
+      </div>
       <!--<div class="weather-style">-->
-        <!--<p>-->
+      <!--<p>-->
 
-        <!--</p>-->
+      <!--</p>-->
 
       <!--</div>-->
 
@@ -49,12 +51,12 @@
         </p>
       </div>
 
-
-      <p>
-        <b>Press. :</b>
-        {{currentWeather.pressure.toFixed(0)}} mb
-      </p>
-
+      <div class="weather-style">
+        <p>
+          <b>Press. :</b>
+          {{currentWeather.pressure.toFixed(0)}} mb
+        </p>
+      </div>
 
     </div>
 
