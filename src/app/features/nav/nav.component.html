@@ -223,7 +223,7 @@
         <!--        <button mat-menu-item>about</button>-->
       </mat-menu>
       <mat-menu #listSafe="matMenu" xPosition="before">
-        <button mat-menu-item *ngFor="let element of listCritical" (click)="checkNotification($event, element)"> {{element.alert_name}} in {{element.street}}</button>
+        <button mat-menu-item *ngFor="let element of listCritical"><span (click)="checkNotification($event, element)">× </span> <span style="cursor: default">{{element.alert_name}} in {{element.street}}</span></button>
                 <!--<button mat-menu-item>about</button>-->
       </mat-menu>
     </mat-toolbar>
