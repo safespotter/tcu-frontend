@@ -10,7 +10,7 @@
     </agm-marker>
     <agm-circle *ngFor="let circle of circles" [latitude]="circle.lat" [longitude]="circle.long"
                 [radius]="40"
-                fillColor="red"
+                [fillColor]= circle.color
                 fillOpacity="0.40">
     </agm-circle>
   </agm-map>

@@ -77,9 +77,20 @@ export class MapComponent implements OnInit {
           ip_cam_fix: el.ip_cam_fix
         });
         this.isMarkersReady = true;
-        if (el.anomaly_level == 4) {
-          // this.updateCoordinates(el.lat, el.long);
-          this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003});
+
+        switch (el.anomaly_level){
+          case 1:
+            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'green'});
+            break;
+          case 2:
+            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'yellow'});
+            break;
+          case 3:
+            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'orange'});
+            break;
+          case 4:
+            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'red'});
+            break;
         }
       }
     });
