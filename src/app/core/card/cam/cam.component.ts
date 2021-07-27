@@ -14,6 +14,8 @@ export class CamComponent implements OnInit {
   @Input() isLampDataReady;
   lamp_id;
   lamp_data;
+  isVideoLoaded = false;
+
   constructor(private router: Router,
               private datasev: DataService) {
     this.lamp_id = this.router.getCurrentNavigation().extractedUrl.queryParams.cam;

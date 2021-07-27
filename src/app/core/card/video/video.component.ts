@@ -25,6 +25,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
   title: string;
   selected: string;
   safeList: any;
+  isVideoLoaded = false;
 
   @Input() isLampDataReady;
   lamp_data;
@@ -81,6 +82,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
 
   closeVideo(){
     this.receivedFromMap = null;
+    this.isVideoLoaded = false;
   }
 
 

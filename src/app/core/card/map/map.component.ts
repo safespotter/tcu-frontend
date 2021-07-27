@@ -80,16 +80,16 @@ export class MapComponent implements OnInit {
 
         switch (el.anomaly_level){
           case 1:
-            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'green'});
+            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'green', opacity: '0.30'});
             break;
           case 2:
-            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'yellow'});
+            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'yellow', opacity: '0.30'});
             break;
           case 3:
-            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'orange'});
+            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'orange', opacity: '0.30'});
             break;
           case 4:
-            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'red'});
+            this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'red', opacity: '0.40'});
             break;
         }
       }

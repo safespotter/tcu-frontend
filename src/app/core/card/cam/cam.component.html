@@ -4,8 +4,9 @@
   </div>
   <div class="modal-body">
     <div *ngIf="lamp_data.ip_cam_fix">
+      <img *ngIf="!isVideoLoaded" src="../../../../assets/img/loading.gif" style="margin: auto; border: 1px solid black;">
       <img id="browser_video" class="video-image" alt="video" src={{lamp_data.ip_cam_fix}}
-           style="margin: auto; border: 1px solid black;" onError="this.src = '../../../../assets/img/no-cam.png'">
+           style="margin: auto; border: 1px solid black;" onError="this.src = '../../../../assets/img/no-cam.png'" (load)="isVideoLoaded = true">
     </div>
     <div *ngIf="lamp_data.ip_cam_fix == undefined || lamp_data.ip_cam_fix == '' ">
       <h5> Indirizzo camera non disponibile</h5>
