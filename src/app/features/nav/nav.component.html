@@ -215,12 +215,12 @@
 
       </button>
       <button mat-icon-button class="more-button rightPosition" [matMenuTriggerFor]="menu" aria-label="Toggle menu"
-              *ngIf="isUserLoggedIn" style="margin-right: 10px" tooltip="Opzioni account">
+              *ngIf="isUserLoggedIn" style="margin-right: 10px" tooltip="Impostazioni">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="openLamppostCreation()">Aggiungi lampione </button>
         <button mat-menu-item (click)="onLogout($event)">Esci</button>
-        <!--        <button mat-menu-item>about</button>-->
       </mat-menu>
       <mat-menu #listSafe="matMenu" xPosition="before">
         <button mat-menu-item *ngFor="let element of listCritical"><span (click)="checkNotification($event, element)">× </span> <span style="cursor: default">{{element.alert_name}} in {{element.street}}</span></button>

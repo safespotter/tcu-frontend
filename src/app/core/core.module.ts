@@ -54,6 +54,7 @@ import {WeatherService} from '../shared/_services/weather.service';
 import {LamppostConfigurationComponent} from './card/lamppost-configuration/lamppost-configuration.component';
 import {MatSlideToggleModule} from '@angular/material';
 import { CamComponent } from './card/cam/cam.component';
+import { AddLamppostComponent } from './card/add-lamppost/add-lamppost.component';
 
 
 
@@ -76,7 +77,8 @@ import { CamComponent } from './card/cam/cam.component';
     TablePersonalComponent,
     WeatherComponent,
     LamppostConfigurationComponent,
-    CamComponent
+    CamComponent,
+    AddLamppostComponent
   ],
   imports: [
     CommonModule,

@@ -16,6 +16,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Info} from '../../shared/_models/info.model';
 import {SocketioService} from '../../shared/_services/socketio.service';
 import {DataService} from '../../shared/_services/data.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -62,6 +63,7 @@ export class NavComponent implements OnInit, AfterViewInit {
     private sanitizer: DomSanitizer,
     public srv: SocketioService,
     public dataService: DataService,
+    private router: Router
   ) {
     iconRegistry.addSvgIcon('bell', sanitizer.bypassSecurityTrustResourceUrl('assets/img/bell.svg'));
 
@@ -131,6 +133,12 @@ export class NavComponent implements OnInit, AfterViewInit {
     } else {
       return false;
     }
+  }
+
+  openLamppostCreation() {
+    const host: string = location.origin;
+    const url: string = host + '/#/' + String(this.router.createUrlTree(['new_lamppost']));
+    window.open(url, '_blank');
   }
 
   convertAnomalies(alert_id) {
