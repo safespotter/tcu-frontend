@@ -46,6 +46,12 @@ export class SafespotterService {
     return this.http.get(this.formatUrl('getLamppostTimers/') + lamp_id, {headers});
   }
 
+  createLamppost(body) {
+    const headers = this.getAuthorization();
+
+    return this.http.post(this.formatUrl('addLamppost/'), body, {headers});
+  }
+
   private formatUrl(call): string {
     return environment.protocol + environment.host + ':' + environment.port + '/safePath/' + call;
   }
