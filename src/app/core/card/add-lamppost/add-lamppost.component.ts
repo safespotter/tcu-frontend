@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
+import {ToastrService} from 'ngx-toastr';
+import {error} from 'selenium-webdriver';
 
 @Component({
   selector: 'app-add-lamppost',
@@ -13,7 +15,8 @@ export class AddLamppostComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private safeSpotterService: SafespotterService
+    private safeSpotterService: SafespotterService,
+    private toastr: ToastrService
   ) {
     this.createForm();
   }
@@ -47,12 +50,14 @@ export class AddLamppostComponent implements OnInit {
       ip_cam_brand: ip_cam_brand
     };
 
-    console.log("street: ", street);
 
-    // this.safeSpotterService.createLamppost(body).subscribe(
-    //   //ricevere messaggio da api
-    //
-    // );
+    this.safeSpotterService.createLamppost(body).subscribe(
+      data => {
+        this.toastr.info('', 'Nuovo lampione inserito con successo');
+      }, error => {
+        this.toastr.error('Errore imprevisto durante l\'inserimento ', 'Inserimento non riuscito');
+      }
+    );
 
   }
 

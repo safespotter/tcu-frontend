@@ -6,23 +6,25 @@
   </div>
   <form [formGroup]="lampForm">
     <div class="form-group">
-      <div class="row">
-        <label class="col-md-1">Via:</label>
-        <textarea class="form-control" formControlName="street"></textarea>
-      </div>
-      <div class="row">
-        <label class="col-md-1">Latitudine:</label>
-        <textarea class="form-control col-6" formControlName="latitude"></textarea>
+      <div class="container">
+        <div class="row" style="padding-bottom: 10px">
+          <label class="col-1">Via:</label>
+          <input type="text" class="form-control col-5" formControlName="street">
+        </div>
+        <div class="row" style="padding-bottom: 10px" >
+          <label class="col-md-1">Latitudine:</label>
+          <input class="form-control col-5" formControlName="latitude">
 
-        <label class="col-md-1">Longitudine:</label>
-        <textarea class="form-control col-6" formControlName="longitude"></textarea>
-      </div>
-      <div class="row">
-        <label class="col-md-1">IP camera fissa:</label>
-        <textarea class="form-control col-6" formControlName="ip_cam_fix"></textarea>
+          <label class="col-md-1">Longitudine:</label>
+          <input class="form-control col-5" formControlName="longitude">
+        </div>
+        <div class="row" style="padding-bottom: 10px">
+          <label class="col-md-1">IP camera fissa:</label>
+          <input class="form-control col-5" formControlName="ip_cam_fix">
 
-        <label class="col-md-1">IP camera brandeggiabile:</label>
-        <textarea class="form-control col-6" formControlName="ip_cam_brand"></textarea>
+          <label class="col-md-1">IP camera brandeggiabile:</label>
+          <input class="form-control col-5" formControlName="ip_cam_brand">
+        </div>
       </div>
     </div>
     <div class="form-group">
