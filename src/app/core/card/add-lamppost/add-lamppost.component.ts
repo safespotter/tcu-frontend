@@ -12,6 +12,7 @@ import {error} from 'selenium-webdriver';
 export class AddLamppostComponent implements OnInit {
 
   lampForm: FormGroup;
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -25,6 +26,10 @@ export class AddLamppostComponent implements OnInit {
 
   }
 
+  get f() {
+    return this.lampForm.controls;
+  }
+
   createForm() {
     this.lampForm = this.fb.group({
       street: ['', Validators.required],
@@ -35,7 +40,10 @@ export class AddLamppostComponent implements OnInit {
     });
   }
 
-  createLamppost() {
+  onSubmit() {
+
+    this.submitted = true;
+
     const street = this.lampForm.controls.street.value;
     const latitude = this.lampForm.controls.latitude.value;
     const longitude = this.lampForm.controls.longitude.value;
@@ -49,7 +57,6 @@ export class AddLamppostComponent implements OnInit {
       ip_cam_fix: ip_cam_fix,
       ip_cam_brand: ip_cam_brand
     };
-
 
     this.safeSpotterService.createLamppost(body).subscribe(
       data => {
