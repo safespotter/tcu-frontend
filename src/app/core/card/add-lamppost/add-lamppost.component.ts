@@ -27,14 +27,15 @@ export class AddLamppostComponent implements OnInit {
   }
 
   get f() {
+    // console.log('f', this.lampForm.controls)
     return this.lampForm.controls;
   }
 
   createForm() {
     this.lampForm = this.fb.group({
       street: ['', Validators.required],
-      latitude: ['', Validators.required],
-      longitude: ['', Validators.required],
+      latitude: ['', Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])],
+      longitude: ['', Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])],
       ip_cam_fix: ['', Validators.required],
       ip_cam_brand: ['', Validators.required]
     });
@@ -58,7 +59,7 @@ export class AddLamppostComponent implements OnInit {
       ip_cam_brand: ip_cam_brand
     };
 
-    if (street.length > 0 && latitude.length > 0 && longitude.length > 0 && ip_cam_fix.length > 0 && ip_cam_brand.length > 0) {
+    if (this.lampForm.controls.street.status != 'INVALID' && this.lampForm.controls.latitude.status != 'INVALID' && this.lampForm.controls.longitude.status != 'INVALID' && this.lampForm.controls.ip_cam_fix.status != 'INVALID' && this.lampForm.controls.ip_cam_brand.status != 'INVALID') {
       this.safeSpotterService.createLamppost(body).subscribe(
         data => {
           this.submitted = false;
