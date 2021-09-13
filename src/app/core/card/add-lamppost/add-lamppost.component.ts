@@ -52,19 +52,32 @@ export class AddLamppostComponent implements OnInit {
 
     const body = {
       street: street,
-      latitude: latitude,
-      longitude: longitude,
+      lat: latitude,
+      long: longitude,
       ip_cam_fix: ip_cam_fix,
       ip_cam_brand: ip_cam_brand
     };
 
-    this.safeSpotterService.createLamppost(body).subscribe(
-      data => {
-        this.toastr.info('', 'Nuovo lampione inserito con successo');
-      }, error => {
-        this.toastr.error('Errore imprevisto durante l\'inserimento ', 'Inserimento non riuscito');
-      }
-    );
+    if (street.length > 0 && latitude.length > 0 && longitude.length > 0 && ip_cam_fix.length > 0 && ip_cam_brand.length > 0) {
+      this.safeSpotterService.createLamppost(body).subscribe(
+        data => {
+          this.submitted = false;
+          this.lampForm.controls.street.setValue('');
+          this.lampForm.controls.latitude.setValue('');
+          this.lampForm.controls.longitude.setValue('');
+          this.lampForm.controls.ip_cam_fix.setValue('');
+          this.lampForm.controls.ip_cam_brand.setValue('');
+          this.toastr.info('', 'Nuovo lampione inserito con successo');
+
+        }, error => {
+          this.toastr.error('Errore imprevisto durante l\'inserimento ', 'Inserimento non riuscito');
+        }
+      );
+    }
+    else {
+      this.toastr.warning('Verifica i dati inseriti', 'Attenzione');
+    }
+
 
   }
 

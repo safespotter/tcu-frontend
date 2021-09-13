@@ -48,7 +48,6 @@ export class SafespotterService {
 
   createLamppost(body) {
     const headers = this.getAuthorization();
-
     return this.http.post(this.formatUrl('addLamppost/'), body, {headers});
   }
 
