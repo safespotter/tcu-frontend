@@ -13,45 +13,50 @@
         <div class="row" style="padding-bottom: 10px">
           <label class="col-1">Via *</label>
           <input type="text" class="form-control col-5" formControlName="street"
-                 [ngClass]="{ 'is-invalid': submitted && f.street.errors }">
-          <div *ngIf="submitted && lampForm.controls['street'].errors">
-            <div *ngIf="f.street.errors" class="invalid-feedback">Campo obbligatorio</div>
+                 [ngClass]="{ 'is-invalid': submitted && lampForm.controls['street'].invalid }">
+          <div *ngIf="submitted && lampForm.controls['street'].invalid" class="invalid-feedback">
+            <div *ngIf="f.street.errors.required">Campo obbligatorio</div>
           </div>
         </div>
         <div class="row" style="padding-bottom: 10px">
           <label class="col-md-1">Latitudine *</label>
           <input class="form-control col-5" formControlName="latitude"
                  [ngClass]="{ 'is-invalid': submitted && f.latitude.errors }">
-          <div *ngIf="submitted && lampForm.controls['latitude'].errors">
-            <div *ngIf="f.latitude.errors.required" class="invalid-feedback">Campo obbligatorio</div>
+          <div *ngIf="submitted && lampForm.controls['latitude'].errors" class="invalid-feedback">
+            <div *ngIf="f.latitude.errors.required">Campo obbligatorio</div>
+            <div *ngIf="f.latitude.errors.pattern">Inserire coordinate valide</div>
           </div>
 
           <label class="col-md-1">Longitudine *</label>
           <input class="form-control col-5" formControlName="longitude"
                  [ngClass]="{ 'is-invalid': submitted && f.longitude.errors }">
-          <div *ngIf="submitted && lampForm.controls['longitude'].errors">
-            <div *ngIf="f.longitude.errors.pattern" class="invalid-feedback">Campo obbligatorio</div>
+          <div *ngIf="submitted && lampForm.controls['longitude'].errors" class="invalid-feedback">
+            <div *ngIf="f.longitude.errors.required">Campo obbligatorio</div>
+            <div *ngIf="f.longitude.errors.pattern">Inserire coordinate valide</div>
           </div>
         </div>
         <div class="row" style="padding-bottom: 10px">
           <label class="col-md-1">IP camera fissa *</label>
           <input class="form-control col-5" formControlName="ip_cam_fix"
                  [ngClass]="{ 'is-invalid': submitted && f.ip_cam_fix.errors }">
-          <div *ngIf="submitted && lampForm.controls['ip_cam_fix'].errors">
-            <div *ngIf="f.ip_cam_fix.errors" class="invalid-feedback">Campo obbligatorio</div>
+          <div *ngIf="submitted && lampForm.controls['ip_cam_fix'].errors" class="invalid-feedback">
+            <div *ngIf="f.ip_cam_fix.errors.required">Campo obbligatorio</div>
           </div>
 
           <label class="col-md-1">IP camera brandeggiabile *</label>
           <input class="form-control col-5" formControlName="ip_cam_brand"
                  [ngClass]="{ 'is-invalid': submitted && f.ip_cam_brand.errors }">
-          <div *ngIf="submitted && lampForm.controls['ip_cam_brand'].errors">
-            <div *ngIf="f.ip_cam_brand.errors" class="invalid-feedback">Campo obbligatorio</div>
+          <div *ngIf="submitted && lampForm.controls['ip_cam_brand'].errors" class="invalid-feedback">
+            <div *ngIf="f.ip_cam_brand.errors.required">Campo obbligatorio</div>
           </div>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Crea</button>
+      <!--<button type="submit" class="btn btn-primary">Crea</button>-->
+      <div class="text-center">
+        <button class="btn btn-success">Aggiungi lampione</button>
+      </div>
     </div>
   </form>
 
