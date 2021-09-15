@@ -68,7 +68,7 @@ export class AddLamppostComponent implements OnInit {
           this.lampForm.controls.longitude.setValue('');
           this.lampForm.controls.ip_cam_fix.setValue('');
           this.lampForm.controls.ip_cam_brand.setValue('');
-          this.toastr.info('', 'Nuovo lampione inserito con successo');
+          this.toastr.info('', 'Lampione con id ' + Object.values(data)[0] + ' inserito con successo.');
 
         }, error => {
           this.toastr.error('Errore imprevisto durante l\'inserimento ', 'Inserimento non riuscito');
@@ -76,7 +76,7 @@ export class AddLamppostComponent implements OnInit {
       );
     }
     else {
-      this.toastr.warning('Verifica i dati inseriti', 'Attenzione');
+      this.toastr.warning('Verifica i dati inseriti.', 'Attenzione');
     }
 
 
