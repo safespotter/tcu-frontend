@@ -1,1 +1,88 @@
-<p>Form di modifica di un lampione</p>
+<div class="container-fluid mb-0">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h2 class="text-center" style="padding-top: 10px">Form di modifica di un lampione</h2>
+    </div>
+  </div>
+  <form *ngIf="isLampDataReady" [formGroup]="lampForm">
+    <div class="form-group">
+      <div class="container">
+        <div class="row" style="padding-bottom: 10px">
+          <i>* Campo obbligatorio</i>
+        </div>
+
+        <div class="form-row" style="padding-bottom: 10px">
+          <div class="input-group mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Via *</span>
+            </div>
+            <input type="text" formControlName="street" class="form-control" placeholder="es: via Roma"
+                   [ngClass]="{ 'is-invalid': submitted && f.street.errors }"/>
+
+            <div *ngIf="submitted && lampForm.controls['street'].invalid" class="invalid-feedback">
+              <div *ngIf="f.street.errors.required">Campo obbligatorio</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-row" style="padding-bottom: 10px">
+          <div class="input-group mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 100px">Latitudine *</span>
+            </div>
+            <input type="text" formControlName="latitude" class="form-control" placeholder="es: 39.25202"
+                   [ngClass]="{ 'is-invalid': submitted && f.latitude.errors }"/>
+
+            <div *ngIf="submitted && lampForm.controls['latitude'].errors" class="invalid-feedback">
+              <div *ngIf="f.latitude.errors.required">Campo obbligatorio</div>
+              <div *ngIf="f.latitude.errors.pattern">Inserire coordinate valide. Es: 39.25202</div>
+            </div>
+          </div>
+          <div class="input-group mb-3 ml-auto col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 110px">Longitudine *</span>
+            </div>
+            <input type="text" formControlName="longitude" class="form-control" placeholder="es: 9.13802"
+                   [ngClass]="{ 'is-invalid': submitted && f.longitude.errors }"/>
+
+            <div *ngIf="submitted && lampForm.controls['longitude'].errors" class="invalid-feedback">
+              <div *ngIf="f.longitude.errors.required">Campo obbligatorio</div>
+              <div *ngIf="f.longitude.errors.pattern">Inserire coordinate valide. Es: 9.13802</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row" style="padding-bottom: 10px">
+          <div class="input-group mb-3 col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 130px">IP camera fissa *</span>
+            </div>
+            <input type="text" formControlName="ip_cam_fix" class="form-control" placeholder="es: https://127.0.0.1"
+                   [ngClass]="{ 'is-invalid': submitted && f.ip_cam_fix.errors }"/>
+
+            <div *ngIf="submitted && lampForm.controls['ip_cam_fix'].errors" class="invalid-feedback">
+              <div *ngIf="f.ip_cam_fix.errors.required">Campo obbligatorio</div>
+            </div>
+          </div>
+          <div class="input-group mb-3 ml-auto col-md-6">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 190px">IP camera brandeggiabile *</span>
+            </div>
+            <input type="text" formControlName="ip_cam_brand" class="form-control" placeholder="es: https://127.0.0.2"
+                   [ngClass]="{ 'is-invalid': submitted && f.ip_cam_brand.errors }"/>
+
+            <div *ngIf="submitted && lampForm.controls['ip_cam_brand'].errors" class="invalid-feedback">
+              <div *ngIf="f.ip_cam_brand.errors.required">Campo obbligatorio</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="text-center">
+        <button class="btn btn-success">Modifica lampione</button>
+      </div>
+    </div>
+  </form>
+</div>
+
