@@ -55,6 +55,7 @@ import {LamppostConfigurationComponent} from './card/lamppost-configuration/lamp
 import {MatSlideToggleModule} from '@angular/material';
 import { CamComponent } from './card/cam/cam.component';
 import { AddLamppostComponent } from './card/add-lamppost/add-lamppost.component';
+import { EditLamppostComponent } from './card/edit-lamppost/edit-lamppost.component';
 
 
 
@@ -78,7 +79,8 @@ import { AddLamppostComponent } from './card/add-lamppost/add-lamppost.component
     WeatherComponent,
     LamppostConfigurationComponent,
     CamComponent,
-    AddLamppostComponent
+    AddLamppostComponent,
+    EditLamppostComponent
   ],
   imports: [
     CommonModule,
