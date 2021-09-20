@@ -4,7 +4,7 @@
       <h2 class="text-center" style="padding-top: 10px">Form di modifica di un lampione</h2>
     </div>
   </div>
-  <form *ngIf="isLampDataReady" [formGroup]="lampForm">
+  <form *ngIf="isLampDataReady" [formGroup]="lampForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <div class="container">
         <div class="row" style="padding-bottom: 10px">

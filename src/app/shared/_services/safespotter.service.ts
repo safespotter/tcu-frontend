@@ -51,6 +51,11 @@ export class SafespotterService {
     return this.http.post(this.formatUrl('addLamppost/'), body, {headers});
   }
 
+  updateLamppost(body) {
+    const headers = this.getAuthorization();
+    return this.http.put(this.formatUrl('updateLamppost/'), body, {headers});
+  }
+
   private formatUrl(call): string {
     return environment.protocol + environment.host + ':' + environment.port + '/safePath/' + call;
   }
