@@ -15,6 +15,7 @@ import {ActionRequestComponent} from '../action-request/action-request.component
 import {LamppostConfigurationComponent} from '../lamppost-configuration/lamppost-configuration.component';
 import {LamppostConfiguration} from '../../../shared/_models/LamppostConfiguration';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-table-chart',
@@ -39,7 +40,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     public dialogComponent: DialogComponent,
     public srv: SocketioService,
     private datasev: DataService,
-    private safeSpotter: SafespotterService
+    private safeSpotter: SafespotterService,
+    private router: Router
   ) {
   }
 
@@ -150,6 +152,13 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         }
       });
     });
+  }
+
+  openEdit(id){
+    const host: string =  location.origin;
+    const url: string = host + '/#/' + String(this.router.createUrlTree(['edit_lamppost'], { queryParams: { 'id': id }}));
+    window.open(url, '_blank');
+
   }
 
   getValueFromClick($event) {
