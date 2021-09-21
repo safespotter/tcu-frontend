@@ -17,6 +17,7 @@ export class EditLamppostComponent implements OnInit {
   lamp_data;
   lampForm: FormGroup;
   submitted = false;
+  flagLamp = false;
 
   constructor(
     private router: Router,
@@ -97,5 +98,12 @@ export class EditLamppostComponent implements OnInit {
 
   }
 
+  toogleDelete($event){
+    this.flagLamp = !this.flagLamp;
+  }
+
+  removeLamp(){
+    console.log("eliminato", this.flagLamp);
+  }
 
 }

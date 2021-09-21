@@ -80,9 +80,14 @@
     </div>
     <div class="form-group">
       <div class="text-center">
-        <button class="btn btn-success">Modifica lampione</button>
+        <button class="btn btn-success" [disabled]="flagLamp">Modifica lampione</button>
       </div>
     </div>
   </form>
+
+  <mat-checkbox color="primary" (change)="toogleDelete($event.checked)" >Cancella lampione dalla dashboard</mat-checkbox>
+  <div class="text-center" *ngIf="flagLamp">
+    <button class="btn btn-warning" (click)="removeLamp()">Cancella lampione</button>
+  </div>
 </div>
 
