@@ -87,7 +87,21 @@
 
   <mat-checkbox color="primary" (change)="toogleDelete($event.checked)" >Cancella lampione dalla dashboard</mat-checkbox>
   <div class="text-center" *ngIf="flagLamp">
-    <button class="btn btn-warning" (click)="removeLamp()">Cancella lampione</button>
+    <button class="btn btn-warning" (click)="openModal(deletemodal)">Cancella lampione</button>
   </div>
 </div>
+
+
+<ng-template #delete>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left"><b>Vuoi veramente cancellare?</b></h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="removeLamp()">Si, cancella</button>
+    <button type="button" class="btn btn-danger" (click)="closeModal()">No, annulla</button>
+  </div>
+</ng-template>
 

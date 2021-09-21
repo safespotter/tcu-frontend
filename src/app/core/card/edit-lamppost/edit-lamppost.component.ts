@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {DataService} from '../../../shared/_services/data.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
 import {ToastrService} from 'ngx-toastr';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-edit-lamppost',
@@ -13,18 +14,21 @@ import {ToastrService} from 'ngx-toastr';
 export class EditLamppostComponent implements OnInit {
 
   @Input() isLampDataReady;
+  @ViewChild('delete') deletemodal: string;
   lamp_id;
   lamp_data;
   lampForm: FormGroup;
   submitted = false;
   flagLamp = false;
+  modalRef: BsModalRef;
 
   constructor(
     private router: Router,
     private datasev: DataService,
     private fb: FormBuilder,
     private safeSpotterService: SafespotterService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private modalService: BsModalService
   ) {
     this.lamp_id = this.router.getCurrentNavigation().extractedUrl.queryParams.id;
 
@@ -104,6 +108,18 @@ export class EditLamppostComponent implements OnInit {
 
   removeLamp(){
     console.log("eliminato", this.flagLamp);
+  }
+
+  openModal(modal) {
+    this.modalRef = this.modalService.show(modal,
+      {
+        class: 'modal-lg modal-dialog-centered',
+        keyboard: false
+      });
+  }
+
+  closeModal(){
+    this.modalRef.hide();
   }
 
 }
