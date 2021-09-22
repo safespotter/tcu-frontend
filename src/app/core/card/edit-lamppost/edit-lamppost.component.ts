@@ -110,9 +110,13 @@ export class EditLamppostComponent implements OnInit {
     this.safeSpotterService.deleteLamppost(this.lamp_id).subscribe(
       data => {
 
+        this.modalRef.hide();
         this.toastr.info('', 'Lampione con id ' + this.lamp_id + ' cancellato con successo.');
         //aggiungere loading
-        window.close();
+
+        setTimeout(() => {
+          window.close();
+        }, 5000);
 
       }, error => {
         this.toastr.error('Errore imprevisto durante la cancellazione ', 'Cancellazione non riuscita');
