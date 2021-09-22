@@ -102,12 +102,23 @@ export class EditLamppostComponent implements OnInit {
 
   }
 
-  toogleDelete($event){
+  toogleDelete($event) {
     this.flagLamp = !this.flagLamp;
   }
 
-  removeLamp(){
-    console.log("eliminato", this.flagLamp);
+  removeLamp() {
+    this.safeSpotterService.deleteLamppost(this.lamp_id).subscribe(
+      data => {
+
+        this.toastr.info('', 'Lampione con id ' + this.lamp_id + ' cancellato con successo.');
+        //aggiungere loading
+        window.close();
+
+      }, error => {
+        this.toastr.error('Errore imprevisto durante la cancellazione ', 'Cancellazione non riuscita');
+      }
+    );
+
   }
 
   openModal(modal) {
@@ -118,7 +129,7 @@ export class EditLamppostComponent implements OnInit {
       });
   }
 
-  closeModal(){
+  closeModal() {
     this.modalRef.hide();
   }
 
