@@ -4,24 +4,39 @@
 <h2 mat-dialog-title>Video anomalia</h2>
 <mat-dialog-content class="mat-typography">
   <h3>Clip video acquisita durante l'anomalia <b>{{data.alert_name}}</b>,
-  rilevata dal lampione situato in <b>{{data.street}}</b>,
-  in data <b>{{this.formatDate(data.date)}}</b></h3>
+    rilevata dal lampione situato in <b>{{data.street}}</b>,
+    in data <b>{{this.formatDate(data.date)}}</b></h3>
   <!--<div class="desktop-only">-->
-    <!--<mat-card style="width: 50vw; height: 50vh">-->
-      <mat-video style="margin: auto;" class="video-image" *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" [muted]="true" ></mat-video>
-    <!--</mat-card>-->
+  <!--<mat-card style="width: 50vw; height: 50vh">-->
+  <mat-video style="margin: auto;" class="video-image" *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}}
+             [loop]="true" [quality]="false" [muted]="true"></mat-video>
+  <!--</mat-card>-->
   <!--</div>-->
   <!--<div class="mobile-only">-->
-    <!--&lt;!&ndash;<mat-card style="width: auto; height: auto">&ndash;&gt;-->
-      <!--<mat-video *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" [muted]="true" ></mat-video>-->
-    <!--&lt;!&ndash;</mat-card>&ndash;&gt;-->
+  <!--&lt;!&ndash;<mat-card style="width: auto; height: auto">&ndash;&gt;-->
+  <!--<mat-video *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" [muted]="true" ></mat-video>-->
+  <!--&lt;!&ndash;</mat-card>&ndash;&gt;-->
   <!--</div>-->
 
 </mat-dialog-content>
+<div style="padding-bottom: 20px">
+  <button mat-raised-button class="cam-button col" disabled>
+    Rimuovi allerta
+  </button>
+  <button mat-raised-button class="cam-button col" disabled>
+    Attiva pannello luminoso
+  </button>
+  <button mat-raised-button class="cam-button col" disabled>
+    Suggerisci percorsi alternativi
+  </button>
+  <button mat-raised-button class="cam-button col" disabled>
+    Chiama i soccorsi
+  </button>
+  <button mat-raised-button class="cam-button col" (click)="openCam()">
+    Apri camera brandeggiabile
+  </button>
+</div>
 
-<button mat-raised-button class="cam-button" (click)="openCam()">
-Apri camera brandeggiabile
-</button>
 <!--<mat-dialog-actions align="end">-->
-  <!--<button mat-button mat-dialog-close cdkFocusInitial (click)="actionRequest(data)" >Chiudi</button>-->
+<!--<button mat-button mat-dialog-close cdkFocusInitial (click)="actionRequest(data)" >Chiudi</button>-->
 <!--</mat-dialog-actions>-->
