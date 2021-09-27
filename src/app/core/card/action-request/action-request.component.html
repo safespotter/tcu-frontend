@@ -20,7 +20,7 @@
 
 </mat-dialog-content>
 <div style="padding-bottom: 20px">
-  <button mat-raised-button class="cam-button col" disabled>
+  <button mat-raised-button class="cam-button col" (click)="updateActionRequiredAlert()" onclick="this.disabled = true">
     Rimuovi allerta
   </button>
   <button mat-raised-button class="cam-button col" disabled>

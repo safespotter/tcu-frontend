@@ -8,6 +8,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {LampStatus} from '../../../shared/_models/LampStatus';
 import * as moment from 'moment';
 import {environment} from '../../../../environments/environment';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-action-request',
@@ -19,7 +20,8 @@ export class ActionRequestComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel,
               private datasev: DataService,
-              private safespotter: SafespotterService
+              private safespotter: SafespotterService,
+              private toastr: ToastrService
   ) {
   }
 
@@ -59,8 +61,32 @@ export class ActionRequestComponent implements OnInit {
     this.datasev.actionRequest(param).subscribe();
   }
 
-  openCam(){
+  openCam() {
     window.open(this.data.ip_cam_brand, '_blank');
+  }
+
+  updateActionRequiredAlert() {
+
+    const body = {
+      lamp_id: this.data.id
+    };
+
+    this.safespotter.updateActionRequiredAlert(body).subscribe(
+      data => {
+
+        this.toastr.info('', 'Allerta rimossa con successo');
+        //aggiungere loading
+
+        // setTimeout(() => {
+        //   window.close();
+        // }, 5000);
+
+      }, error => {
+        //console.log('errore');
+        this.toastr.warning('Allerta rimossa in precedenza', 'Attenzione');
+      }
+    );
+
   }
 
 }
