@@ -118,6 +118,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       data: {
         anomaly_level: info.anomaly_level,
         alert_id: info.alert_id,
+        notification_id: info.notification_id,
         id: info.id,
         street: info.street,
         date: info.date,

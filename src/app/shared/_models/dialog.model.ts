@@ -8,6 +8,7 @@ export interface DialogModel {
   condition_convert: string;
   alert_id: number;
   alert_name: string;
+  notification_id: number;
   lat: string;
   long: string;
   ip_cam_fix: string;

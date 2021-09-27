@@ -66,23 +66,15 @@ export class ActionRequestComponent implements OnInit {
   }
 
   updateActionRequiredAlert() {
-
     const body = {
-      lamp_id: this.data.id
+      lamp_id: this.data.id,
+      notification_id: this.data.notification_id
     };
 
     this.safespotter.updateActionRequiredAlert(body).subscribe(
       data => {
-
         this.toastr.info('', 'Allerta rimossa con successo');
-        //aggiungere loading
-
-        // setTimeout(() => {
-        //   window.close();
-        // }, 5000);
-
       }, error => {
-        //console.log('errore');
         this.toastr.warning('Allerta rimossa in precedenza', 'Attenzione');
       }
     );
