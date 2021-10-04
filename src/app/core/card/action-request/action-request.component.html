@@ -18,24 +18,31 @@
   <!--&lt;!&ndash;</mat-card>&ndash;&gt;-->
   <!--</div>-->
 
+  <div class="container">
+    <div class="row">
+      <button mat-raised-button (click)="updateActionRequiredAlert()" onclick="this.disabled = true">
+        Rimuovi allerta
+      </button>
+      <button mat-raised-button disabled>
+        Attiva pannello luminoso
+      </button>
+      <button mat-raised-button disabled>
+        Suggerisci percorsi alternativi
+      </button>
+    </div>
+
+  </div>
+  <!--<div>-->
+    <!--<button mat-raised-button disabled>-->
+      <!--Chiama i soccorsi-->
+    <!--</button>-->
+    <!--<button mat-raised-button (click)="openCam()">-->
+      <!--Apri camera brandeggiabile-->
+    <!--</button>-->
+  <!--</div>-->
+
 </mat-dialog-content>
-<div style="padding-bottom: 20px">
-  <button mat-raised-button class="cam-button col" (click)="updateActionRequiredAlert()" onclick="this.disabled = true">
-    Rimuovi allerta
-  </button>
-  <button mat-raised-button class="cam-button col" disabled>
-    Attiva pannello luminoso
-  </button>
-  <button mat-raised-button class="cam-button col" disabled>
-    Suggerisci percorsi alternativi
-  </button>
-  <button mat-raised-button class="cam-button col" disabled>
-    Chiama i soccorsi
-  </button>
-  <button mat-raised-button class="cam-button col" (click)="openCam()">
-    Apri camera brandeggiabile
-  </button>
-</div>
+
 
 <!--<mat-dialog-actions align="end">-->
 <!--<button mat-button mat-dialog-close cdkFocusInitial (click)="actionRequest(data)" >Chiudi</button>-->
