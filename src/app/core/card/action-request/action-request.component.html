@@ -18,28 +18,27 @@
   <!--&lt;!&ndash;</mat-card>&ndash;&gt;-->
   <!--</div>-->
 
-  <div class="container">
-    <div class="row">
-      <button mat-raised-button (click)="updateActionRequiredAlert()" onclick="this.disabled = true">
-        Rimuovi allerta
-      </button>
-      <button mat-raised-button disabled>
-        Attiva pannello luminoso
-      </button>
-      <button mat-raised-button disabled>
-        Suggerisci percorsi alternativi
-      </button>
-    </div>
-
+  <div class="container" style="padding-top: 25px; padding-bottom: 5px">
+<!--    <div class="row">-->
+      <div class="btn-group btn-group-lg" role="group">
+        <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="updateActionRequiredAlert()" onclick="this.disabled = true">
+          Rimuovi allerta
+        </button>
+        <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
+          Attiva pannello luminoso
+        </button>
+        <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
+          Suggerisci percorsi alternativi
+        </button>
+        <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
+          Chiama i soccorsi
+        </button>
+        <button mat-raised-button class="action-button" (click)="openCam()">
+          Apri camera brandeggiabile
+        </button>
+      </div>
+<!--    </div>-->
   </div>
-  <!--<div>-->
-    <!--<button mat-raised-button disabled>-->
-      <!--Chiama i soccorsi-->
-    <!--</button>-->
-    <!--<button mat-raised-button (click)="openCam()">-->
-      <!--Apri camera brandeggiabile-->
-    <!--</button>-->
-  <!--</div>-->
 
 </mat-dialog-content>
 
