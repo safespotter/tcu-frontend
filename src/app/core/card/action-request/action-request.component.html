@@ -19,29 +19,29 @@
   <!--</div>-->
 
   <div class="container" style="padding-top: 25px; padding-bottom: 5px">
-<!--    <div class="row">-->
-      <div class="btn-group btn-group-lg" role="group">
-        <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="updateActionRequiredAlert()" onclick="this.disabled = true">
-          Rimuovi allerta
-        </button>
-        <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="openModal(panelmodal)">
-          Attiva pannello luminoso
-        </button>
-        <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
-          Suggerisci percorsi alternativi
-        </button>
-        <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
-          Chiama i soccorsi
-        </button>
-        <button mat-raised-button class="action-button" (click)="openCam()">
-          Apri camera brandeggiabile
-        </button>
-      </div>
-<!--    </div>-->
+    <!--    <div class="row">-->
+    <div class="btn-group btn-group-lg" role="group">
+      <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="updateActionRequiredAlert()"
+              onclick="this.disabled = true">
+        Rimuovi allerta
+      </button>
+      <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="openModal(panelmodal)">
+        Attiva pannello luminoso
+      </button>
+      <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
+        Suggerisci percorsi alternativi
+      </button>
+      <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
+        Chiama i soccorsi
+      </button>
+      <button mat-raised-button class="action-button" (click)="openCam()">
+        Apri camera brandeggiabile
+      </button>
+    </div>
+    <!--    </div>-->
   </div>
 
 </mat-dialog-content>
-
 
 
 <ng-template #panel>
@@ -53,14 +53,23 @@
   </div>
   <div class="modal-body">
     <mat-radio-group class="example-radio-group" aria-label="Select an option">
-      <mat-radio-button class="example-radio-button" value="1">Possibile incidente</mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="2">Possibili anomalie o interruzioni</mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="3">Possibili rallentamenti</mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="0">
+        Disattivato
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="1">
+        <img src="./../../../../assets/img/poss_incidente.PNG">
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="2">
+        <img src="./../../../../assets/img/poss_anomalie.PNG">
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="3">
+        <img src="./../../../../assets/img/poss_rall.PNG">
+      </mat-radio-button>
     </mat-radio-group>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success">Salva</button>
-    <button type="button" class="btn btn-danger" >Annulla</button>
+    <button type="button" class="btn btn-danger">Annulla</button>
   </div>
 </ng-template>
 
