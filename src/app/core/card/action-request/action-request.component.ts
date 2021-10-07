@@ -32,6 +32,7 @@ export class ActionRequestComponent implements OnInit {
   @ViewChild('panel') panelmodal: string;
   videoURL;
   modalRef: BsModalRef;
+  panelCurrentValue;
   radioCheck = {
     value0: false,
     value1: false,
@@ -54,18 +55,23 @@ export class ActionRequestComponent implements OnInit {
     switch (this.data.panel) {
       case 0:
         this.radioCheck.value0 = true;
+        this.panelCurrentValue = parseInt('0', 10);
         break;
       case 1:
         this.radioCheck.value1 = true;
+        this.panelCurrentValue = parseInt('1', 10);;
         break;
       case 2:
         this.radioCheck.value2 = true;
+        this.panelCurrentValue = parseInt('2', 10);;
         break;
       case 3:
         this.radioCheck.value3 = true;
+        this.panelCurrentValue = parseInt('3', 10);;
         break;
       default:
         this.radioCheck.value0 = true;
+        this.panelCurrentValue = 0;
     }
   }
 
@@ -112,6 +118,23 @@ export class ActionRequestComponent implements OnInit {
   }
 
   onItemChange(value) {
+    this.panelCurrentValue = parseInt(value, 10);
+  }
+
+  updatePanel() {
+
+    const body = {
+      lamp_id: this.data.id,
+      panel: this.panelCurrentValue
+    };
+
+    this.safespotter.updatePanel(body).subscribe(
+      data => {
+        this.toastr.info('', 'Pannello aggiornato con successo');
+      }, error => {
+        this.toastr.warning('Pannello non aggiornato', 'Attenzione');
+      }
+    );
   }
 
   openModal(modal) {

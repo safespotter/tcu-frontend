@@ -62,10 +62,14 @@ export class SafespotterService {
     return this.http.delete(this.formatUrl('deleteLamppost/') + lamp_id, {headers});
   }
 
-  updateActionRequiredAlert(body){
+  updateActionRequiredAlert(body) {
     const headers = this.getAuthorization();
     return this.http.put(this.formatUrl('updateActionRequiredAlert/'), body, {headers});
+  }
 
+  updatePanel(body) {
+    const headers = this.getAuthorization();
+    return this.http.put(this.formatUrl('updatePanel/'), body, {headers});
   }
 
   private formatUrl(call): string {
