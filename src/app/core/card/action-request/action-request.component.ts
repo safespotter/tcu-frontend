@@ -32,9 +32,15 @@ export class ActionRequestComponent implements OnInit {
   @ViewChild('panel') panelmodal: string;
   videoURL;
   modalRef: BsModalRef;
-
+  radioCheck = {
+    value0: false,
+    value1: false,
+    value2: false,
+    value3: false
+  };
 
   async ngOnInit() {
+    this.panelValue();
     this.getVideoURL();
   }
 
@@ -42,6 +48,25 @@ export class ActionRequestComponent implements OnInit {
     date = moment(date, null, 'it', true);
     date = date.local().format('DD MMMM YYYY, H:mm');
     return date.toString();
+  }
+
+  panelValue() {
+    switch (this.data.panel) {
+      case 0:
+        this.radioCheck.value0 = true;
+        break;
+      case 1:
+        this.radioCheck.value1 = true;
+        break;
+      case 2:
+        this.radioCheck.value2 = true;
+        break;
+      case 3:
+        this.radioCheck.value3 = true;
+        break;
+      default:
+        this.radioCheck.value0 = true;
+    }
   }
 
   getVideoURL() {
@@ -84,6 +109,9 @@ export class ActionRequestComponent implements OnInit {
       }
     );
 
+  }
+
+  onItemChange(value) {
   }
 
   openModal(modal) {

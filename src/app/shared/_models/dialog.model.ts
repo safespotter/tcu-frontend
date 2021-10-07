@@ -9,6 +9,7 @@ export interface DialogModel {
   alert_id: number;
   alert_name: string;
   notification_id: number;
+  panel: number;
   lat: string;
   long: string;
   ip_cam_fix: string;

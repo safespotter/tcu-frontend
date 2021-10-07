@@ -53,16 +53,16 @@
   </div>
   <div class="modal-body">
     <mat-radio-group class="example-radio-group" aria-label="Select an option">
-      <mat-radio-button class="example-radio-button" value="0">
+      <mat-radio-button class="example-radio-button" value="0" [checked]="radioCheck.value0"  (change)="onItemChange($event.value)">
         Disattivato
       </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="1">
+      <mat-radio-button class="example-radio-button" value="3" [checked]="radioCheck.value3" (change)="onItemChange($event.value)">
         <img src="./../../../../assets/img/poss_incidente.PNG">
       </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="2">
+      <mat-radio-button class="example-radio-button" value="2" [checked]="radioCheck.value2" (change)="onItemChange($event.value)">
         <img src="./../../../../assets/img/poss_anomalie.PNG">
       </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="3">
+      <mat-radio-button class="example-radio-button" value="1" [checked]="radioCheck.value1" (change)="onItemChange($event.value)">
         <img src="./../../../../assets/img/poss_rall.PNG">
       </mat-radio-button>
     </mat-radio-group>
