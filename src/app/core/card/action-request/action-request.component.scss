@@ -25,6 +25,16 @@
   color: white;
 }
 
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
 @media screen and (min-width: 721px){
   .desktop-only {
     visibility: visible;

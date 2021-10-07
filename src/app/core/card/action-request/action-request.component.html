@@ -24,7 +24,7 @@
         <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="updateActionRequiredAlert()" onclick="this.disabled = true">
           Rimuovi allerta
         </button>
-        <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
+        <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="openModal(panelmodal)">
           Attiva pannello luminoso
         </button>
         <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
@@ -41,6 +41,28 @@
   </div>
 
 </mat-dialog-content>
+
+
+
+<ng-template #panel>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left"><b>Pannello luminoso</b></h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <mat-radio-group class="example-radio-group" aria-label="Select an option">
+      <mat-radio-button class="example-radio-button" value="1">Possibile incidente</mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="2">Possibili anomalie o interruzioni</mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="3">Possibili rallentamenti</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success">Salva</button>
+    <button type="button" class="btn btn-danger" >Annulla</button>
+  </div>
+</ng-template>
 
 
 <!--<mat-dialog-actions align="end">-->

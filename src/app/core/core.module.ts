@@ -52,7 +52,7 @@ import {WeatherComponent} from './card/weather/weather.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {WeatherService} from '../shared/_services/weather.service';
 import {LamppostConfigurationComponent} from './card/lamppost-configuration/lamppost-configuration.component';
-import {MatSlideToggleModule} from '@angular/material';
+import {MatRadioModule, MatSlideToggleModule} from '@angular/material';
 import { CamComponent } from './card/cam/cam.component';
 import { AddLamppostComponent } from './card/add-lamppost/add-lamppost.component';
 import { EditLamppostComponent } from './card/edit-lamppost/edit-lamppost.component';
@@ -82,39 +82,40 @@ import { EditLamppostComponent } from './card/edit-lamppost/edit-lamppost.compon
     AddLamppostComponent,
     EditLamppostComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    TranslateModule,
-    MatSidenavModule,
-    FormsModule,
-    MatCheckboxModule,
-    MatOptionModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    _MatMenuDirectivesModule,
-    MatMenuModule,
-    MatIconModule,
-    ChartsModule,
-    Ng2GoogleChartsModule,
-    GoogleMapsModule,
-    MatVideoModule,
-    MatToolbarModule,
-    MatListModule,
-    MatButtonModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatDialogModule,
-    AgmCoreModule,
-    MatCardModule,
-    GaugeModule,
-    MatBadgeModule,
-    MatInputModule,
-    TooltipModule,
-    MatSlideToggleModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        TranslateModule,
+        MatSidenavModule,
+        FormsModule,
+        MatCheckboxModule,
+        MatOptionModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        _MatMenuDirectivesModule,
+        MatMenuModule,
+        MatIconModule,
+        ChartsModule,
+        Ng2GoogleChartsModule,
+        GoogleMapsModule,
+        MatVideoModule,
+        MatToolbarModule,
+        MatListModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatTableModule,
+        MatDialogModule,
+        AgmCoreModule,
+        MatCardModule,
+        GaugeModule,
+        MatBadgeModule,
+        MatInputModule,
+        TooltipModule,
+        MatSlideToggleModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatRadioModule
+    ],
   providers: [
     AuthenticationService,
     LoginActions,

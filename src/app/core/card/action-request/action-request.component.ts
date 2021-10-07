@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {DialogModel} from '../../../shared/_models/dialog.model';
 import {Info} from '../../../shared/_models/info.model';
@@ -9,6 +9,7 @@ import {LampStatus} from '../../../shared/_models/LampStatus';
 import * as moment from 'moment';
 import {environment} from '../../../../environments/environment';
 import {ToastrService} from 'ngx-toastr';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-action-request',
@@ -21,13 +22,17 @@ export class ActionRequestComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel,
               private datasev: DataService,
               private safespotter: SafespotterService,
-              private toastr: ToastrService
+              private toastr: ToastrService,
+              private modalService: BsModalService
   ) {
   }
 
   formatUrl = environment.protocol + environment.ftp + '/';
   @Input() isVideoURLReady;
+  @ViewChild('panel') panelmodal: string;
   videoURL;
+  modalRef: BsModalRef;
+
 
   async ngOnInit() {
     this.getVideoURL();
@@ -81,6 +86,17 @@ export class ActionRequestComponent implements OnInit {
 
   }
 
+  openModal(modal) {
+    this.modalRef = this.modalService.show(modal,
+      {
+        class: 'modal-sm modal-dialog-centered',
+        keyboard: false
+      });
+  }
+
+  closeModal() {
+    this.modalRef.hide();
+  }
 }
 
 
