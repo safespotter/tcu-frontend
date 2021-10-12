@@ -70,9 +70,11 @@
         <!--settings-->
         <!--</mat-icon>-->
         <img *ngIf="element['anomaly_level'] == 0" src="./../../../../assets/icons/alert.png" class="desktop-only"
+             (click)="openModal(manualAlertModal)"
              style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Allerta manuale">
         <img src="./../../../../assets/icons/edit.svg" (click)="openEdit(element.id)" class="desktop-only"
-             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Modifica o cancella lampione">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;"
+             tooltip="Modifica o cancella lampione">
         <img src="./../../../../assets/icons/cam_brand.png" (click)="openCam(element.ip_cam_brand)" class="desktop-only"
              style="cursor: pointer; margin-right: 10px; float: right;" tooltip="Camera brandeggiabile">
         <img src="./../../../../assets/icons/cam_fix.png" (click)="openCam(element.ip_cam_fix)" class="desktop-only"
@@ -133,3 +135,19 @@
 
   <mat-paginator [pageSizeOptions]="[3]" showFirstLastButtons style=" border: 1px solid #cccccc; "></mat-paginator>
 </div>
+
+
+<ng-template #manualAlert>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left"><b>Allerta manuale</b></h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  </div>
+  <div class="modal-footer">
+    <!--    <button type="button" class="btn btn-success" (click)="updatePanel()">Salva</button>-->
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
+  </div>
+</ng-template>

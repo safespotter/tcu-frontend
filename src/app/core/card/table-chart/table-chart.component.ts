@@ -16,6 +16,7 @@ import {LamppostConfigurationComponent} from '../lamppost-configuration/lamppost
 import {LamppostConfiguration} from '../../../shared/_models/LamppostConfiguration';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
 import {Router} from '@angular/router';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-table-chart',
@@ -25,6 +26,8 @@ import {Router} from '@angular/router';
 
 export class TableChartComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('manualAlert') manualAlertModal: string;
+  modalRef: BsModalRef;
   table = [];
   displayedColumns: string[];
   // dataSource = new MatTableDataSource<Info>(INFO_DATA);
@@ -41,7 +44,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     public srv: SocketioService,
     private datasev: DataService,
     private safeSpotter: SafespotterService,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService
   ) {
   }
 
@@ -167,6 +171,18 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     this.elementSelected.emit(Object(Object($event)));
 
+  }
+
+  openModal(modal) {
+    this.modalRef = this.modalService.show(modal,
+      {
+        class: 'modal-sm modal-dialog-centered',
+        keyboard: false
+      });
+  }
+
+  closeModal() {
+    this.modalRef.hide();
   }
 
   //
