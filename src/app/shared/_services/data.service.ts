@@ -4,13 +4,24 @@ import {environment} from '../../../environments/environment';
 import {StoreService} from './store.service';
 
 @Injectable()
-export  class DataService {
+export class DataService {
   private urlRequest = `${environment.protocol}${environment.host}:${environment.port}`;
 
   constructor(
     private http: HttpClient,
     private storeService: StoreService,
   ) {
+  }
+
+  anomalyList = [{id: 1, value: 'Cambio di corsia illegale'},
+    {id: 2, value: 'Traffico congestionato'},
+    {id: 3, value: 'Oggetto o persona in strada'},
+    {id: 4, value: 'Invasione di area pedonale'},
+    {id: 5, value: 'Possibile incidente'},
+    {id: 6, value: 'Veicolo in sosta vietata'}];
+
+  getAnomalyList() {
+    return this.anomalyList;
   }
 
   convertAnomalies(alert_id) {
@@ -48,11 +59,11 @@ export  class DataService {
     } catch (e) {
       console.log(e);
     }
-    }
+  }
 
   private getAuthorization = () => new HttpHeaders()
-  .set('Content-type', 'application/json')
-  .set('Authorization', `Bearer ${this.storeService.getToken()}`)
+    .set('Content-type', 'application/json')
+    .set('Authorization', `Bearer ${this.storeService.getToken()}`);
 
   checkNotification(notification) {
     const headers = this.getAuthorization();

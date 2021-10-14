@@ -69,11 +69,11 @@
         <!--<mat-icon (click)="openConfiguration(element)" style=" font-size: 1.73em; color: #666666; cursor: pointer;">-->
         <!--settings-->
         <!--</mat-icon>-->
-        <img *ngIf="element['anomaly_level'] == 0" src="./../../../../assets/icons/alert.png" class="desktop-only"
-             (click)="openModal(manualAlertModal)"
-             style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Allerta manuale">
+<!--        <img *ngIf="element['anomaly_level'] == 0" src="./../../../../assets/icons/alert.png" class="desktop-only"-->
+<!--             (click)="openModal(manualAlertModal)"-->
+<!--             style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Forza allerta manuale">-->
         <img src="./../../../../assets/icons/edit.svg" (click)="openEdit(element.id)" class="desktop-only"
-             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;"
+             style="cursor: pointer; margin-right: 20px; float: right; height:2vh;"
              tooltip="Modifica o cancella lampione">
         <img src="./../../../../assets/icons/cam_brand.png" (click)="openCam(element.ip_cam_brand)" class="desktop-only"
              style="cursor: pointer; margin-right: 10px; float: right;" tooltip="Camera brandeggiabile">
@@ -145,9 +145,38 @@
     </button>
   </div>
   <div class="modal-body">
+    <h6>Seleziona anomalia</h6>
+    <mat-form-field appearance="fill">
+      <mat-label>Anomalia</mat-label>
+      <select matNativeControl required>
+        <mat-option *ngFor="let anomaly of anomalyList" [value]="anomaly['id']">
+          {{anomaly['value']}}
+        </mat-option>
+      </select>
+    </mat-form-field>
+    <h6>Livello di allerta</h6>
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo allerta</mat-label>
+      <select matNativeControl required>
+        <option value="1">Allerta verde</option>
+        <option value="2">Allerta gialla</option>
+        <option value="3">Allerta arancione</option>
+        <option value="4">Allerta rossa</option>
+      </select>
+    </mat-form-field>
+    <h6>Attivazione pannello</h6>
+    <mat-form-field appearance="fill">
+      <mat-label>Pannello</mat-label>
+      <select matNativeControl required>
+        <option value="0">Disattivato</option>
+        <option value="3">Pericolo</option>
+        <option value="2">Rischio elevato</option>
+        <option value="1">Rischio moderato</option>
+      </select>
+    </mat-form-field>
   </div>
   <div class="modal-footer">
-    <!--    <button type="button" class="btn btn-success" (click)="updatePanel()">Salva</button>-->
+        <button type="button" class="btn btn-success" disabled >Salva</button>
     <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
   </div>
 </ng-template>

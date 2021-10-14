@@ -31,10 +31,14 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   table = [];
   displayedColumns: string[];
   // dataSource = new MatTableDataSource<Info>(INFO_DATA);
+  anomalyList: any;
   dataSource;
   tmp;
   grey = 0;
   flag = false;
+
+
+
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @Output() elementSelected = new EventEmitter<string>();
 
@@ -42,11 +46,12 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog,
     public dialogComponent: DialogComponent,
     public srv: SocketioService,
-    private datasev: DataService,
+    public datasev: DataService,
     private safeSpotter: SafespotterService,
     private router: Router,
     private modalService: BsModalService
   ) {
+    this.anomalyList = this.datasev.getAnomalyList();
   }
 
   ngOnInit() {
@@ -96,7 +101,6 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
 
   }
-
 
   convertAnomalyLevel(anomaly_level) {
 
@@ -184,14 +188,6 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   closeModal() {
     this.modalRef.hide();
   }
-
-  //
-  // async timerChamge() {
-  //   setTimeout(() => {this.grey = 0;
-  // }, 1000);
-  //
-  //   this.grey = 1;
-  // }
 }
 
 
