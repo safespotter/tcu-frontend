@@ -193,7 +193,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       alert_id: [],
       anomaly_level: [],
       panel: [],
-      telegram: false
+      telegram: false,
+      timer: []
     });
 
   }
@@ -204,6 +205,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       alert_id: this.manualAlertForm.value.alert_id,
       anomaly_level: this.manualAlertForm.value.anomaly_level,
       panel: this.manualAlertForm.value.panel,
+      timer: this.manualAlertForm.value.timer * 60000,
       telegram: this.manualAlertForm.value.telegram
     };
 
