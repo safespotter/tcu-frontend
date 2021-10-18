@@ -17,6 +17,9 @@ import {LamppostConfiguration} from '../../../shared/_models/LamppostConfigurati
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
 import {Router} from '@angular/router';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-table-chart',
@@ -36,8 +39,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   tmp;
   grey = 0;
   flag = false;
-
-
+  manualAlertForm: FormGroup;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @Output() elementSelected = new EventEmitter<string>();
@@ -49,7 +51,9 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     public datasev: DataService,
     private safeSpotter: SafespotterService,
     private router: Router,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastr: ToastrService,
+    public formBuilder: FormBuilder
   ) {
     this.anomalyList = this.datasev.getAnomalyList();
   }
@@ -137,7 +141,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openCam(link){
+  openCam(link) {
     window.open(link, '_blank');
   }
 
@@ -164,9 +168,9 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openEdit(id){
-    const host: string =  location.origin;
-    const url: string = host + '/#/' + String(this.router.createUrlTree(['edit_lamppost'], { queryParams: { 'id': id }}));
+  openEdit(id) {
+    const host: string = location.origin;
+    const url: string = host + '/#/' + String(this.router.createUrlTree(['edit_lamppost'], {queryParams: {'id': id}}));
     window.open(url, '_blank');
 
   }
@@ -177,12 +181,37 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   }
 
-  openModal(modal) {
+  openManualAlertModal(modal, lamp_id) {
     this.modalRef = this.modalService.show(modal,
       {
         class: 'modal-sm modal-dialog-centered',
         keyboard: false
       });
+
+    this.manualAlertForm = this.formBuilder.group({
+      lamp_id: lamp_id,
+      alert_id: [],
+      anomaly_level: [],
+      panel: [],
+      telegram: false
+    });
+
+  }
+
+  manualAlertSubmit() {
+    const body = {
+      lamp_id: this.manualAlertForm.value.lamp_id,
+      alert_id: this.manualAlertForm.value.alert_id,
+      anomaly_level: this.manualAlertForm.value.anomaly_level,
+      panel: this.manualAlertForm.value.panel,
+      telegram: this.manualAlertForm.value.telegram
+    };
+
+    this.safeSpotter.manualAlert(body).subscribe(() => {
+      this.toastr.info('', 'Allerta lanciata con successo');
+    }, error => {
+      this.toastr.error('Errore imprevisto', 'Errore');
+    });
   }
 
   closeModal() {
