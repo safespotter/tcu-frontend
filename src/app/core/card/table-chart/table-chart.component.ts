@@ -30,6 +30,7 @@ import {ToastrService} from 'ngx-toastr';
 export class TableChartComponent implements OnInit, AfterViewInit {
 
   @ViewChild('manualAlert') manualAlertModal: string;
+  @ViewChild('prorogationAlert') prorogationAlertModal: string;
   modalRef: BsModalRef;
   table = [];
   displayedColumns: string[];
