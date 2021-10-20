@@ -17,7 +17,7 @@ import {LamppostConfiguration} from '../../../shared/_models/LamppostConfigurati
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
 import {Router} from '@angular/router';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 
 
@@ -190,11 +190,11 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     this.manualAlertForm = this.formBuilder.group({
       lamp_id: lamp_id,
-      alert_id: [],
-      anomaly_level: [],
-      panel: [],
+      alert_id: [Validators.required],
+      anomaly_level: [Validators.required],
+      panel: [Validators.required],
       telegram: false,
-      timer: []
+      timer: ['', Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
     });
 
   }
@@ -208,12 +208,19 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       timer: this.manualAlertForm.value.timer * 60000,
       telegram: this.manualAlertForm.value.telegram
     };
+    console.log(this.manualAlertForm);
 
-    this.safeSpotter.manualAlert(body).subscribe(() => {
-      this.toastr.info('', 'Allerta lanciata con successo');
-    }, error => {
-      this.toastr.error('Errore imprevisto', 'Errore');
-    });
+    if (this.manualAlertForm.controls.alert_id.status != 'INVALID' && this.manualAlertForm.controls.anomaly_level.status != 'INVALID' &&
+      this.manualAlertForm.controls.panel.status != 'INVALID' && this.manualAlertForm.controls.timer.status != 'INVALID') {
+      this.safeSpotter.manualAlert(body).subscribe(() => {
+        this.toastr.info('', 'Allerta segnalata con successo');
+      }, error => {
+        this.toastr.error('Errore imprevisto', 'Errore');
+      });
+    } else {
+      this.toastr.warning('Completa tutti i campi obbligatori', 'Attenzione');
+    }
+
   }
 
   closeModal() {
