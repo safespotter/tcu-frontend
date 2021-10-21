@@ -41,6 +41,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   grey = 0;
   flag = false;
   manualAlertForm: FormGroup;
+  prorogationAlertForm: FormGroup;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @Output() elementSelected = new EventEmitter<string>();
@@ -200,6 +201,19 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   }
 
+  openProrogationAlertModal(modal, lamp_id) {
+    this.modalRef = this.modalService.show(modal,
+      {
+        class: 'modal-sm modal-dialog-centered',
+        keyboard: false
+      });
+
+    this.prorogationAlertForm = this.formBuilder.group({
+      lamp_id: lamp_id,
+      timer: ['', Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
+    });
+  }
+
   manualAlertSubmit() {
     const body = {
       lamp_id: this.manualAlertForm.value.lamp_id,
@@ -209,7 +223,6 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       timer: this.manualAlertForm.value.timer * 60000,
       telegram: this.manualAlertForm.value.telegram
     };
-    console.log(this.manualAlertForm);
 
     if (this.manualAlertForm.controls.alert_id.status != 'INVALID' && this.manualAlertForm.controls.anomaly_level.status != 'INVALID' &&
       this.manualAlertForm.controls.panel.status != 'INVALID' && this.manualAlertForm.controls.timer.status != 'INVALID') {
@@ -221,7 +234,23 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     } else {
       this.toastr.warning('Completa tutti i campi obbligatori', 'Attenzione');
     }
+  }
 
+  prorogationAlertSubmit() {
+    const body = {
+      lamp_id: this.prorogationAlertForm.value.lamp_id,
+      timer: this.prorogationAlertForm.value.timer * 60000,
+    };
+
+    if (this.prorogationAlertForm.controls.timer.status != 'INVALID') {
+      this.safeSpotter.prorogationAlert(body).subscribe(() => {
+        this.toastr.info('', 'Allerta prorogata con successo');
+      }, error => {
+        this.toastr.error('Errore imprevisto', 'Errore');
+      });
+    } else {
+      this.toastr.warning('Campo timer obbligatorio', 'Attenzione');
+    }
   }
 
   closeModal() {

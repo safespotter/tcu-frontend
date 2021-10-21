@@ -70,7 +70,7 @@
         <!--settings-->
         <!--</mat-icon>-->
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/wall-clock.png" class="desktop-only"
-             (click)="openManualAlertModal(prorogationAlertModal, element.id)"
+             (click)="openProrogationAlertModal(prorogationAlertModal, element.id)"
              style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Proroga allerta">
         <img *ngIf="element['anomaly_level'] == 0" src="./../../../../assets/icons/alert.png" class="desktop-only"
              (click)="openManualAlertModal(manualAlertModal, element.id)"
@@ -213,7 +213,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form [formGroup]="prorogationAlertForm">
       <h6>Timer *</h6>
       <div class="input-group mb-3 col-md-6" style="padding: 0px">
         <input type="text" formControlName="timer" class="form-control"/>
@@ -224,7 +224,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="manualAlertSubmit()">Salva</button>
+    <button type="button" class="btn btn-success" (click)="prorogationAlertSubmit()">Salva</button>
     <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
   </div>
 </ng-template>
