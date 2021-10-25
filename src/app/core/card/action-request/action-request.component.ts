@@ -27,7 +27,9 @@ export class ActionRequestComponent implements OnInit {
   ) {
   }
 
-  formatUrl = environment.protocol + environment.ftp + '/';
+  //formatUrl = environment.protocol + environment.ftp + '/';
+  formatUrl = environment.protocol + environment.ftp + ':' + environment.port + '/';
+
   @Input() isVideoURLReady;
   @ViewChild('panel') panelmodal: string;
   videoURL;

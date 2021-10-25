@@ -17,7 +17,8 @@ import {DataService} from '../../../shared/_services/data.service';
 export class TablePersonalComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  formatUrl = environment.protocol + environment.ftp + '/';
+  //formatUrl = environment.protocol + environment.ftp + '/';
+  formatUrl = environment.protocol + environment.ftp + ':' + environment.port + '/';
   displayedColumns = ['date', 'status', 'videoURL'];
   dataSource = new MatTableDataSource();
   statusList = [];
@@ -64,6 +65,7 @@ export class TablePersonalComponent implements OnInit {
   /*metodo che inizializza la tabella nella dialog*/
   getStatus(): void {
     const curDate = new Date();
+
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         for (const el of Object.entries(data['data'])) {
