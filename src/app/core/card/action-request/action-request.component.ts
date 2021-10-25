@@ -80,8 +80,10 @@ export class ActionRequestComponent implements OnInit {
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         videoURL = data['data'][0]['videoURL'];
-        this.videoURL = this.formatUrl + videoURL;
-        this.isVideoURLReady = true;
+        if(videoURL !== undefined){
+          this.videoURL = this.formatUrl + videoURL;
+          this.isVideoURLReady = true;
+        }
       }
     );
   }
