@@ -7,6 +7,7 @@ import {MatSelect} from '@angular/material/select';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {environment} from '../../../../environments/environment';
 import {Router} from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class VideoComponent implements OnInit, AfterViewInit {
   @ViewChild('matSelect') matSelect: MatSelect;
   @ViewChild('mymodal') mymodal: string;
 
+  // url: string = "https://aircam.io/cam/piazza-yenne-cagliari";
+  // urlSafe: SafeResourceUrl;
   // video: HTMLVideoElement;
   modalRef: BsModalRef;
   title: string;
@@ -38,12 +41,14 @@ export class VideoComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     private datasev: DataService,
     private modalService: BsModalService,
-    private router: Router
+    private router: Router,
+    public sanitizer: DomSanitizer
   ) {
 
   }
 
   async ngOnInit() {
+    // this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
     this.safeList = await this.datasev.getData().toPromise();
     this.selected = this.safeList[0].id.toString(); // il primo nella lista
     this.getLampData();
