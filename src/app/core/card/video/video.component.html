@@ -1,54 +1,56 @@
-<mat-card class="desktop-only" style="border:0px;padding: 0px;border-radius: 0px;box-shadow:2px 2px 10px #2f353a;position: fixed;z-index: 1000;right: 50px;margin-top:40px">
+<mat-card class="desktop-only"
+          style="border:0px;padding: 0px;border-radius: 0px;box-shadow:2px 2px 10px #2f353a;position: fixed;z-index: 1000;right: 50px;margin-top:40px">
 
-<!--  <mat-card-content *ngIf="receivedFromMap" (click)="openCamStream(receivedFromMap.id)" style="cursor: pointer;">-->
-    <mat-card-content *ngIf="receivedFromMap" style="cursor: pointer;">
-<!--    <img *ngIf="!isVideoLoaded" src="../../../../assets/img/loading.gif" >-->
+  <mat-card-content *ngIf="receivedFromMap" (click)="openCamStream(receivedFromMap.id)" style="cursor: pointer;">
+    <!--    <mat-card-content *ngIf="receivedFromMap" style="cursor: pointer;">-->
+    <img *ngIf="!isVideoLoaded" src="../../../../assets/img/loading.gif">
     <button type="button" class="close" aria-label="Close" (click)="closeVideo()" tooltip="Chiudi">×
     </button>
-<!--    <img id="browser_video" class="video-image" alt="video" tooltip="Clicca per ingrandire"-->
-<!--         src={{combineUrl(receivedFromMap.ip_cam_fix)}}-->
-<!--         style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'" (load)="isVideoLoaded = true">-->
-<!--    <iframe width="100%" height="100%" frameBorder="0" [src]="urlSafe"></iframe>-->
-        <img id="browser_video" class="video-image" alt="video"
-             src="../../../../assets/img/via_seneca.png"
-             style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'">
+    <img id="browser_video" class="video-image" alt="video" tooltip="Clicca per ingrandire"
+         src={{combineUrl(receivedFromMap.ip_cam_fix)}}
+         style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'" (load)="isVideoLoaded = true">
+    <!--    <iframe width="100%" height="100%" frameBorder="0" [src]="urlSafe"></iframe>-->
+    <!--        <img id="browser_video" class="video-image" alt="video"-->
+    <!--             src="../../../../assets/img/via_seneca.png"-->
+    <!--             style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'">-->
   </mat-card-content>
 </mat-card>
 
 
-<mat-card class="mobile-only" style="border:0px;padding: 0px;border-radius: 0px;box-shadow:2px 2px 10px #2f353a;position: fixed;z-index: 1000;right: 10px;margin-top:40px">
-<!--  <mat-card-content *ngIf="receivedFromMap" (click)="openCamStream(receivedFromMap.id)" style="cursor: pointer;">-->
-    <mat-card-content *ngIf="receivedFromMap" style="cursor: pointer;">
-<!--    <img *ngIf="!isVideoLoaded" src="../../../../assets/img/loading.gif" >-->
+<mat-card class="mobile-only"
+          style="border:0px;padding: 0px;border-radius: 0px;box-shadow:2px 2px 10px #2f353a;position: fixed;z-index: 1000;right: 10px;margin-top:40px">
+  <mat-card-content *ngIf="receivedFromMap" (click)="openCamStream(receivedFromMap.id)" style="cursor: pointer;">
+    <!--    <mat-card-content *ngIf="receivedFromMap" style="cursor: pointer;">-->
+    <img *ngIf="!isVideoLoaded" src="../../../../assets/img/loading.gif">
     <button type="button" class="close" aria-label="Close" (click)="closeVideo()" tooltip="Chiudi">×
     </button>
-<!--    <img id="browser_video-mobile" class="video-image" alt="video" tooltip="Clicca per ingrandire"-->
-<!--         src={{combineUrl(receivedFromMap.ip_cam_fix)}}-->
-<!--         style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'"-->
-<!--         (load)="isVideoLoaded = true">-->
-      <img id="browser_video" class="video-image" alt="video"
-           src="../../../../assets/img/via_seneca.png"
-           style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'">
+    <img id="browser_video-mobile" class="video-image" alt="video" tooltip="Clicca per ingrandire"
+         src={{combineUrl(receivedFromMap.ip_cam_fix)}}
+         style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'"
+         (load)="isVideoLoaded = true">
+    <!--      <img id="browser_video" class="video-image" alt="video"-->
+    <!--           src="../../../../assets/img/via_seneca.png"-->
+    <!--           style="margin: auto;" onError="this.src = '../../../../assets/img/no-cam.png'">-->
   </mat-card-content>
 </mat-card>
 
 <!--<ng-template #mymodal>-->
-  <!--<div class="modal-header">-->
-    <!--<h4 class="modal-title" id="modal-basic-title">Lampione di {{safeList[getIndexFromId(selected)].street}}</h4>-->
-    <!--<button type="button" class="close" aria-label="Close" (click)="decline()">-->
-      <!--<span aria-hidden="true">x</span>-->
-    <!--</button>-->
-  <!--</div>-->
-  <!--<div class="modal-body">-->
-    <!--<mat-card class="card" style="height:500px; background: url(../../../../assets/img/via_cabras.png);-->
-      <!--background-repeat: no-repeat;-->
-      <!--background-size: cover;">-->
-      <!--&lt;!&ndash;    <canvas  class="video" id="canvas"  ></canvas>&ndash;&gt;-->
-    <!--</mat-card>-->
-    <!--<div>-->
-      <!--<button mat-raised-button class="cam-button" onclick="window.open('','_blank')">-->
-        <!--Apri camera brandeggiabile-->
-      <!--</button>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="modal-header">-->
+<!--<h4 class="modal-title" id="modal-basic-title">Lampione di {{safeList[getIndexFromId(selected)].street}}</h4>-->
+<!--<button type="button" class="close" aria-label="Close" (click)="decline()">-->
+<!--<span aria-hidden="true">x</span>-->
+<!--</button>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<mat-card class="card" style="height:500px; background: url(../../../../assets/img/via_cabras.png);-->
+<!--background-repeat: no-repeat;-->
+<!--background-size: cover;">-->
+<!--&lt;!&ndash;    <canvas  class="video" id="canvas"  ></canvas>&ndash;&gt;-->
+<!--</mat-card>-->
+<!--<div>-->
+<!--<button mat-raised-button class="cam-button" onclick="window.open('','_blank')">-->
+<!--Apri camera brandeggiabile-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
 <!--</ng-template>-->
