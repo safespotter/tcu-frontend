@@ -196,7 +196,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       anomaly_level: [Validators.required],
       panel: [Validators.required],
       telegram: false,
-      timer: ['', Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
+      timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
     });
 
   }
@@ -210,7 +210,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     this.prorogationAlertForm = this.formBuilder.group({
       lamp_id: lamp_id,
-      timer: ['', Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
+      timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
     });
   }
 
@@ -228,6 +228,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       this.manualAlertForm.controls.panel.status != 'INVALID' && this.manualAlertForm.controls.timer.status != 'INVALID') {
       this.safeSpotter.manualAlert(body).subscribe(() => {
         this.toastr.info('', 'Allerta segnalata con successo');
+        this.modalRef.hide();
       }, error => {
         this.toastr.error('Errore imprevisto', 'Errore');
       });
@@ -245,6 +246,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     if (this.prorogationAlertForm.controls.timer.status != 'INVALID') {
       this.safeSpotter.prorogationAlert(body).subscribe(() => {
         this.toastr.info('', 'Allerta prorogata con successo');
+        this.modalRef.hide();
       }, error => {
         this.toastr.error('Errore imprevisto', 'Errore');
       });

@@ -135,6 +135,7 @@ export class ActionRequestComponent implements OnInit {
     this.safespotter.updatePanel(body).subscribe(
       data => {
         this.toastr.info('', 'Pannello aggiornato con successo');
+        this.modalRef.hide();
       }, error => {
         this.toastr.warning('Pannello non aggiornato', 'Attenzione');
       }
