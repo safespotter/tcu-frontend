@@ -11,7 +11,8 @@ export const environment = {
   port: port,
   protocol: protocol,
   SOCKET_ENDPOINT: protocol + host + ':3000',
-  ftp: ftp
+  ftp: ftp,
+  platform: 'ss'
 };
 /*
  * For easier debugging in development mode, you can import the following file

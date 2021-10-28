@@ -19,6 +19,7 @@ import {Router} from '@angular/router';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
+import {environment} from '../../../../environments/environment';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   @ViewChild('manualAlert') manualAlertModal: string;
   @ViewChild('prorogationAlert') prorogationAlertModal: string;
+  platform = environment.platform;
   modalRef: BsModalRef;
   table = [];
   displayedColumns: string[];
@@ -68,6 +70,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     await this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.tmp = res[0];
+      this.tmp = this.tmp.filter(el => el.platform === this.platform);
       for (const el of this.tmp) {
         el.alert_name = this.datasev.convertAnomalies(el.alert_id);
         if (el.anomaly_level >= 3) {

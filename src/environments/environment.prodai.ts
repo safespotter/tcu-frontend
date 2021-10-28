@@ -9,5 +9,5 @@ export const environment = {
   protocol: protocol,
   SOCKET_ENDPOINT: protocol + host + ':3000',
   ftp: ftp,
-  platform: 'ss'
+  platform: 'ai'
 };

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SafespotterService} from '../../../shared/_services/safespotter.service';
 import {ToastrService} from 'ngx-toastr';
 import {error} from 'selenium-webdriver';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-add-lamppost',
@@ -11,6 +12,7 @@ import {error} from 'selenium-webdriver';
 })
 export class AddLamppostComponent implements OnInit {
 
+  platform = environment.platform;
   lampForm: FormGroup;
   submitted = false;
 
@@ -56,7 +58,8 @@ export class AddLamppostComponent implements OnInit {
       lat: latitude,
       long: longitude,
       ip_cam_fix: ip_cam_fix,
-      ip_cam_brand: ip_cam_brand
+      ip_cam_brand: ip_cam_brand,
+      platform: this.platform
     };
 
     if (this.lampForm.controls.street.status != 'INVALID' && this.lampForm.controls.latitude.status != 'INVALID' && this.lampForm.controls.longitude.status != 'INVALID' && this.lampForm.controls.ip_cam_fix.status != 'INVALID' && this.lampForm.controls.ip_cam_brand.status != 'INVALID') {

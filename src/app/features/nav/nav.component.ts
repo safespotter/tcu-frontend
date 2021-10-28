@@ -17,7 +17,7 @@ import {Info} from '../../shared/_models/info.model';
 import {SocketioService} from '../../shared/_services/socketio.service';
 import {DataService} from '../../shared/_services/data.service';
 import {Router} from '@angular/router';
-
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-nav',
@@ -25,6 +25,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, AfterViewInit {
+
+  platform = environment.platform;
   title = 'SAFESPOTTER';
   // title = 'Heimdall';
   isUserLoggedIn = false;

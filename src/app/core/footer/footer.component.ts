@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GlobalEventsManagerService} from "../../shared/_services/global-event-manager.service";
 import {TranslateService} from "@ngx-translate/core";
 import {User} from "../../shared/_models/User";
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +10,7 @@ import {User} from "../../shared/_models/User";
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  platform = environment.platform;
   copyrightYear = new Date().getFullYear();
   drag: boolean;
 
