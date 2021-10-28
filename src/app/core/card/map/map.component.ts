@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DataService} from '../../../shared/_services/data.service';
 import {SocketioService} from '../../../shared/_services/socketio.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -18,8 +19,9 @@ export class MapComponent implements OnInit {
 
   @Output() mapSelected = new EventEmitter<string>();
 
+  tmp;
   userLocationMarkerAnimation: string;
-
+  platform = environment.platform;
   markers = [];
   circles = [];
   selectedLat;
@@ -64,9 +66,11 @@ export class MapComponent implements OnInit {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.markers = [];
       this.circles = [];
-      const tmp = res[0];
-      for (const el of tmp) {
-        if (el.id == 1) {
+      this.tmp = res[0];
+      this.tmp = this.tmp.filter(el => el.platform === this.platform);
+      let flag = 0;
+      for (const el of this.tmp) {
+        if (flag == 0) {
           this.updateCoordinates(el.lat, el.long);
         }
         this.markers.push({
@@ -78,7 +82,7 @@ export class MapComponent implements OnInit {
         });
         this.isMarkersReady = true;
 
-        switch (el.anomaly_level){
+        switch (el.anomaly_level) {
           case 1:
             this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'green', opacity: '0.15'});
             break;
@@ -92,6 +96,7 @@ export class MapComponent implements OnInit {
             this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'red', opacity: '0.25'});
             break;
         }
+        flag ++;
       }
     });
     //this.getMarkers();
