@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 const host = 'localhost';
 const port = '8080';
-const ftp = 'localhost';
+const ftp = 'localhost:8080';
 const protocol = 'http://';
 export const environment = {
   production: false,
