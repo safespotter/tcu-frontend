@@ -16,6 +16,7 @@ import {Info} from '../../../shared/_models/info.model';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {BsLocaleService} from 'ngx-bootstrap/datepicker';
 import {DataService} from '../../../shared/_services/data.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-custom',
@@ -27,6 +28,7 @@ export class CustomComponent implements OnInit {
   user: User;
   dateChoice: String;
   value: String;
+  platform = environment.platform;
 
   constructor(
     private breadcrumbActions: BreadcrumbActions,
@@ -84,7 +86,7 @@ export class CustomComponent implements OnInit {
   ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       let tmp = res[0];
-      tmp = tmp.filter(el => !el.checked);
+      tmp = tmp.filter(el => !el.checked && el.platform === this.platform);
       for (const el of tmp) {
         for (const el_config of el.configuration) {
           if (el.alert_id == el_config.alert_id) {
