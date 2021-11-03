@@ -39,6 +39,7 @@ export class NavComponent implements OnInit, AfterViewInit {
   tmp: string;
   user: User;
   listCritical = [];
+  listNotPlatform = [];
 
   drag: boolean;
   hide: boolean;
@@ -88,11 +89,20 @@ export class NavComponent implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
-      this.count = res[4];
+      //this.count = res[4];
       this.listCritical = res[3];
-      for (const el of this.listCritical){
+      this.count = 0;
+      this.listNotPlatform = [];
+      for (const el of this.listCritical) {
         el.alert_name = this.dataService.convertAnomalies(el.alert_id);
+        for (const ll of res[0]) {
+          if (ll.id == el.lamp_id) {
+            el.platform = ll.platform;
+          }
+        }
       }
+      this.listNotPlatform = this.listCritical.filter(el => el.platform === this.platform);
+      this.count = this.listNotPlatform.length;
     });
 
     this.globalEventService.dragAndDrop.subscribe(value => this.drag = value);
@@ -170,6 +180,6 @@ export class NavComponent implements OnInit, AfterViewInit {
 
     // clear the notification from the UI without waiting for the backend to provide a smoother UX
     this.count--;
-    this.listCritical = this.listCritical.filter( e => e !== element );
+    this.listNotPlatform = this.listNotPlatform.filter(e => e !== element);
   }
 }
