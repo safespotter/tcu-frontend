@@ -77,6 +77,11 @@ export class SafespotterService {
     return this.http.post(this.formatUrl('manualAlert/'), body, {headers});
   }
 
+  editAlert(body) {
+    const headers = this.getAuthorization();
+    return this.http.put(this.formatUrl('editAlert/'), body, {headers});
+  }
+
   prorogationAlert(body) {
     const headers = this.getAuthorization();
     return this.http.post(this.formatUrl('prorogationAlert/'), body, {headers});

@@ -32,6 +32,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   @ViewChild('manualAlert') manualAlertModal: string;
   @ViewChild('prorogationAlert') prorogationAlertModal: string;
+  @ViewChild('editAlert') editAlertModal: string;
+
   platform = environment.platform;
   modalRef: BsModalRef;
   table = [];
@@ -43,6 +45,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   grey = 0;
   flag = false;
   manualAlertForm: FormGroup;
+  editAlertForm: FormGroup;
   prorogationAlertForm: FormGroup;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -201,7 +204,24 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       telegram: false,
       timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
     });
+  }
 
+  openEditAlertModal(modal, lamp_id) {
+    this.modalRef = this.modalService.show(modal,
+      {
+        class: 'modal-sm modal-dialog-centered',
+        keyboard: false
+      });
+
+    this.editAlertForm = this.formBuilder.group({
+      notification_id: [Validators.required],
+      lamp_id: lamp_id,
+      alert_id: [Validators.required],
+      anomaly_level: [Validators.required],
+      panel: [Validators.required],
+      telegram: false,
+      timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
+    });
   }
 
   openProrogationAlertModal(modal, lamp_id) {
@@ -218,6 +238,29 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
   manualAlertSubmit() {
+    const body = {
+      lamp_id: this.editAlertForm.value.lamp_id,
+      alert_id: this.editAlertForm.value.alert_id,
+      anomaly_level: this.editAlertForm.value.anomaly_level,
+      panel: this.editAlertForm.value.panel,
+      timer: this.editAlertForm.value.timer * 60000,
+      telegram: this.editAlertForm.value.telegram
+    };
+
+    if (this.editAlertForm.controls.alert_id.status != 'INVALID' && this.editAlertForm.controls.anomaly_level.status != 'INVALID' &&
+      this.editAlertForm.controls.panel.status != 'INVALID' && this.editAlertForm.controls.timer.status != 'INVALID') {
+      this.safeSpotter.manualAlert(body).subscribe(() => {
+        this.toastr.info('', 'Allerta segnalata con successo');
+        this.modalRef.hide();
+      }, error => {
+        this.toastr.error('Errore imprevisto', 'Errore');
+      });
+    } else {
+      this.toastr.warning('Completa tutti i campi obbligatori', 'Attenzione');
+    }
+  }
+
+  editAlertSubmit() {
     const body = {
       lamp_id: this.manualAlertForm.value.lamp_id,
       alert_id: this.manualAlertForm.value.alert_id,
