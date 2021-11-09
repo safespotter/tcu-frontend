@@ -71,15 +71,15 @@
         <!--</mat-icon>-->
 
 
-<!--        <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/edit-alert.png" class="desktop-only"-->
-<!--             (click)="openEditAlertModal(editAlertModal, element.id)"-->
-<!--             style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Modifica allerta">-->
+        <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/edit-alert.png" class="desktop-only"
+             (click)="openEditAlertModal(editAlertModal, element.id, element.notification_id, element.status_id)"
+             style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Modifica allerta">
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/wall-clock.png" class="desktop-only"
              (click)="openProrogationAlertModal(prorogationAlertModal, element.id)"
-             style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Proroga allerta">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Proroga allerta">
         <img *ngIf="element['anomaly_level'] == 0" src="./../../../../assets/icons/alert.png" class="desktop-only"
              (click)="openManualAlertModal(manualAlertModal, element.id)"
-             style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Forza allerta manuale">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Forza allerta manuale">
         <img src="./../../../../assets/icons/edit.svg" (click)="openEdit(element.id)" class="desktop-only"
              style="cursor: pointer; margin-right: 10px; float: right; height:2vh;"
              tooltip="Modifica o cancella lampione">
@@ -210,6 +210,8 @@
   </div>
 </ng-template>
 
+
+
 <ng-template #prorogationAlert>
   <div class="modal-header">
     <h4 class="modal-title pull-left"><b>Proroga allerta</b></h4>
@@ -298,33 +300,6 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="editAlertSubmit()">Salva</button>
-    <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
-  </div>
-</ng-template>
-
-<ng-template #prorogationAlert>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left"><b>Proroga allerta</b></h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>
-      <i>La proroga sarà valida a partire dal momento del salvataggio.</i>
-    </p>
-    <form [formGroup]="prorogationAlertForm">
-      <h6>Timer *</h6>
-      <div class="input-group mb-3 col-md-6" style="padding: 0px">
-        <input type="text" formControlName="timer" class="form-control"/>
-        <div class="input-group-prepend">
-          <span class="input-group-text">min</span>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="prorogationAlertSubmit()">Salva</button>
     <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
   </div>
 </ng-template>

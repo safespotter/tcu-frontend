@@ -139,6 +139,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         anomaly_level: info.anomaly_level,
         alert_id: info.alert_id,
         notification_id: info.notification_id,
+        status_id: info.status_id,
         id: info.id,
         street: info.street,
         date: info.date,
@@ -206,7 +207,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openEditAlertModal(modal, lamp_id) {
+  openEditAlertModal(modal, lamp_id, notification_id, status_id) {
     this.modalRef = this.modalService.show(modal,
       {
         class: 'modal-sm modal-dialog-centered',
@@ -214,7 +215,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       });
 
     this.editAlertForm = this.formBuilder.group({
-      notification_id: [Validators.required],
+      notification_id: notification_id,
+      status_id: status_id,
       lamp_id: lamp_id,
       alert_id: [Validators.required],
       anomaly_level: [Validators.required],
@@ -239,16 +241,16 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   manualAlertSubmit() {
     const body = {
-      lamp_id: this.editAlertForm.value.lamp_id,
-      alert_id: this.editAlertForm.value.alert_id,
-      anomaly_level: this.editAlertForm.value.anomaly_level,
-      panel: this.editAlertForm.value.panel,
-      timer: this.editAlertForm.value.timer * 60000,
-      telegram: this.editAlertForm.value.telegram
+      lamp_id: this.manualAlertForm.value.lamp_id,
+      alert_id: this.manualAlertForm.value.alert_id,
+      anomaly_level: this.manualAlertForm.value.anomaly_level,
+      panel: this.manualAlertForm.value.panel,
+      timer: this.manualAlertForm.value.timer * 60000,
+      telegram: this.manualAlertForm.value.telegram
     };
 
-    if (this.editAlertForm.controls.alert_id.status != 'INVALID' && this.editAlertForm.controls.anomaly_level.status != 'INVALID' &&
-      this.editAlertForm.controls.panel.status != 'INVALID' && this.editAlertForm.controls.timer.status != 'INVALID') {
+    if (this.manualAlertForm.controls.alert_id.status != 'INVALID' && this.manualAlertForm.controls.anomaly_level.status != 'INVALID' &&
+      this.manualAlertForm.controls.panel.status != 'INVALID' && this.manualAlertForm.controls.timer.status != 'INVALID') {
       this.safeSpotter.manualAlert(body).subscribe(() => {
         this.toastr.info('', 'Allerta segnalata con successo');
         this.modalRef.hide();
@@ -262,18 +264,20 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
   editAlertSubmit() {
     const body = {
-      lamp_id: this.manualAlertForm.value.lamp_id,
-      alert_id: this.manualAlertForm.value.alert_id,
-      anomaly_level: this.manualAlertForm.value.anomaly_level,
-      panel: this.manualAlertForm.value.panel,
-      timer: this.manualAlertForm.value.timer * 60000,
-      telegram: this.manualAlertForm.value.telegram
+      lamp_id: this.editAlertForm.value.lamp_id,
+      notification_id: this.editAlertForm.value.notification_id,
+      status_id: this.editAlertForm.value.status_id,
+      alert_id: this.editAlertForm.value.alert_id,
+      anomaly_level: this.editAlertForm.value.anomaly_level,
+      panel: this.editAlertForm.value.panel,
+      timer: this.editAlertForm.value.timer * 60000,
+      telegram: this.editAlertForm.value.telegram
     };
 
-    if (this.manualAlertForm.controls.alert_id.status != 'INVALID' && this.manualAlertForm.controls.anomaly_level.status != 'INVALID' &&
-      this.manualAlertForm.controls.panel.status != 'INVALID' && this.manualAlertForm.controls.timer.status != 'INVALID') {
-      this.safeSpotter.manualAlert(body).subscribe(() => {
-        this.toastr.info('', 'Allerta segnalata con successo');
+    if (this.editAlertForm.controls.alert_id.status != 'INVALID' && this.editAlertForm.controls.anomaly_level.status != 'INVALID' &&
+      this.editAlertForm.controls.panel.status != 'INVALID' && this.editAlertForm.controls.timer.status != 'INVALID') {
+      this.safeSpotter.editAlert(body).subscribe(() => {
+        this.toastr.info('', 'Allerta modificata con successo');
         this.modalRef.hide();
       }, error => {
         this.toastr.error('Errore imprevisto', 'Errore');

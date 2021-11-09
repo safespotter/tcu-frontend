@@ -61,15 +61,18 @@ export class ActionRequestComponent implements OnInit {
         break;
       case 1:
         this.radioCheck.value1 = true;
-        this.panelCurrentValue = parseInt('1', 10);;
+        this.panelCurrentValue = parseInt('1', 10);
+        ;
         break;
       case 2:
         this.radioCheck.value2 = true;
-        this.panelCurrentValue = parseInt('2', 10);;
+        this.panelCurrentValue = parseInt('2', 10);
+        ;
         break;
       case 3:
         this.radioCheck.value3 = true;
-        this.panelCurrentValue = parseInt('3', 10);;
+        this.panelCurrentValue = parseInt('3', 10);
+        ;
         break;
       default:
         this.radioCheck.value0 = true;
@@ -82,7 +85,7 @@ export class ActionRequestComponent implements OnInit {
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         videoURL = data['data'][0]['videoURL'];
-        if(videoURL !== undefined){
+        if (videoURL !== undefined) {
           this.videoURL = this.formatUrl + videoURL;
           this.isVideoURLReady = true;
         }
