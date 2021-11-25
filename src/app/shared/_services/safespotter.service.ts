@@ -87,6 +87,11 @@ export class SafespotterService {
     return this.http.post(this.formatUrl('prorogationAlert/'), body, {headers});
   }
 
+  propagationAlert(body) {
+    const headers = this.getAuthorization();
+    return this.http.post(this.formatUrl('propagationAlert/'), body, {headers});
+  }
+
   private formatUrl(call): string {
     return environment.protocol + environment.host + ':' + environment.port + '/safePath/' + call;
   }

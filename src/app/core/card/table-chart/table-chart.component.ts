@@ -33,6 +33,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   @ViewChild('manualAlert') manualAlertModal: string;
   @ViewChild('prorogationAlert') prorogationAlertModal: string;
   @ViewChild('editAlert') editAlertModal: string;
+  @ViewChild('propagateAlert') propagateAlertModal: string;
 
   platform = environment.platform;
   modalRef: BsModalRef;
@@ -47,6 +48,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   manualAlertForm: FormGroup;
   editAlertForm: FormGroup;
   prorogationAlertForm: FormGroup;
+  propagateAlertForm: FormGroup;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @Output() elementSelected = new EventEmitter<string>();
@@ -234,6 +236,19 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       });
 
     this.prorogationAlertForm = this.formBuilder.group({
+      lamp_id: lamp_id,
+      timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
+    });
+  }
+
+  openPropagateAlertModal(modal, lamp_id) {
+    this.modalRef = this.modalService.show(modal,
+      {
+        class: 'modal-sm modal-dialog-centered',
+        keyboard: false
+      });
+
+    this.propagateAlertForm = this.formBuilder.group({
       lamp_id: lamp_id,
       timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
     });
