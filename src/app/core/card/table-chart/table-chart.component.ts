@@ -255,11 +255,17 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
   manualAlertSubmit() {
+    let panel = 0;
+
+    if (this.manualAlertForm.value.anomaly_level > 1) {
+      panel = this.manualAlertForm.value.panel;
+    }
+
     const body = {
       lamp_id: this.manualAlertForm.value.lamp_id,
       alert_id: this.manualAlertForm.value.alert_id,
       anomaly_level: this.manualAlertForm.value.anomaly_level,
-      panel: this.manualAlertForm.value.panel,
+      panel: panel,
       timer: this.manualAlertForm.value.timer * 60000,
       telegram: this.manualAlertForm.value.telegram
     };

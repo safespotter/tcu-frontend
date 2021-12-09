@@ -157,6 +157,9 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="manualAlertForm">
+      <p>
+        <i>Il pannello luminoso è attivabile solamente con un livello di allerta minimo di colore giallo.</i>
+      </p>
       <h6>Seleziona anomalia *</h6>
       <mat-form-field appearance="fill">
         <mat-label>Anomalia</mat-label>
@@ -182,16 +185,19 @@
           <option value="4">Allerta rossa</option>
         </select>
       </mat-form-field>
-      <h6>Attivazione pannello *</h6>
-      <mat-form-field appearance="fill">
-        <mat-label>Pannello</mat-label>
-        <select matNativeControl required formControlName="panel">
-          <option value="0">Disattivato</option>
-          <option value="3">Pericolo</option>
-          <option value="2">Rischio elevato</option>
-          <option value="1">Rischio moderato</option>
-        </select>
-      </mat-form-field>
+      <div *ngIf="manualAlertForm.value['anomaly_level'] > 1">
+        <h6>Attivazione pannello *</h6>
+        <mat-form-field appearance="fill">
+          <mat-label>Pannello</mat-label>
+          <select matNativeControl required formControlName="panel">
+            <option value="0">Disattivato</option>
+            <option value="3">Pericolo</option>
+            <option value="2">Rischio elevato</option>
+            <option value="1">Rischio moderato</option>
+          </select>
+        </mat-form-field>
+      </div>
+
       <!--      <div style="padding-bottom: 10px">-->
       <!--        <h6>Timer</h6>-->
       <!--        <textarea style="width: 75%; resize: none;" rows="1" type="number" formControlName="timer"></textarea> min-->
