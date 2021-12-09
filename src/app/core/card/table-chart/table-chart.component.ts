@@ -35,6 +35,9 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   @ViewChild('editAlert') editAlertModal: string;
   @ViewChild('propagateAlert') propagateAlertModal: string;
 
+  @Input()isPanelReady;
+  panelActualValue;
+
   platform = environment.platform;
   modalRef: BsModalRef;
   table = [];
@@ -199,6 +202,11 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         keyboard: false
       });
 
+    this.safeSpotter.getPanelsStatus(lamp_id).subscribe(res => {
+      this.isPanelReady = true;
+      this.panelActualValue = Object.values(res)[2];
+    });
+
     this.manualAlertForm = this.formBuilder.group({
       lamp_id: lamp_id,
       alert_id: [Validators.required],
@@ -323,6 +331,21 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       });
     } else {
       this.toastr.warning('Campo timer obbligatorio', 'Attenzione');
+    }
+  }
+
+  parsePanelValue(value){
+    switch (value){
+      case 0:
+        return 'DISATTIVATO';
+      case 1:
+        return 'RISCHIO MODERATO';
+      case 2:
+        return 'RISCHIO ELEVATO';
+      case 3:
+        return 'PERICOLO';
+      default:
+        return 'ERRORE';
     }
   }
 

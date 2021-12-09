@@ -149,7 +149,7 @@
 
 
 <ng-template #manualAlert>
-  <div class="modal-header">
+  <div class="modal-header" *ngIf="isPanelReady">
     <h4 class="modal-title pull-left"><b>Forza allerta manuale</b></h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
@@ -196,6 +196,9 @@
             <option value="1">Rischio moderato</option>
           </select>
         </mat-form-field>
+        <p style="color: red" *ngIf="panelActualValue>0">
+          <i>Attenzione! Il pannello associato al lampione risulta essere acceso con illuminazione di tipo <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
+        </p>
       </div>
 
       <!--      <div style="padding-bottom: 10px">-->
