@@ -54,30 +54,30 @@ export class ActionRequestComponent implements OnInit {
   }
 
   panelValue() {
-    switch (this.data.panel) {
-      case 0:
-        this.radioCheck.value0 = true;
-        this.panelCurrentValue = parseInt('0', 10);
-        break;
-      case 1:
-        this.radioCheck.value1 = true;
-        this.panelCurrentValue = parseInt('1', 10);
-        ;
-        break;
-      case 2:
-        this.radioCheck.value2 = true;
-        this.panelCurrentValue = parseInt('2', 10);
-        ;
-        break;
-      case 3:
-        this.radioCheck.value3 = true;
-        this.panelCurrentValue = parseInt('3', 10);
-        ;
-        break;
-      default:
-        this.radioCheck.value0 = true;
-        this.panelCurrentValue = 0;
-    }
+    const panels = this.safespotter.getPanelsStatus(this.data.id).subscribe(res => {
+      //attributo status
+      switch (Object.values(res)[2]) {
+        case 0:
+          this.radioCheck.value0 = true;
+          this.panelCurrentValue = parseInt('0', 10);
+          break;
+        case 1:
+          this.radioCheck.value1 = true;
+          this.panelCurrentValue = parseInt('1', 10);
+          break;
+        case 2:
+          this.radioCheck.value2 = true;
+          this.panelCurrentValue = parseInt('2', 10);
+          break;
+        case 3:
+          this.radioCheck.value3 = true;
+          this.panelCurrentValue = parseInt('3', 10);
+          break;
+        default:
+          this.radioCheck.value0 = true;
+          this.panelCurrentValue = 0;
+      }
+    });
   }
 
   getVideoURL() {
@@ -146,6 +146,7 @@ export class ActionRequestComponent implements OnInit {
   }
 
   openModal(modal) {
+    this.panelValue();
     this.modalRef = this.modalService.show(modal,
       {
         class: 'modal-sm modal-dialog-centered',
