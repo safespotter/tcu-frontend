@@ -224,6 +224,11 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         keyboard: false
       });
 
+    this.safeSpotter.getPanelsStatus(lamp_id).subscribe(res => {
+      this.isPanelReady = true;
+      this.panelActualValue = Object.values(res)[2];
+    });
+
     this.editAlertForm = this.formBuilder.group({
       notification_id: notification_id,
       status_id: status_id,
@@ -292,13 +297,20 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
   editAlertSubmit() {
+
+    let panel = 0;
+
+    if (this.editAlertForm.value.anomaly_level > 1) {
+      panel = this.editAlertForm.value.panel;
+    }
+
     const body = {
       lamp_id: this.editAlertForm.value.lamp_id,
       notification_id: this.editAlertForm.value.notification_id,
       status_id: this.editAlertForm.value.status_id,
       alert_id: this.editAlertForm.value.alert_id,
       anomaly_level: this.editAlertForm.value.anomaly_level,
-      panel: this.editAlertForm.value.panel,
+      panel: panel,
       timer: this.editAlertForm.value.timer * 60000,
       telegram: this.editAlertForm.value.telegram
     };

@@ -54,6 +54,9 @@
     </button>
   </div>
   <div class="modal-body">
+    <p style="color: red" *ngIf="panelActualValue > 0">
+      <i>Attenzione! Il pannello associato al lampione risulta essere acceso con illuminazione di tipo <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
+    </p>
     <mat-radio-group class="example-radio-group" aria-label="Select an option">
       <mat-radio-button class="example-radio-button" value="0" [checked]="radioCheck.value0"  (change)="onItemChange($event.value)">
         Disattivato

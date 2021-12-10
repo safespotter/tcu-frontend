@@ -260,6 +260,9 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="editAlertForm">
+      <p>
+        <i>Il pannello luminoso è attivabile solamente con un livello di allerta minimo di colore giallo.</i>
+      </p>
       <h6>Seleziona anomalia *</h6>
       <mat-form-field appearance="fill">
         <mat-label>Anomalia</mat-label>
@@ -285,16 +288,21 @@
           <option value="4">Allerta rossa</option>
         </select>
       </mat-form-field>
-      <h6>Attivazione pannello *</h6>
-      <mat-form-field appearance="fill">
-        <mat-label>Pannello</mat-label>
-        <select matNativeControl required formControlName="panel">
-          <option value="0">Disattivato</option>
-          <option value="3">Pericolo</option>
-          <option value="2">Rischio elevato</option>
-          <option value="1">Rischio moderato</option>
-        </select>
-      </mat-form-field>
+      <div *ngIf="editAlertForm.value['anomaly_level'] > 1">
+        <h6>Attivazione pannello *</h6>
+        <mat-form-field appearance="fill">
+          <mat-label>Pannello</mat-label>
+          <select matNativeControl required formControlName="panel">
+            <option value="0">Disattivato</option>
+            <option value="3">Pericolo</option>
+            <option value="2">Rischio elevato</option>
+            <option value="1">Rischio moderato</option>
+          </select>
+        </mat-form-field>
+        <p style="color: red" *ngIf="panelActualValue>0">
+          <i>Attenzione! Il pannello associato al lampione risulta essere acceso con illuminazione di tipo <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
+        </p>
+      </div>
       <!--      <div style="padding-bottom: 10px">-->
       <!--        <h6>Timer</h6>-->
       <!--        <textarea style="width: 75%; resize: none;" rows="1" type="number" formControlName="timer"></textarea> min-->

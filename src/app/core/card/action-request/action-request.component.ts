@@ -31,6 +31,7 @@ export class ActionRequestComponent implements OnInit {
   formatUrl = environment.protocol + environment.ftp + '/';
 
   @Input() isVideoURLReady;
+  panelActualValue;
   @ViewChild('panel') panelmodal: string;
   videoURL;
   modalRef: BsModalRef;
@@ -56,6 +57,7 @@ export class ActionRequestComponent implements OnInit {
   panelValue() {
     const panels = this.safespotter.getPanelsStatus(this.data.id).subscribe(res => {
       //attributo status
+      this.panelActualValue = Object.values(res)[2];
       switch (Object.values(res)[2]) {
         case 0:
           this.radioCheck.value0 = true;
@@ -111,7 +113,8 @@ export class ActionRequestComponent implements OnInit {
   updateActionRequiredAlert() {
     const body = {
       lamp_id: this.data.id,
-      notification_id: this.data.notification_id
+      notification_id: this.data.notification_id,
+      date: this.data.date
     };
 
     this.safespotter.updateActionRequiredAlert(body).subscribe(
@@ -152,6 +155,21 @@ export class ActionRequestComponent implements OnInit {
         class: 'modal-sm modal-dialog-centered',
         keyboard: false
       });
+  }
+
+  parsePanelValue(value){
+    switch (value){
+      case 0:
+        return 'DISATTIVATO';
+      case 1:
+        return 'RISCHIO MODERATO';
+      case 2:
+        return 'RISCHIO ELEVATO';
+      case 3:
+        return 'PERICOLO';
+      default:
+        return 'ERRORE';
+    }
   }
 
   closeModal() {
