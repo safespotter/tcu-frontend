@@ -111,19 +111,28 @@ export class ActionRequestComponent implements OnInit {
   }
 
   updateActionRequiredAlert() {
-    const body = {
-      lamp_id: this.data.id,
-      notification_id: this.data.notification_id,
-      date: this.data.date
-    };
 
-    this.safespotter.updateActionRequiredAlert(body).subscribe(
-      data => {
-        this.toastr.info('', 'Allerta rimossa con successo');
+    this.safespotter.getLamppost(this.data.id).subscribe(
+      res => {
+        const body = {
+          lamp_id: this.data.id,
+          notification_id: this.data.notification_id,
+          date: res['date']
+        };
+
+        this.safespotter.updateActionRequiredAlert(body).subscribe(
+          data => {
+            this.toastr.info('', 'Allerta rimossa con successo');
+          }, error => {
+            this.toastr.warning('Allerta rimossa in precedenza', 'Attenzione');
+          }
+        );
+
       }, error => {
-        this.toastr.warning('Allerta rimossa in precedenza', 'Attenzione');
+        this.toastr.warning('Errore', 'Attenzione');
       }
     );
+
 
   }
 
@@ -135,7 +144,8 @@ export class ActionRequestComponent implements OnInit {
 
     const body = {
       lamp_id: this.data.id,
-      panel: this.panelCurrentValue
+      panel: this.panelCurrentValue,
+      date: this.data.date
     };
 
     this.safespotter.updatePanel(body).subscribe(
@@ -157,8 +167,8 @@ export class ActionRequestComponent implements OnInit {
       });
   }
 
-  parsePanelValue(value){
-    switch (value){
+  parsePanelValue(value) {
+    switch (value) {
       case 0:
         return 'DISATTIVATO';
       case 1:

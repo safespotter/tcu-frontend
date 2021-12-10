@@ -97,6 +97,11 @@ export class SafespotterService {
     return this.http.get(this.formatUrl('getPanelsStatus/') + lamp_id, {headers});
   }
 
+  getLamppost(lamp_id) {
+    const headers = this.getAuthorization();
+    return this.http.get(this.formatUrl('getLamppost/') + lamp_id, {headers});
+  }
+
   private formatUrl(call): string {
     return environment.protocol + environment.host + ':' + environment.port + '/safePath/' + call;
   }
