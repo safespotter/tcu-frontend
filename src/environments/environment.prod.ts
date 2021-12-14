@@ -1,4 +1,4 @@
-const host = 'safespotter.tetralert.it';
+const host = '15.161.210.238';
 const port = '8080';
 const ftp = '15.161.210.238';
 const protocol = 'https://';
