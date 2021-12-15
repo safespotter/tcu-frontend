@@ -64,8 +64,10 @@ export class FeatureAuthenticationLoginFormComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
         setTimeout(() => {
-            this.router.navigate(['']).then(r => window.location.reload()
-          );
+            this.router.navigate(['']).then(r => {
+              window.location.reload();
+              this.toastr.info('Accesso effettuato correttamente');
+            });
           },
           500);
       }, error => {
@@ -77,6 +79,7 @@ export class FeatureAuthenticationLoginFormComponent implements OnInit {
 
         if (error.status === 401) {
           this.failed = true;
+          this.toastr.error('Username o password errati', 'Attenzione', {timeOut: 5000});
         }
 
         this.loading = false;
