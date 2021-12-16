@@ -254,7 +254,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openPropagateAlertModal(modal, lamp_id) {
+  openPropagateAlertModal(modal, lamp_id, alert_id, anomaly_level) {
     this.modalRef = this.modalService.show(modal,
       {
         class: 'modal-sm modal-dialog-centered',
@@ -263,7 +263,11 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     this.propagateAlertForm = this.formBuilder.group({
       lamp_id: lamp_id,
-      timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
+      alert_id: alert_id,
+      anomaly_level: anomaly_level,
+      panel : 0,
+      timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])],
+      dest_lamp: [lamp_id]
     });
   }
 

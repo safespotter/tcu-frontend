@@ -73,9 +73,9 @@
 
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/edit-alert.png" class="desktop-only"
              (click)="openEditAlertModal(editAlertModal, element.id, element.notification_id, element.status_id)"
-             style="cursor: pointer; margin-right: 20px; float: right; height:2vh;" tooltip="Modifica allerta">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Modifica allerta">
 <!--        <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/propagate_alert.png" class="desktop-only"-->
-<!--             (click)="openPropagateAlertModal(propagateAlertModal, element.id)"-->
+<!--             (click)="openPropagateAlertModal(propagateAlertModal, element.id, element.alert_id, element.anomaly_level)"-->
 <!--             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Propaga allerta">-->
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/wall-clock.png" class="desktop-only"
              (click)="openProrogationAlertModal(prorogationAlertModal, element.id)"
