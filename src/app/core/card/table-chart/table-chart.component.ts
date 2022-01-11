@@ -397,6 +397,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   closeModal() {
     this.modalRef.hide();
     this.lampList = [];
+    this.panelActualValue = null;
   }
 }
 
