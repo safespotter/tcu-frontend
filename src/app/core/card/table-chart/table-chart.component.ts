@@ -261,6 +261,11 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         keyboard: false
       });
 
+    this.safeSpotter.getPanelsStatus(lamp_id).subscribe(res => {
+      this.isPanelReady = true;
+      this.panelActualValue = Object.values(res)[2];
+    });
+
     this.propagateAlertForm = this.formBuilder.group({
       lamp_id: lamp_id,
       alert_id: alert_id,

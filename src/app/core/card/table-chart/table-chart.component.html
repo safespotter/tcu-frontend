@@ -74,7 +74,8 @@
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/edit-alert.png" class="desktop-only"
              (click)="openEditAlertModal(editAlertModal, element.id, element.notification_id, element.status_id)"
              style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Modifica allerta">
-<!--        <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/propagate_alert.png" class="desktop-only"-->
+<!--        <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/propagate_alert.png"-->
+<!--             class="desktop-only"-->
 <!--             (click)="openPropagateAlertModal(propagateAlertModal, element.id, element.alert_id, element.anomaly_level)"-->
 <!--             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Propaga allerta">-->
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/wall-clock.png" class="desktop-only"
@@ -197,7 +198,8 @@
           </select>
         </mat-form-field>
         <p style="color: red" *ngIf="panelActualValue>0">
-          <i>Attenzione! Il pannello associato al lampione risulta essere acceso con illuminazione di tipo <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
+          <i>Attenzione! Il pannello associato al lampione risulta essere acceso con illuminazione di tipo
+            <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
         </p>
       </div>
 
@@ -221,7 +223,6 @@
     <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
   </div>
 </ng-template>
-
 
 
 <ng-template #prorogationAlert>
@@ -300,7 +301,8 @@
           </select>
         </mat-form-field>
         <p style="color: red" *ngIf="panelActualValue>0">
-          <i>Attenzione! Il pannello associato al lampione risulta essere acceso con illuminazione di tipo <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
+          <i>Attenzione! Il pannello associato al lampione risulta essere acceso con illuminazione di tipo
+            <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
         </p>
       </div>
       <!--      <div style="padding-bottom: 10px">-->
@@ -326,17 +328,46 @@
 
 <ng-template #propagateAlert>
   <div class="modal-header">
-    <h4 class="modal-title pull-left"><b>Propaga allerta ad altri lampioni</b></h4>
+    <h4 class="modal-title pull-left"><b>Propaga allerta ad un altro lampione</b></h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <form [formGroup]="propagateAlertForm">
+      <div style="padding-bottom: 10px">Propagazione dell'allerta {{propagateAlertForm.value['alert_id']}} di
+        tipo {{propagateAlertForm.value['anomaly_level']}}
+      </div>
+      <h6>Seleziona lampione destinatario *</h6>
+
+      <div *ngIf="propagateAlertForm.value['anomaly_level'] > 1">
+        <h6>Attivazione pannello *</h6>
+        <mat-form-field appearance="fill">
+          <mat-label>Pannello</mat-label>
+          <select matNativeControl required formControlName="panel">
+            <option value="0">Disattivato</option>
+            <option value="3">Pericolo</option>
+            <option value="2">Rischio elevato</option>
+            <option value="1">Rischio moderato</option>
+          </select>
+        </mat-form-field>
+        <p style="color: red" *ngIf="panelActualValue>0">
+          <i>Attenzione! Il pannello associato al lampione risulta essere già acceso con illuminazione di tipo
+            <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
+        </p>
+      </div>
+      <h6>Timer *</h6>
+      <div class="input-group mb-3 col-md-6" style="padding: 0px">
+        <input type="text" formControlName="timer" class="form-control"/>
+        <div class="input-group-prepend">
+          <span class="input-group-text">min</span>
+        </div>
+      </div>
     </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="editAlertSubmit()">Salva</button>
-    <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="editAlertSubmit()">Salva</button>
+      <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
+    </div>
   </div>
 </ng-template>
