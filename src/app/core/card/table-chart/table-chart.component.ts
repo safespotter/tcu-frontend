@@ -203,7 +203,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modalService.show(modal,
       {
         class: 'modal-sm modal-dialog-centered',
-        keyboard: false
+        keyboard: false,
+        backdrop: 'static'
       });
 
     this.safeSpotter.getPanelsStatus(lamp_id).subscribe(res => {
@@ -225,7 +226,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modalService.show(modal,
       {
         class: 'modal-sm modal-dialog-centered',
-        keyboard: false
+        keyboard: false,
+        backdrop: 'static'
       });
 
     this.safeSpotter.getPanelsStatus(lamp_id).subscribe(res => {
@@ -249,7 +251,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modalService.show(modal,
       {
         class: 'modal-sm modal-dialog-centered',
-        keyboard: false
+        keyboard: false,
+        backdrop: 'static'
       });
 
     this.prorogationAlertForm = this.formBuilder.group({
@@ -314,6 +317,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       this.safeSpotter.manualAlert(body).subscribe(() => {
         this.toastr.info('', 'Allerta segnalata con successo');
         this.modalRef.hide();
+        this.lampList = [];
+        this.panelActualValue = null;
       }, error => {
         this.toastr.error('Errore imprevisto', 'Errore');
       });
@@ -346,11 +351,39 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       this.safeSpotter.editAlert(body).subscribe(() => {
         this.toastr.info('', 'Allerta modificata con successo');
         this.modalRef.hide();
+        this.lampList = [];
+        this.panelActualValue = null;
       }, error => {
         this.toastr.error('Errore imprevisto', 'Errore');
       });
     } else {
       this.toastr.warning('Completa tutti i campi obbligatori', 'Attenzione');
+    }
+  }
+
+  propagationAlertSubmit() {
+    const body = {
+      lamp_id: this.propagateAlertForm.value.lamp_id,
+      timer: this.propagateAlertForm.value.timer * 60000,
+      alert_id: this.propagateAlertForm.value.alert_id,
+      anomaly_level: this.propagateAlertForm.value.anomaly_level,
+      panel: parseInt(this.propagateAlertForm.value.panel),
+      dest_lamp: [this.propagateAlertForm.value.dest_lamp]
+    };
+
+    console.log("body", body);
+
+    if (this.propagateAlertForm.controls.timer.status != 'INVALID') {
+      this.safeSpotter.propagateAlert(body).subscribe(() => {
+        this.toastr.info('', 'Allerta propagata con successo');
+        this.modalRef.hide();
+        this.lampList = [];
+        this.panelActualValue = null;
+      }, error => {
+        this.toastr.error('Errore imprevisto', 'Errore');
+      });
+    } else {
+      this.toastr.warning('Campi obbligatori', 'Attenzione');
     }
   }
 
@@ -364,6 +397,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       this.safeSpotter.prorogationAlert(body).subscribe(() => {
         this.toastr.info('', 'Allerta prorogata con successo');
         this.modalRef.hide();
+        this.lampList = [];
+        this.panelActualValue = null;
       }, error => {
         this.toastr.error('Errore imprevisto', 'Errore');
       });
