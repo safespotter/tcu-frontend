@@ -77,10 +77,10 @@
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/edit-alert.png" class="desktop-only"
              (click)="openEditAlertModal(editAlertModal, element.id, element.notification_id, element.status_id)"
              style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Modifica allerta">
-<!--        <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/propagate_alert.png"-->
-<!--             class="desktop-only"-->
-<!--             (click)="openPropagateAlertModal(propagateAlertModal, element.id, element.alert_id, element.anomaly_level)"-->
-<!--             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Propaga allerta">-->
+        <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/propagate_alert.png"
+             class="desktop-only"
+             (click)="openPropagateAlertModal(propagateAlertModal, element.id, element.alert_id, element.anomaly_level, element.street)"
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Propaga allerta">
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/wall-clock.png" class="desktop-only"
              (click)="openProrogationAlertModal(prorogationAlertModal, element.id)"
              style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Proroga allerta">
@@ -331,19 +331,23 @@
 
 <ng-template #propagateAlert>
   <div class="modal-header">
-    <h4 class="modal-title pull-left"><b>Propaga allerta ad un altro lampione</b></h4>
+    <h4 class="modal-title pull-left"><b>Propaga allerta</b></h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <form [formGroup]="propagateAlertForm">
-      <div style="padding-bottom: 10px">Propagazione dell'allerta {{propagateAlertForm.value['alert_id']}} di
-        tipo {{propagateAlertForm.value['anomaly_level']}}
+      <div style="padding-bottom: 10px">In questa pagina è possibile estendere l'allerta generata dal lampione di <b>{{propagateAlertForm.value['street']}}</b>, ad un altro lampione intelligente.
       </div>
-      <h6>Seleziona lampione destinatario *</h6>
-
-      <div *ngIf="propagateAlertForm.value['anomaly_level'] > 1">
+      <h6>Seleziona lampione di destinazione *</h6>
+      <mat-form-field appearance="fill">
+        <mat-label>Lampione di destinazione</mat-label>
+        <select matNativeControl required formControlName="dest_lamp" (change)="selectChangeHandler($event)">
+          <option *ngFor="let lamp of lampList" [ngValue]="lamp.lamp_id">{{lamp.street}}</option>
+        </select>
+      </mat-form-field>
+      <div *ngIf="propagateAlertForm.value['anomaly_level'] > 1 && this.panelActualValue!= undefined">
         <h6>Attivazione pannello *</h6>
         <mat-form-field appearance="fill">
           <mat-label>Pannello</mat-label>
@@ -354,18 +358,21 @@
             <option value="1">Rischio moderato</option>
           </select>
         </mat-form-field>
-        <p style="color: red" *ngIf="panelActualValue>0">
+        <p style="color: red" *ngIf="this.panelActualValue!= undefined && this.panelActualValue > 0">
           <i>Attenzione! Il pannello associato al lampione risulta essere già acceso con illuminazione di tipo
             <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
         </p>
       </div>
-      <h6>Timer *</h6>
-      <div class="input-group mb-3 col-md-6" style="padding: 0px">
-        <input type="text" formControlName="timer" class="form-control"/>
-        <div class="input-group-prepend">
-          <span class="input-group-text">min</span>
+      <div *ngIf="this.panelActualValue!= undefined">
+        <h6>Timer *</h6>
+        <div class="input-group mb-3 col-md-6" style="padding: 0px">
+          <input type="text" formControlName="timer" class="form-control"/>
+          <div class="input-group-prepend">
+            <span class="input-group-text">min</span>
+          </div>
         </div>
       </div>
+
     </form>
 
     <div class="modal-footer">

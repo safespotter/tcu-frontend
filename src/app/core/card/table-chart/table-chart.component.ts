@@ -35,9 +35,13 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   @ViewChild('editAlert') editAlertModal: string;
   @ViewChild('propagateAlert') propagateAlertModal: string;
 
-  @Input()isPanelReady;
+  @Input() isPanelReady;
   panelActualValue;
 
+  @Input() isLampListReady;
+  lampList = [];
+
+  selectedLamp;
   platform = environment.platform;
   modalRef: BsModalRef;
   table = [];
@@ -254,25 +258,38 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openPropagateAlertModal(modal, lamp_id, alert_id, anomaly_level) {
+  openPropagateAlertModal(modal, lamp_id, alert_id, anomaly_level, street) {
     this.modalRef = this.modalService.show(modal,
       {
         class: 'modal-sm modal-dialog-centered',
-        keyboard: false
+        keyboard: false,
+        backdrop: 'static'
       });
 
-    this.safeSpotter.getPanelsStatus(lamp_id).subscribe(res => {
-      this.isPanelReady = true;
-      this.panelActualValue = Object.values(res)[2];
+    this.safeSpotter.getLampList().subscribe(res => {
+      this.isLampListReady = true;
+      for (const lamp of Object.values(res)) {
+        if (lamp['platform'] === this.platform && lamp['id'] !== lamp_id) {
+          this.safeSpotter.getPanelsStatus(lamp['id']).subscribe(res => {
+            const panelValue = Object.values(res)[2];
+            this.lampList.push({
+              lamp_id: lamp['id'],
+              street: lamp['street'],
+              panel: lamp['panel'],
+              panel_value: panelValue,
+            });
+          });
+        }
+      }
     });
-
     this.propagateAlertForm = this.formBuilder.group({
       lamp_id: lamp_id,
+      street: street,
       alert_id: alert_id,
       anomaly_level: anomaly_level,
-      panel : 0,
+      panel: 0,
       timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])],
-      dest_lamp: [lamp_id]
+      dest_lamp: []
     });
   }
 
@@ -355,8 +372,8 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     }
   }
 
-  parsePanelValue(value){
-    switch (value){
+  parsePanelValue(value) {
+    switch (value) {
       case 0:
         return 'DISATTIVATO';
       case 1:
@@ -370,8 +387,16 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     }
   }
 
+  selectChangeHandler (event: any) {
+    this.safeSpotter.getPanelsStatus(this.propagateAlertForm.value['dest_lamp']).subscribe(res => {
+      this.isPanelReady = true;
+      this.panelActualValue = Object.values(res)[2];
+    });
+  }
+
   closeModal() {
     this.modalRef.hide();
+    this.lampList = [];
   }
 }
 
