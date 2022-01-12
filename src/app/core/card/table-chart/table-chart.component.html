@@ -376,7 +376,7 @@
     </form>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-success" (click)="propagationAlertSubmit()">Salva</button>
+      <button *ngIf="propagateAlertForm.controls['dest_lamp'].errors.required" type="button" class="btn btn-success" (click)="propagationAlertSubmit()">Salva</button>
       <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
     </div>
   </div>

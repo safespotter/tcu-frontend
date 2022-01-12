@@ -286,13 +286,13 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       }
     });
     this.propagateAlertForm = this.formBuilder.group({
-      lamp_id: lamp_id,
-      street: street,
-      alert_id: alert_id,
-      anomaly_level: anomaly_level,
-      panel: 0,
+      lamp_id: [lamp_id, Validators.required],
+      street: [street, Validators.required],
+      alert_id: [alert_id, Validators.required],
+      anomaly_level: [anomaly_level, Validators.required],
+      panel: [0, Validators.required],
       timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])],
-      dest_lamp: []
+      dest_lamp: [[], Validators.required]
     });
   }
 
@@ -371,9 +371,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       dest_lamp: [this.propagateAlertForm.value.dest_lamp]
     };
 
-    console.log("body", body);
-
-    if (this.propagateAlertForm.controls.timer.status != 'INVALID') {
+    if (this.propagateAlertForm.controls.timer.status != 'INVALID' && this.propagateAlertForm.controls.dest_lamp.status != 'INVALID') {
       this.safeSpotter.propagateAlert(body).subscribe(() => {
         this.toastr.info('', 'Allerta propagata con successo');
         this.modalRef.hide();
@@ -383,7 +381,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         this.toastr.error('Errore imprevisto', 'Errore');
       });
     } else {
-      this.toastr.warning('Campi obbligatori', 'Attenzione');
+      this.toastr.warning('Completare campi obbligatori', 'Attenzione');
     }
   }
 
@@ -422,7 +420,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     }
   }
 
-  selectChangeHandler (event: any) {
+  selectChangeHandler(event: any) {
     this.safeSpotter.getPanelsStatus(this.propagateAlertForm.value['dest_lamp']).subscribe(res => {
       this.isPanelReady = true;
       this.panelActualValue = Object.values(res)[2];
