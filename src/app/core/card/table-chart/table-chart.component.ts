@@ -214,12 +214,13 @@ export class TableChartComponent implements OnInit, AfterViewInit {
 
     this.manualAlertForm = this.formBuilder.group({
       lamp_id: lamp_id,
-      alert_id: [Validators.required],
-      anomaly_level: [Validators.required],
-      panel: [Validators.required],
+      alert_id: [Validators.compose([Validators.minLength(2), Validators.required])],
+      anomaly_level: [Validators.compose([Validators.minLength(2), Validators.required])],
+      panel: [Validators.compose([Validators.required])],
       telegram: false,
       timer: [15, Validators.compose([Validators.pattern('^[1-9]\\d*(\\.\\d+)?$'), Validators.required])]
     });
+
   }
 
   openEditAlertModal(modal, lamp_id, notification_id, status_id) {
@@ -311,6 +312,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       timer: this.manualAlertForm.value.timer * 60000,
       telegram: this.manualAlertForm.value.telegram
     };
+
 
     if (this.manualAlertForm.controls.alert_id.status != 'INVALID' && this.manualAlertForm.controls.anomaly_level.status != 'INVALID' &&
       this.manualAlertForm.controls.panel.status != 'INVALID' && this.manualAlertForm.controls.timer.status != 'INVALID') {

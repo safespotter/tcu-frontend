@@ -222,7 +222,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="manualAlertSubmit()">Salva</button>
+    <button *ngIf="manualAlertForm.controls['alert_id'].status == 'VALID' && manualAlertForm.controls['anomaly_level'].status == 'VALID'" type="button" class="btn btn-success" (click)="manualAlertSubmit()">Salva</button>
     <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
   </div>
 </ng-template>
