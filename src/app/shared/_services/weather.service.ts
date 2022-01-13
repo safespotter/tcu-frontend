@@ -58,6 +58,12 @@ export class WeatherService {
       .pipe(map((res: any) => WeatherService.parseData(res)));
   }
 
+  getLiveWeather() {
+    const headers = this.getAuthorization();
+    // console.log('weather.service - getLive');
+    return this.http.get( WeatherService.formatUrl('getLiveWeather/'), {headers});
+  }
+
   getForecast() {
     // console.log('weather.service - getForecast');
     const headers = this.getAuthorization();

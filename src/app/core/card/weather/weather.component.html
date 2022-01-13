@@ -24,7 +24,8 @@
       <div class="weather-style">
         <p>
           <b>Temperatura:</b>
-          {{currentWeather.temp.toFixed(0)}}°C
+<!--          {{currentWeather.temp.toFixed(0)}}°C-->
+          {{currentWeatherLive['temperature']}}°C
         </p>
 
       </div>
@@ -33,21 +34,21 @@
       <div class="weather-style">
         <p>
           <b>Umidità:</b>
-          {{currentWeather.humidity}}%
+          {{currentWeatherLive['humidity']}}%
         </p>
       </div>
 
       <div class="weather-style">
         <p>
           <b>Precipitazioni:</b>
-          {{currentWeather.precipitation.value}} mm
+          {{currentWeatherLive['rain']}} mm
         </p>
       </div>
 
       <div class="weather-style">
         <p>
           <b>Vento:</b>
-          {{currentWeather.wind.speed}} m/s
+          {{currentWeatherLive['wind_speed']}} km/h
         </p>
       </div>
 

@@ -17,15 +17,23 @@ export class WeatherComponent implements OnInit {
   }
 
   currentWeather: WeatherModel;
+  currentWeatherLive;
   dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
 
   ngOnInit(): void {
     // console.log('weather.component - init');
     this.getWeather();
+    this.getWeatherLive();
   }
 
   getWeather(): void {
     this.weatherService.getLive().subscribe(data => this.currentWeather = data);
+  }
+
+  getWeatherLive(): void {
+    this.weatherService.getLiveWeather().subscribe(data => {
+      this.currentWeatherLive = data;
+    });
   }
 
   conditionConverter(condition) {
