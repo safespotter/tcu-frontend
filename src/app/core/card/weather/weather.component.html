@@ -1,8 +1,7 @@
 <mat-card class="weather-card" *ngIf="currentWeather">
 
   <mat-card-content>
-    <div class="weather-main">
-
+    <div *ngIf="isCurrentWeatherLiveReady && isCurrentWeatherReady" class="weather-main">
       <div class="weather-style">
         <p style="text-transform: capitalize">{{currentWeather.time.toLocaleString('it-IT', dateOptions)}}.</p>
       </div>
@@ -24,7 +23,7 @@
       <div class="weather-style">
         <p>
           <b>Temperatura:</b>
-<!--          {{currentWeather.temp.toFixed(0)}}°C-->
+          <!--          {{currentWeather.temp.toFixed(0)}}°C-->
           {{currentWeatherLive['temperature']}}°C
         </p>
 
@@ -55,10 +54,11 @@
       <div class="weather-style">
         <p>
           <b>Pressione:</b>
-          {{currentWeather.pressure.toFixed(0)}} mb
+<!--          {{currentWeather.pressure.toFixed(0)}} mb-->
+          {{currentWeatherLive['pressure'].toFixed(0)}} hPa
         </p>
       </div>
-
+      <i class="fas fa-sync weather-style" (click)="updateWeather()" tooltip="Aggiorna meteo" style="cursor: pointer"></i>
     </div>
 
   </mat-card-content>

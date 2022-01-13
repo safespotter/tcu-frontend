@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {WeatherModel} from '../../../shared/_models/weather.model';
 import {WeatherService} from '../../../shared/_services/weather.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-weather',
@@ -12,10 +13,13 @@ export class WeatherComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
+    private toastr: ToastrService,
     private weatherService: WeatherService
   ) {
   }
 
+  @Input() isCurrentWeatherLiveReady;
+  @Input() isCurrentWeatherReady;
   currentWeather: WeatherModel;
   currentWeatherLive;
   dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
@@ -27,13 +31,23 @@ export class WeatherComponent implements OnInit {
   }
 
   getWeather(): void {
-    this.weatherService.getLive().subscribe(data => this.currentWeather = data);
+    this.weatherService.getLive().subscribe(data => {
+      this.isCurrentWeatherReady = true;
+      this.currentWeather = data;
+    });
   }
 
-  getWeatherLive(): void {
+  getWeatherLive() {
     this.weatherService.getLiveWeather().subscribe(data => {
+      this.isCurrentWeatherLiveReady = true;
       this.currentWeatherLive = data;
     });
+  }
+
+  updateWeather(): void {
+    this.getWeather();
+    this.getWeatherLive();
+    this.toastr.info('', 'Meteo aggiornato');
   }
 
   conditionConverter(condition) {
