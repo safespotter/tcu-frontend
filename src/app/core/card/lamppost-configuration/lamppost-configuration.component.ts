@@ -90,6 +90,19 @@ export class LamppostConfigurationComponent implements OnInit {
       d_orange: false,
       d_red: false
     }
+    ,
+    {
+      id: '7',
+      name: 'Guida spericolata',
+      c_green: false,
+      c_yellow: false,
+      c_orange: false,
+      c_red: false,
+      d_green: false,
+      d_yellow: false,
+      d_orange: false,
+      d_red: false
+    }
   ];
   timerForm: FormGroup;
 

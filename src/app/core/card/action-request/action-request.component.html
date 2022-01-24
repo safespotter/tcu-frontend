@@ -24,7 +24,7 @@
     <!--    <div class="row">-->
     <div class="btn-group btn-group-lg" role="group">
       <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="updateActionRequiredAlert()"
-              onclick="this.disabled = true">
+              onclick="this.disabled = true" [mat-dialog-close]="true">
         Rimuovi allerta
       </button>
       <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="openModal(panelmodal)">

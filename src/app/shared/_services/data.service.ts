@@ -38,6 +38,8 @@ export class DataService {
         return 'Possibile incidente';
       case 6:
         return 'Veicolo in sosta vietata';
+      case 7:
+        return 'Guida spericolata';
       default:
         return 'Errore anomalia';
     }
