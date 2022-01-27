@@ -82,6 +82,11 @@ export class SafespotterService {
     return this.http.put(this.formatUrl('editAlert/'), body, {headers});
   }
 
+  alternativeRoutes(body) {
+    const headers = this.getAuthorization();
+    return this.http.post(this.formatUrl('alternativeRoutes/'), body, {headers});
+  }
+
   prorogationAlert(body) {
     const headers = this.getAuthorization();
     return this.http.post(this.formatUrl('prorogationAlert/'), body, {headers});
@@ -107,9 +112,14 @@ export class SafespotterService {
     return this.http.get(this.formatUrl('getLamppost/') + lamp_id, {headers});
   }
 
+  getAlternativeRoutes(lamp_id) {
+    const headers = this.getAuthorization();
+    return this.http.get(this.formatUrl('getAlternativeRoutes/') + lamp_id, {headers});
+  }
+
   getLampList() {
     const headers = this.getAuthorization();
-    return this.http.get(this.formatUrl('getData/') , {headers});
+    return this.http.get(this.formatUrl('getData/'), {headers});
   }
 
   private formatUrl(call): string {

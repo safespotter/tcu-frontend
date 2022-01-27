@@ -167,6 +167,21 @@ export class ActionRequestComponent implements OnInit {
       });
   }
 
+  sendAlternativeRoutes(){
+    const body = {
+      lamp_id: this.data.id,
+      alert_id: this.data.alert_id
+    };
+
+    this.safespotter.alternativeRoutes(body).subscribe(
+      data => {
+        this.toastr.info('', 'Percorsi alternativi suggeriti con successo sui canali Telegram e Tetralert');
+      }, error => {
+        this.toastr.warning('Percorsi alternativi non impostati', 'Attenzione');
+      }
+    );
+  }
+
   parsePanelValue(value) {
     switch (value) {
       case 0:
