@@ -21,17 +21,18 @@
   <!--</select>-->
   <!--</label>-->
   <!--</mat-form-field>-->
-  <div class="col">
-    <p>Latitudine: {{data.lat}}</p>
-    <p>Longitudine: {{data.long}}</p>
-    <p>Data ultima modifica: {{this.formatDate(data.date)}}</p>
-    <p>Ip camera fissa: <a href="{{data.ip_cam_fix}}" target="_blank">{{data.ip_cam_fix}}</a></p>
-    <p>Ip camera brandeggiabile: <a href="{{data.ip_cam_brand}}" target="_blank">{{data.ip_cam_brand}}</a></p>
+  <div class="col" style="margin-left:5px ">
+    <p><i>In questa schermata è possibile visualizzare lo storico delle anomalie registrate da questo lampione intelligente. I video delle anomalie più
+    vecchie di 7 giorni sono rimossi in osservanza delle normative privacy.</i></p>
+    <p><b>Coordinate</b>: {{data.long}} {{data.lat}}</p>
+    <p><b>Data ultimo aggiornamento dati</b>: {{this.formatDate(data.date)}}</p>
+    <p><a href="{{data.ip_cam_fix}}" target="_blank">Accedi al video live della telecamera</a></p>
+    <p><a href="{{data.ip_cam_brand}}" target="_blank">Accedi alla camera brandeggiabile</a></p>
 
     <!--<mat-card class="card" style="  height:200px; background: url(../../../../assets/img/im1.jpg);-->
   <!--background-repeat: no-repeat; background-size: cover;"></mat-card>-->
   </div>
 </mat-dialog-content>
-<h2 mat-dialog-title>Storico </h2>
+<h2 mat-dialog-title>Storico anomalie registrate</h2>
 <app-table-personal></app-table-personal>
 

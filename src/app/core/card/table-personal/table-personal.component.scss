@@ -38,6 +38,15 @@ table {
   }
 }
 
+th {
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.mat-row:nth-child(even){
+  background-color: #f3f3f3;
+}
 
 .logo0 {
   display: block;

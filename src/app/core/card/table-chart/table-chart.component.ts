@@ -109,14 +109,14 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource<Info>(this.tmp);
       this.grey = res[1];
       this.dataSource.paginator = this.paginator;
-
     });
   }
 
   openDialog(info) {
     this.dialog.open(DialogComponent, {
       // height: '90%',
-      maxWidth: '100vw',
+      //maxWidth: '100vw',
+      width: '600px',
       // maxHeight: '100vh',
       data: {
         anomaly_level: info.anomaly_level,
