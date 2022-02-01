@@ -1,13 +1,21 @@
 <button mat-icon-button class="close-button" [mat-dialog-close]="true">
   <mat-icon class="close-icon" color="#333333">close</mat-icon>
 </button>
-<h2 mat-dialog-title>Video anomalia</h2>
-<mat-dialog-content class="mat-typography">
-  <h3 *ngIf="!isVideoURLReady">Clip video non disponibile. Anomalia <b>{{data.alert_name}}</b> individuata in <b>{{data.street}}</b>,
-    in data <b>{{this.formatDate(data.date)}}</b></h3>
-  <h3 *ngIf="isVideoURLReady">Clip video acquisita durante l'anomalia <b>{{data.alert_name}}</b>,
-    rilevata dal lampione situato in <b>{{data.street}}</b>,
-    in data <b>{{this.formatDate(data.date)}}</b></h3>
+<h2 mat-dialog-title>Gestione anomalia severa</h2>
+<mat-dialog-content class="mat-typography" style="max-width: 1200px">
+  <h3>Il lampione intelligente situato in <b>{{data.street}}</b> ha rilevato una <u>possibile
+    anomalia severa</u>, di tipo <b>{{data.alert_name}}</b>, in data <b>{{this.formatDate(data.date)}}</b>.</h3>
+  <p *ngIf="isVideoURLReady">
+    <i>È richiesta una supervisione dell'operatore addetto. Il video dell'evento è visualizzato di seguito: l'operatore
+    potrà decidere di annullare l'allerta, attivare il pannello luminoso manualmente o monitorare l'area coinvolta
+      tramite la camera brandeggiabile. </i>
+  </p>
+  <p *ngIf="!isVideoURLReady">
+    <i>È richiesta una supervisione dell'operatore addetto. Il video dell'evento non è disponibile. L'operatore
+      potrà decidere di annullare l'allerta, attivare il pannello luminoso manualmente o monitorare l'area coinvolta
+      tramite la camera brandeggiabile. </i>
+  </p>
+
   <!--<div class="desktop-only">-->
   <!--<mat-card style="width: 50vw; height: 50vh">-->
   <mat-video style="margin: auto;" class="video-image" *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}}
@@ -30,15 +38,20 @@
       <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="openModal(panelmodal)">
         Attiva pannello luminoso
       </button>
-      <button mat-raised-button class="action-button" style="margin-right: 10px" onclick="this.disabled = true" (click)="sendAlternativeRoutes()">
-        Suggerisci percorsi alternativi
-      </button>
-      <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>
-        Chiama i soccorsi
-      </button>
-      <button mat-raised-button class="action-button" (click)="openCam()">
+      <!--      <button mat-raised-button class="action-button" style="margin-right: 10px" onclick="this.disabled = true" (click)="sendAlternativeRoutes()">-->
+      <!--        Suggerisci percorsi alternativi-->
+      <!--      </button>-->
+      <!--      <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>-->
+      <!--        Suggerisci percorsi alternativi-->
+      <!--      </button>-->
+      <button mat-raised-button class="action-button" style="margin-right: 10px"(click)="openCam()">
         Apri camera brandeggiabile
       </button>
+      <button mat-raised-button class="action-button" style="margin-right: 10px" disabled
+              tooltip="Funzionalità ancora non disponibile">
+        Chiama i soccorsi
+      </button>
+
     </div>
     <!--    </div>-->
   </div>
@@ -55,19 +68,24 @@
   </div>
   <div class="modal-body">
     <p style="color: red" *ngIf="panelActualValue > 0">
-      <i>Attenzione! Il pannello associato al lampione risulta essere acceso con illuminazione di tipo <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
+      <i>Attenzione! Il pannello associato al lampione risulta essere già acceso con illuminazione di tipo
+        <b>{{this.parsePanelValue(this.panelActualValue)}}.</b></i>
     </p>
     <mat-radio-group class="example-radio-group" aria-label="Select an option">
-      <mat-radio-button class="example-radio-button" value="0" [checked]="radioCheck.value0"  (change)="onItemChange($event.value)">
+      <mat-radio-button class="example-radio-button" value="0" [checked]="radioCheck.value0"
+                        (change)="onItemChange($event.value)">
         Disattivato
       </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="3" [checked]="radioCheck.value3" (change)="onItemChange($event.value)">
+      <mat-radio-button class="example-radio-button" value="3" [checked]="radioCheck.value3"
+                        (change)="onItemChange($event.value)">
         <img src="./../../../../assets/img/poss_incidente.PNG">
       </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="2" [checked]="radioCheck.value2" (change)="onItemChange($event.value)">
+      <mat-radio-button class="example-radio-button" value="2" [checked]="radioCheck.value2"
+                        (change)="onItemChange($event.value)">
         <img src="./../../../../assets/img/poss_anomalie.PNG">
       </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="1" [checked]="radioCheck.value1" (change)="onItemChange($event.value)">
+      <mat-radio-button class="example-radio-button" value="1" [checked]="radioCheck.value1"
+                        (change)="onItemChange($event.value)">
         <img src="./../../../../assets/img/poss_rall.PNG">
       </mat-radio-button>
     </mat-radio-group>

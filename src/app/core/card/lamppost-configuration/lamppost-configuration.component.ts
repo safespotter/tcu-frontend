@@ -20,7 +20,7 @@ export class LamppostConfigurationComponent implements OnInit {
   criticalIssues = [
     {
       id: '1',
-      name: 'Cambio di corsia illegale',
+      name: 'Violaz. carreggiata o senso di marcia',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -56,7 +56,7 @@ export class LamppostConfigurationComponent implements OnInit {
     },
     {
       id: '4',
-      name: 'Invasione di area pedonale',
+      name: 'Invasione isola di traffico/marciapiede',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -68,7 +68,7 @@ export class LamppostConfigurationComponent implements OnInit {
     },
     {
       id: '5',
-      name: 'Possibile incidente',
+      name: 'Potenziale sinistro',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -80,7 +80,7 @@ export class LamppostConfigurationComponent implements OnInit {
     },
     {
       id: '6',
-      name: 'Veicolo in sosta vietata',
+      name: 'Sosta o fermata vietata',
       c_green: false,
       c_yellow: false,
       c_orange: false,
@@ -93,7 +93,7 @@ export class LamppostConfigurationComponent implements OnInit {
     ,
     {
       id: '7',
-      name: 'Guida spericolata',
+      name: 'Guida imprudente',
       c_green: false,
       c_yellow: false,
       c_orange: false,

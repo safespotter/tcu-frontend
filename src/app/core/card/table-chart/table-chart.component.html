@@ -173,13 +173,13 @@
           <!--        <mat-option *ngFor="let anomaly of anomalyList" [value]="anomaly['id']">-->
           <!--          {{anomaly['value']}}-->
           <!--        </mat-option>-->
-          <option value="1">Cambio di corsia illegale</option>
+          <option value="1">Violaz. carreggiata o senso di marcia</option>
           <option value="2">Traffico congestionato</option>
           <option value="3">Oggetto o persona in strada</option>
-          <option value="4">Invasione di area pedonale</option>
-          <option value="5">Possibile incidente</option>
-          <option value="6">Veicolo in sosta vietata</option>
-          <option value="7">Guida spericolata</option>
+          <option value="4">Invasione isola di traffico/marciapiede</option>
+          <option value="5">Potenziale sinistro</option>
+          <option value="6">Sosta o fermata vietata</option>
+          <option value="7">Guida imprudente</option>
         </select>
       </mat-form-field>
       <h6>Livello di allerta *</h6>
@@ -280,13 +280,13 @@
           <!--        <mat-option *ngFor="let anomaly of anomalyList" [value]="anomaly['id']">-->
           <!--          {{anomaly['value']}}-->
           <!--        </mat-option>-->
-          <option value="1">Cambio di corsia illegale</option>
+          <option value="1">Violaz. carreggiata o senso di marcia</option>
           <option value="2">Traffico congestionato</option>
           <option value="3">Oggetto o persona in strada</option>
-          <option value="4">Invasione di area pedonale</option>
-          <option value="5">Possibile incidente</option>
-          <option value="6">Veicolo in sosta vietata</option>
-          <option value="7">Guida spericolata</option>
+          <option value="4">Invasione isola di traffico/marciapiede</option>
+          <option value="5">Potenziale sinistro</option>
+          <option value="6">Sosta o fermata vietata</option>
+          <option value="7">Guida imprudente</option>
         </select>
       </mat-form-field>
       <h6>Livello di allerta *</h6>
@@ -368,7 +368,7 @@
         </mat-form-field>
         <p style="color: red" *ngIf="this.panelActualValue!= undefined && this.panelActualValue > 0">
           <i>Attenzione! Il pannello associato al lampione risulta essere già acceso con illuminazione di tipo
-            <b>{{this.parsePanelValue(this.panelActualValue)}}</b></i>
+            <b>{{this.parsePanelValue(this.panelActualValue)}}.</b></i>
         </p>
       </div>
       <div *ngIf="this.panelActualValue!= undefined">

@@ -13,12 +13,14 @@ export class DataService {
   ) {
   }
 
-  anomalyList = [{id: 1, value: 'Cambio di corsia illegale'},
+  anomalyList = [{id: 1, value: 'Violaz. carreggiata o senso di marcia'},
     {id: 2, value: 'Traffico congestionato'},
     {id: 3, value: 'Oggetto o persona in strada'},
-    {id: 4, value: 'Invasione di area pedonale'},
-    {id: 5, value: 'Possibile incidente'},
-    {id: 6, value: 'Veicolo in sosta vietata'}];
+    {id: 4, value: 'Invasione isola di traffico/marciapiede'},
+    {id: 5, value: 'Potenziale sinistro'},
+    {id: 6, value: 'Sosta o fermata vietata'},
+    {id: 7, value: 'Guida imprudente'}
+  ];
 
   getAnomalyList() {
     return this.anomalyList;
@@ -27,19 +29,19 @@ export class DataService {
   convertAnomalies(alert_id) {
     switch (parseInt(alert_id, 10)) {
       case 1:
-        return 'Cambio di corsia illegale';
+        return 'Violaz. carreggiata o senso di marcia';
       case 2:
         return 'Traffico congestionato';
       case 3:
         return 'Oggetto o persona in strada';
       case 4:
-        return 'Invasione di area pedonale';
+        return 'Invasione isola di traffico/marciapiede';
       case 5:
-        return 'Possibile incidente';
+        return 'Potenziale sinistro';
       case 6:
-        return 'Veicolo in sosta vietata';
+        return 'Sosta o fermata vietata';
       case 7:
-        return 'Guida spericolata';
+        return 'Guida imprudente';
       default:
         return 'Errore anomalia';
     }
