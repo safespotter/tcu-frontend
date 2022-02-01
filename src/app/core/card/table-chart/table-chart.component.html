@@ -89,7 +89,7 @@
         <img *ngIf="element['anomaly_level'] == 0" src="./../../../../assets/icons/alert.png" class="desktop-only"
              (click)="openManualAlertModal(manualAlertModal, element.id)"
              style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Forza allerta manuale">
-        <img src="./../../../../assets/icons/edit.svg" (click)="openEdit(element.id)" class="desktop-only"
+        <img *ngIf="user_type == 0" src="./../../../../assets/icons/edit.svg" (click)="openEdit(element.id)" class="desktop-only"
              style="cursor: pointer; margin-right: 10px; float: right; height:2vh;"
              tooltip="Modifica o cancella lampione">
         <img src="./../../../../assets/icons/cam_brand.png" (click)="openCam(element.ip_cam_brand)" class="desktop-only"

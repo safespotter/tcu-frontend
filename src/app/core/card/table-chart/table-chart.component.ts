@@ -20,6 +20,8 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {environment} from '../../../../environments/environment';
+import {GlobalEventsManagerService} from '../../../shared/_services/global-event-manager.service';
+import {StoreService} from '../../../shared/_services/store.service';
 
 
 @Component({
@@ -51,6 +53,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   dataSource;
   tmp;
   timestamp;
+  user_type;
   grey = 0;
   flag = false;
   manualAlertForm: FormGroup;
@@ -67,6 +70,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
     public srv: SocketioService,
     public datasev: DataService,
     private safeSpotter: SafespotterService,
+    private storeLocal: StoreService,
     private router: Router,
     private modalService: BsModalService,
     private toastr: ToastrService,
@@ -80,6 +84,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
   async ngAfterViewInit() {
+
 
     await this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.tmp = res[0];
@@ -106,7 +111,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       // this.timerChamge();
 
       this.tmp.sort((a, b) => (a.anomaly_level > b.anomaly_level ? -1 : 1));
-
+      this.user_type = this.storeLocal.getType();
       this.dataSource = new MatTableDataSource<Info>(this.tmp);
       this.grey = res[1];
       this.dataSource.paginator = this.paginator;
