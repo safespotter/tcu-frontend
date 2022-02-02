@@ -53,6 +53,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   dataSource;
   tmp;
   timestamp;
+  audio;
   user_type;
   grey = 0;
   flag = false;
@@ -80,7 +81,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
+    this.audio = new Audio('../../../../assets/audio/alarm.mp3');
   }
 
   async ngAfterViewInit() {
@@ -103,6 +104,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         // el.condition = 'Connesso';
         if (el.anomaly_level >= 3) {
           this.flag = true;
+          this.audio.play();
         }
       }
 
