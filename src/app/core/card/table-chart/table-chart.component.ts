@@ -91,16 +91,16 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       this.tmp = this.tmp.filter(el => el.platform === this.platform);
       this.timestamp = new Date();
       for (const el of this.tmp) {
-        // let diff = this.timestamp.getTime() - new Date(el.keepAlive).getTime();
+        let diff = this.timestamp.getTime() - new Date(el.keepAlive).getTime();
         el.alert_name = this.datasev.convertAnomalies(el.alert_id);
-        // if (diff < 600000) {
-        //   el.condition = 'Connesso';
-        // } else if ((diff) > 600000 && (diff) < 1800000) {
-        //   el.condition = 'Inattivo';
-        // } else {
-        //   el.condition = 'Disconnesso';
-        // }
-        el.condition = 'Connesso';
+        if (diff < 600000) {
+          el.condition = 'Connesso';
+        } else if ((diff) > 600000 && (diff) < 1800000) {
+          el.condition = 'Inattivo';
+        } else {
+          el.condition = 'Disconnesso';
+        }
+        // el.condition = 'Connesso';
         if (el.anomaly_level >= 3) {
           this.flag = true;
         }
