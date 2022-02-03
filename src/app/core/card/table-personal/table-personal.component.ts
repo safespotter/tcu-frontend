@@ -83,8 +83,8 @@ export class TablePersonalComponent implements OnInit {
 
       if (this.drawables != undefined) {
         for (const el of this.drawables) {
-
-          if (Math.abs(v.currentTime - (el['time']/1000)) < 1) {
+          //todo controllare
+          if ((v.currentTime - el['time']/1000) < 0.2 || (el['time']/1000) - v.currentTime < 1) {
             if (el['type'] == 'box') {
               ctx.drawImage(v, 0, 0, a.width, a.height);
               ctx.strokeStyle = 'red';
