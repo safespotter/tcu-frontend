@@ -105,3 +105,59 @@ th {
   background: url(../../../../assets/img/gauge/SVG/gauge5.svg) no-repeat;
 }
 
+:host::ng-deep .progress{
+  background-color: unset !important;
+}
+
+:host::ng-deep mat-seek-progress-control{
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .video-image {
+    //max-width: 320px !important;
+    //max-height: 240px !important;
+    max-width: 90vw !important;
+    max-height: 100vh !important;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .video-image {
+    //max-width: 512px !important;
+    //max-height: 384px !important;
+    max-width: 80vw !important;
+    max-height: 100vh !important;
+    display: block;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .video-image {
+    //max-width: 768px !important;
+    //max-height: 576px !important;
+    max-width: 70vw !important;
+    max-height: 100vh !important;
+    display: block;
+  }
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  margin-left: 150px;
+  position: absolute;
+  background-color:black;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
