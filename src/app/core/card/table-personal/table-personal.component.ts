@@ -29,9 +29,7 @@ export class TablePersonalComponent implements OnInit {
   statusList = [];
   modalRef: BsModalRef;
   videoclip = '';
-  a;
-  b;
-  v;
+  drawables;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel,
               private safespotter: SafespotterService,
@@ -50,39 +48,16 @@ export class TablePersonalComponent implements OnInit {
     return date.toString();
   }
 
-  convertAnomalies(alert_id) {
-    switch (parseInt(alert_id)) {
-      case 1:
-        return 'Illegal way crossing';
-      case 2:
-        return 'Traffic congestion';
-      case 3:
-        return 'Object on the road';
-      case 4:
-        return 'Screeching halt';
-      case 5:
-        return 'Too high/slow car speed';
-      case 6:
-        return 'Pedestrian Area Invasion';
-      case 7:
-        return 'Failure to give way';
-      case 8:
-        return 'Possible Accident';
-      default:
-        return 'Anomaly error';
-    }
-  }
-
-  openVideoclipModal(videoclip) {
+  openVideoclipModal(videoclip, drawables) {
     this.videoclip = videoclip;
+    this.drawables = drawables;
     this.modalRef = this.modalService.show(this.videoclipModal,
       {
-        class: 'modal-xl modal-dialog-centered',
+        class: 'modal-dialog modal-xl',
         keyboard: false,
         backdrop: 'static'
       });
-    // this.drawOverlay();
-    // this.drawCanvas();
+
     this.drawCanvas();
   }
 
@@ -97,23 +72,37 @@ export class TablePersonalComponent implements OnInit {
   }
 
   drawCanvas = () => {
-    const a: HTMLCanvasElement = document.querySelector('#a');
-    const v: HTMLVideoElement = document.querySelector('#v');
-    const ctx = a.getContext('2d');
-    a.width = v.videoWidth;
-    a.height = v.videoHeight;
+    try {
+      const a: HTMLCanvasElement = document.querySelector('#a');
+      const v: HTMLVideoElement = document.querySelector('#v');
+      const ctx = a.getContext('2d');
+      a.width = v.videoWidth;
+      a.height = v.videoHeight;
 
-    ctx.drawImage(v, 0, 0, a.width, a.height);
-    ctx.strokeStyle = 'red';
+      ctx.drawImage(v, 0, 0, a.width, a.height);
 
-    ctx.rect(500, 500, 500, 500);
-    ctx.stroke();
+      if (this.drawables != undefined) {
+        for (const el of this.drawables) {
 
-    requestAnimationFrame(this.drawCanvas);
+          if (Math.abs(v.currentTime - (el['time']/1000)) < 1) {
+            if (el['type'] == 'box') {
+              ctx.drawImage(v, 0, 0, a.width, a.height);
+              ctx.strokeStyle = 'red';
+              ctx.lineWidth = 7;
+              ctx.rect(el['left'], el['top'], el['right'] - el['left'], el['bottom'] - el['top']);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+      requestAnimationFrame(this.drawCanvas);
+    } catch (e) {
+    }
   }
 
   closeModal() {
     this.modalRef.hide();
+
   }
 
   /*metodo che inizializza la tabella nella dialog*/
@@ -128,14 +117,16 @@ export class TablePersonalComponent implements OnInit {
               'date': el[1]['date'],
               'videoURL': el[1]['videoURL'] || '',
               'alert_id': el[1]['alert_id'] || '',
-              'alert_name': this.datasev.convertAnomalies(el[1]['alert_id'])
+              'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
+              'drawables': el[1]['drawables'] || []
             });
           } else {
             this.statusList.push({
               'date': el[1]['date'],
               'videoURL': '',
               'alert_id': el[1]['alert_id'] || '',
-              'alert_name': this.datasev.convertAnomalies(el[1]['alert_id'])
+              'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
+              'drawables': el[1]['drawables'] || []
             });
           }
         }

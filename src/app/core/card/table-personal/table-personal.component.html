@@ -25,7 +25,7 @@
       <th mat-header-cell *matHeaderCellDef style="width: 40px; border-bottom: 5px solid #77cdff">Video</th>
       <td mat-cell *matCellDef="let element">
         <p style="color:#77cdff; cursor: pointer;" *ngIf="element.videoURL.length > 0"
-           (click)="openVideoclipModal(formatUrl + element['videoURL'])"><u>Mostra</u></p>
+           (click)="openVideoclipModal(formatUrl + element['videoURL'] , element['drawables'])"><u>Mostra</u></p>
         <p *ngIf="element.videoURL.length === 0" tooltip="Video non disponibile (trascorsi più di 7 giorni)."><i
           style="color:#333">Rimosso</i></p>
 
@@ -49,8 +49,8 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body" style="width: 720px; height: 480px">
-      <video class="video" id="v" hidden controls autoplay>
+    <div class="modal-body" style="width: 900px; height: 600px">
+      <video class="video" id="v" hidden controls autoplay loop>
         <source id="mp4" src="{{videoclip}}" type="video/mp4">
       </video>
       <canvas class="canvas" id="a" ></canvas>
