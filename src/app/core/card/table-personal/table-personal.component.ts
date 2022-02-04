@@ -29,6 +29,9 @@ export class TablePersonalComponent implements OnInit {
   statusList = [];
   modalRef: BsModalRef;
   videoclip = '';
+  alert_name = '';
+  date = '';
+  lamp = '';
   drawables;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel,
@@ -48,8 +51,11 @@ export class TablePersonalComponent implements OnInit {
     return date.toString();
   }
 
-  openVideoclipModal(videoclip, drawables) {
+  openVideoclipModal(videoclip, alert_name, date, drawables) {
     this.videoclip = videoclip;
+    this.alert_name = alert_name;
+    this.date = date;
+    this.lamp = this.data.street;
     this.drawables = drawables;
     this.modalRef = this.modalService.show(this.videoclipModal,
       {
@@ -57,18 +63,41 @@ export class TablePersonalComponent implements OnInit {
         keyboard: false,
         backdrop: 'static'
       });
-
     this.drawCanvas();
   }
 
   play() {
     const v: HTMLVideoElement = document.querySelector('#v');
+    const btn1: HTMLButtonElement = document.querySelector('#btn1');
+    const btn2: HTMLButtonElement = document.querySelector('#btn2');
+    const btn3: HTMLButtonElement = document.querySelector('#btn3');
     v.play();
+    btn1.disabled = true;
+    btn2.disabled = false;
+    btn3.disabled = false;
   }
 
   pause() {
     const v: HTMLVideoElement = document.querySelector('#v');
+    const btn1: HTMLButtonElement = document.querySelector('#btn1');
+    const btn2: HTMLButtonElement = document.querySelector('#btn2');
+    const btn3: HTMLButtonElement = document.querySelector('#btn3');
     v.pause();
+    btn1.disabled = false;
+    btn2.disabled = true;
+    btn3.disabled = false;
+  }
+
+  restart(){
+    const v: HTMLVideoElement = document.querySelector('#v');
+    const btn1: HTMLButtonElement = document.querySelector('#btn1');
+    const btn2: HTMLButtonElement = document.querySelector('#btn2');
+    const btn3: HTMLButtonElement = document.querySelector('#btn3');
+    v.currentTime = 0;
+    v.play();
+    btn1.disabled = true;
+    btn2.disabled = false;
+    btn3.disabled = false;
   }
 
   drawCanvas = () => {
