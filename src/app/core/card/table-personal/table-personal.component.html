@@ -50,14 +50,14 @@
       </button>
     </div>
     <div class="modal-body" style="width: 900px; height: 600px">
-      <video class="video" id="v" hidden controls autoplay loop>
+      <video class="video" id="v" hidden controls autoplay>
         <source id="mp4" src="{{videoclip}}" type="video/mp4">
       </video>
       <canvas class="canvas" id="a" ></canvas>
 <!--      <canvas class="canvas" id="b" hidden></canvas>-->
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-success" (click)="play()"> Play </button>
-      <button type="button" class="btn btn-danger" (click)="pause()"> Pause </button>
+      <button type="button" class="btn btn-success" (click)="play()"> <i class="fas fa-play"></i> Play</button>
+      <button type="button" class="btn btn-primary" (click)="pause()"> <i class="fas fa-pause"></i> Pausa </button>
     </div>
 </ng-template>

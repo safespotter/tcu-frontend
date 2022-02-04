@@ -92,7 +92,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       this.tmp = this.tmp.filter(el => el.platform === this.platform);
       this.timestamp = new Date();
       for (const el of this.tmp) {
-        let diff = this.timestamp.getTime() - new Date(el.keepAlive).getTime();
+        const diff = this.timestamp.getTime() - new Date(el.keepAlive).getTime();
         el.alert_name = this.datasev.convertAnomalies(el.alert_id);
         if (diff < 600000) {
           el.condition = 'Connesso';
