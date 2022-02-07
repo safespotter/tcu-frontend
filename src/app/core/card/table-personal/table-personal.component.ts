@@ -113,7 +113,6 @@ export class TablePersonalComponent implements OnInit {
       if (this.drawables != undefined) {
         for (const el of this.drawables) {
           const diff = (el['time'] / 1000) - v.currentTime;
-          console.log("diff", diff);
           if (diff < 0.1 && diff > -1) {
             if (el['type'] == 'box') {
               ctx.drawImage(v, 0, 0, a.width, a.height);
