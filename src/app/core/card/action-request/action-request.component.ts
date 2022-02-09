@@ -42,10 +42,12 @@ export class ActionRequestComponent implements OnInit {
     value2: false,
     value3: false
   };
+  drawables;
 
   async ngOnInit() {
     this.panelValue();
     this.getVideoURL();
+    setTimeout(this.drawCanvas, 1000);
   }
 
   formatDate(date): string {
@@ -84,12 +86,17 @@ export class ActionRequestComponent implements OnInit {
 
   getVideoURL() {
     let videoURL = '';
+    let drawables = [];
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         videoURL = data['data'][0]['videoURL'];
+        drawables = data['data'][0]['drawables'];
         if (videoURL !== undefined) {
           this.videoURL = this.formatUrl + videoURL;
+
+          this.drawables = drawables;
           this.isVideoURLReady = true;
+          //this.drawCanvas();
         }
       }
     );
@@ -167,7 +174,7 @@ export class ActionRequestComponent implements OnInit {
       });
   }
 
-  sendAlternativeRoutes(){
+  sendAlternativeRoutes() {
     const body = {
       lamp_id: this.data.id,
       alert_id: this.data.alert_id
@@ -196,6 +203,38 @@ export class ActionRequestComponent implements OnInit {
         return 'ERRORE';
     }
   }
+
+  drawCanvas = () => {
+    try {
+      const canvas: HTMLCanvasElement = document.querySelector('#canvAzione');
+      const video: HTMLVideoElement = document.querySelector('#vAzione');
+
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      if (this.drawables != undefined) {
+        for (const el of this.drawables) {
+          const diff = (el['time'] / 1000) - video.currentTime;
+          if (diff < 0.1 && diff > -1) {
+            if (el['type'] == 'box') {
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+              ctx.strokeStyle = 'red';
+              ctx.lineWidth = 7;
+              ctx.rect(el['left'], el['top'], el['right'] - el['left'], el['bottom'] - el['top']);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+      requestAnimationFrame(this.drawCanvas);
+    } catch (e) {
+    }
+  };
 
   closeModal() {
     this.modalRef.hide();
