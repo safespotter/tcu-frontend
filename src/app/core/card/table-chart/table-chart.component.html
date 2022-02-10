@@ -81,27 +81,27 @@
 <!--        </audio>-->
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/edit-alert.png" class="desktop-only"
              (click)="openEditAlertModal(editAlertModal, element.id, element.notification_id, element.status_id)"
-             style="cursor: pointer; margin-right: 10px; float: right; height:3vh;" tooltip="Modifica allerta">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Modifica allerta">
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/propagate_alert.png"
              class="desktop-only"
              (click)="openPropagateAlertModal(propagateAlertModal, element.id, element.alert_id, element.anomaly_level, element.street)"
-             style="cursor: pointer; margin-right: 10px; float: right; height:3vh;" tooltip="Propaga allerta">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Propaga allerta">
         <img *ngIf="element['anomaly_level'] > 0" src="./../../../../assets/icons/wall-clock.png" class="desktop-only"
              (click)="openProrogationAlertModal(prorogationAlertModal, element.id)"
-             style="cursor: pointer; margin-right: 10px; float: right; height:3vh;" tooltip="Proroga allerta">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Proroga allerta">
         <img *ngIf="element['anomaly_level'] == 0" src="./../../../../assets/icons/alert.png" class="desktop-only"
              (click)="openManualAlertModal(manualAlertModal, element.id)"
-             style="cursor: pointer; margin-right: 10px; float: right; height:3vh;" tooltip="Forza allerta manuale">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Forza allerta manuale">
         <img *ngIf="user_type == 0" src="./../../../../assets/icons/edit.svg" (click)="openEdit(element.id)"
              class="desktop-only"
-             style="cursor: pointer; margin-right: 10px; float: right; height:3vh;"
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;"
              tooltip="Modifica o cancella lampione">
         <img src="./../../../../assets/icons/cam_brand.png" (click)="openCam(element.ip_cam_brand)" class="desktop-only"
-             style="cursor: pointer; margin-right: 10px; float: right; height:3vh;" tooltip="Camera brandeggiabile">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Camera brandeggiabile">
         <img src="./../../../../assets/icons/cam_fix.png" (click)="openCam(element.ip_cam_fix)" class="desktop-only"
-             style="cursor: pointer; margin-right: 10px; float: right; height:3vh;" tooltip="Camera fissa">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Camera fissa">
         <img src="./../../../../assets/icons/gear.png" (click)="openConfiguration(element)"
-             style="cursor: pointer; margin-right: 10px; float: right; height:3vh;" tooltip="Configura lampione">
+             style="cursor: pointer; margin-right: 10px; float: right; height:2vh;" tooltip="Configura lampione">
 
       </td>
     </ng-container>

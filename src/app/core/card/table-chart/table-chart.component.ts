@@ -102,10 +102,18 @@ export class TableChartComponent implements OnInit, AfterViewInit {
           el.condition = 'Disconnesso';
         }
         // el.condition = 'Connesso';
+
+        //temp fix
+        if(el.alert_id == 5){
+          el.alert_id = 0;
+          el.anomaly_level = 0;
+        }
+
         if (el.anomaly_level >= 3) {
           this.flag = true;
           this.audio.play();
         }
+
       }
 
       this.flag ? this.displayedColumns = ['position', 'name', 'weight', 'symbol', 'info', 'condition', 'alert', 'button', 'gear'] :

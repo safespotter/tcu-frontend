@@ -141,22 +141,24 @@ export class TablePersonalComponent implements OnInit {
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         for (const el of Object.entries(data['data'])) {
-          if ((curDate.getTime() - new Date(el[1]['date']).getTime()) / (1000 * 3600 * 24) <= 7) {
-            this.statusList.push({
-              'date': el[1]['date'],
-              'videoURL': el[1]['videoURL'] || '',
-              'alert_id': el[1]['alert_id'] || '',
-              'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
-              'drawables': el[1]['drawables'] || []
-            });
-          } else {
-            this.statusList.push({
-              'date': el[1]['date'],
-              'videoURL': '',
-              'alert_id': el[1]['alert_id'] || '',
-              'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
-              'drawables': el[1]['drawables'] || []
-            });
+          if(el[1]['alert_id'] != 5){
+            if ((curDate.getTime() - new Date(el[1]['date']).getTime()) / (1000 * 3600 * 24) <= 7) {
+              this.statusList.push({
+                'date': el[1]['date'],
+                'videoURL': el[1]['videoURL'] || '',
+                'alert_id': el[1]['alert_id'] || '',
+                'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
+                'drawables': el[1]['drawables'] || []
+              });
+            } else {
+              this.statusList.push({
+                'date': el[1]['date'],
+                'videoURL': '',
+                'alert_id': el[1]['alert_id'] || '',
+                'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
+                'drawables': el[1]['drawables'] || []
+              });
+            }
           }
         }
         this.dataSource = new MatTableDataSource<LampStatus>(this.statusList);
