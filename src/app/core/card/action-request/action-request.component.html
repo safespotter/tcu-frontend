@@ -1,69 +1,74 @@
 <button mat-icon-button class="close-button" [mat-dialog-close]="true">
   <mat-icon class="close-icon" color="#333333">close</mat-icon>
 </button>
-<h2 mat-dialog-title>Gestione anomalia severa</h2>
-<mat-dialog-content class="mat-typography" style="max-width: 1200px">
-  <h3>Il lampione intelligente situato in <b>{{data.street}}</b> ha rilevato una <u>possibile
-    anomalia severa</u>, di tipo <b>{{data.alert_name}}</b>, in data <b>{{this.formatDate(data.date)}}</b>.</h3>
-  <p *ngIf="isVideoURLReady">
-    <i>È richiesta una supervisione dell'operatore addetto. Il video dell'evento è visualizzato di seguito: l'operatore
-      potrà decidere di annullare l'allerta, attivare il pannello luminoso manualmente o monitorare l'area coinvolta
-      tramite la camera brandeggiabile. </i>
-  </p>
-  <p *ngIf="!isVideoURLReady">
-    <i>È richiesta una supervisione dell'operatore addetto. Il video dell'evento non è disponibile. L'operatore
-      potrà decidere di annullare l'allerta, attivare il pannello luminoso manualmente o monitorare l'area coinvolta
-      tramite la camera brandeggiabile. </i>
-  </p>
-
-  <!--<div class="desktop-only">-->
-  <!--<mat-card style="width: 50vw; height: 50vh">-->
-  <!--  <mat-video style="margin: auto;" class="video-image" *ngIf="isVideoURLReady" [autopla
-  y]="true" src={{videoURL}}-->
-  <!--             [loop]="true" [quality]="false" [muted]="true"></mat-video>-->
-  <div class="modal-body" style="width: 720px; height: 400px" *ngIf="isVideoURLReady">
-    <video class="video" id="vAzione" hidden controls autoplay>
-      <source id="mp4" src="{{videoURL}}" type="video/mp4">
-    </video>
-      <canvas  class="canvas" id="canvAzione" ></canvas>
-  </div>
-
-  <!--</mat-card>-->
-  <!--</div>-->
-  <!--<div class="mobile-only">-->
-  <!--&lt;!&ndash;<mat-card style="width: auto; height: auto">&ndash;&gt;-->
-  <!--<mat-video *ngIf="isVideoURLReady" [autoplay]="true" src={{videoURL}} [loop]="true" [quality]="false" [muted]="true" ></mat-video>-->
-  <!--&lt;!&ndash;</mat-card>&ndash;&gt;-->
-  <!--</div>-->
-
-  <div class="container" style="padding-top: 25px; padding-bottom: 5px">
-    <!--    <div class="row">-->
-    <div class="btn-group btn-group-lg" role="group">
-      <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="updateActionRequiredAlert()"
-              onclick="this.disabled = true" [mat-dialog-close]="true">
-        Rimuovi allerta
-      </button>
-      <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="openModal(panelmodal)">
-        Attiva pannello luminoso
-      </button>
-      <!--      <button mat-raised-button class="action-button" style="margin-right: 10px" onclick="this.disabled = true" (click)="sendAlternativeRoutes()">-->
-      <!--        Suggerisci percorsi alternativi-->
-      <!--      </button>-->
-      <!--      <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>-->
-      <!--        Suggerisci percorsi alternativi-->
-      <!--      </button>-->
-      <button mat-raised-button class="action-button" style="margin-right: 10px" (click)="openCam()">
-        Apri camera brandeggiabile
-      </button>
-      <button mat-raised-button class="action-button" style="margin-right: 10px" disabled
-              tooltip="Funzionalità ancora non disponibile">
-        Chiama i soccorsi
+<h2 mat-dialog-title>Richiesta supervisione operatore</h2>
+<mat-dialog-content class="mat-typography" style="max-width: 400px">
+  <h3 style="text-align: justify">Il lampione intelligente situato in <b>{{data.street}}</b> ha rilevato una <u>possibile
+    anomalia severa</u>, di tipo <b style="color:#19759f; text-transform: uppercase">{{data.alert_name}}</b>, in data
+    <b>{{this.formatDate(data.date)}}</b>. </h3>
+  <h3 *ngIf="isVideoURLReady">Il video dell'evento è visualizzabile cliccando il bottone sottostante. </h3>
+  <h3 *ngIf="!isVideoURLReady">Il video dell'evento non è disponibile. </h3>
+  <div class="row" style="text-align: center">
+    <div class="col">
+      <button *ngIf="isVideoURLReady" mat-raised-button class="btn btn-warning btn-lg"
+              style="height: 80px; width: 250px"
+              (click)="openVideoclipModal(videoURL, drawables)">
+        <i class="fas fa-video"></i> Vedi clip video
       </button>
     </div>
-    <!--    </div>-->
   </div>
-</mat-dialog-content>
 
+  <p *ngIf="isVideoURLReady" style="margin-top: 20px; text-align: justify">
+    <i>L'operatore può decidere di annullare l'allerta, attivare il pannello luminoso manualmente o monitorare l'area
+      coinvolta tramite la camera brandeggiabile. </i>
+  </p>
+  <div style="padding-bottom: 5px">
+    <div class="row" style="text-align: center; margin-bottom: 10px">
+      <div class="col">
+        <button mat-raised-button class="btn btn-danger" style="width:350px;"
+                (click)="updateActionRequiredAlert()"
+                onclick="this.disabled = true" [mat-dialog-close]="true">
+          <i class="fa fa-times" aria-hidden="true"></i>
+          Disattiva allerta
+        </button>
+      </div>
+    </div>
+    <div class="row" style="text-align: center; margin-bottom: 10px">
+      <div class="col">
+        <button mat-raised-button class="action-button" style="width:350px" (click)="openModal(panelmodal)">
+          <i class="far fa-lightbulb"></i>
+          Gestisci pannello luminoso
+        </button>
+      </div>
+    </div>
+
+    <!--      <button mat-raised-button class="action-button" style="margin-right: 10px" onclick="this.disabled = true" (click)="sendAlternativeRoutes()">-->
+    <!--        Suggerisci percorsi alternativi-->
+    <!--      </button>-->
+    <!--      <button mat-raised-button class="action-button" style="margin-right: 10px" disabled>-->
+    <!--        Suggerisci percorsi alternativi-->
+    <!--      </button>-->
+    <div class="row" style="text-align: center; margin-bottom: 10px">
+      <div class="col">
+        <button mat-raised-button class="action-button" style="width:350px" (click)="openCam()">
+          <i class="fa fa-camera" aria-hidden="true"></i>
+          Monitora area interessata
+        </button>
+      </div>
+    </div>
+    <div class="row" style="text-align: center">
+      <div class="col">
+        <button mat-raised-button class="action-button" style="width:350px; margin-bottom: 10px" disabled
+                tooltip="Funzionalità ancora non disponibile">
+          <i class="fas fa-phone"></i>
+          Chiama i soccorsi
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--    </div>-->
+  <!-- /div -->
+</mat-dialog-content>
 
 
 <ng-template #panel>
@@ -100,6 +105,34 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="updatePanel()">Salva</button>
     <button type="button" class="btn btn-danger" (click)="closeModal()">Annulla</button>
+  </div>
+</ng-template>
+
+<ng-template #openVideoclip>
+  <div class="modal-header" style="padding-bottom:0px ">
+    <!--    <h2 mat-dialog-title>{{lamp}}, {{date}}, anomalia: {{alert_name}}</h2>-->
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="width: 900px; height: 600px">
+    <video class="video" id="vAzione" hidden controls autoplay>
+      <source id="mp4" src="{{this.videoURL}}" type="video/mp4">
+    </video>
+    <canvas class="canvas" id="canvAzione"></canvas>
+    <!--      <canvas class="canvas" id="b" hidden></canvas>-->
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-secondary text-nowrap" (click)="closeModal()"> Torna indietro
+    </button>
+    <button type="button" id="btn1" class="btn btn-success" (click)="play()" disabled><i class="fas fa-play"></i> Play
+    </button>
+    <button type="button" id="btn2" class="btn btn-primary" (click)="pause()"><i class="fas fa-pause"></i> Pausa
+    </button>
+    <button type="button" id="btn3" class="btn btn-warning" (click)="restart()" style="color: white"><i
+      class="fas fa-redo"></i> Restart
+    </button>
   </div>
 </ng-template>
 

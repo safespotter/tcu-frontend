@@ -33,6 +33,7 @@ export class ActionRequestComponent implements OnInit {
   @Input() isVideoURLReady;
   panelActualValue;
   @ViewChild('panel') panelmodal: string;
+  @ViewChild('openVideoclip') videoclipModal: string;
   videoURL;
   modalRef: BsModalRef;
   panelCurrentValue;
@@ -43,6 +44,7 @@ export class ActionRequestComponent implements OnInit {
     value3: false
   };
   drawables;
+  videoclip;
 
   async ngOnInit() {
     this.panelValue();
@@ -55,6 +57,41 @@ export class ActionRequestComponent implements OnInit {
     date = date.local().format('DD MMMM YYYY, H:mm');
     return date.toString();
   }
+
+  play() {
+    const v: HTMLVideoElement = document.querySelector('#vAzione');
+    const btn1: HTMLButtonElement = document.querySelector('#btn1');
+    const btn2: HTMLButtonElement = document.querySelector('#btn2');
+    const btn3: HTMLButtonElement = document.querySelector('#btn3');
+    v.play();
+    btn1.disabled = true;
+    btn2.disabled = false;
+    btn3.disabled = false;
+  }
+
+  pause() {
+    const v: HTMLVideoElement = document.querySelector('#vAzione');
+    const btn1: HTMLButtonElement = document.querySelector('#btn1');
+    const btn2: HTMLButtonElement = document.querySelector('#btn2');
+    const btn3: HTMLButtonElement = document.querySelector('#btn3');
+    v.pause();
+    btn1.disabled = false;
+    btn2.disabled = true;
+    btn3.disabled = false;
+  }
+
+  restart(){
+    const v: HTMLVideoElement = document.querySelector('#vAzione');
+    const btn1: HTMLButtonElement = document.querySelector('#btn1');
+    const btn2: HTMLButtonElement = document.querySelector('#btn2');
+    const btn3: HTMLButtonElement = document.querySelector('#btn3');
+    v.currentTime = 0;
+    v.play();
+    btn1.disabled = true;
+    btn2.disabled = false;
+    btn3.disabled = false;
+  }
+
 
   panelValue() {
     const panels = this.safespotter.getPanelsStatus(this.data.id).subscribe(res => {
@@ -84,6 +121,18 @@ export class ActionRequestComponent implements OnInit {
     });
   }
 
+  openVideoclipModal(videoclip, drawables) {
+    this.videoclip = videoclip;
+    this.drawables = drawables;
+    this.modalRef = this.modalService.show(this.videoclipModal,
+      {
+        class: 'modal-dialog modal-xl',
+        keyboard: false,
+        backdrop: 'static'
+      });
+    this.drawCanvas();
+  }
+
   getVideoURL() {
     let videoURL = '';
     let drawables = [];
@@ -93,10 +142,8 @@ export class ActionRequestComponent implements OnInit {
         drawables = data['data'][0]['drawables'];
         if (videoURL !== undefined) {
           this.videoURL = this.formatUrl + videoURL;
-
           this.drawables = drawables;
           this.isVideoURLReady = true;
-          //this.drawCanvas();
         }
       }
     );

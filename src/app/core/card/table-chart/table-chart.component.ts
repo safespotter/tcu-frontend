@@ -160,7 +160,6 @@ export class TableChartComponent implements OnInit, AfterViewInit {
   openDialogrequest(info) {
     this.dialog.open(ActionRequestComponent, {
       // height: '90%',
-      height: '800px',
       maxWidth: '100vw',
       maxHeight: '95vh',
       data: {
