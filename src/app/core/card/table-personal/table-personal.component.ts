@@ -89,7 +89,7 @@ export class TablePersonalComponent implements OnInit {
     btn3.disabled = false;
   }
 
-  restart(){
+  restart() {
     const v: HTMLVideoElement = document.querySelector('#v');
     const btn1: HTMLButtonElement = document.querySelector('#btn1');
     const btn2: HTMLButtonElement = document.querySelector('#btn2');
@@ -105,10 +105,11 @@ export class TablePersonalComponent implements OnInit {
     try {
       const a: HTMLCanvasElement = document.querySelector('#a');
       const v: HTMLVideoElement = document.querySelector('#v');
+      const btn1: HTMLButtonElement = document.querySelector('#btn1');
+      const btn2: HTMLButtonElement = document.querySelector('#btn2');
       const ctx = a.getContext('2d');
       a.width = v.videoWidth;
       a.height = v.videoHeight;
-
       ctx.drawImage(v, 0, 0, a.width, a.height);
 
       if (this.drawables != undefined) {
@@ -125,10 +126,16 @@ export class TablePersonalComponent implements OnInit {
           }
         }
       }
+
+      if (v.currentTime === v.duration) {
+        btn1.disabled = false;
+        btn2.disabled = true;
+      }
+
       requestAnimationFrame(this.drawCanvas);
     } catch (e) {
     }
-  }
+  };
 
   closeModal() {
     this.modalRef.hide();
@@ -142,7 +149,7 @@ export class TablePersonalComponent implements OnInit {
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         for (const el of Object.entries(data['data'])) {
-          if(el[1]['alert_id'] != 5){
+          if (el[1]['alert_id'] != 5) {
             if ((curDate.getTime() - new Date(el[1]['date']).getTime()) / (1000 * 3600 * 24) <= 7) {
               this.statusList.push({
                 'date': el[1]['date'],

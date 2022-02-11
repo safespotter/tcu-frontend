@@ -255,7 +255,8 @@ export class ActionRequestComponent implements OnInit {
     try {
       const canvas: HTMLCanvasElement = document.querySelector('#canvAzione');
       const video: HTMLVideoElement = document.querySelector('#vAzione');
-
+      const btn1: HTMLButtonElement = document.querySelector('#btn1');
+      const btn2: HTMLButtonElement = document.querySelector('#btn2');
       const ctx = canvas.getContext('2d');
 
       canvas.width = video.videoWidth;
@@ -277,6 +278,10 @@ export class ActionRequestComponent implements OnInit {
             }
           }
         }
+      }
+      if (video.currentTime === video.duration) {
+        btn1.disabled = false;
+        btn2.disabled = true;
       }
       requestAnimationFrame(this.drawCanvas);
     } catch (e) {
