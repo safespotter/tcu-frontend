@@ -33,6 +33,7 @@ export class TablePersonalComponent implements OnInit {
   date = '';
   lamp = '';
   drawables;
+  alert_id;
   load = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel,
@@ -52,9 +53,10 @@ export class TablePersonalComponent implements OnInit {
     return date.toString();
   }
 
-  openVideoclipModal(videoclip, alert_name, date, drawables) {
+  openVideoclipModal(videoclip, alert_name, date, alert_id, drawables) {
     this.videoclip = videoclip;
     this.alert_name = alert_name;
+    this.alert_id = alert_id;
     this.date = date;
     this.lamp = this.data.street;
     this.drawables = drawables;
@@ -114,13 +116,23 @@ export class TablePersonalComponent implements OnInit {
 
       if (this.drawables != undefined) {
         for (const el of this.drawables) {
-          const diff = (el['time'] / 1000) - v.currentTime;
-          if (diff < 0.1 && diff > -1) {
+          if (this.alert_id != 6) {
+            const diff = (el['time'] / 1000) - v.currentTime;
+            if (diff < 0.1 && diff > -1) {
+              if (el['type'] == 'box') {
+                ctx.drawImage(v, 0, 0, a.width, a.height);
+                ctx.strokeStyle = 'red';
+                ctx.lineWidth = 7;
+                ctx.rect(el['left'] - 20, el['top'] - 20, (el['right'] - el['left']) + 40, (el['bottom'] - el['top']) + 40);
+                ctx.stroke();
+              }
+            }
+          } else {
             if (el['type'] == 'box') {
               ctx.drawImage(v, 0, 0, a.width, a.height);
               ctx.strokeStyle = 'red';
               ctx.lineWidth = 7;
-              ctx.rect(el['left'], el['top'], el['right'] - el['left'], el['bottom'] - el['top']);
+              ctx.rect(el['left'] - 20, el['top'] - 20, (el['right'] - el['left']) + 40, (el['bottom'] - el['top']) + 40);
               ctx.stroke();
             }
           }

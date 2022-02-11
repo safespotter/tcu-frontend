@@ -30,7 +30,7 @@
       <th mat-header-cell *matHeaderCellDef style="width: 40px; border-bottom: 5px solid #77cdff">Video</th>
       <td mat-cell *matCellDef="let element">
         <p style="color:#77cdff; cursor: pointer;" *ngIf="element.videoURL.length > 0"
-           (click)="openVideoclipModal(formatUrl + element['videoURL'] , element['alert_name'],this.formatDate(element.date), element['drawables'])"><u>Mostra</u></p>
+           (click)="openVideoclipModal(formatUrl + element['videoURL'] , element['alert_name'],this.formatDate(element.date), element['alert_id'], element['drawables'])"><u>Mostra</u></p>
         <p *ngIf="element.videoURL.length === 0" tooltip="Video non disponibile (trascorsi più di 7 giorni)."><i
           style="color:#333">Rimosso</i></p>
 
