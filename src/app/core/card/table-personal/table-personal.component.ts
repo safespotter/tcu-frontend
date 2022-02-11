@@ -33,6 +33,7 @@ export class TablePersonalComponent implements OnInit {
   date = '';
   lamp = '';
   drawables;
+  load = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogModel,
               private safespotter: SafespotterService,
@@ -161,6 +162,7 @@ export class TablePersonalComponent implements OnInit {
             }
           }
         }
+        this.load = true;
         this.dataSource = new MatTableDataSource<LampStatus>(this.statusList);
         this.dataSource.paginator = this.paginator;
       }

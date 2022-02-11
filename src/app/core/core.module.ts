@@ -52,7 +52,7 @@ import {WeatherComponent} from './card/weather/weather.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {WeatherService} from '../shared/_services/weather.service';
 import {LamppostConfigurationComponent} from './card/lamppost-configuration/lamppost-configuration.component';
-import {MatRadioModule, MatSlideToggleModule} from '@angular/material';
+import {MatProgressSpinnerModule, MatRadioModule, MatSlideToggleModule} from '@angular/material';
 import { CamComponent } from './card/cam/cam.component';
 import { AddLamppostComponent } from './card/add-lamppost/add-lamppost.component';
 import { EditLamppostComponent } from './card/edit-lamppost/edit-lamppost.component';
@@ -114,7 +114,8 @@ import { EditLamppostComponent } from './card/edit-lamppost/edit-lamppost.compon
         MatSlideToggleModule,
         ReactiveFormsModule,
         FormsModule,
-        MatRadioModule
+        MatRadioModule,
+        MatProgressSpinnerModule
     ],
   providers: [
     AuthenticationService,

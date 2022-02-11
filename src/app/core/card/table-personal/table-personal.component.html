@@ -1,4 +1,9 @@
+<div class="spinner-wrapper" *ngIf="!load">
+  <mat-spinner [diameter]="50"></mat-spinner>
+</div>
+
 <div [hidden]="!dataSource || !dataSource.data || dataSource.data.length === 0" class="mat-elevation-z8">
+
   <table mat-table [dataSource]="dataSource">
 
     <!-- Position Column -->
@@ -37,7 +42,7 @@
   <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
 </div>
 
-<div *ngIf="dataSource.data.length === 0" class="mat-elevation-z8">
+<div *ngIf="dataSource.data.length === 0 && load" class="mat-elevation" style="padding-left: 5px">
   <h6>
     Nessun dato disponibile
   </h6>
