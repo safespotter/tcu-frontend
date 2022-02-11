@@ -2,35 +2,14 @@
   <mat-icon class="close-icon" color="#333333">close</mat-icon>
 </button>
 <h2 mat-dialog-title>{{"Lampione di " + data.street}}</h2>
-<mat-dialog-content class="mat-typography" style="padding: 10px 10px 10px 10px">
-  <!--<div class="row">-->
-
-    <!--<div class="col-sm" style="width: 400px; ">-->
-    <!--<app-map></app-map>-->
-    <!--</div>-->
-    <!--<div class="col-sm">-->
-      <!--<app-video-personal></app-video-personal>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<h3>{{data.ip}}</h3>-->
-  <!--<p>{{data.critical_issues}}</p>-->
-  <!--<mat-form-field>-->
-  <!--<label>-->
-  <!--<select matNativeControl required>-->
-  <!--<option value="table">Status del lampione</option>-->
-  <!--</select>-->
-  <!--</label>-->
-  <!--</mat-form-field>-->
-  <div class="col" style="margin-left:5px ">
+<mat-dialog-content class="mat-typography" style="padding-bottom: 0px; padding-left: 0px; margin: 0px">
+  <div class="col" style="padding: 0px 5px">
     <p><i>In questa schermata è possibile visualizzare lo storico delle anomalie registrate da questo lampione intelligente. I video delle anomalie più
     vecchie di 7 giorni sono rimossi in osservanza delle normative privacy.</i></p>
     <p><b>Coordinate</b>: {{data.long}} {{data.lat}}</p>
     <p><b>Data ultimo aggiornamento dati</b>: {{this.formatDate(data.date)}}</p>
     <p><a href="{{data.ip_cam_fix}}" target="_blank">Accedi al video live della telecamera</a></p>
     <p><a href="{{data.ip_cam_brand}}" target="_blank">Accedi alla camera brandeggiabile</a></p>
-
-    <!--<mat-card class="card" style="  height:200px; background: url(../../../../assets/img/im1.jpg);-->
-  <!--background-repeat: no-repeat; background-size: cover;"></mat-card>-->
   </div>
 </mat-dialog-content>
 <h2 mat-dialog-title>Storico anomalie registrate</h2>

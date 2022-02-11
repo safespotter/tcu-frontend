@@ -133,7 +133,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
       // height: '90%',
       //maxWidth: '100vw',
       width: '600px',
-      // maxHeight: '100vh',
+      maxHeight: '96vh',
       data: {
         anomaly_level: info.anomaly_level,
         alert_id: info.alert_id,
