@@ -15,14 +15,18 @@ export class MapComponent implements OnInit {
   }
 
   @Input() isMarkersReady;
+  @Input() isPanelsReady;
   @Input() receivedFromTable;
 
   @Output() mapSelected = new EventEmitter<string>();
 
   tmp;
+  panels;
   userLocationMarkerAnimation: string;
   platform = environment.platform;
   markers = [];
+  panelMarkers = [];
+  panelCircles = [];
   circles = [];
   selectedLat;
   selectedLong;
@@ -38,6 +42,14 @@ export class MapComponent implements OnInit {
 
   icon = {
     url: '../../assets/icons/map-icon.png',
+    scaledSize: {
+      width: 30,
+      height: 30
+    }
+  };
+
+  panelIcon = {
+    url: '../../assets/icons/panel_icon.png',
     scaledSize: {
       width: 30,
       height: 30
@@ -65,10 +77,54 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.srv.listen('dataUpdate').subscribe((res: any) => {
       this.markers = [];
+      this.panelMarkers = [];
+      this.panelCircles = [];
       this.circles = [];
       this.tmp = res[0];
+      this.panels = res[5];
+
+      console.log('panels', this.panels);
+
       this.tmp = this.tmp.filter(el => el.platform === this.platform);
       let flag = 0;
+
+      for (const panel of this.panels) {
+        this.panelMarkers.push({
+          lat: panel.lat,
+          long: panel.long,
+          status: panel.status,
+          via: panel.via
+        });
+
+        switch (panel.status) {
+          case 1:
+            this.panelCircles.push({
+              lat: parseFloat(panel.lat) + 0.00003,
+              long: parseFloat(panel.long) - 0.00003,
+              color: 'yellow',
+              opacity: '0.15'
+            });
+            break;
+          case 2:
+            this.panelCircles.push({
+              lat: parseFloat(panel.lat) + 0.00003,
+              long: parseFloat(panel.long) - 0.00003,
+              color: 'orange',
+              opacity: '0.25'
+            });
+            break;
+          case 3:
+            this.panelCircles.push({
+              lat: parseFloat(panel.lat) + 0.00003,
+              long: parseFloat(panel.long) - 0.00003,
+              color: 'red',
+              opacity: '0.25'
+            });
+            break;
+        }
+      }
+      this.isPanelsReady = true;
+
       for (const el of this.tmp) {
         if (flag == 0) {
           this.updateCoordinates(el.lat, el.long);
@@ -80,7 +136,6 @@ export class MapComponent implements OnInit {
           id: el.id,
           ip_cam_fix: el.ip_cam_fix
         });
-        this.isMarkersReady = true;
 
         switch (el.anomaly_level) {
           case 1:
@@ -96,8 +151,9 @@ export class MapComponent implements OnInit {
             this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'red', opacity: '0.25'});
             break;
         }
-        flag ++;
+        flag++;
       }
+      this.isMarkersReady = true;
     });
     //this.getMarkers();
   }

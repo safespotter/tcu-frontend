@@ -2,18 +2,30 @@
 
   <div *ngIf="receivedFromTable">{{updateCoordinates(receivedFromTable.lat, receivedFromTable.long)}}</div>
 
-  <agm-map *ngIf="isMarkersReady" (mapReady)="onMapReady($event)" [latitude]='selectedLat' [longitude]='selectedLong'
-           [zoom]='zoom'  [disableDefaultUI]=true [clickableIcons]=false>
+  <agm-map *ngIf="isMarkersReady && isPanelsReady" (mapReady)="onMapReady($event)" [latitude]='selectedLat' [longitude]='selectedLong'
+           [zoom]='zoom' [disableDefaultUI]=true [clickableIcons]=false>
     <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.long" [label]="labelOptions"
                 [iconUrl]="$any(icon)">
-<!--      <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.long" [label]="labelOptions"-->
-<!--                  [iconUrl]="$any(icon)" (markerClick)="markerClicked(marker)">-->
-      <agm-info-window #infoWindow>{{ marker.label }}</agm-info-window>
+      <!--      <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.long" [label]="labelOptions"-->
+      <!--                  [iconUrl]="$any(icon)" (markerClick)="markerClicked(marker)">-->
+      <agm-info-window>Lampione di {{ marker.label }}</agm-info-window>
+    </agm-marker>
+
+    <agm-marker *ngFor="let panel of panels" [latitude]="panel.lat" [longitude]="panel.long" [label]="labelOptions"
+                [iconUrl]="$any(panelIcon)">
+      <!--      <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.long" [label]="labelOptions"-->
+      <!--                  [iconUrl]="$any(icon)" (markerClick)="markerClicked(marker)">-->
+      <agm-info-window>Pannello di {{ panel.via }} </agm-info-window>
     </agm-marker>
     <agm-circle *ngFor="let circle of circles" [latitude]="circle.lat" [longitude]="circle.long"
                 [radius]="40"
                 [fillColor]=circle.color
                 [fillOpacity]=circle.opacity>
+    </agm-circle>
+    <agm-circle *ngFor="let pCircle of panelCircles" [latitude]="pCircle.lat" [longitude]="pCircle.long"
+                [radius]="40"
+                [fillColor]=pCircle.color
+                [fillOpacity]=pCircle.opacity>
     </agm-circle>
   </agm-map>
 
