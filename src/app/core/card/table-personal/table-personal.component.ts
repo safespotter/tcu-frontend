@@ -116,7 +116,6 @@ export class TablePersonalComponent implements OnInit {
 
       if (this.drawables != undefined) {
         for (const el of this.drawables) {
-          if (this.alert_id != 6) {
             const diff = (el['time'] / 1000) - v.currentTime;
             if (diff < 0.1 && diff > -1) {
               if (el['type'] == 'box') {
@@ -127,15 +126,6 @@ export class TablePersonalComponent implements OnInit {
                 ctx.stroke();
               }
             }
-          } else {
-            if (el['type'] == 'box') {
-              ctx.drawImage(v, 0, 0, a.width, a.height);
-              ctx.strokeStyle = 'red';
-              ctx.lineWidth = 7;
-              ctx.rect(el['left'] - 20, el['top'] - 20, (el['right'] - el['left']) + 40, (el['bottom'] - el['top']) + 40);
-              ctx.stroke();
-            }
-          }
         }
       }
 
