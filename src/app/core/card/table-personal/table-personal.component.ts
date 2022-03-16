@@ -116,16 +116,16 @@ export class TablePersonalComponent implements OnInit {
 
       if (this.drawables != undefined) {
         for (const el of this.drawables) {
-            const diff = (el['time'] / 1000) - v.currentTime;
-            if (diff < 0.1 && diff > -1) {
-              if (el['type'] == 'box') {
-                ctx.drawImage(v, 0, 0, a.width, a.height);
-                ctx.strokeStyle = 'red';
-                ctx.lineWidth = 7;
-                ctx.rect(el['left'] - 20, el['top'] - 20, (el['right'] - el['left']) + 40, (el['bottom'] - el['top']) + 40);
-                ctx.stroke();
-              }
+          const diff = (el['time'] / 1000) - v.currentTime;
+          if (diff < 0.1 && diff > -1) {
+            if (el['type'] == 'box') {
+              ctx.drawImage(v, 0, 0, a.width, a.height);
+              ctx.strokeStyle = 'red';
+              ctx.lineWidth = 7;
+              ctx.rect(el['left'] - 20, el['top'] - 20, (el['right'] - el['left']) + 40, (el['bottom'] - el['top']) + 40);
+              ctx.stroke();
             }
+          }
         }
       }
 
@@ -147,19 +147,28 @@ export class TablePersonalComponent implements OnInit {
   /*metodo che inizializza la tabella nella dialog*/
   getStatus(): void {
     const curDate = new Date();
-
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         for (const el of Object.entries(data['data'])) {
           if (el[1]['alert_id'] != 5) {
             if ((curDate.getTime() - new Date(el[1]['date']).getTime()) / (1000 * 3600 * 24) <= 7) {
-              this.statusList.push({
-                'date': el[1]['date'],
-                'videoURL': el[1]['videoURL'] || '',
-                'alert_id': el[1]['alert_id'] || '',
-                'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
-                'drawables': el[1]['drawables'] || []
-              });
+              if (((curDate.getTime() - new Date(el[1]['date']).getTime()) < 60000)) {
+                this.statusList.push({
+                  'date': el[1]['date'],
+                  'videoURL': 'loading',
+                  'alert_id': el[1]['alert_id'] || '',
+                  'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
+                  'drawables': el[1]['drawables'] || []
+                });
+              } else {
+                this.statusList.push({
+                  'date': el[1]['date'],
+                  'videoURL': el[1]['videoURL'] || '',
+                  'alert_id': el[1]['alert_id'] || '',
+                  'alert_name': this.datasev.convertAnomalies(el[1]['alert_id']),
+                  'drawables': el[1]['drawables'] || []
+                });
+              }
             } else {
               this.statusList.push({
                 'date': el[1]['date'],
