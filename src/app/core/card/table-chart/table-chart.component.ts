@@ -104,12 +104,12 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         //el.condition = 'Connesso';
 
         //temp fix
-        if (el.alert_id == 5) {
+        if (el.alert_id == 5 && el.manualAlert != 1) {
           el.alert_id = 0;
           el.anomaly_level = 0;
         }
 
-        if (el.anomaly_level >= 3) {
+        if (el.anomaly_level >= 3 && el.manualAlert != 1) {
           this.flag = true;
           this.audio.play();
         }

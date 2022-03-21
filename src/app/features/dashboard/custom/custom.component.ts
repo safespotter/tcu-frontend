@@ -90,21 +90,24 @@ export class CustomComponent implements OnInit {
       for (const el of tmp) {
         for (const el_config of el.configuration) {
           if (el.alert_id == el_config.alert_id) {
-            switch (el_config.configuration_type) {
-              case '0':
-                break;
-              case '1':
-                this.toastr.info(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA VERDE', {timeOut: 10000});
-                break;
-              case '2':
-                this.toastr.success(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA GIALLA', {timeOut: 10000});
-                break;
-              case '3':
-                this.toastr.warning(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA ARANCIONE', {timeOut: 10000});
-                break;
-              case '4':
-                this.toastr.error(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA ROSSA', {timeOut: 10000});
-                break;
+            if (el.alert_id == 5 && el.manualAlert == 0) {
+            } else {
+              switch (el_config.configuration_type) {
+                case '0':
+                  break;
+                case '1':
+                  this.toastr.info(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA VERDE', {timeOut: 10000});
+                  break;
+                case '2':
+                  this.toastr.success(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA GIALLA', {timeOut: 10000});
+                  break;
+                case '3':
+                  this.toastr.warning(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA ARANCIONE', {timeOut: 10000});
+                  break;
+                case '4':
+                  this.toastr.error(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA ROSSA', {timeOut: 10000});
+                  break;
+              }
             }
           }
         }
