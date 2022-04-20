@@ -90,8 +90,8 @@ export class CustomComponent implements OnInit {
       for (const el of tmp) {
         for (const el_config of el.configuration) {
           if (el.alert_id == el_config.alert_id) {
-            if (el.alert_id == 5 && el.manualAlert == 0) {
-            } else {
+            // if (el.alert_id == 5 && el.manualAlert == 0) {
+            // } else {
               switch (el_config.configuration_type) {
                 case '0':
                   break;
@@ -108,7 +108,7 @@ export class CustomComponent implements OnInit {
                   this.toastr.error(el.street + ': rilevato ' + this.datasev.convertAnomalies(el.alert_id), 'ALLERTA ROSSA', {timeOut: 10000});
                   break;
               }
-            }
+            // }
           }
         }
       }

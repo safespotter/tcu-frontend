@@ -150,7 +150,7 @@ export class TablePersonalComponent implements OnInit {
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         for (const el of Object.entries(data['data'])) {
-          if (el[1]['alert_id'] != 5) {
+          // if (el[1]['alert_id'] != 5) {
             if ((curDate.getTime() - new Date(el[1]['date']).getTime()) / (1000 * 3600 * 24) <= 7) {
               if (((curDate.getTime() - new Date(el[1]['date']).getTime()) < 60000)) {
                 this.statusList.push({
@@ -178,7 +178,7 @@ export class TablePersonalComponent implements OnInit {
                 'drawables': el[1]['drawables'] || []
               });
             }
-          }
+          // }
         }
         this.load = true;
         this.dataSource = new MatTableDataSource<LampStatus>(this.statusList);

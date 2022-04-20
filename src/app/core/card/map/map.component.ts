@@ -136,7 +136,7 @@ export class MapComponent implements OnInit {
           id: el.id,
           ip_cam_fix: el.ip_cam_fix
         });
-        if(el.alert_id != 5 || el.manualAlert == 1)
+        // if(el.alert_id != 5 || el.manualAlert == 1)
         switch (el.anomaly_level) {
           case 1:
             this.circles.push({lat: parseFloat(el.lat) + 0.00003, long: parseFloat(el.long) - 0.00003, color: 'green', opacity: '0.15'});
