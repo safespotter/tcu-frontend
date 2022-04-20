@@ -6,11 +6,15 @@
   <h3 style="text-align: justify">Il lampione intelligente situato in <b>{{data.street}}</b> ha rilevato una <u>possibile
     anomalia severa</u>, di tipo <b style="color:#19759f; text-transform: uppercase">{{data.alert_name}}</b>, in data
     <b>{{this.formatDate(data.date)}}</b>. </h3>
-  <h3 *ngIf="isVideoURLReady">Il video dell'evento è visualizzabile cliccando il bottone sottostante. </h3>
+  <h3 *ngIf="isVideoURLReady">Il video dell'evento è visualizzabile cliccando il bottone sottostante (il caricamento può richiedere qualche minuto). </h3>
   <h3 *ngIf="!isVideoURLReady">Il video dell'evento non è disponibile. </h3>
   <div class="row" style="text-align: center">
     <div class="col">
-      <button *ngIf="isVideoURLReady" mat-raised-button class="btn btn-warning btn-lg"
+      <button *ngIf="isVideoURLReady && videoURL == 'loading'" mat-raised-button class="btn btn-warning btn-lg"
+              style="height: 80px; width: 250px; color:#444" disabled>
+        <i class="fas fa-video"></i> Attesa caricamento
+      </button>
+      <button *ngIf="isVideoURLReady && videoURL != 'loading'" mat-raised-button class="btn btn-warning btn-lg"
               style="height: 80px; width: 250px"
               (click)="openVideoclipModal(videoURL, drawables)">
         <i class="fas fa-video"></i> Vedi clip video

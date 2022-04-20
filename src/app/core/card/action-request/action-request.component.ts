@@ -136,14 +136,21 @@ export class ActionRequestComponent implements OnInit {
   getVideoURL() {
     let videoURL = '';
     let drawables = [];
+    const curDate = new Date();
     this.safespotter.getLampStatus(this.data.id).subscribe(
       data => {
         videoURL = data['data'][0]['videoURL'];
         drawables = data['data'][0]['drawables'];
         if (videoURL !== undefined) {
-          this.videoURL = this.formatUrl + videoURL;
-          this.drawables = drawables;
-          this.isVideoURLReady = true;
+          if (((curDate.getTime() - new Date(data['data'][0]['date']).getTime()) < 60000)) {
+            this.videoURL = 'loading';
+            this.drawables = drawables;
+            this.isVideoURLReady = true;
+          } else {
+            this.videoURL = this.formatUrl + videoURL;
+            this.drawables = drawables;
+            this.isVideoURLReady = true;
+          }
         }
       }
     );

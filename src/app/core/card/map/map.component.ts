@@ -83,7 +83,7 @@ export class MapComponent implements OnInit {
       this.tmp = res[0];
       this.panels = res[5];
 
-      console.log('panels', this.panels);
+      // console.log('panels', this.panels);
 
       this.tmp = this.tmp.filter(el => el.platform === this.platform);
       let flag = 0;
