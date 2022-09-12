@@ -28,7 +28,7 @@
       <td mat-cell *matCellDef="let element" class="desktop-only">
         {{element.condition}}
         <span class="dot"
-              [ngClass]="{'dot-red' : element.condition == 'Disconnesso', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Inattivo'}"></span>
+              [ngClass]="{'dot-red' : element.condition == 'In manutenzione', 'dot-green' : element.condition == 'Connesso', 'dot-yellow' : element.condition == 'Inattivo'}"></span>
       </td>
     </ng-container>
 

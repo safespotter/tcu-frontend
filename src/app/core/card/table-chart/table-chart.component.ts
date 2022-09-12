@@ -99,7 +99,7 @@ export class TableChartComponent implements OnInit, AfterViewInit {
         } else if ((diff) > 600000 && (diff) < 1800000) {
           el.condition = 'Inattivo';
         } else {
-          el.condition = 'Disconnesso';
+          el.condition = 'In manutenzione';
         }
         //el.condition = 'Connesso';
 
