@@ -122,9 +122,14 @@ export class SafespotterService {
     return this.http.get(this.formatUrl('getData/'), {headers});
   }
 
+  getAnomalies() {
+    return this.http.get(this.formatUrl('getLastAnomalies'));
+  }
+
   private formatUrl(call): string {
     return environment.protocol + environment.host + ':' + environment.port + '/safePath/' + call;
   }
+
 
   private getAuthorization() {
     return new HttpHeaders()

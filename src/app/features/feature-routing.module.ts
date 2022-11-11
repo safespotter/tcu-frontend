@@ -7,6 +7,7 @@ import {AuthenticationService} from './authentication/authentication.service';
 import {CamComponent} from '../core/card/cam/cam.component';
 import {AddLamppostComponent} from '../core/card/add-lamppost/add-lamppost.component';
 import {EditLamppostComponent} from '../core/card/edit-lamppost/edit-lamppost.component';
+import {PublicComponent} from './public/public.component';
 
 const routes: Routes = [{
   path: '', component: FeatureComponent, children: [
@@ -18,6 +19,7 @@ const routes: Routes = [{
     {path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)},
     {path: 'oldHome', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [IsAuthenticatedGuard]},
     {path: 'cam', component: CamComponent, canActivate: [IsAuthenticatedGuard]},
+    {path: 'public', component: PublicComponent},
     {path: 'new_lamppost', component: AddLamppostComponent, canActivate: [IsAuthenticatedGuard]},
     {path: 'edit_lamppost', component: EditLamppostComponent, canActivate: [IsAuthenticatedGuard]}]
 

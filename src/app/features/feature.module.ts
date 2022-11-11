@@ -19,11 +19,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { PublicComponent } from './public/public.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [FeatureComponent,
     P404Component,
     P500Component,
+    PublicComponent,
   ],
   imports: [
     FeatureRoutingModule,
@@ -36,6 +40,8 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
     LayoutModule,
     ReactiveFormsModule,
     FormsModule
